@@ -75,12 +75,13 @@ namespace Medica2.Farmacia
             pr.SaveChanges();
             //cc = pr.PERSONAS.Last();
             
+            
 
             PROVEEDORE prv = new PROVEEDORE { PERSONAID = cc.ID_PERSONA, RFC = rfc, REFERENCIA = referencia };
             prv.PERSONA = cc;
             pr.PROVEEDORES.Add(prv);
             pr.SaveChanges();
-
+            //No guarda el proveedor
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
