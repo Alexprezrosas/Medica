@@ -1,0 +1,345 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+
+        <Grid.Resources>
+            <telerik:IconSources x:Key="IconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Modern/"/>
+            <telerik:FontFamiliesProvider x:Key="FontFamiliesProvider"/>
+            <telerik:EditingContextTypeToBoolConverter x:Key="EditingContextTypeToBoolConverter"/>
+        </Grid.Resources>
+        <telerik:RadRichTextBoxRibbonUI x:Name="radRichTextBoxRibbonUI" CollapseThresholdSize="50,50" VerticalAlignment="Top">
+            <telerik:RadRichTextBoxRibbonUI.Resources>
+                <telerik:IconSources x:Key="IconSources" DarkBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Dark/" LightBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/" ModernBasePath="pack://application:,,,/Telerik.Windows.Controls.RichTextBoxUI;component/Images/MSOffice/Modern/"/>
+                <telerik:FontFamiliesProvider x:Key="FontFamiliesProvider"/>
+                <telerik:EditingContextTypeToBoolConverter x:Key="EditingContextTypeToBoolConverter"/>
+            </telerik:RadRichTextBoxRibbonUI.Resources>
+
+            
+            <telerik:RadRichTextBoxRibbonUI.ContextualGroups>
+                <telerik:RadRibbonContextualGroup x:Name="TableTools" Header="Table Tools">
+                    <telerik:RadRibbonContextualGroup.IsActive>
+                        <Binding Converter="{StaticResource EditingContextTypeToBoolConverter}" Mode="OneWay" Path="AssociatedRichTextBox.CurrentEditingContext.Type">
+                            <Binding.ConverterParameter>
+                                <telerik:EditingContextTypes>Table</telerik:EditingContextTypes>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </telerik:RadRibbonContextualGroup.IsActive>
+                </telerik:RadRibbonContextualGroup>
+                <telerik:RadRibbonContextualGroup x:Name="HeaderFooterTools" Header="Header &amp; Footer Tools">
+                    <telerik:RadRibbonContextualGroup.IsActive>
+                        <Binding Converter="{StaticResource EditingContextTypeToBoolConverter}" Mode="OneWay" Path="AssociatedRichTextBox.CurrentEditingContext.Type">
+                            <Binding.ConverterParameter>
+                                <telerik:EditingContextTypes>HeaderFooter</telerik:EditingContextTypes>
+                            </Binding.ConverterParameter>
+                        </Binding>
+                    </telerik:RadRibbonContextualGroup.IsActive>
+                </telerik:RadRibbonContextualGroup>
+            </telerik:RadRichTextBoxRibbonUI.ContextualGroups>
+
+            <!-- ADMINISTRACION -->
+            
+            <telerik:RadRibbonTab Header="Administracion">
+                <telerik:RadRibbonGroup Header="">
+
+                    <!-- PACIENTES -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/paciente.png" Size="Large" Text="Pacientes">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem x:Name="Hospitalizados" Header="Hozpitalizados" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="Registrar" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="Visualizar" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="Ambulatorios" Header="Ambulatorios" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="RegistrarAmbu" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="VisualizarAmbu" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- EMPLEADOS -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/medico.png" Size="Large" Text="Empleados">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Medicos" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar"  Click="RadMenuItem_Click">
+                                        
+                                    </telerik:RadMenuItem>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Enfermeras" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Usuarios" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- CATALOGOS -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/equipoHospital.png" Size="Large" Text="Catalogos">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Estudios" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Especialidades de Medicos" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemregistrarespecialidad" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemconsultarespecialidad" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Especialidades de Enfermeras" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem  x:Name="itemregistrarespecialidadesenf" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem  x:Name="itemconsultarespecialidadesenf" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Cuartos" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemregistrarcuarto" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemconsultarcuarto" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Cirugias" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemcregistrarcirugia" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemconsultacirugia" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Equipo de Hospital" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemregistrareuipoh" Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemconsultaequipoh" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- SERVICIOS-->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/cuarto.png" Size="Large" Text="Servicios">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Estudios" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Cirugias" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Equipo de Hospital" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Honorario Medico" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Consulta" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+
+                    <!-- CUENTA -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/cuenta.png" Size="Large" Text="Cuentas">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Cuentas" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem Header="Buscar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Depositos" Click="RadMenuItem_Click"/>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    
+
+                    <!-- Salir -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/sesiones.png" Size="Large" Text="Salir">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Cerrar Sesion" Click="RadMenuItem_Click_1">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    
+
+                    <StackPanel/>
+                </telerik:RadRibbonGroup>
+            </telerik:RadRibbonTab>
+
+            
+            
+            
+        <!-- FARMACIA -->
+
+            <telerik:RadRibbonTab Header="Farmacia">
+                <telerik:RadRibbonGroup Header="">
+
+                    <!-- PROVEEDORES -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/proveedor.png" Size="Large" Text="Proveedores">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem x:Name="addProveedor" Header="Nuevo proveedor" Click="RadMenuItem_Click">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="conProveedor" Header="Consulta proveedor" Click="RadMenuItem_Click">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- COMPRAS -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/compra.png"  Size="Large" Text="Compras">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Nueva venta">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Ventas del dia">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- VENTA GENERAL -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/venta.png" Size="Large" Text="Venta General">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Nueva venta">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Ventas del dia">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- MATERIALES-->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/material.png" Size="Large" Text="Materiales">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Nuevo material">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Entrada de material">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Consultar material">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Solicitud de Material">
+                                    <telerik:RadMenuItem Header="Solicitud Enfermera"/>
+                                    <telerik:RadMenuItem Header="Solicitud Doctor"/>
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+
+                    <!-- MEDICAMENTOS -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/medicamento.png" Size="Large" Text="Medicamentos">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem x:Name="Medicamentosadd" Header="Nuevo medicamento" Click="RadMenuItem_Click">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Entrada de medicamento">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemShowMedi" Header="Consultar medicamento" Click="RadMenuItem_Click">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- DEVOLUCIONES -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/devolucion.png" Size="Large" Text="Devoluciones">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Pacientes">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- SALIR -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/Sesiones.png" Size="Large" Text="Salir">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Cerrar Sesion" Click="RadMenuItem_Click" x:Name="itemSalir">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <StackPanel/>
+                </telerik:RadRibbonGroup>
+            </telerik:RadRibbonTab>
+
+            <!--ENFERMERIA-->
+
+            <telerik:RadRibbonTab Header="Enfermeria">
+                <telerik:RadRibbonGroup Header="">
+
+                    <!-- PACIENTES -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Enfermeria/img/paciente.png" Size="Large" Text="Pacientes">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Hospitalizados">
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Ambulatorios">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    
+                    <!-- MEDICAMENTOS -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Enfermeria/img/medicamento.png" Size="Large" Text="Medicamentos">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Consultar Medicamento">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <!-- SALIR -->
+
+                    <telerik:RadRibbonDropDownButton LargeImage="Enfermeria/img/sesiones.png" Size="Large" Text="Salir">
+                        <telerik:RadRibbonDropDownButton.DropDownContent>
+                            <telerik:RadContextMenu  BorderThickness="0">
+                                <telerik:RadMenuItem Header="Cerrar Sesion">
+                                </telerik:RadMenuItem>
+                            </telerik:RadContextMenu>
+                        </telerik:RadRibbonDropDownButton.DropDownContent>
+                    </telerik:RadRibbonDropDownButton>
+
+                    <StackPanel/>
+                    <telerik:RadRibbonButton/>
+                </telerik:RadRibbonGroup>
+            </telerik:RadRibbonTab>
+
+
+        </telerik:RadRichTextBoxRibbonUI>
+
+    </Grid>
+</Window>
