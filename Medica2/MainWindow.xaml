@@ -236,15 +236,15 @@
                     <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/material.png" Size="Large" Text="Materiales">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
-                                <telerik:RadMenuItem Header="Nuevo material">
+                                <telerik:RadMenuItem x:Name="itemNuevoMaterial" Header="Nuevo material" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
-                                <telerik:RadMenuItem Header="Entrada de material">
+                                <telerik:RadMenuItem x:Name="itemEntradaMaterial" Header="Entrada de material" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
-                                <telerik:RadMenuItem Header="Consultar material">
+                                <telerik:RadMenuItem x:Name="itemConsultarMaterial" Header="Consultar material" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Solicitud de Material">
-                                    <telerik:RadMenuItem Header="Solicitud Enfermera"/>
-                                    <telerik:RadMenuItem Header="Solicitud Doctor"/>
+                                    <telerik:RadMenuItem x:Name="itemMaterialEnfermera" Header="Solicitud Enfermera" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemMterialDoctor" Header="Solicitud Doctor" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>

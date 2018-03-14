@@ -9,18 +9,21 @@ namespace AccessoDB
 {
     public class Limpiar
     {
-        public void BorrarCampos(Control control)
+        public Limpiar()
         {
-            foreach(var txt in control.Controls)
+
+        }
+
+        public void EmptyTextBoxes(Control parent)
+        {
+            foreach (Control c in parent.Controls)
             {
-                if (txt is TextBox)
+                if (c.GetType() == typeof(TextBox))
                 {
-                    ((TextBox)txt).Clear();
-                }else if (txt is ComboBox)
-                {
-                    ((ComboBox)txt).SelectedIndex = 0;
+                    ((TextBox)(c)).Text = string.Empty;
                 }
             }
+
         }
     }
 }

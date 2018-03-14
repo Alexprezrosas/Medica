@@ -5,21 +5,9 @@ using Medica2.Administracion.EquipoHospital;
 using Medica2.Administracion.Especialidades;
 using Medica2.Administracion.EspecialidadesEnfermeras;
 using Medica2.Farmacia;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Medica2.Farmacia.Materiales;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Telerik.Windows.Controls;
+
 
 namespace Medica2
 {
@@ -37,7 +25,7 @@ namespace Medica2
         {
            
 
-            // Display the selected menu item.
+            // Proveedores
             if(sender == addProveedor){
                 Proveedores prov = new Proveedores();
                 prov.Show();
@@ -49,24 +37,20 @@ namespace Medica2
                     ConsultaProveedores cprov = new ConsultaProveedores();
                     cprov.Show();
                 }
-                else
-                {
-                    if (sender == Medicamentosadd)
-                    {
-                        Medicamentos med = new Medicamentos();
-                        med.Show();
-                    }
-                    else
-                    {
-                        if(sender == itemShowMedi)
-                        {
-                            ConsultaMedicamentos conmedi = new ConsultaMedicamentos();
-                            conmedi.Show();
-                        }
-                    }
-                }
+                
                 
             }
+
+            //Materiales
+            if (sender == itemNuevoMaterial)
+            {
+                NuevoMaterial nuMat = new NuevoMaterial();
+                nuMat.Show();
+            }
+            
+
+            //Cerrar Sesion
+
             if (sender == itemSalir)
             {
                 this.Close();

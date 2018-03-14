@@ -1,0 +1,23 @@
+﻿<Window x:Class="Medica2.Farmacia.Medicamentos.NuevoMedicamento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Farmacia.Medicamentos"
+        mc:Ignorable="d"
+        Title="NuevoMedicamento" Height="338.414" Width="579.513">
+    <Grid>
+        <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy" Content="Comentario" HorizontalAlignment="Left" Margin="245,154,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy1" Content="Cantidad" HorizontalAlignment="Left" Margin="245,128,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy2" Content="Codigo de Barras" HorizontalAlignment="Left" Margin="245,102,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy3" Content="Label" HorizontalAlignment="Left" Margin="245,76,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy4" Content="Label" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy5" Content="Precio de venta" HorizontalAlignment="Left" Margin="20,179,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy6" Content="Caducidad" HorizontalAlignment="Left" Margin="20,154,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy7" Content="Codigo de barras" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy8" Content="Cantidad" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblNombre_Copy9" Content="Comentario" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
+
+    </Grid>
+</Window>

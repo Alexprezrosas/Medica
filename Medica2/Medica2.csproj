@@ -151,35 +151,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Compras.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Farmacia\ConsultaMedicamentos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Farmacia\ConsultaProveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Devoluciones.xaml">
+    <Page Include="Farmacia\Materiales\NuevoMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Materiales.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Farmacia\Medicamentos.xaml">
+    <Page Include="Farmacia\Medicamentos\NuevoMedicamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Farmacia\Proveedores.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Farmacia\VentaGeneral.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,29 +206,17 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="CargarSiloeBDs.cs" />
-    <Compile Include="Farmacia\Compras.xaml.cs">
-      <DependentUpon>Compras.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Farmacia\ConsultaMedicamentos.xaml.cs">
-      <DependentUpon>ConsultaMedicamentos.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Farmacia\ConsultaProveedores.xaml.cs">
       <DependentUpon>ConsultaProveedores.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Devoluciones.xaml.cs">
-      <DependentUpon>Devoluciones.xaml</DependentUpon>
+    <Compile Include="Farmacia\Materiales\NuevoMaterial.xaml.cs">
+      <DependentUpon>NuevoMaterial.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Materiales.xaml.cs">
-      <DependentUpon>Materiales.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Farmacia\Medicamentos.xaml.cs">
-      <DependentUpon>Medicamentos.xaml</DependentUpon>
+    <Compile Include="Farmacia\Medicamentos\NuevoMedicamento.xaml.cs">
+      <DependentUpon>NuevoMedicamento.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Proveedores.xaml.cs">
       <DependentUpon>Proveedores.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Farmacia\VentaGeneral.xaml.cs">
-      <DependentUpon>VentaGeneral.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -329,6 +301,12 @@
       <Project>{DB0D23E6-9857-49BE-8A27-E6F611781DFC}</Project>
       <Name>AccessoDB</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Farmacia\Compras\" />
+    <Folder Include="Farmacia\Devoluciones\" />
+    <Folder Include="Farmacia\Proveedores\" />
+    <Folder Include="Farmacia\Ventas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

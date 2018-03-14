@@ -9,11 +9,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace Medica2.Farmacia
 {
@@ -23,12 +24,14 @@ namespace Medica2.Farmacia
     public partial class Proveedores : Window
     {
 
+        
         BaseDatos pr;
  
         public Proveedores()
         {
             InitializeComponent();
             pr = new BaseDatos();
+            LlenandoCombo();
 
         }
 
@@ -41,7 +44,7 @@ namespace Medica2.Farmacia
 
             String nombre, apaterno, amaterno, sexo, calle, celular, curp, referencia, rfc;
             String edad, localidad, municipio, estado;
-            int edadd, localidadd, municipiod, estadod;
+            int localidadd, municipiod, estadod;
             short ed;
 
             nombre = txtNombre.Text;
@@ -88,6 +91,26 @@ namespace Medica2.Farmacia
         {
             this.Close();
         }
+
+
+        private void LlenandoCombo()
+        {
+            var lista = pr.ESTADOS.ToList();
+            if (lista.Count > 0)
+            {
+                estadoscbb.Items.Add(lista);
+                estadoscbb.DisplayMemberPath = "nombre";
+                estadoscbb.SelectedValuePath = "id";
+                //estadoscbb.DataSource = lista;
+                //estadoscbb.DisplayMember = "Coordinador";
+                //estadoscbb.ValueMember = "Usuario";
+            }
+
+
+
+        }
+
+
     }
 
     

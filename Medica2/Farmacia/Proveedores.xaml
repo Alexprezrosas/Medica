@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Farmacia"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Proveedores"
         mc:Ignorable="d"
-        Title="Proveedores" Height="554.679" Width="608.517">
+        Title="Proveedores" Height="368.279" Width="598.917">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="22*"/>
@@ -40,7 +40,6 @@
         <Label x:Name="label_Copy12" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="306,300,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnCancelar_Click"/>
-        <DatePicker x:Name="tiempo" HorizontalAlignment="Left" Margin="164,251,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="cbbEdad" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem>Selecciona la edad</ComboBoxItem>
             <ComboBoxItem>18</ComboBoxItem>
@@ -86,7 +85,8 @@
             <ComboBoxItem>Masculino</ComboBoxItem>
             <ComboBoxItem>Femenino</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="estadoscbb" HorizontalAlignment="Left" Margin="164,417,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox ItemsSource="{Binding est}" x:Name="estadoscbb" HorizontalAlignment="Left" Margin="51.6,275,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <Label x:Name="lblTitulo" Content="Registro de Proveedores" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

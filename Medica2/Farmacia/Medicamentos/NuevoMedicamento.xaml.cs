@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Medica2.Farmacia
+namespace Medica2.Farmacia.Medicamentos
 {
     /// <summary>
-    /// Lógica de interacción para Materiales.xaml
+    /// Lógica de interacción para NuevoMedicamento.xaml
     /// </summary>
-    public partial class Materiales : Window
+    public partial class NuevoMedicamento : Window
     {
-        public Materiales()
+        public NuevoMedicamento()
         {
             InitializeComponent();
         }
