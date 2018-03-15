@@ -59,7 +59,9 @@ namespace Medica2.Farmacia.Materiales
             };
             mat.CATALOGO_MATERIALES.Add(cc);
             mat.SaveChanges();
-
+            //duy
+            VizualizarMateriales.datagrid.ItemsSource = mat.CATALOGO_MATERIALES.ToList();
+            //duy
             txtNombre.Text = String.Empty;
             txtComentario.Text = String.Empty;
             txtCosto.Text = String.Empty;

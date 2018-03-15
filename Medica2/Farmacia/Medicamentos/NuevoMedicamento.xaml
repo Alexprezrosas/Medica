@@ -8,16 +8,26 @@
         Title="NuevoMedicamento" Height="338.414" Width="579.513">
     <Grid>
         <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy" Content="Comentario" HorizontalAlignment="Left" Margin="245,154,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy1" Content="Cantidad" HorizontalAlignment="Left" Margin="245,128,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy2" Content="Codigo de Barras" HorizontalAlignment="Left" Margin="245,102,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy3" Content="Label" HorizontalAlignment="Left" Margin="245,76,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy4" Content="Label" HorizontalAlignment="Left" Margin="245,50,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy5" Content="Precio de venta" HorizontalAlignment="Left" Margin="20,179,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy6" Content="Caducidad" HorizontalAlignment="Left" Margin="20,154,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy7" Content="Codigo de barras" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy8" Content="Cantidad" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblNombre_Copy9" Content="Comentario" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblCaducidad" Content="Caducidad" HorizontalAlignment="Left" Margin="282,130,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblDescuento" Content="Descuento" HorizontalAlignment="Left" Margin="282,104,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblPPublico" Content="Precio de publico" HorizontalAlignment="Left" Margin="282,78,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblPHospital" Content="Precio de hospital" HorizontalAlignment="Left" Margin="282,52,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="20,157,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblCodBarras" Content="Codigo de barras" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
+        <Label x:Name="lblComentario" Content="Comentario" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
+        <DatePicker Name="dpCaducidad" HorizontalAlignment="Left" Margin="422,133,0,0" VerticalAlignment="Top" SelectedDateChanged="dpCaducidad_SelectedDateChanged"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="133,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="133,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="133,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="txtCodBarras" HorizontalAlignment="Left" Height="23" Margin="133,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="txtPVenta" HorizontalAlignment="Left" Height="23" Margin="133,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+        <TextBox x:Name="txtPHospital" HorizontalAlignment="Left" Height="23" Margin="422,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="txtPPublico" HorizontalAlignment="Left" Height="23" Margin="422,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <TextBox x:Name="txtDescuento" HorizontalAlignment="Left" Height="23" Margin="422,107,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
+        <Label x:Name="lblTitulo" Content="Registro de Medicamentos" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="252"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="153,230,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="326,230,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
 
     </Grid>
 </Window>

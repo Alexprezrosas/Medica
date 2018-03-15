@@ -1,5 +1,4 @@
-﻿
-using AccessoDB;
+﻿using AccessoDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,42 +12,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 
-namespace Medica2.Farmacia
+namespace Medica2.Administracion.Enfermeras
 {
     /// <summary>
-    /// Lógica de interacción para Proveedores.xaml
+    /// Lógica de interacción para NuevaEnfermera.xaml
     /// </summary>
-    public partial class Proveedores : Window
+    public partial class NuevaEnfermera : Window
     {
-
-        
-        BaseDatos pr;
- 
-        public Proveedores()
+        BaseDatos enf;
+        public NuevaEnfermera()
         {
             InitializeComponent();
-            pr = new BaseDatos();
+            enf = new BaseDatos();
             FillEstados();
-            Limpiar();
+           
         }
 
-
-
+        private void btnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             //Obtener los valores de los TextBox
-
-            String edad;
+            DateTime Fecharegistro = DateTime.Now;
             short ed;
-            DateTime FechaRegistro = DateTime.Now;
+            String edad;
 
             edad = cbbEdad.Text;
             ed = short.Parse(edad);
-            
 
             //fechacrea.Text = DateTime.Now.ToString();
             //DateTime fechacre = fechacrea.GetValue();
@@ -65,58 +59,32 @@ namespace Medica2.Farmacia
                 ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                 T_CELULAR = txtCelular.Text,
                 CURP = txtCurp.Text,
-                FECHA_CREACION = FechaRegistro
+                FECHA_CREACION = Fecharegistro
             };
-            pr.PERSONAS.Add(cc);
-            pr.SaveChanges();
+            enf.PERSONAS.Add(cc);
+            enf.SaveChanges();
             //cc = pr.PERSONAS.Last();
-            
-            
 
-            PROVEEDORE prv = new PROVEEDORE
+
+
+            ENFERMERA enfermera = new ENFERMERA
             {
                 PERSONAID = cc.ID_PERSONA,
-                RFC = txtRfc.Text,
-                REFERENCIA = txtReferencia.Text,
-                FECHA_CREACION = FechaRegistro
+                C_PROFESIONAL = txtCProfesional.Text,
+                FECHA_CREACION = Fecharegistro
             };
-            prv.PERSONA = cc;
-            pr.PROVEEDORES.Add(prv);
-            pr.SaveChanges();
-            //Mensaje
-            MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
-
-            //Limpiar los textBox
-            Limpiar();
-
+            enfermera.PERSONA = cc;
+            enf.ENFERMERAS.Add(enfermera);
+            enf.SaveChanges();
+            //No guarda la enfermera
         }
 
-        public void Limpiar()
+
+
+        private void Window_Closed(object sender, EventArgs e)
         {
-            txtNombre.Text = String.Empty;
-            txtPaterno.Text = String.Empty;
-            txtMaterno.Text = String.Empty;
-            txtCalle.Text = String.Empty;
-            txtCelular.Text = String.Empty;
-            txtCurp.Text = String.Empty;
-            txtRfc.Text = String.Empty;
-            txtReferencia.Text = String.Empty;
-            cbbEdad.SelectedIndex = -1;
-            cbbSexo.SelectedIndex = -1;
-            comboBoxEstado.SelectedIndex = -1;
-
+            //CargarSiloeBD.getDB().SaveChanges();
         }
-
-
-        private void btnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-
-
-        //Llenado de Combobox Estado
-
         public void FillEstados()
         {
             BaseDatos obj = new BaseDatos();
@@ -144,7 +112,6 @@ namespace Medica2.Farmacia
 
 
 
-    }
 
-    
+    }
 }

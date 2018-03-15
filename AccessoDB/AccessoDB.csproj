@@ -86,6 +86,7 @@
     <Compile Include="FAM_RESPONSABLES.cs" />
     <Compile Include="HONORARIOS_MEDICOS.cs" />
     <Compile Include="Limpiar.cs" />
+    <Compile Include="LlenarEstados.cs" />
     <Compile Include="LOCALIDADE.cs" />
     <Compile Include="MATERIALES_DOCTORES.cs" />
     <Compile Include="MATERIALES_ENFERMERAS.cs" />

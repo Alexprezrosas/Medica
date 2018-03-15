@@ -77,7 +77,7 @@
                                     <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Enfermeras" Click="RadMenuItem_Click">
-                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemNuevaEnfermera" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Usuarios" Click="RadMenuItem_Click">
@@ -256,7 +256,7 @@
                     <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/medicamento.png" Size="Large" Text="Medicamentos">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
-                                <telerik:RadMenuItem x:Name="Medicamentosadd" Header="Nuevo medicamento" Click="RadMenuItem_Click">
+                                <telerik:RadMenuItem x:Name="itemNuevoMedicamentos" Header="Nuevo medicamento" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Entrada de medicamento">
                                 </telerik:RadMenuItem>

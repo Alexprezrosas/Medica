@@ -1,11 +1,13 @@
 ﻿using Medica2.Administracion;
 using Medica2.Administracion.Cirugias;
 using Medica2.Administracion.Cuartos;
+using Medica2.Administracion.Enfermeras;
 using Medica2.Administracion.EquipoHospital;
 using Medica2.Administracion.Especialidades;
 using Medica2.Administracion.EspecialidadesEnfermeras;
 using Medica2.Farmacia;
 using Medica2.Farmacia.Materiales;
+using Medica2.Farmacia.Medicamentos;
 using System.Windows;
 
 
@@ -46,6 +48,20 @@ namespace Medica2
             {
                 NuevoMaterial nuMat = new NuevoMaterial();
                 nuMat.Show();
+            }else
+            {
+                if (sender == itemConsultarMaterial)
+                {
+                    VizualizarMateriales vmat = new VizualizarMateriales();
+                    vmat.Show();
+                }
+            }
+
+            //Medicamentos
+            if(sender == itemNuevoMedicamentos)
+            {
+                NuevoMedicamento nmedi = new NuevoMedicamento();
+                nmedi.Show();
             }
             
 
@@ -119,8 +135,16 @@ namespace Medica2
                 ConsultarCatalogoEspecialidadesEnfermeras espec = new ConsultarCatalogoEspecialidadesEnfermeras();
                 espec.Show();
             }
+            
+             //Enfermeras
+            if (sender == itemNuevaEnfermera)
+            {
+                NuevaEnfermera enfe = new NuevaEnfermera();
+                enfe.Show();
+            }
 
         }
+
 
         private void RadMenuItem_Click_1(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {

@@ -13,33 +13,28 @@
             <ColumnDefinition Width="13*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="173,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtRfc" HorizontalAlignment="Left" Height="23" Margin="85.6,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtReferencia" HorizontalAlignment="Left" Height="23" Margin="85.6,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="textBox_Copy2" HorizontalAlignment="Left" Height="23" Margin="85.6,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtRfc" HorizontalAlignment="Left" Height="23" Margin="85.6,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtCurp" HorizontalAlignment="Left" Height="23" Margin="85.6,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="85.6,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtEstado" HorizontalAlignment="Left" Height="23" Margin="85.6,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtMunicipio" HorizontalAlignment="Left" Height="23" Margin="85.6,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtLocalidad" HorizontalAlignment="Left" Height="23" Margin="173,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtCalle" HorizontalAlignment="Left" Height="23" Margin="173,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="173,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="173,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy" Content="Label" HorizontalAlignment="Left" Margin="351,220,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy1" Content="Referencia" HorizontalAlignment="Left" Margin="351,192,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy2" Content="RFC" HorizontalAlignment="Left" Margin="351,167,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy3" Content="CURP" HorizontalAlignment="Left" Margin="351,139,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy4" Content="Celular" HorizontalAlignment="Left" Margin="351,111,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="label_Copy5" Content="Estado" HorizontalAlignment="Left" Margin="351,83,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Label x:Name="label_Copy5" Content="Estado" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy6" Content="Minicipio" HorizontalAlignment="Left" Margin="351,55,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Label x:Name="label_Copy7" Content="Localidad" HorizontalAlignment="Left" Margin="22,223,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy7" Content="Localidad" HorizontalAlignment="Left" Margin="351,81,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
         <Label x:Name="label_Copy8" Content="Calle" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy9" Content="Sexo" HorizontalAlignment="Left" Margin="22,167,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy10" Content="Edad" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy11" Content="Apellido materno" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy12" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="130,300,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="306,300,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnCancelar_Click"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="171,290,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="347,290,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="btnCancelar_Click"/>
         <ComboBox x:Name="cbbEdad" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem>Selecciona la edad</ComboBoxItem>
             <ComboBoxItem>18</ComboBoxItem>
@@ -85,8 +80,19 @@
             <ComboBoxItem>Masculino</ComboBoxItem>
             <ComboBoxItem>Femenino</ComboBoxItem>
         </ComboBox>
-        <ComboBox ItemsSource="{Binding est}" x:Name="estadoscbb" HorizontalAlignment="Left" Margin="51.6,275,0,0" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <Label x:Name="lblTitulo" Content="Registro de Proveedores" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="comboBoxEstado" HorizontalAlignment="Left" 
+            Margin="172,220,0,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" 
+            SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="comboBox_SelectionChanged" />
+        <ComboBox x:Name="comboBoxMunicipios" HorizontalAlignment="Left" 
+            Margin="84.2,53,0,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" SelectedValuePath="id"
+            SelectedValue="{Binding id}"  SelectionChanged="comboBox_SelectionChangedL" Grid.Column="1"/>
+        <ComboBox x:Name="comboBoxLocalidades" HorizontalAlignment="Left" 
+            Margin="85.2,81,0,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" SelectedValuePath="id"
+            SelectedValue="{Binding id}" Grid.Column="1" />
 
     </Grid>
 </Window>
