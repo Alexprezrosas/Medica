@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccessoDB;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class SolicitudEnfermera : Window
     {
+        BaseDatos enf;
         public SolicitudEnfermera()
         {
             InitializeComponent();
+            enf = new BaseDatos();
         }
     }
 }

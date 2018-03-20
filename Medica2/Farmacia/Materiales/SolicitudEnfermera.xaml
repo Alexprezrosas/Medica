@@ -14,8 +14,8 @@
         <Label x:Name="lblNombre" Content="Nombre Enfermera" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="261,266,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMaterial" Content="Material" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="132,305,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="308,305,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="132,305,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="308,305,0,0" VerticalAlignment="Top" Width="75" />
         <Label x:Name="lblTitulo" Content="Solicitud de Material Enfermera" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="268"/>
 
         <telerik:RadGridView HorizontalAlignment="Left" Margin="22,126,0,0" VerticalAlignment="Top" Width="450" Height="135"/>

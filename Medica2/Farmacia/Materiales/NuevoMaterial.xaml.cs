@@ -31,7 +31,7 @@ namespace Medica2.Farmacia.Materiales
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            string nombre, comentario, cantidad, costo, fcreacion, codbarras;
+            string nombre, comentario, cantidad, costo, codbarras;
             int barras, cantidadMat;
             DateTime fec = DateTime.Now;
             Decimal cos;
