@@ -183,6 +183,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Farmacia\Proveedores\MostrarProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -249,6 +253,9 @@
     </Compile>
     <Compile Include="Farmacia\Proveedores.xaml.cs">
       <DependentUpon>Proveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\MostrarProveedores.xaml.cs">
+      <DependentUpon>MostrarProveedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -340,7 +347,6 @@
   <ItemGroup>
     <Folder Include="Farmacia\Compras\" />
     <Folder Include="Farmacia\Devoluciones\" />
-    <Folder Include="Farmacia\Proveedores\" />
     <Folder Include="Farmacia\Ventas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

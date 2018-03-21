@@ -30,32 +30,27 @@ namespace Medica2
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            USUARIO usr = new USUARIO { };
-            PERSONA per = new PERSONA { };
 
-            if (txtUsuario.Text.Length == 0)
-
+            if (txtUsuario.Text != string.Empty && pssPassword.Password != string.Empty)
             {
-
-                MessageBoxResult result = MessageBox.Show("Inserta tu nombre de usuario", "Error");
-            }else if (pssPassword.Password.Length == 0)
-            {
-                MessageBoxResult result = MessageBox.Show("Inserta tu password", "Error");
-            }
-
-            if (usr.CONTRASENA == pssPassword.Password)
-            {
-                if (per.NOMBRE == txtUsuario.Text)
+                var usu = log.PERSONAS.FirstOrDefault(a => a.NOMBRE.Equals(txtUsuario.Text));
+                var usu1 = log.USUARIOS.FirstOrDefault(a => a.CONTRASENA.Equals(pssPassword.Password));
+                if (usu1 != null)
                 {
-                    MainWindow pri = new MainWindow();
-                    pri.Show();
+                    if (usu1.CONTRASENA.Equals(pssPassword.Password))
+                    {
+                        MainWindow main = new MainWindow();
+                        main.Show();
+                    }
+                    else
+                        MessageBox.Show("Contraseña incorrecta");
                 }
-            }
-
-
-
-
+                else
+                    MessageBox.Show("Contraseña incorrecta");
+            }else
+                MessageBox.Show("Favor de llenar los campos");
             
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

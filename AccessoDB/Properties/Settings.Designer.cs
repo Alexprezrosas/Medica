@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Medica2.Properties {
+namespace AccessoDB.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -26,21 +26,10 @@ namespace Medica2.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=localhost;Initial Catalog=MEDICASILOEv3;Persist Security Info=True;Us" +
-            "er ID=sa;Password=123")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=MEDICASILOEv3;User ID=sa;Password=123")]
         public string MEDICASILOEv3ConnectionString {
             get {
                 return ((string)(this["MEDICASILOEv3ConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=MEDICASILOEv3;User ID=sa;Password=123")]
-        public string MEDICASILOEv3ConnectionString1 {
-            get {
-                return ((string)(this["MEDICASILOEv3ConnectionString1"]));
             }
         }
     }

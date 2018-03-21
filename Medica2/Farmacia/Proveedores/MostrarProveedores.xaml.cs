@@ -13,19 +13,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Medica2.Farmacia
+namespace Medica2.Farmacia.Proveedores
 {
     /// <summary>
-    /// Lógica de interacción para ConsultaProveedores.xaml
+    /// Lógica de interacción para MostrarProveedores.xaml
     /// </summary>
-    public partial class ConsultaProveedores : Window
+    public partial class MostrarProveedores : Window
     {
-        BaseDatos ms;
-        public ConsultaProveedores()
+        BaseDatos prov;
+        public MostrarProveedores()
         {
+            prov = new BaseDatos();
             InitializeComponent();
-            ms = new BaseDatos();
-            radProveedores.ItemsSource = ms.vista_proveedores.ToList();
+            vistaProveedores.ItemsSource = prov.vista_proveedores.ToList();
         }
     }
 }
