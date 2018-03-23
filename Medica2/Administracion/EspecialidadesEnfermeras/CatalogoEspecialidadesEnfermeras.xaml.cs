@@ -22,7 +22,9 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
         public CatalogoEspecialidadesEnfermeras()
         {
             InitializeComponent();
-            FormEspecialidadesEnfermeras.ItemsSource = CargarSiloeBD.getDB().CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
+            FormEspecialidadesEnfermeras.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
+
+            
         }
     }
 }

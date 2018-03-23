@@ -22,7 +22,8 @@ namespace Medica2.Administracion.Especialidades
         public CatalogoEspecialidades()
         {
             InitializeComponent();
-            FormEspecialidades.ItemsSource = CargarSiloeBD.getDB().CATALOGO_ESPECIALIDADES.ToList();
+            
+            FormEspecialidades.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
         }
     }
 }

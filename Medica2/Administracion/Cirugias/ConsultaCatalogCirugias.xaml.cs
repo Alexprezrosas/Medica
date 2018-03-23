@@ -20,12 +20,13 @@ namespace Medica2.Administracion
     /// </summary>
     public partial class ConsultaCatalogCirugias : Window
     {
-        BaseDatos ms;
+        
         public ConsultaCatalogCirugias()
         {
             InitializeComponent();
-            ms = new BaseDatos();
-            radCatalogoCirugias.ItemsSource = ms.CATALOGO_CIRUGIAS.ToList();
+            
+            
+            radCatalogoCirugias.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
         }
     }
 }

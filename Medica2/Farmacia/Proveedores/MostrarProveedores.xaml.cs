@@ -1,6 +1,7 @@
 ﻿using AccessoDB;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,12 +21,33 @@ namespace Medica2.Farmacia.Proveedores
     /// </summary>
     public partial class MostrarProveedores : Window
     {
-        BaseDatos prov;
+        
+        
         public MostrarProveedores()
         {
-            prov = new BaseDatos();
+
             InitializeComponent();
-            vistaProveedores.ItemsSource = prov.vista_proveedores.ToList();
+
+            //PROVEEDORE obj  = BaseDatos.GetBaseDatos().PROVEEDORES
+            //    .Where(p=>p.ID_PROVEEDOR==1004)
+            //    .Include(p => p.PERSONA)
+            //    .FirstOrDefault();
+
+            //vistaProveedores.Items.Add(obj);
+
+            vistaProveedores.ItemsSource = BaseDatos.GetBaseDatos().PROVEEDORES.ToList();
+        }
+
+        private void buttoneditar_Click(object sender, RoutedEventArgs e)
+        {
+            if(vistaProveedores.SelectedItem != null)
+            {
+                Proveedores p = new Proveedores(
+                    (PROVEEDORE)vistaProveedores.SelectedItem,false);
+                p.Show();
+
+            }
+
         }
     }
 }

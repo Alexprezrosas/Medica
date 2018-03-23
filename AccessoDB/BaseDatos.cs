@@ -4,6 +4,8 @@ namespace AccessoDB
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Data.Entity.Core.Objects;
+    using System.Data.Entity.Infrastructure;
 
     public partial class BaseDatos : DbContext
     {
@@ -58,6 +60,9 @@ namespace AccessoDB
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USUARIO> USUARIOS { get; set; }
         public virtual DbSet<VENTAS_GENERALES> VENTAS_GENERALES { get; set; }
+
+        
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -755,6 +760,10 @@ namespace AccessoDB
             modelBuilder.Entity<VENTAS_GENERALES>()
                 .Property(e => e.DESCUENTO)
                 .HasPrecision(10, 3);
+
+            
         }
+
+        
     }
 }

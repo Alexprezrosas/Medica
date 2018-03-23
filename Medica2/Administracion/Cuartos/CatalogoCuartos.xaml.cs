@@ -24,7 +24,7 @@ namespace Medica2.Administracion.Cuartos
         public CatalogoCuartos()
         {
             InitializeComponent();
-            FormCatalogoCuarto.ItemsSource = CargarSiloeBD.getDB().CATALOGO_CUARTOS.ToList();
+            FormCatalogoCuarto.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
         }
     }
 }

@@ -12,19 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Medica2.Administracion.Cirugias
+namespace Medica2.Farmacia.Proveedores
 {
     /// <summary>
-    /// Lógica de interacción para CatalogoCirugias.xaml
+    /// Lógica de interacción para EditarProveedor.xaml
     /// </summary>
-    public partial class CatalogoCirugias : Window
+    public partial class EditarProveedor : Window
     {
-        public CatalogoCirugias()
+        
+        public EditarProveedor()
         {
             InitializeComponent();
-          
-                 formcatalogocirugia.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CIRUGIAS.ToList();
             
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+            var prove = BaseDatos.GetBaseDatos().PROVEEDORES.Find(1004);
+            prove.PERSONA.NOMBRE = "Holaaa";
+            BaseDatos.GetBaseDatos().SaveChanges();
+            
+
         }
     }
 }

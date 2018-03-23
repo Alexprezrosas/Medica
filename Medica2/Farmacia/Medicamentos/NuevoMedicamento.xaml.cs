@@ -20,11 +20,12 @@ namespace Medica2.Farmacia.Medicamentos
     /// </summary>
     public partial class NuevoMedicamento : Window
     {
-        BaseDatos medi;
+        
         public NuevoMedicamento()
         {
             InitializeComponent();
-            medi = new BaseDatos();
+            
+            Limpiar();
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -37,7 +38,7 @@ namespace Medica2.Farmacia.Medicamentos
             DateTime fec = DateTime.Now;
 
 
-            CATALOGO_MEDICAMENTOS cc = new CATALOGO_MEDICAMENTOS
+            CATALOGO_MEDICAMENTOS cm = new CATALOGO_MEDICAMENTOS
             {
                 NOMBRE_MEDI = txtNombre.Text,
                 CANTIDAD = Int32.Parse(txtCantidad.Text),
@@ -50,13 +51,26 @@ namespace Medica2.Farmacia.Medicamentos
                 FECHA_CREACION = fec,
                 COD_BARRAS = Int32.Parse(txtCodBarras.Text)
             };
-            medi.CATALOGO_MEDICAMENTOS.Add(cc);
-            medi.SaveChanges();
+            BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Add(cm);
+            BaseDatos.GetBaseDatos().SaveChanges();
+            MessageBoxResult result = MessageBox.Show("Se guardo correctamente el medicamento", "Registro exitoso");
+            Limpiar();
+        }
+        
+
+        public void Limpiar()
+        {
+            txtNombre.Text = String.Empty;
+            txtCantidad.Text = String.Empty;
+            txtComentario.Text = String.Empty;
+            txtPVenta.Text = String.Empty;
+            txtPHospital.Text = String.Empty;
+            txtPPublico.Text = String.Empty;
+            txtDescuento.Text = String.Empty;
+            txtCodBarras.Text = String.Empty;
+
         }
 
-        private void dpCaducidad_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-        }
+        
     }
 }

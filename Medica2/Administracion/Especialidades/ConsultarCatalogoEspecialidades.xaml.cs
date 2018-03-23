@@ -20,12 +20,12 @@ namespace Medica2.Administracion.Especialidades
     /// </summary>
     public partial class ConsultarCatalogoEspecialidades : Window
     {
-        BaseDatos ms;
+        
         public ConsultarCatalogoEspecialidades()
         {
             InitializeComponent();
-            ms = new BaseDatos();
-            RadEspecialidades.ItemsSource = ms.CATALOGO_ESPECIALIDADES.ToList();
+            
+            RadEspecialidades.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
         }
     }
 }

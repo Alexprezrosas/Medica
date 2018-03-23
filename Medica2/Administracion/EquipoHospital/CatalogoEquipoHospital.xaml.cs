@@ -22,7 +22,8 @@ namespace Medica2.Administracion.EquipoHospital
         public CatalogoEquipoHospital()
         {
             InitializeComponent();
-            FormCatalogoEqiopoH.ItemsSource = CargarSiloeBD.getDB().CATALOGO_EQUIPO_HOSPITAL.ToList();
+            
+            FormCatalogoEqiopoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
         }
     }
 }

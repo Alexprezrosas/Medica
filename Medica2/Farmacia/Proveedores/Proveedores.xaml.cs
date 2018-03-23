@@ -1,5 +1,4 @@
-﻿
-using AccessoDB;
+﻿using AccessoDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,28 +12,53 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 
-namespace Medica2.Farmacia
+namespace Medica2.Farmacia.Proveedores
 {
     /// <summary>
     /// Lógica de interacción para Proveedores.xaml
     /// </summary>
     public partial class Proveedores : Window
     {
-
         
-        BaseDatos pr;
- 
+
         public Proveedores()
         {
             InitializeComponent();
-            pr = new BaseDatos();
+            
             FillEstados();
             Limpiar();
         }
 
+        public Proveedores(PROVEEDORE p,Boolean save)
+        {
+            
+
+
+            InitializeComponent();
+            FillEstados();
+
+            txtNombre.Text = p.PERSONA.NOMBRE;
+            txtMaterno.Text = p.PERSONA.A_MATERNO;
+            txtPaterno.Text = p.PERSONA.A_PATERNO;
+            cbbEdad.Text = Convert.ToString(p.PERSONA.EDAD);
+            cbbSexo.Text = p.PERSONA.SEXO;
+            txtCalle.Text = p.PERSONA.CALLE;
+
+            comboBoxEstado.Items.IndexOf(p.PERSONA.ESTADO);
+            comboBoxMunicipios.SelectedValue = Convert.ToString(p.PERSONA.MUNICIPIO);
+            comboBoxLocalidades.SelectedValue = Convert.ToString(p.PERSONA.LOCALIDAD);
+
+            txtRfc.Text = p.RFC;
+            txtCelular.Text = p.PERSONA.T_CELULAR;
+            txtReferencia.Text = p.REFERENCIA;
+            txtCurp.Text = p.PERSONA.CURP;
+            p.FECHA_MOD = DateTime.Now;
+
+            
+
+
+        }
 
 
 
@@ -48,7 +72,7 @@ namespace Medica2.Farmacia
 
             edad = cbbEdad.Text;
             ed = short.Parse(edad);
-            
+
 
             //fechacrea.Text = DateTime.Now.ToString();
             //DateTime fechacre = fechacrea.GetValue();
@@ -67,11 +91,11 @@ namespace Medica2.Farmacia
                 CURP = txtCurp.Text,
                 FECHA_CREACION = FechaRegistro
             };
-            pr.PERSONAS.Add(cc);
-            pr.SaveChanges();
+            BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
+            BaseDatos.GetBaseDatos().SaveChanges();
             //cc = pr.PERSONAS.Last();
-            
-            
+
+
 
             PROVEEDORE prv = new PROVEEDORE
             {
@@ -81,8 +105,8 @@ namespace Medica2.Farmacia
                 FECHA_CREACION = FechaRegistro
             };
             prv.PERSONA = cc;
-            pr.PROVEEDORES.Add(prv);
-            pr.SaveChanges();
+            BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
+            BaseDatos.GetBaseDatos().SaveChanges();
             //Mensaje
             MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
 
@@ -119,16 +143,16 @@ namespace Medica2.Farmacia
 
         public void FillEstados()
         {
-            BaseDatos obj = new BaseDatos();
-            List<ESTADO> lst = obj.ESTADOS.ToList();
+            
+            List<ESTADO> lst = BaseDatos.GetBaseDatos().ESTADOS.ToList();
             comboBoxEstado.ItemsSource = lst;
         }
 
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int EstadosId = Convert.ToInt32(comboBoxEstado.SelectedValue);
-            BaseDatos obj1 = new BaseDatos();
-            List<MUNICIPIO> lst1 = obj1.MUNICIPIOS.Where(x => x.estado_id == EstadosId).ToList();
+            
+            List<MUNICIPIO> lst1 = BaseDatos.GetBaseDatos().MUNICIPIOS.Where(x => x.estado_id == EstadosId).ToList();
             comboBoxMunicipios.ItemsSource = lst1;
 
         }
@@ -136,15 +160,10 @@ namespace Medica2.Farmacia
         private void comboBox_SelectionChangedL(object sender, SelectionChangedEventArgs e)
         {
             int Municipiosid = Convert.ToInt32(comboBoxMunicipios.SelectedValue);
-            BaseDatos obj2 = new BaseDatos();
-            List<LOCALIDADE> lst1 = obj2.LOCALIDADES.Where(x => x.municipio_id == Municipiosid).ToList();
+            
+            List<LOCALIDADE> lst1 = BaseDatos.GetBaseDatos().LOCALIDADES.Where(x => x.municipio_id == Municipiosid).ToList();
             comboBoxLocalidades.ItemsSource = lst1;
 
         }
-
-
-
     }
-
-    
 }

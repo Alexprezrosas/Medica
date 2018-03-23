@@ -20,12 +20,12 @@ namespace Medica2.Administracion.Cuartos
     /// </summary>
     public partial class ConsultaCatalogoCuartos : Window
     {
-        BaseDatos ms;
+        
         public ConsultaCatalogoCuartos()
         {
             InitializeComponent();
-            ms = new BaseDatos();
-            RadConsultarCatalogoCuartos.ItemsSource = ms.CATALOGO_CUARTOS.ToList();
+           
+            RadConsultarCatalogoCuartos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
         }
     }
 }

@@ -10,13 +10,9 @@
     <Grid>
 
         <telerik:RadGridView Name="vistaProveedores" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="217" Width="476">
-            <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Header="ID" DataMemberBinding="{Binding ID_PROVEEDOR}"/>
-                <telerik:GridViewDataColumn Header="RFC" DataMemberBinding="{Binding RFC}"/>
-                <telerik:GridViewDataColumn Header="Referencia" DataMemberBinding="{Binding REFERENCIA}"/>
-                <telerik:GridViewDataColumn Header="Fecha de Registro" DataMemberBinding="{Binding FECHA_CREACION}"/>
-            </telerik:RadGridView.Columns>
+            
         </telerik:RadGridView>
+        <Button x:Name="buttoneditar" Content="Editar" Click="buttoneditar_Click" HorizontalAlignment="Left" Margin="154,246,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

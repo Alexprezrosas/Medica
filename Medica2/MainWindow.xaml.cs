@@ -8,6 +8,7 @@ using Medica2.Administracion.EspecialidadesEnfermeras;
 using Medica2.Farmacia;
 using Medica2.Farmacia.Materiales;
 using Medica2.Farmacia.Medicamentos;
+using Medica2.Farmacia.Proveedores;
 using System.Windows;
 
 
@@ -36,7 +37,7 @@ namespace Medica2
             {
                 if (sender == conProveedor)
                 {
-                    ConsultaProveedores cprov = new ConsultaProveedores();
+                    MostrarProveedores cprov = new MostrarProveedores();
                     cprov.Show();
                 }
                 
@@ -52,8 +53,7 @@ namespace Medica2
             {
                 if (sender == itemConsultarMaterial)
                 {
-                    VizualizarMateriales vmat = new VizualizarMateriales();
-                    vmat.Show();
+                    
                 }
             }
 

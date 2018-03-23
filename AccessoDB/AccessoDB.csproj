@@ -109,6 +109,7 @@
     <Compile Include="sysdiagram.cs" />
     <Compile Include="USUARIO.cs" />
     <Compile Include="VENTAS_GENERALES.cs" />
+    <Compile Include="vista_proveedores_result.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

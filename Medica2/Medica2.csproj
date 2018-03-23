@@ -155,14 +155,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\ConsultaProveedores.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Farmacia\Materiales\Actualizar_Materiales.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Farmacia\Materiales\NuevoMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,19 +163,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Materiales\VizualizarMateriales.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Farmacia\Medicamentos\NuevoMedicamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Proveedores.xaml">
+    <Page Include="Farmacia\Proveedores\EditarProveedor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Farmacia\Proveedores\MostrarProveedores.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Proveedores\Proveedores.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -232,30 +224,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BaseDatos.cs" />
     <Compile Include="CargarSiloeBDs.cs" />
-    <Compile Include="Farmacia\ConsultaProveedores.xaml.cs">
-      <DependentUpon>ConsultaProveedores.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Farmacia\Materiales\Actualizar_Materiales.xaml.cs">
-      <DependentUpon>Actualizar_Materiales.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Farmacia\Materiales\NuevoMaterial.xaml.cs">
       <DependentUpon>NuevoMaterial.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Materiales\SolicitudEnfermera.xaml.cs">
       <DependentUpon>SolicitudEnfermera.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Materiales\VizualizarMateriales.xaml.cs">
-      <DependentUpon>VizualizarMateriales.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Farmacia\Medicamentos\NuevoMedicamento.xaml.cs">
       <DependentUpon>NuevoMedicamento.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Proveedores.xaml.cs">
-      <DependentUpon>Proveedores.xaml</DependentUpon>
+    <Compile Include="Farmacia\Proveedores\EditarProveedor.xaml.cs">
+      <DependentUpon>EditarProveedor.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Proveedores\MostrarProveedores.xaml.cs">
       <DependentUpon>MostrarProveedores.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\Proveedores.xaml.cs">
+      <DependentUpon>Proveedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>

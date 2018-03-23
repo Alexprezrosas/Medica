@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 
+
 namespace Medica2.Farmacia.Materiales
 {
     /// <summary>
@@ -48,7 +49,7 @@ namespace Medica2.Farmacia.Materiales
             barras = Int32.Parse(codbarras);
             cantidadMat = Int32.Parse(cantidad);
 
-            CATALOGO_MATERIALES cc = new CATALOGO_MATERIALES
+            CATALOGO_MATERIALES cmat = new CATALOGO_MATERIALES
             {
                 NOMBRE = nombre,
                 CANTIDAD = cantidadMat,
@@ -57,11 +58,10 @@ namespace Medica2.Farmacia.Materiales
                 FECHA_CREACION = fec,
                 COD_BARRAS = barras
             };
-            mat.CATALOGO_MATERIALES.Add(cc);
-            mat.SaveChanges();
-            //duy
-            VizualizarMateriales.datagrid.ItemsSource = mat.CATALOGO_MATERIALES.ToList();
-            //duy
+            
+            BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Add(cmat);
+            BaseDatos.GetBaseDatos().SaveChanges();
+            
             txtNombre.Text = String.Empty;
             txtComentario.Text = String.Empty;
             txtCosto.Text = String.Empty;

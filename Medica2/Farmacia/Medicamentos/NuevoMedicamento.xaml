@@ -16,7 +16,7 @@
         <Label x:Name="lblCodBarras" Content="Codigo de barras" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblComentario" Content="Comentario" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
-        <DatePicker Name="dpCaducidad" HorizontalAlignment="Left" Margin="422,133,0,0" VerticalAlignment="Top" SelectedDateChanged="dpCaducidad_SelectedDateChanged"/>
+        <DatePicker Name="dpCaducidad" HorizontalAlignment="Left" Margin="422,133,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="133,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
         <TextBox x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="133,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
         <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="133,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>

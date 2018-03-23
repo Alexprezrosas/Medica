@@ -1,0 +1,93 @@
+﻿<Window x:Class="Medica2.Farmacia.Proveedores.Proveedores"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Farmacia.Proveedores"
+        mc:Ignorable="d"
+        Title="Proveedores" Height="354.147" Width="619.024">
+    <Grid>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="173,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtReferencia" HorizontalAlignment="Left" Height="23" Margin="458.4,195,-34.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtRfc" HorizontalAlignment="Left" Height="23" Margin="458.4,167,-34.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCurp" HorizontalAlignment="Left" Height="23" Margin="458.4,139,-34.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="458.4,111,-34.4,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCalle" HorizontalAlignment="Left" Height="23" Margin="173,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="173,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="173,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Referencia" HorizontalAlignment="Left" Margin="351,192,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy2" Content="RFC" HorizontalAlignment="Left" Margin="351,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy3" Content="CURP" HorizontalAlignment="Left" Margin="351,139,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy4" Content="Celular" HorizontalAlignment="Left" Margin="351,111,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy5" Content="Estado" HorizontalAlignment="Left" Margin="22,226,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy6" Content="Minicipio" HorizontalAlignment="Left" Margin="351,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy7" Content="Localidad" HorizontalAlignment="Left" Margin="351,81,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy8" Content="Calle" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy9" Content="Sexo" HorizontalAlignment="Left" Margin="22,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy10" Content="Edad" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy11" Content="Apellido materno" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy12" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="171,290,0,-6" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="347,290,0,-6" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <ComboBox x:Name="cbbEdad" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Selecciona la edad"/>
+            <ComboBoxItem Content="18"/>
+            <ComboBoxItem Content="19"/>
+            <ComboBoxItem Content="20"/>
+            <ComboBoxItem Content="21"/>
+            <ComboBoxItem Content="22"/>
+            <ComboBoxItem Content="23"/>
+            <ComboBoxItem Content="24"/>
+            <ComboBoxItem Content="25"/>
+            <ComboBoxItem Content="26"/>
+            <ComboBoxItem Content="27"/>
+            <ComboBoxItem Content="28"/>
+            <ComboBoxItem Content="29"/>
+            <ComboBoxItem Content="30"/>
+            <ComboBoxItem Content="31"/>
+            <ComboBoxItem Content="32"/>
+            <ComboBoxItem Content="33"/>
+            <ComboBoxItem Content="34"/>
+            <ComboBoxItem Content="35"/>
+            <ComboBoxItem Content="36"/>
+            <ComboBoxItem Content="37"/>
+            <ComboBoxItem Content="38"/>
+            <ComboBoxItem Content="39"/>
+            <ComboBoxItem Content="40"/>
+            <ComboBoxItem Content="41"/>
+            <ComboBoxItem Content="42"/>
+            <ComboBoxItem Content="43"/>
+            <ComboBoxItem Content="44"/>
+            <ComboBoxItem Content="45"/>
+            <ComboBoxItem Content="46"/>
+            <ComboBoxItem Content="47"/>
+            <ComboBoxItem Content="48"/>
+            <ComboBoxItem Content="49"/>
+            <ComboBoxItem Content="50"/>
+            <ComboBoxItem Content="51"/>
+            <ComboBoxItem Content="52"/>
+            <ComboBoxItem Content="53"/>
+            <ComboBoxItem Content="54"/>
+        </ComboBox>
+        <ComboBox x:Name="cbbSexo" HorizontalAlignment="Left" Margin="173,167,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Selecciona el sexo"/>
+            <ComboBoxItem Content="Masculino"/>
+            <ComboBoxItem Content="Femenino"/>
+        </ComboBox>
+        <Label x:Name="lblTitulo" Content="Registro de Proveedores" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <ComboBox x:Name="comboBoxEstado" HorizontalAlignment="Left" 
+            Margin="172,220,0,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" 
+            SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="comboBox_SelectionChanged" />
+        <ComboBox x:Name="comboBoxMunicipios" HorizontalAlignment="Left" 
+            Margin="457,53,-33,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" SelectedValuePath="id"
+            SelectedValue="{Binding id}"  SelectionChanged="comboBox_SelectionChangedL"/>
+        <ComboBox x:Name="comboBoxLocalidades" HorizontalAlignment="Left" 
+            Margin="458,81,-34,0" VerticalAlignment="Top" Width="120"
+            DisplayMemberPath="nombre" SelectedValuePath="id"
+            SelectedValue="{Binding id}" />
+
+    </Grid>
+</Window>

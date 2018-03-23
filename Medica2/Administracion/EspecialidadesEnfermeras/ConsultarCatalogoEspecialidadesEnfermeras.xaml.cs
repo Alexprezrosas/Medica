@@ -25,7 +25,8 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
         {
             InitializeComponent();
             ms = new BaseDatos();
-            RadConsultarCatEspEnf.ItemsSource = ms.CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
+            
+            RadConsultarCatEspEnf.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
         }
     }
 }

@@ -20,12 +20,12 @@ namespace Medica2.Administracion.EquipoHospital
     /// </summary>
     public partial class ConsultaCatalogoEquipoHospital : Window
     {
-        BaseDatos ms;
+        
         public ConsultaCatalogoEquipoHospital()
         {
             InitializeComponent();
-            ms = new BaseDatos();
-            RadCatalogoEquipoH.ItemsSource = ms.CATALOGO_EQUIPO_HOSPITAL.ToList();
+            
+            RadCatalogoEquipoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
         }
     }
 }

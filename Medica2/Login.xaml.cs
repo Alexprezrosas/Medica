@@ -21,11 +21,11 @@ namespace Medica2
     /// </summary>
     public partial class Login : Window
     {
-        BaseDatos log;
+        
         public Login()
         {
             InitializeComponent();
-            log = new BaseDatos();
+           
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -33,8 +33,8 @@ namespace Medica2
 
             if (txtUsuario.Text != string.Empty && pssPassword.Password != string.Empty)
             {
-                var usu = log.PERSONAS.FirstOrDefault(a => a.NOMBRE.Equals(txtUsuario.Text));
-                var usu1 = log.USUARIOS.FirstOrDefault(a => a.CONTRASENA.Equals(pssPassword.Password));
+                var usu = BaseDatos.GetBaseDatos().PERSONAS.FirstOrDefault(a => a.NOMBRE.Equals(txtUsuario.Text));
+                var usu1 = BaseDatos.GetBaseDatos().USUARIOS.FirstOrDefault(a => a.CONTRASENA.Equals(pssPassword.Password));
                 if (usu1 != null)
                 {
                     if (usu1.CONTRASENA.Equals(pssPassword.Password))
