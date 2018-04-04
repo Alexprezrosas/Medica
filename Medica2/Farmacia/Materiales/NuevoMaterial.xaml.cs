@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 using System.Globalization;
+using Medica2.Farmacia;
 
 namespace Medica2.Farmacia.Materiales
 {
@@ -22,13 +23,18 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class NuevoMaterial : Window
     {
-        
+        private object selectedItem;
 
         public NuevoMaterial()
         {
-            InitializeComponent();        }
+            InitializeComponent();
+        }
 
-        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        
+
+        //metodo para guardar 
+
+        private void guardar()
         {
             if (txtNombre.Text == "")
             {
@@ -39,22 +45,26 @@ namespace Medica2.Farmacia.Materiales
                 if (txtComentario.Text == "")
                 {
                     System.Windows.MessageBox.Show("Ingrese un comentario");
-                }else
+                }
+                else
                 {
                     if (txtCodBarras.Text == "")
                     {
                         System.Windows.MessageBox.Show("Ingrese el codigo de barras");
-                    }else
+                    }
+                    else
                     {
                         if (txtCantidad.Text == "")
                         {
                             System.Windows.MessageBox.Show("Ingrese la cantidad");
-                        }else
+                        }
+                        else
                         {
                             if (txtCosto.Text == "")
                             {
                                 System.Windows.MessageBox.Show("Ingrese el costo");
-                            }else
+                            }
+                            else
                             {
                                 DateTime fec = DateTime.Now;
 
@@ -82,7 +92,15 @@ namespace Medica2.Farmacia.Materiales
                     }
                 }
             }
-            
+        }
+
+        
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+
+            guardar();
+
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)

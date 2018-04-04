@@ -9,9 +9,18 @@
         Title="ConsultaMaterial" Height="294.878" Width="567.073">
     <Grid>
 
-        <telerik:RadGridView Name="MostrarMateriales" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="541" Height="154"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="129,224,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="305,224,0,0" VerticalAlignment="Top" Width="75"/>
+        <telerik:RadGridView Name="MostrarMateriales"  HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top" Width="541" Height="154" ValidationType="DataAnnotations" AutoGenerateColumns="False" SelectedCellsChanged="MostrarMateriales_SelectedCellsChanged">
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID_CATALOGO_MATERIAL}" Header="Id" PreviewTextInput="validarLetras" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Material" PreviewTextInput="validarLetras" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COMENTARIO}" Header="Comentario" PreviewTextInput="validarLetras"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="Codigo de Barras" PreviewTextInput="validarNumeros"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="Cantidad" PreviewTextInput="validarNumeros"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"  KeyDown="validarDecimal"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"  />
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Button x:Name="btnEliminar" Content="Eliminar" HorizontalAlignment="Left" Margin="219,224,0,0" VerticalAlignment="Top" Width="75" Click="btnEliminar_Click"/>
 
     </Grid>
 </Window>

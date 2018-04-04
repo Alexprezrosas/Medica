@@ -53,7 +53,8 @@ namespace Medica2
             {
                 if (sender == itemConsultarMaterial)
                 {
-                    
+                    ConsultaMaterial mat = new ConsultaMaterial();
+                    mat.Show();
                 }
             }
 
