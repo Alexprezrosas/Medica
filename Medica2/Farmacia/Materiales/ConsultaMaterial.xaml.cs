@@ -1,17 +1,17 @@
 ﻿using AccessoDB;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Telerik.WinControls.UI;
+using Telerik.Windows.Controls.GridView;
 
 namespace Medica2.Farmacia.Materiales
 {
@@ -20,15 +20,27 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class ConsultaMaterial : Window
     {
-
         
         public ConsultaMaterial()
         {
             InitializeComponent();
             MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+            autoMate.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+
+            //subMenu
+            
+
+            
+            //submenu
+
+
+
         }
-        
-        
+
+
+        ////
+
+
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
             ///////////////
@@ -51,15 +63,6 @@ namespace Medica2.Farmacia.Materiales
                     
                     break;
             }
-
-            ///////////////
-
-            
-
-           
-            
-
-
 
         }
 
@@ -100,9 +103,67 @@ namespace Medica2.Farmacia.Materiales
                 e.Handled = true;
         }
 
-        private void GridViewDataColumn_Error(object sender, ValidationErrorEventArgs e)
+
+        /////
+        
+        private GridViewRow ClickedRow
         {
+            get
+            {
+                return this.GridContextMenu2.GetClickedElement<GridViewRow>();
+
+
+            }
+
 
         }
+
+        private void GridContextMenu_Opened(object sender, RoutedEventArgs e)
+        {
+            if (ClickedRow != null)
+            {
+                itemAgregar.IsEnabled = true;
+                itemEliminar.IsEnabled = true;
+            }
+            
+        }
+
+        private void itemAgregar_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
+        {
+            if (sender == itemAgregar)
+            {
+                NuevoMaterial nmat = new NuevoMaterial();
+                nmat.Show();
+                MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+                
+            }
+            else
+            {
+                if (sender == itemEliminar)
+                {
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia Materiales", MessageBoxButton.YesNo);
+                    switch (result)
+                    {
+                        case MessageBoxResult.Yes:
+                            int idmat = (MostrarMateriales.SelectedItem as CATALOGO_MATERIALES).ID_CATALOGO_MATERIAL;
+                            if (MostrarMateriales.SelectedItem != null)
+                            {
+                                var cmatt = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Find(idmat);
+                                BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Remove(cmatt);
+                                BaseDatos.GetBaseDatos().SaveChanges();
+                            }
+                            MessageBox.Show("Se ha eliminado el material", "Farmacia Materiales");
+                            MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+                            break;
+
+                        case MessageBoxResult.No:
+
+                            break;
+                    }
+                }
+            }
+        }
     }
+    
+    
 }

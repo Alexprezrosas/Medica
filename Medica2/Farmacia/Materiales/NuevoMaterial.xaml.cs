@@ -23,8 +23,7 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class NuevoMaterial : Window
     {
-        private object selectedItem;
-
+        
         public NuevoMaterial()
         {
             InitializeComponent();
