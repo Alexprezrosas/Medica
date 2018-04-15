@@ -1,0 +1,50 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Enfermeras"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Enfermeras.ConsultaEnfermera"
+        mc:Ignorable="d"
+        Title="ConsultaEnfermera" Height="403.902" Width="651.952">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="591*"/>
+        </Grid.ColumnDefinitions>
+
+        <telerik:RadGridView  x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="296" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" RowActivated="MostrarEnfermera_RowActivated">
+
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn Name="itid" IsReadOnly="true" DataMemberBinding="{Binding ID_ENFERMERA}" Header="ID"/>
+                <telerik:GridViewDataColumn Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CPROFESIONAL}" Header="CPROFESIONAL"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Label x:Name="lblEnfermera" Content="Enfermera" HorizontalAlignment="Left" Margin="29.334,23,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+
+        <telerik:RadAutoCompleteBox x:Name="autoEnfermera" HorizontalAlignment="Left" Margin="114.334,23,0,0" VerticalAlignment="Top" Width="252"
+        ItemsSource="{Binding ENFERMERA}"
+        DisplayMemberPath="NOMBRE"
+        AutoCompleteMode="Suggest" Grid.Column="1"/>
+
+    </Grid>
+</Window>

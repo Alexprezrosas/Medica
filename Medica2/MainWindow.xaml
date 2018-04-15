@@ -78,7 +78,7 @@
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Enfermeras" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemNuevaEnfermera" Header="Registrar" Click="RadMenuItem_Click"/>
-                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemConsultaEnfermera" Header="Visualizar" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Usuarios" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>

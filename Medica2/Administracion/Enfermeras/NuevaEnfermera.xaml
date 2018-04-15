@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="NuevaEnfermera" Height="400.061" Width="607.317">
     <Grid>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="173,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtCalle" HorizontalAlignment="Left" Height="23" Margin="173,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="173,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="173,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="173,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtCalle" HorizontalAlignment="Left" Height="23" Margin="173,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="173,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="173,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
         <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblLocalidad" Content="Localidad" HorizontalAlignment="Left" Margin="337,80,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCalle" Content="Calle" HorizontalAlignment="Left" Margin="22,195,0,0" VerticalAlignment="Top"/>
@@ -18,60 +18,20 @@
         <Label x:Name="lblEdad" Content="Edad" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAMaterno" Content="Apellido materno" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAPaterno" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbEdad" HorizontalAlignment="Left" Margin="173,140,0,0" VerticalAlignment="Top" Width="120">
-            <ComboBoxItem Content="Selecciona la edad"/>
-            <ComboBoxItem Content="18"/>
-            <ComboBoxItem Content="19"/>
-            <ComboBoxItem Content="20"/>
-            <ComboBoxItem Content="21"/>
-            <ComboBoxItem Content="22"/>
-            <ComboBoxItem Content="23"/>
-            <ComboBoxItem Content="24"/>
-            <ComboBoxItem Content="25"/>
-            <ComboBoxItem Content="26"/>
-            <ComboBoxItem Content="27"/>
-            <ComboBoxItem Content="28"/>
-            <ComboBoxItem Content="29"/>
-            <ComboBoxItem Content="30"/>
-            <ComboBoxItem Content="31"/>
-            <ComboBoxItem Content="32"/>
-            <ComboBoxItem Content="33"/>
-            <ComboBoxItem Content="34"/>
-            <ComboBoxItem Content="35"/>
-            <ComboBoxItem Content="36"/>
-            <ComboBoxItem Content="37"/>
-            <ComboBoxItem Content="38"/>
-            <ComboBoxItem Content="39"/>
-            <ComboBoxItem Content="40"/>
-            <ComboBoxItem Content="41"/>
-            <ComboBoxItem Content="42"/>
-            <ComboBoxItem Content="43"/>
-            <ComboBoxItem Content="44"/>
-            <ComboBoxItem Content="45"/>
-            <ComboBoxItem Content="46"/>
-            <ComboBoxItem Content="47"/>
-            <ComboBoxItem Content="48"/>
-            <ComboBoxItem Content="49"/>
-            <ComboBoxItem Content="50"/>
-            <ComboBoxItem Content="51"/>
-            <ComboBoxItem Content="52"/>
-            <ComboBoxItem Content="53"/>
-            <ComboBoxItem Content="54"/>
-        </ComboBox>
         <ComboBox x:Name="cbbSexo" HorizontalAlignment="Left" Margin="173,167,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Selecciona el sexo"/>
             <ComboBoxItem Content="Masculino"/>
             <ComboBoxItem Content="Femenino"/>
         </ComboBox>
-        <TextBox x:Name="txtCurp" HorizontalAlignment="Left" Height="23" Margin="458.4,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="458.4,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCurp" HorizontalAlignment="Left" Height="23" Margin="458.4,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
+        <TextBox x:Name="txtCelular" HorizontalAlignment="Left" Height="23" Margin="458.4,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumeros"/>
         <Label x:Name="lblCurp" Content="CURP" HorizontalAlignment="Left" Margin="337,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCelular" Content="Celular" HorizontalAlignment="Left" Margin="337,111,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="22,221,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="337,55,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTitulo" Content="Registro de Enfermeras" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="lblCProfesional" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="337,170,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="txtCProfesional" HorizontalAlignment="Left" Height="23" Margin="459,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCProfesional" HorizontalAlignment="Left" Height="23" Margin="459,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="178,300,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="354,300,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
 
@@ -90,6 +50,7 @@
                   Margin="459,83,0,0" VerticalAlignment="Top" Width="120"
                   DisplayMemberPath="nombre" SelectedValuePath="id"
                   SelectedValue="{Binding id}" />
+        <TextBox x:Name="txtEdad" HorizontalAlignment="Left" Height="23" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="validarNumeros"/>
 
 
 

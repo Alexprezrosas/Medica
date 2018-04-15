@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace AccessoDB
 {
-    public class Validacion
+    public partial class Validacion
     {
         public void validacionLetras(object sender, TextCompositionEventArgs e)
         {

@@ -1,16 +1,8 @@
 ﻿using AccessoDB;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-
 using System.Windows.Input;
-using Telerik.WinControls.UI;
 using Telerik.Windows.Controls.GridView;
 
 namespace Medica2.Farmacia.Materiales
@@ -27,44 +19,13 @@ namespace Medica2.Farmacia.Materiales
             MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
             autoMate.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
 
-            //subMenu
-            
-
-            
-            //submenu
-
-
-
         }
 
 
         ////
 
 
-        private void btnEliminar_Click(object sender, RoutedEventArgs e)
-        {
-            ///////////////
-            MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia Materiales", MessageBoxButton.YesNo);
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    int idmat = (MostrarMateriales.SelectedItem as CATALOGO_MATERIALES).ID_CATALOGO_MATERIAL;
-                    if (MostrarMateriales.SelectedItem != null)
-                    {
-                        var cmatt = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Find(idmat);
-                        BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Remove(cmatt);
-                        BaseDatos.GetBaseDatos().SaveChanges();
-                    }
-                    MessageBox.Show("Se ha eliminado el material", "Farmacia Materiales");
-                    MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
-                    break;
-
-                case MessageBoxResult.No:
-                    
-                    break;
-            }
-
-        }
+        
 
         private void MostrarMateriales_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
         {
@@ -81,6 +42,8 @@ namespace Medica2.Farmacia.Materiales
                 e.Handled = false;
 
             else e.Handled = true;
+
+         
         }
 
         private void validarNumeros(object sender, TextCompositionEventArgs e)
@@ -103,9 +66,19 @@ namespace Medica2.Farmacia.Materiales
                 e.Handled = true;
         }
 
+        private void validarPunto(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci == 46) e.Handled = false;
+
+            else e.Handled = true;
+
+        }
+
 
         /////
-        
+
         private GridViewRow ClickedRow
         {
             get
@@ -161,6 +134,43 @@ namespace Medica2.Farmacia.Materiales
                             break;
                     }
                 }
+            }
+        }
+
+        private void GridViewDataColumn_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+                e.Handled = false;
+            else if (e.Key == Key.Decimal)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
+
+        private void MostrarMateriales_CellValidating(object sender, Telerik.Windows.Controls.GridViewCellValidatingEventArgs e)
+        {
+            if (e.Cell.Column.UniqueName == "COD_BARRAS")
+            {
+                var newValue = Int32.Parse(e.NewValue.ToString());
+                if (newValue < 0 || newValue > 130)
+                {
+                    e.IsValid = false;
+                    e.ErrorMessage = "The entered value for age must be between 0 and 130.";
+                }
+            }
+
+            if (e.Cell.Column.UniqueName == "NOMBRE")
+            {
+                int ascci = Convert.ToInt32(e.NewValue);
+
+                if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+                {
+                    e.Handled = false;
+                    e.ErrorMessage = "Solo letras";
+                }
+                else e.ErrorMessage = "Fuera del else";
+
+                //e.Handled = true;
             }
         }
     }

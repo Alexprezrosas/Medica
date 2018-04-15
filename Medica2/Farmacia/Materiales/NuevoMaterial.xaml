@@ -13,7 +13,7 @@
         <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="72,153,0,0" VerticalAlignment="Top" Width="128"/>
         <Label x:Name="lblCodBarras" Content="Codigo de Barras" HorizontalAlignment="Left" Margin="72,127,0,0" VerticalAlignment="Top" Width="128"/>
         <Label x:Name="lblComentario" Content="Comentario" HorizontalAlignment="Left" Margin="72,101,0,0" VerticalAlignment="Top" Width="128"/>
-        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="231,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" />
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="231,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" KeyDown="txtNombre_KeyDown" />
         <TextBox x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="231,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
         <TextBox x:Name="txtCodBarras" HorizontalAlignment="Left" Height="23" Margin="231,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumeros"/>
         <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="231,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumeros"/>

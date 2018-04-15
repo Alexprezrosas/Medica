@@ -127,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Enfermeras\ConsultaEnfermera.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Enfermeras\NuevaEnfermera.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -202,6 +206,9 @@
     </Compile>
     <Compile Include="Administracion\Cuartos\ConsultaCatalogoCuartos.xaml.cs">
       <DependentUpon>ConsultaCatalogoCuartos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Enfermeras\ConsultaEnfermera.xaml.cs">
+      <DependentUpon>ConsultaEnfermera.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Enfermeras\NuevaEnfermera.xaml.cs">
       <DependentUpon>NuevaEnfermera.xaml</DependentUpon>

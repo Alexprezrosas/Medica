@@ -143,6 +143,14 @@ namespace Medica2
                 NuevaEnfermera enfe = new NuevaEnfermera();
                 enfe.Show();
             }
+            else
+            {
+                if (sender == itemConsultaEnfermera)
+                {
+                    ConsultaEnfermera conenfe = new ConsultaEnfermera();
+                    conenfe.Show();
+                }
+            }
 
         }
 

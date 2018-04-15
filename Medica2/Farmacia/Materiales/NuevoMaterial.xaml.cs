@@ -139,5 +139,15 @@ namespace Medica2.Farmacia.Materiales
             else
                 e.Handled = true;
         }
+
+        private void txtNombre_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key >= Key.A && e.Key <= Key.Z)
+                e.Handled = false;
+            else if (e.Key == Key.Decimal)
+                e.Handled = false;
+            else
+                e.Handled = true;
+        }
     }
 }

@@ -34,49 +34,144 @@ namespace Medica2.Administracion.Enfermeras
             this.Close();
         }
 
+        private void limpiarEnfermera()
+        {
+            txtNombre.Text = "";
+            txtPaterno.Text = "";
+            txtMaterno.Text = "";
+            txtEdad.Text = "";
+            cbbSexo.Text = "";
+            txtCalle.Text = "";
+            comboBoxEstado.Text = "";
+            comboBoxMunicipios.Text = "";
+            comboBoxLocalidades.Text = "";
+            txtCelular.Text = "";
+            txtCurp.Text = "";
+            txtCProfesional.Text = "";
+        }
+
+        private void guardarEnfermera()
+        {
+            if (txtNombre.Text == "")
+            {
+                MessageBox.Show("Insertar un nombre");
+            }else
+            {
+                if (txtPaterno.Text == "")
+                {
+                    MessageBox.Show("Insertar un apellido paterno");
+                }else
+                {
+                    if (txtMaterno.Text == "")
+                    {
+                        MessageBox.Show("Insertar un apellido materno");
+                    }else
+                    {
+                        if (txtEdad.Text == "")
+                        {
+                            MessageBox.Show("Insertar una edad");
+                        }else
+                        {
+                            if (cbbSexo.Text == "")
+                            {
+                                MessageBox.Show("Seleccionar un sexo");
+                            }
+                            else
+                            {
+                                if (txtCalle.Text == "")
+                                {
+                                    MessageBox.Show("Insertar una calle");
+                                }else
+                                {
+                                    if (comboBoxEstado.Text == "")
+                                    {
+                                        MessageBox.Show("Seleccionar un mstado");
+                                    }else
+                                    {
+                                        if (comboBoxMunicipios.Text == "")
+                                        {
+                                            MessageBox.Show("Seleccionar un municipio");
+                                        }else
+                                        {
+                                            if (comboBoxLocalidades.Text == "")
+                                            {
+                                                MessageBox.Show("Seleccionar una localidad");
+                                            }else
+                                            {
+                                                if (txtCelular.Text == "")
+                                                {
+                                                    MessageBox.Show("Insertar un celular");
+                                                }else
+                                                {
+                                                    if (txtCurp.Text == "")
+                                                    {
+                                                        MessageBox.Show("Insertar una curp");
+                                                    }else
+                                                    {
+                                                        if (txtCProfesional.Text == "")
+                                                        {
+                                                            MessageBox.Show("Insertar una cedula profesional");
+                                                        }else
+                                                        {
+                                                            //Obtener los valores de los TextBox
+                                                            DateTime Fecharegistro = DateTime.Now;
+                                                            short ed;
+                                                            String edad;
+
+                                                            edad = txtEdad.Text;
+                                                            ed = short.Parse(edad);
+
+                                                            //fechacrea.Text = DateTime.Now.ToString();
+                                                            //DateTime fechacre = fechacrea.GetValue();
+                                                            PERSONA cc = new PERSONA
+                                                            {
+                                                                NOMBRE = txtNombre.Text,
+                                                                A_PATERNO = txtPaterno.Text,
+                                                                A_MATERNO = txtMaterno.Text,
+                                                                EDAD = ed,
+                                                                SEXO = cbbSexo.Text,
+                                                                CALLE = txtCalle.Text,
+                                                                LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),
+                                                                MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue),
+                                                                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
+                                                                T_CELULAR = txtCelular.Text,
+                                                                CURP = txtCurp.Text,
+                                                                FECHA_CREACION = Fecharegistro
+                                                            };
+                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                            //cc = pr.PERSONAS.Last();
+
+
+
+                                                            ENFERMERA enfermera = new ENFERMERA
+                                                            {
+                                                                PERSONAID = cc.ID_PERSONA,
+                                                                C_PROFESIONAL = txtCProfesional.Text,
+                                                                FECHA_CREACION = Fecharegistro
+                                                            };
+                                                            enfermera.PERSONA = cc;
+                                                            BaseDatos.GetBaseDatos().ENFERMERAS.Add(enfermera);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                            MessageBox.Show("Se gurado el registro correctamente");
+                                                            limpiarEnfermera();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
-            //Obtener los valores de los TextBox
-            DateTime Fecharegistro = DateTime.Now;
-            short ed;
-            String edad;
-
-            edad = cbbEdad.Text;
-            ed = short.Parse(edad);
-
-            //fechacrea.Text = DateTime.Now.ToString();
-            //DateTime fechacre = fechacrea.GetValue();
-            PERSONA cc = new PERSONA
-            {
-                NOMBRE = txtNombre.Text,
-                A_PATERNO = txtPaterno.Text,
-                A_MATERNO = txtMaterno.Text,
-                EDAD = ed,
-                SEXO = cbbSexo.Text,
-                CALLE = txtCalle.Text,
-                LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),
-                MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue),
-                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
-                T_CELULAR = txtCelular.Text,
-                CURP = txtCurp.Text,
-                FECHA_CREACION = Fecharegistro
-            };
-            BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
-            BaseDatos.GetBaseDatos().SaveChanges();
-            //cc = pr.PERSONAS.Last();
-
-
-
-            ENFERMERA enfermera = new ENFERMERA
-            {
-                PERSONAID = cc.ID_PERSONA,
-                C_PROFESIONAL = txtCProfesional.Text,
-                FECHA_CREACION = Fecharegistro
-            };
-            enfermera.PERSONA = cc;
-            BaseDatos.GetBaseDatos().ENFERMERAS.Add(enfermera);
-            BaseDatos.GetBaseDatos().SaveChanges();
-            //No guarda la enfermera
+            guardarEnfermera();
         }
 
 
@@ -109,7 +204,45 @@ namespace Medica2.Administracion.Enfermeras
             comboBoxLocalidades.ItemsSource = lst1;
 
         }
+        ///////
+        private void validarLetras(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
 
+            if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
+
+                e.Handled = false;
+
+            else e.Handled = true;
+
+
+        }
+
+        
+
+        private void validarNumeros(object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 4 && ascci <= 57) e.Handled = false;
+
+            else e.Handled = true;
+
+        }
+
+        private void validarNumLetras( object sender, TextCompositionEventArgs e)
+        {
+            int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
+
+            if (ascci >= 48 && ascci <= 90 || ascci >= 97 && ascci <= 122 || ascci == 46)
+
+                e.Handled = false;
+
+            else e.Handled = true;
+            ///
+            
+        }
+        ///////
 
 
 
