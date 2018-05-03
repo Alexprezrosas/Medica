@@ -244,7 +244,7 @@
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Solicitud de Material">
                                     <telerik:RadMenuItem x:Name="itemMaterialEnfermera" Header="Solicitud Enfermera" Click="RadMenuItem_Click"/>
-                                    <telerik:RadMenuItem x:Name="itemMterialDoctor" Header="Solicitud Doctor" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemMaterialDoctor" Header="Solicitud Doctor" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>

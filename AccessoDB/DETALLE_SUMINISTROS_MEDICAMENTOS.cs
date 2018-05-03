@@ -6,28 +6,27 @@ namespace AccessoDB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class DETALLE_VENTAS
+    public partial class DETALLE_SUMINISTROS_MEDICAMENTOS
     {
         [Key]
-        public int ID_DETALLE_VENTA { get; set; }
+        public int ID_DETALLE_SUMINISTRO { get; set; }
 
-        public int VENTAID { get; set; }
+        public int SUMINISTRO_MEDICAMENTOID { get; set; }
 
         public int MEDICAMENTOID { get; set; }
 
-        public int CANTIDAD { get; set; }
+        public decimal? PRECIO { get; set; }
 
-        public decimal? COSTO { get; set; }
+        public int CANTIDAD { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? F_CADUCIDAD { get; set; }
+        public decimal? IVA { get; set; }
 
         public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
 
-        public virtual VENTAS_GENERALES VENTAS_GENERALES { get; set; }
+        public virtual SUMINISTROS_MEDICAMENTOS SUMINISTROS_MEDICAMENTOS { get; set; }
     }
 }

@@ -11,6 +11,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATALOGO_ESPECIALIDADES()
         {
+            ESPECIALIDADES_ENFERMERAS = new HashSet<ESPECIALIDADES_ENFERMERAS>();
             ESPECIALIDADES = new HashSet<ESPECIALIDADE>();
         }
 
@@ -27,6 +28,9 @@ namespace AccessoDB
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ESPECIALIDADES_ENFERMERAS> ESPECIALIDADES_ENFERMERAS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ESPECIALIDADE> ESPECIALIDADES { get; set; }

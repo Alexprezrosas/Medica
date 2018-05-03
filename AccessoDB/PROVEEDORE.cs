@@ -25,7 +25,7 @@ namespace AccessoDB
         public string RFC { get; set; }
 
         [StringLength(200)]
-        public string REFERENCIA { get; set; }
+        public string NOTA { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 

@@ -59,19 +59,20 @@
     <Compile Include="CATALOGO_CUARTOS.cs" />
     <Compile Include="CATALOGO_EQUIPO_HOSPITAL.cs" />
     <Compile Include="CATALOGO_ESPECIALIDADES.cs" />
-    <Compile Include="CATALOGO_ESPECIALIDADES_ENFERMERAS.cs" />
     <Compile Include="CATALOGO_ESTUDIOS.cs" />
     <Compile Include="CATALOGO_MATERIALES.cs" />
     <Compile Include="CATALOGO_MEDICAMENTOS.cs" />
     <Compile Include="CIRUGIA.cs" />
     <Compile Include="CLASIFICACION_ESTUDIOS.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="COMPRA.cs" />
     <Compile Include="CONSULTA.cs" />
     <Compile Include="CUARTO.cs" />
     <Compile Include="CUENTA.cs" />
     <Compile Include="DEPOSITO.cs" />
     <Compile Include="DETALLE_COMPRAS.cs" />
+    <Compile Include="DETALLE_MATER_DOCTORES.cs" />
+    <Compile Include="DETALLE_MATER_ENFERMERAS.cs" />
+    <Compile Include="DETALLE_SUMINISTROS_MEDICAMENTOS.cs" />
     <Compile Include="DETALLE_VENTAS.cs" />
     <Compile Include="DEVOLUCIONE.cs" />
     <Compile Include="DIAGNOSTICO.cs" />
@@ -86,14 +87,11 @@
     <Compile Include="ESTUDIO.cs" />
     <Compile Include="FAM_RESPONSABLES.cs" />
     <Compile Include="HONORARIOS_MEDICOS.cs" />
-    <Compile Include="Limpiar.cs" />
-    <Compile Include="LlenarEstados.cs" />
     <Compile Include="LOCALIDADE.cs" />
     <Compile Include="MATERIALES_DOCTORES.cs" />
     <Compile Include="MATERIALES_ENFERMERAS.cs" />
     <Compile Include="Medico.cs" />
     <Compile Include="MEDICOS_TRATANTES.cs" />
-    <Compile Include="MODULO.cs" />
     <Compile Include="MUNICIPIO.cs" />
     <Compile Include="PACIENTE.cs" />
     <Compile Include="PERMISO.cs" />
@@ -105,17 +103,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="PROVEEDORE.cs" />
-    <Compile Include="ROLE.cs" />
     <Compile Include="SUMINISTROS_MEDICAMENTOS.cs" />
     <Compile Include="sysdiagram.cs" />
     <Compile Include="USUARIO.cs" />
-    <Compile Include="Validacion.cs" />
     <Compile Include="VENTAS_GENERALES.cs" />
-    <Compile Include="vista_proveedores_result.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

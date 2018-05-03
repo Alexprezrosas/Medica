@@ -9,6 +9,12 @@ namespace AccessoDB
     [Table("COMPRAS")]
     public partial class COMPRA
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public COMPRA()
+        {
+            DETALLE_COMPRAS = new HashSet<DETALLE_COMPRAS>();
+        }
+
         [Key]
         public int ID_COMPRA { get; set; }
 
@@ -34,16 +40,15 @@ namespace AccessoDB
 
         public decimal? TOTAL { get; set; }
 
-        public int DETALLE_COMPRAID { get; set; }
-
         public int USUARIOID { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual DETALLE_COMPRAS DETALLE_COMPRAS { get; set; }
-
         public virtual PROVEEDORE PROVEEDORE { get; set; }
 
         public virtual USUARIO USUARIO { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_COMPRAS> DETALLE_COMPRAS { get; set; }
     }
 }

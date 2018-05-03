@@ -18,6 +18,7 @@ namespace AccessoDB
             EQUIPO_HOSPITAL = new HashSet<EQUIPO_HOSPITAL>();
             ESTUDIOS = new HashSet<ESTUDIO>();
             MEDICOS_TRATANTES = new HashSet<MEDICOS_TRATANTES>();
+            SUMINISTROS_MEDICAMENTOS = new HashSet<SUMINISTROS_MEDICAMENTOS>();
         }
 
         [Key]
@@ -61,5 +62,8 @@ namespace AccessoDB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MEDICOS_TRATANTES> MEDICOS_TRATANTES { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUMINISTROS_MEDICAMENTOS> SUMINISTROS_MEDICAMENTOS { get; set; }
     }
 }

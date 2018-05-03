@@ -3,7 +3,9 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Telerik.Windows.Controls;
 using Telerik.Windows.Controls.GridView;
+using Telerik.Windows.Controls.GridView.SearchPanel;
 
 namespace Medica2.Farmacia.Materiales
 {
@@ -19,13 +21,24 @@ namespace Medica2.Farmacia.Materiales
             MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
             autoMate.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
 
+            MostrarMateriales.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+
+        }
+
+        private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
+        {
+            if (e.NewVisibility == Visibility.Collapsed)
+            {
+                var clearSearchValue = GridViewSearchPanelCommands.ClearSearchValue as RoutedUICommand;
+                clearSearchValue.Execute(null, MostrarMateriales.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
+            }
         }
 
 
         ////
 
 
-        
+
 
         private void MostrarMateriales_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
         {
@@ -152,26 +165,13 @@ namespace Medica2.Farmacia.Materiales
             if (e.Cell.Column.UniqueName == "COD_BARRAS")
             {
                 var newValue = Int32.Parse(e.NewValue.ToString());
+                
                 if (newValue < 0 || newValue > 130)
                 {
                     e.IsValid = false;
-                    e.ErrorMessage = "The entered value for age must be between 0 and 130.";
+                    e.ErrorMessage = "Solo enteros entre 0 y 130";
                 }
-            }
-
-            if (e.Cell.Column.UniqueName == "NOMBRE")
-            {
-                int ascci = Convert.ToInt32(e.NewValue);
-
-                if (ascci >= 65 && ascci <= 90 || ascci >= 97 && ascci <= 122)
-                {
-                    e.Handled = false;
-                    e.ErrorMessage = "Solo letras";
-                }
-                else e.ErrorMessage = "Fuera del else";
-
-                //e.Handled = true;
-            }
+            } 
         }
     }
     

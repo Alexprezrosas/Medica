@@ -1,5 +1,6 @@
 ﻿using AccessoDB;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,7 +47,7 @@ namespace Medica2.Administracion.Enfermeras
                               APATERNO = PERSONA.A_PATERNO,
                               AMATERNO = PERSONA.A_MATERNO,
                               CPROFESIONAL = e.C_PROFESIONAL
-                          });
+                          }).ToList();
         }
 
         private void MostrarEnfermeras_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
@@ -95,22 +96,26 @@ namespace Medica2.Administracion.Enfermeras
                     {
                         case MessageBoxResult.Yes:
 
-                            int idenf = (MostrarEnfermera.SelectedItem as ENFERMERA).ID_ENFERMERA;
+                            dynamic idenfermera = MostrarEnfermera.SelectedItem;
+                            int idenf = idenfermera.ID_ENFERMERA;
                             
-                            ////
-                            //int test = int.Parse(MostrarEnfermera.SelectedItem);
-
-                            //MostrarEnfermera.SelectedItem("{ID_ENFERMERA}");
-                            //var idd = Convert.ToInt32(dat["ID_ENFERMERA"]);
-                            ////
                             if (MostrarEnfermera.SelectedItem != null)
                             {
-                                var cmatt = BaseDatos.GetBaseDatos().ENFERMERAS.Find(idenf);
-                                BaseDatos.GetBaseDatos().ENFERMERAS.Remove(cmatt);
+                                var cenfer = BaseDatos.GetBaseDatos().ENFERMERAS.Find(idenf);
+                                BaseDatos.GetBaseDatos().ENFERMERAS.Remove(cenfer);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
                             MessageBox.Show("Se ha eliminado la enfermera", "Administracion");
                             VistaEnfermerasPersonas();
+
+                            ////
+
+                            IList objectList = MostrarEnfermera.SelectedItem as IList;
+                            List obj = MostrarEnfermera.SelectedItem as List;
+                            var lis = MostrarEnfermera.SelectedItems[1];
+
+                            MessageBox.Show("" + lis);
+
                             break;
 
                         case MessageBoxResult.No:
@@ -119,18 +124,6 @@ namespace Medica2.Administracion.Enfermeras
                     }
                 }
             }
-        }
-
-        private void MostrarEnfermera_RowActivated(object sender, RowEventArgs e)
-        {
-            var row = e.Row as GridViewRow;
-            ENFERMERA enf = row.Item as ENFERMERA;
-            string message = string.Format("Name: {0} \n Established: {1} \nCapacity: {2}", enf.ID_ENFERMERA,
-                enf.C_PROFESIONAL,
-                enf.FECHA_CREACION);
-            MessageBox.Show(message);
-            
-        }
-        
+        }        
     }
 }

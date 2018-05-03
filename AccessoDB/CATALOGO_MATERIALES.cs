@@ -11,8 +11,8 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATALOGO_MATERIALES()
         {
-            MATERIALES_DOCTORES = new HashSet<MATERIALES_DOCTORES>();
-            MATERIALES_ENFERMERAS = new HashSet<MATERIALES_ENFERMERAS>();
+            DETALLE_MATER_DOCTORES = new HashSet<DETALLE_MATER_DOCTORES>();
+            DETALLE_MATER_ENFERMERAS = new HashSet<DETALLE_MATER_ENFERMERAS>();
         }
 
         [Key]
@@ -35,10 +35,13 @@ namespace AccessoDB
 
         public int? COD_BARRAS { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MATERIALES_DOCTORES> MATERIALES_DOCTORES { get; set; }
+        [StringLength(100)]
+        public string U_MEDIDA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MATERIALES_ENFERMERAS> MATERIALES_ENFERMERAS { get; set; }
+        public virtual ICollection<DETALLE_MATER_DOCTORES> DETALLE_MATER_DOCTORES { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_MATER_ENFERMERAS> DETALLE_MATER_ENFERMERAS { get; set; }
     }
 }

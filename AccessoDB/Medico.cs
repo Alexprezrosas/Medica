@@ -19,6 +19,7 @@ namespace AccessoDB
             ESPECIALIDADES = new HashSet<ESPECIALIDADE>();
             ESTUDIOS = new HashSet<ESTUDIO>();
             HONORARIOS_MEDICOS = new HashSet<HONORARIOS_MEDICOS>();
+            MATERIALES_DOCTORES = new HashSet<MATERIALES_DOCTORES>();
             MEDICOS_TRATANTES = new HashSet<MEDICOS_TRATANTES>();
         }
 
@@ -66,6 +67,9 @@ namespace AccessoDB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HONORARIOS_MEDICOS> HONORARIOS_MEDICOS { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MATERIALES_DOCTORES> MATERIALES_DOCTORES { get; set; }
 
         public virtual PERSONA PERSONA { get; set; }
 

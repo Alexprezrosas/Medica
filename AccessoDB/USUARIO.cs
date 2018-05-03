@@ -31,7 +31,7 @@ namespace AccessoDB
         [StringLength(30)]
         public string CONTRASENA { get; set; }
 
-        public int ROLID { get; set; }
+        public int PERMISOSID { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 
@@ -60,7 +60,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MATERIALES_ENFERMERAS> MATERIALES_ENFERMERAS { get; set; }
 
-        public virtual ROLE ROLE { get; set; }
+        public virtual PERMISO PERMISO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VENTAS_GENERALES> VENTAS_GENERALES { get; set; }

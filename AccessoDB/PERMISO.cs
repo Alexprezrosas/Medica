@@ -12,7 +12,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PERMISO()
         {
-            ROLES = new HashSet<ROLE>();
+            USUARIOS = new HashSet<USUARIO>();
         }
 
         [Key]
@@ -25,15 +25,19 @@ namespace AccessoDB
         [StringLength(200)]
         public string DESCIPCION { get; set; }
 
-        public int MODULOID { get; set; }
+        [Required]
+        [StringLength(30)]
+        public string MODULOS { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string ROL { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual MODULO MODULO { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ROLE> ROLES { get; set; }
+        public virtual ICollection<USUARIO> USUARIOS { get; set; }
     }
 }

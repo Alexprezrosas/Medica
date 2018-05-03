@@ -36,8 +36,6 @@ namespace AccessoDB
         [StringLength(50)]
         public string A_MATERNO { get; set; }
 
-        public short EDAD { get; set; }
-
         [Required]
         [StringLength(15)]
         public string SEXO { get; set; }
@@ -62,6 +60,9 @@ namespace AccessoDB
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? F_NACIMIENTO { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPLEADO> EMPLEADOS { get; set; }

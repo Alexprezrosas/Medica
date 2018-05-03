@@ -22,12 +22,12 @@
             <ColumnDefinition Width="591*"/>
         </Grid.ColumnDefinitions>
 
-        <telerik:RadGridView  x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="296" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" RowActivated="MostrarEnfermera_RowActivated">
+        <telerik:RadGridView  x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="273" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" SelectedItem="{Binding ID_ENFERMERA}">
 
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
-                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
 

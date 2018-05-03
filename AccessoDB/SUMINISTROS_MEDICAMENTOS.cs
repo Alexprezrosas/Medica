@@ -8,14 +8,18 @@ namespace AccessoDB
 
     public partial class SUMINISTROS_MEDICAMENTOS
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SUMINISTROS_MEDICAMENTOS()
+        {
+            DETALLE_SUMINISTROS_MEDICAMENTOS = new HashSet<DETALLE_SUMINISTROS_MEDICAMENTOS>();
+        }
+
         [Key]
         public int ID_SUMINISTRO_MEDICAMENTO { get; set; }
 
-        public int MEDICMANETOID { get; set; }
-
         public short CANTIDAD { get; set; }
 
-        public decimal? PRECIO { get; set; }
+        public int CUENTAID { get; set; }
 
         public int ENFERMERA_TRATANTEID { get; set; }
 
@@ -23,7 +27,12 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
+        public decimal? TOTAL { get; set; }
+
+        public virtual CUENTA CUENTA { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_SUMINISTROS_MEDICAMENTOS> DETALLE_SUMINISTROS_MEDICAMENTOS { get; set; }
 
         public virtual ENFERMERAS_TRATANTES ENFERMERAS_TRATANTES { get; set; }
     }

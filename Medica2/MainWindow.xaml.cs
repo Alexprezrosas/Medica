@@ -55,6 +55,19 @@ namespace Medica2
                 {
                     ConsultaMaterial mat = new ConsultaMaterial();
                     mat.Show();
+                }else
+                {
+                    if (sender == itemMaterialEnfermera)
+                    {
+                        SolicitudEnfermera solenf = new SolicitudEnfermera();
+                        solenf.Show();
+                    }else
+                    {
+                        if (sender == itemMaterialDoctor)
+                        {
+
+                        }
+                    }
                 }
             }
 

@@ -8,10 +8,14 @@ namespace AccessoDB
 
     public partial class MATERIALES_DOCTORES
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MATERIALES_DOCTORES()
+        {
+            DETALLE_MATER_DOCTORES = new HashSet<DETALLE_MATER_DOCTORES>();
+        }
+
         [Key]
         public int ID_MATERIAL { get; set; }
-
-        public int CATALOGO_MATERIALID { get; set; }
 
         public decimal? TOTAL { get; set; }
 
@@ -23,7 +27,10 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual CATALOGO_MATERIALES CATALOGO_MATERIALES { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_MATER_DOCTORES> DETALLE_MATER_DOCTORES { get; set; }
+
+        public virtual Medico Medico { get; set; }
 
         public virtual USUARIO USUARIO { get; set; }
     }

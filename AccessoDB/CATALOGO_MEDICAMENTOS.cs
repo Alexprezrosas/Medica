@@ -14,8 +14,8 @@ namespace AccessoDB
             CONSULTAS = new HashSet<CONSULTA>();
             DETALLE_COMPRAS = new HashSet<DETALLE_COMPRAS>();
             DETALLE_VENTAS = new HashSet<DETALLE_VENTAS>();
+            DETALLE_SUMINISTROS_MEDICAMENTOS = new HashSet<DETALLE_SUMINISTROS_MEDICAMENTOS>();
             DEVOLUCIONES = new HashSet<DEVOLUCIONE>();
-            SUMINISTROS_MEDICAMENTOS = new HashSet<SUMINISTROS_MEDICAMENTOS>();
         }
 
         [Key]
@@ -32,9 +32,9 @@ namespace AccessoDB
 
         public decimal? P_VENTA { get; set; }
 
-        public decimal? P_HOSPITAL { get; set; }
+        public decimal? P_COMPRA { get; set; }
 
-        public decimal? P_PUBLICO { get; set; }
+        public decimal? P_MEDICOS { get; set; }
 
         public decimal? DESCUENTO { get; set; }
 
@@ -49,6 +49,9 @@ namespace AccessoDB
 
         public int? COD_BARRAS { get; set; }
 
+        [StringLength(100)]
+        public string U_MEDIDA { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONSULTA> CONSULTAS { get; set; }
 
@@ -59,9 +62,9 @@ namespace AccessoDB
         public virtual ICollection<DETALLE_VENTAS> DETALLE_VENTAS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DEVOLUCIONE> DEVOLUCIONES { get; set; }
+        public virtual ICollection<DETALLE_SUMINISTROS_MEDICAMENTOS> DETALLE_SUMINISTROS_MEDICAMENTOS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUMINISTROS_MEDICAMENTOS> SUMINISTROS_MEDICAMENTOS { get; set; }
+        public virtual ICollection<DEVOLUCIONE> DEVOLUCIONES { get; set; }
     }
 }
