@@ -17,11 +17,9 @@ namespace AccessoDB
         [Key]
         public int ID_SUMINISTRO_MEDICAMENTO { get; set; }
 
-        public short CANTIDAD { get; set; }
-
         public int CUENTAID { get; set; }
 
-        public int ENFERMERA_TRATANTEID { get; set; }
+        public int ENFERMERAID { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 
@@ -34,6 +32,6 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_SUMINISTROS_MEDICAMENTOS> DETALLE_SUMINISTROS_MEDICAMENTOS { get; set; }
 
-        public virtual ENFERMERAS_TRATANTES ENFERMERAS_TRATANTES { get; set; }
+        public virtual ENFERMERA ENFERMERA { get; set; }
     }
 }

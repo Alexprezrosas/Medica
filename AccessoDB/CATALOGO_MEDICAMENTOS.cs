@@ -11,7 +11,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATALOGO_MEDICAMENTOS()
         {
-            CONSULTAS = new HashSet<CONSULTA>();
+            DETALLE_MATER_ENFERMERAS = new HashSet<DETALLE_MATER_ENFERMERAS>();
             DETALLE_COMPRAS = new HashSet<DETALLE_COMPRAS>();
             DETALLE_VENTAS = new HashSet<DETALLE_VENTAS>();
             DETALLE_SUMINISTROS_MEDICAMENTOS = new HashSet<DETALLE_SUMINISTROS_MEDICAMENTOS>();
@@ -47,13 +47,19 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public int? COD_BARRAS { get; set; }
-
         [StringLength(100)]
         public string U_MEDIDA { get; set; }
 
+        public int? CFDI { get; set; }
+
+        [StringLength(50)]
+        public string ALMACEN { get; set; }
+
+        [StringLength(20)]
+        public string COD_BARRAS { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONSULTA> CONSULTAS { get; set; }
+        public virtual ICollection<DETALLE_MATER_ENFERMERAS> DETALLE_MATER_ENFERMERAS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_COMPRAS> DETALLE_COMPRAS { get; set; }

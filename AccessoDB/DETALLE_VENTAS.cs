@@ -26,6 +26,11 @@ namespace AccessoDB
         [Column(TypeName = "date")]
         public DateTime? F_CADUCIDAD { get; set; }
 
+        [StringLength(10)]
+        public string NOMMEDICAMENTO { get; set; }
+
+        public decimal? SUBTOTAL { get; set; }
+
         public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
 
         public virtual VENTAS_GENERALES VENTAS_GENERALES { get; set; }

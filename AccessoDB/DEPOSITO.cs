@@ -9,12 +9,6 @@ namespace AccessoDB
     [Table("DEPOSITOS")]
     public partial class DEPOSITO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DEPOSITO()
-        {
-            CUENTAS = new HashSet<CUENTA>();
-        }
-
         [Key]
         public int ID_DEPOSITO { get; set; }
 
@@ -32,8 +26,9 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUENTA> CUENTAS { get; set; }
+        public int? CUENTAID { get; set; }
+
+        public virtual CUENTA CUENTA { get; set; }
 
         public virtual USUARIO USUARIO { get; set; }
     }

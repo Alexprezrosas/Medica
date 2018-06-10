@@ -14,6 +14,7 @@ namespace AccessoDB
         {
             CIRUGIAS = new HashSet<CIRUGIA>();
             CUARTOS = new HashSet<CUARTO>();
+            DEPOSITOS = new HashSet<DEPOSITO>();
             DEVOLUCIONES = new HashSet<DEVOLUCIONE>();
             EQUIPO_HOSPITAL = new HashSet<EQUIPO_HOSPITAL>();
             ESTUDIOS = new HashSet<ESTUDIO>();
@@ -25,8 +26,6 @@ namespace AccessoDB
         public int ID_CUENTA { get; set; }
 
         public int PACIENTEID { get; set; }
-
-        public int DEPOSITOID { get; set; }
 
         public decimal? TOTAL { get; set; }
 
@@ -47,9 +46,10 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUARTO> CUARTOS { get; set; }
 
-        public virtual DEPOSITO DEPOSITO { get; set; }
-
         public virtual PACIENTE PACIENTE { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DEPOSITO> DEPOSITOS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DEVOLUCIONE> DEVOLUCIONES { get; set; }

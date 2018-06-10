@@ -25,7 +25,8 @@
                              SelectedCellsChanged="MostrarMateriales_SelectedCellsChanged" 
                              CellValidating="MostrarMateriales_CellValidating" ShowColumnFooters="True"
                              ShowSearchPanel="True"
-                             IsSearchingDeferred="True">
+                             IsSearchingDeferred="True"
+                             NewRowPosition="Top">
             
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
@@ -43,12 +44,6 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblMaterial" Content="Material" HorizontalAlignment="Left" Margin="34,23,0,0" VerticalAlignment="Top"/>
-        
-        <telerik:RadAutoCompleteBox x:Name="autoMate" HorizontalAlignment="Left" Margin="119,23,0,0" VerticalAlignment="Top" Width="252"
-                                    ItemsSource="{Binding CATALOGO_MATERIALES}"
-                                    DisplayMemberPath="NOMBRE"
-                                    AutoCompleteMode="Suggest"/>
 
     </Grid>
 </Window>

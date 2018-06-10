@@ -91,6 +91,10 @@ namespace AccessoDB
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<CATALOGO_CUARTOS>()
+                .Property(e => e.ESTADO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CATALOGO_CUARTOS>()
                 .HasMany(e => e.CUARTOS)
                 .WithRequired(e => e.CATALOGO_CUARTOS)
                 .HasForeignKey(e => e.CATALOGO_CUARTOID);
@@ -163,16 +167,6 @@ namespace AccessoDB
                 .Property(e => e.U_MEDIDA)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CATALOGO_MATERIALES>()
-                .HasMany(e => e.DETALLE_MATER_DOCTORES)
-                .WithRequired(e => e.CATALOGO_MATERIALES)
-                .HasForeignKey(e => e.MATERIALID);
-
-            modelBuilder.Entity<CATALOGO_MATERIALES>()
-                .HasMany(e => e.DETALLE_MATER_ENFERMERAS)
-                .WithRequired(e => e.CATALOGO_MATERIALES)
-                .HasForeignKey(e => e.MATERIALID);
-
             modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
                 .Property(e => e.NOMBRE_MEDI)
                 .IsUnicode(false);
@@ -202,9 +196,17 @@ namespace AccessoDB
                 .IsUnicode(false);
 
             modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
-                .HasMany(e => e.CONSULTAS)
+                .Property(e => e.ALMACEN)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
+                .Property(e => e.COD_BARRAS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
+                .HasMany(e => e.DETALLE_MATER_ENFERMERAS)
                 .WithRequired(e => e.CATALOGO_MEDICAMENTOS)
-                .HasForeignKey(e => e.MEDICAMENTOID);
+                .HasForeignKey(e => e.MATERIALID);
 
             modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
                 .HasMany(e => e.DETALLE_COMPRAS)
@@ -239,10 +241,6 @@ namespace AccessoDB
                 .IsUnicode(false);
 
             modelBuilder.Entity<COMPRA>()
-                .Property(e => e.ALMACEN)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<COMPRA>()
                 .Property(e => e.COMENTARIO)
                 .IsUnicode(false);
 
@@ -264,17 +262,24 @@ namespace AccessoDB
                 .HasForeignKey(e => e.COMPRAID);
 
             modelBuilder.Entity<CONSULTA>()
-                .Property(e => e.DESCRIPCION)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CONSULTA>()
                 .Property(e => e.COSTO)
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<CONSULTA>()
-                .HasMany(e => e.PACIENTES)
-                .WithRequired(e => e.CONSULTA)
-                .HasForeignKey(e => e.CONSULTAID);
+                .Property(e => e.NOM_PACIENTE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.DIAGNOSTICO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.DESCRIPCION)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.MEDICAMENTOS)
+                .IsUnicode(false);
 
             modelBuilder.Entity<CUARTO>()
                 .Property(e => e.TOTAL)
@@ -307,6 +312,12 @@ namespace AccessoDB
                 .HasForeignKey(e => e.CUENTAID);
 
             modelBuilder.Entity<CUENTA>()
+                .HasMany(e => e.DEPOSITOS)
+                .WithOptional(e => e.CUENTA)
+                .HasForeignKey(e => e.CUENTAID)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<CUENTA>()
                 .HasMany(e => e.DEVOLUCIONES)
                 .WithOptional(e => e.CUENTA)
                 .HasForeignKey(e => e.CUENTAID);
@@ -318,8 +329,9 @@ namespace AccessoDB
 
             modelBuilder.Entity<CUENTA>()
                 .HasMany(e => e.ESTUDIOS)
-                .WithRequired(e => e.CUENTA)
-                .HasForeignKey(e => e.CUENTAID);
+                .WithOptional(e => e.CUENTA)
+                .HasForeignKey(e => e.CUENTAID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<CUENTA>()
                 .HasMany(e => e.MEDICOS_TRATANTES)
@@ -344,11 +356,6 @@ namespace AccessoDB
                 .Property(e => e.COMENTARIO)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DEPOSITO>()
-                .HasMany(e => e.CUENTAS)
-                .WithRequired(e => e.DEPOSITO)
-                .HasForeignKey(e => e.DEPOSITOID);
-
             modelBuilder.Entity<DETALLE_COMPRAS>()
                 .Property(e => e.COSTO_UNITARIO)
                 .HasPrecision(10, 3);
@@ -357,12 +364,28 @@ namespace AccessoDB
                 .Property(e => e.U_MEDIDA)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<DETALLE_COMPRAS>()
+                .Property(e => e.SUBTOTAL)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<DETALLE_COMPRAS>()
+                .Property(e => e.ALMACEN)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DETALLE_COMPRAS>()
+                .Property(e => e.NOMEDI)
+                .IsUnicode(false);
+
             modelBuilder.Entity<DETALLE_MATER_DOCTORES>()
                 .Property(e => e.COSTO)
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<DETALLE_MATER_ENFERMERAS>()
                 .Property(e => e.COSTO)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<DETALLE_MATER_ENFERMERAS>()
+                .Property(e => e.SUBTOTAL)
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<DETALLE_SUMINISTROS_MEDICAMENTOS>()
@@ -377,14 +400,17 @@ namespace AccessoDB
                 .Property(e => e.COSTO)
                 .HasPrecision(10, 3);
 
+            modelBuilder.Entity<DETALLE_VENTAS>()
+                .Property(e => e.NOMMEDICAMENTO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<DETALLE_VENTAS>()
+                .Property(e => e.SUBTOTAL)
+                .HasPrecision(10, 3);
+
             modelBuilder.Entity<DIAGNOSTICO>()
                 .Property(e => e.DIAGNOSTICO1)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<DIAGNOSTICO>()
-                .HasMany(e => e.CONSULTAS)
-                .WithRequired(e => e.DIAGNOSTICO)
-                .HasForeignKey(e => e.DIAGNOSTICOID);
 
             modelBuilder.Entity<EMPLEADO>()
                 .Property(e => e.PUESTO)
@@ -415,10 +441,10 @@ namespace AccessoDB
                 .WithRequired(e => e.ENFERMERA)
                 .HasForeignKey(e => e.ENFERMERAID);
 
-            modelBuilder.Entity<ENFERMERAS_TRATANTES>()
+            modelBuilder.Entity<ENFERMERA>()
                 .HasMany(e => e.SUMINISTROS_MEDICAMENTOS)
-                .WithRequired(e => e.ENFERMERAS_TRATANTES)
-                .HasForeignKey(e => e.ENFERMERA_TRATANTEID)
+                .WithRequired(e => e.ENFERMERA)
+                .HasForeignKey(e => e.ENFERMERAID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<EQUIPO_HOSPITAL>()
@@ -444,8 +470,9 @@ namespace AccessoDB
 
             modelBuilder.Entity<ESTADO>()
                 .HasMany(e => e.PERSONAS)
-                .WithRequired(e => e.ESTADO1)
-                .HasForeignKey(e => e.ESTADO);
+                .WithOptional(e => e.ESTADO1)
+                .HasForeignKey(e => e.ESTADO)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<ESTADOS_PERSONAS>()
                 .Property(e => e.ESTADO)
@@ -458,6 +485,14 @@ namespace AccessoDB
             modelBuilder.Entity<ESTUDIO>()
                 .Property(e => e.CARGO_EXTRA)
                 .HasPrecision(10, 3);
+
+            modelBuilder.Entity<ESTUDIO>()
+                .Property(e => e.MEDICO_SOLICITANTE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ESTUDIO>()
+                .Property(e => e.PACIENTE_SOLICITANTE)
+                .IsUnicode(false);
 
             modelBuilder.Entity<FAM_RESPONSABLES>()
                 .Property(e => e.PARENTESCO)
@@ -561,8 +596,9 @@ namespace AccessoDB
 
             modelBuilder.Entity<Medico>()
                 .HasMany(e => e.ESTUDIOS)
-                .WithRequired(e => e.Medico)
-                .HasForeignKey(e => e.MEDICOID);
+                .WithOptional(e => e.Medico)
+                .HasForeignKey(e => e.MEDICOID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<Medico>()
                 .HasMany(e => e.HONORARIOS_MEDICOS)
@@ -604,9 +640,8 @@ namespace AccessoDB
 
             modelBuilder.Entity<PACIENTE>()
                 .HasMany(e => e.CONSULTAS)
-                .WithRequired(e => e.PACIENTE)
-                .HasForeignKey(e => e.PACIENTEID)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.PACIENTE)
+                .HasForeignKey(e => e.PACIENTEID);
 
             modelBuilder.Entity<PACIENTE>()
                 .HasMany(e => e.CUENTAS)
@@ -655,6 +690,10 @@ namespace AccessoDB
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
+                .Property(e => e.CURP)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PERSONA>()
                 .Property(e => e.A_PATERNO)
                 .IsUnicode(false);
 
@@ -667,15 +706,19 @@ namespace AccessoDB
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.CALLE)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<PERSONA>()
                 .Property(e => e.T_CELULAR)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
-                .Property(e => e.CURP)
+                .Property(e => e.CALLE)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PERSONA>()
+                .Property(e => e.NOMMUNICIPIO)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PERSONA>()
+                .Property(e => e.NOMLOCALIDAD)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()
@@ -711,11 +754,11 @@ namespace AccessoDB
                 .HasForeignKey(e => e.PERSONAID);
 
             modelBuilder.Entity<PROVEEDORE>()
-                .Property(e => e.RFC)
+                .Property(e => e.NOTA)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDORE>()
-                .Property(e => e.NOTA)
+                .Property(e => e.RFC)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PROVEEDORE>()
@@ -737,8 +780,19 @@ namespace AccessoDB
                 .IsUnicode(false);
 
             modelBuilder.Entity<USUARIO>()
+                .HasMany(e => e.CIRUGIAS)
+                .WithOptional(e => e.USUARIO)
+                .HasForeignKey(e => e.USUARIOID)
+                .WillCascadeOnDelete();
+
+            modelBuilder.Entity<USUARIO>()
                 .HasMany(e => e.COMPRAS)
                 .WithRequired(e => e.USUARIO)
+                .HasForeignKey(e => e.USUARIOID);
+
+            modelBuilder.Entity<USUARIO>()
+                .HasMany(e => e.CONSULTAS)
+                .WithOptional(e => e.USUARIO)
                 .HasForeignKey(e => e.USUARIOID);
 
             modelBuilder.Entity<USUARIO>()
@@ -750,6 +804,12 @@ namespace AccessoDB
                 .HasMany(e => e.DEVOLUCIONES)
                 .WithRequired(e => e.USUARIO)
                 .HasForeignKey(e => e.USUARIOID);
+
+            modelBuilder.Entity<USUARIO>()
+                .HasMany(e => e.EQUIPO_HOSPITAL)
+                .WithOptional(e => e.USUARIO)
+                .HasForeignKey(e => e.USUARIOID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<USUARIO>()
                 .HasMany(e => e.ESTUDIOS)

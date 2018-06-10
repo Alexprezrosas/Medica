@@ -8,12 +8,6 @@ namespace AccessoDB
 
     public partial class ENFERMERAS_TRATANTES
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ENFERMERAS_TRATANTES()
-        {
-            SUMINISTROS_MEDICAMENTOS = new HashSet<SUMINISTROS_MEDICAMENTOS>();
-        }
-
         [Key]
         public int ID_ENFERMERA_TRATANTE { get; set; }
 
@@ -28,8 +22,5 @@ namespace AccessoDB
         public virtual ENFERMERA ENFERMERA { get; set; }
 
         public virtual PACIENTE PACIENTE { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUMINISTROS_MEDICAMENTOS> SUMINISTROS_MEDICAMENTOS { get; set; }
     }
 }

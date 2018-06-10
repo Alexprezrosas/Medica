@@ -27,16 +27,14 @@ namespace AccessoDB
         [StringLength(50)]
         public string TIPO_PACIENTE { get; set; }
 
-        public int CONSULTAID { get; set; }
-
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
+        public int? CUARTOID { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CONSULTA> CONSULTAS { get; set; }
-
-        public virtual CONSULTA CONSULTA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUENTA> CUENTAS { get; set; }

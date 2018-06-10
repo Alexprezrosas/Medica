@@ -9,12 +9,6 @@ namespace AccessoDB
     [Table("DIAGNOSTICOS")]
     public partial class DIAGNOSTICO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public DIAGNOSTICO()
-        {
-            CONSULTAS = new HashSet<CONSULTA>();
-        }
-
         [Key]
         public int ID_DIAGNOSTICO { get; set; }
 
@@ -27,9 +21,6 @@ namespace AccessoDB
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CONSULTA> CONSULTAS { get; set; }
 
         public virtual MEDICOS_TRATANTES MEDICOS_TRATANTES { get; set; }
     }

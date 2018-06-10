@@ -28,9 +28,6 @@ namespace AccessoDB
 
         public int PROVEEDORID { get; set; }
 
-        [StringLength(200)]
-        public string ALMACEN { get; set; }
-
         [StringLength(250)]
         public string COMENTARIO { get; set; }
 

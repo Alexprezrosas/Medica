@@ -128,7 +128,7 @@ namespace Medica2.Administracion.Enfermeras
                                                                 NOMBRE = txtNombre.Text,
                                                                 A_PATERNO = txtPaterno.Text,
                                                                 A_MATERNO = txtMaterno.Text,
-                                                                EDAD = ed,
+                                                                //EDAD = ed,
                                                                 SEXO = cbbSexo.Text,
                                                                 CALLE = txtCalle.Text,
                                                                 LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),

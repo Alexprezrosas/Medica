@@ -8,13 +8,6 @@ namespace AccessoDB
 
     public partial class CATALOGO_MATERIALES
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CATALOGO_MATERIALES()
-        {
-            DETALLE_MATER_DOCTORES = new HashSet<DETALLE_MATER_DOCTORES>();
-            DETALLE_MATER_ENFERMERAS = new HashSet<DETALLE_MATER_ENFERMERAS>();
-        }
-
         [Key]
         public int ID_CATALOGO_MATERIAL { get; set; }
 
@@ -38,10 +31,6 @@ namespace AccessoDB
         [StringLength(100)]
         public string U_MEDIDA { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLE_MATER_DOCTORES> DETALLE_MATER_DOCTORES { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DETALLE_MATER_ENFERMERAS> DETALLE_MATER_ENFERMERAS { get; set; }
+        public int? CFDI { get; set; }
     }
 }

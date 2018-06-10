@@ -26,6 +26,16 @@ namespace AccessoDB
         [StringLength(100)]
         public string U_MEDIDA { get; set; }
 
+        public int? CFDI { get; set; }
+
+        public decimal? SUBTOTAL { get; set; }
+
+        [StringLength(50)]
+        public string ALMACEN { get; set; }
+
+        [StringLength(100)]
+        public string NOMEDI { get; set; }
+
         public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
 
         public virtual COMPRA COMPRA { get; set; }

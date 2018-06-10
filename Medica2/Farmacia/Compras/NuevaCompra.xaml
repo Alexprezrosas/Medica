@@ -1,0 +1,131 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Farmacia.Compras"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Compras.NuevaCompra"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib" 
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="NuevaCompra" Height="786.368" Width="1349.532">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <Label x:Name="lblFactura" Content="Numero de factura" HorizontalAlignment="Left" Margin="27,64,0,0" VerticalAlignment="Top" Width="127"/>
+        <Label x:Name="lblFCompra" Content="Fecha de compra" HorizontalAlignment="Left" Margin="410,63,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label x:Name="lblProveedor" Content="Nombre del proveedor" HorizontalAlignment="Left" Margin="27,93,0,0" VerticalAlignment="Top" Width="132"/>
+        <Label x:Name="lblFVencimiento" Content="Fecha de vencimiento" HorizontalAlignment="Left" Margin="744,64,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label x:Name="lblRFC" Content="RFC" HorizontalAlignment="Left" Margin="410,93,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label x:Name="lblTelefono" Content="Telefono" HorizontalAlignment="Left" Margin="744,93,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label x:Name="lblTitulo" Content="Registro de compras" HorizontalAlignment="Left" Margin="542,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+
+        <TextBox x:Name="txtFactura" HorizontalAlignment="Left" Height="23" Margin="159,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+        Width="144" Foreground="#FF6F2828" BorderBrush="#FF089CF6" MaxLength="10" PreviewTextInput="validarNumeros"/>
+        <TextBox x:Name="txtRFC" HorizontalAlignment="Left" Height="23" Margin="542,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+            Width="144" Foreground="#FF6F2828" BorderBrush="#FF089CF6" IsReadOnly="True"/>
+        <TextBox x:Name="txtTelefono" HorizontalAlignment="Left" Height="23" Margin="876,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
+            Width="144" Foreground="#FF6F2828" BorderBrush="#FF089CF6" IsReadOnly="True"/>
+
+        <DatePicker x:Name="dpFCompra" HorizontalAlignment="Left" Margin="542,64,0,0" VerticalAlignment="Top" 
+        DisplayDate="{x:Static System:DateTime.Now}"
+        DisplayDateStart="{x:Static System:DateTime.Now}"
+        DisplayDateEnd="{x:Static System:DateTime.Now}"
+                    SelectedDate="{x:Static sys:DateTime.Now}"/>
+        <DatePicker x:Name="dpFVencimiento" HorizontalAlignment="Left" Margin="876,64,0,0" VerticalAlignment="Top"
+        DisplayDateStart="{x:Static System:DateTime.Now}"/>
+
+        <telerik:GroupBox x:Name="groupBox" HorizontalAlignment="Left" Margin="27,50,0,0" VerticalAlignment="Top" Height="115" Width="1290" Header="Datos Principales"/>
+
+        <telerik:RadAutoCompleteBox x:Name="autoProveedor" HorizontalAlignment="Left" Margin="159,95,0,0" VerticalAlignment="Top" Width="144" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"
+                                    ItemsSource="{Binding PROVEEDORES}"
+                                    DisplayMemberPath="NOMBRE"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"
+                                    SelectionChanged="autoProveedor_SelectionChanged"/>
+
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="876,126,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+
+        <Button x:Name="btnNuevoProveedor" Content="Nuevo Proveedor" HorizontalAlignment="Left" Margin="308,98,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevoProveedor_Click"/>
+        <Label x:Name="lblIDMEdicamento" Content="Nombre del medicamento" HorizontalAlignment="Left" Margin="32,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="962,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCFDI" Content="CFDI" HorizontalAlignment="Left" Margin="962,227,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="576,308,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="lblCostoUnitario" Content="Precio de compra" HorizontalAlignment="Left" Margin="32,270,0,0" VerticalAlignment="Top" Width="107"/>
+        <telerik:RadAutoCompleteBox x:Name="autoMedicamentos" HorizontalAlignment="Left" Margin="200,191,0,0" VerticalAlignment="Top" Width="214"
+                                    ItemsSource="{Binding CATALOGO_MEDICAMENTOS}"
+                                    DisplayMemberPath="NOMBRE_MEDI"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"
+                                    SelectionChanged="autoMedicamentos_SelectionChanged" 
+                                    PreviewTextInput="validarLetras"
+                                    IsEnabled="False"/>
+        <Label x:Name="lblAlmacen" Content="Tipo de almacen" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblDescripcion" Content="Descripcion" HorizontalAlignment="Left" Margin="576,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCaducidad" Content="Fecha de caducidad" HorizontalAlignment="Left" Margin="32,231,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBarras" Content="Codigo de barras" HorizontalAlignment="Left" Margin="576,226,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="576,267,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblPMedicos" Content="Precio a medicos" HorizontalAlignment="Left" Margin="962,267,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="23" Margin="682,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"
+            PreviewTextInput="validarLetras" IsEnabled="False" MaxLength="240"/>
+        <TextBox x:Name="txtUMedida" HorizontalAlignment="Left" Height="23" Margin="1099,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"
+            PreviewTextInput="validarLetras" IsEnabled="False" MaxLength="100"/>
+        <DatePicker x:Name="dpCaducidad" HorizontalAlignment="Left" Margin="200,233,0,0" VerticalAlignment="Top" Width="214" IsEnabled="False"/>
+        <TextBox x:Name="txtCBarras" HorizontalAlignment="Left" Height="23" Margin="682,230,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"
+            PreviewTextInput="validarNumeros" IsEnabled="False" MaxLength="13"/>
+        <TextBox x:Name="txtCFDI" HorizontalAlignment="Left" Height="23" Margin="1099,228,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"
+            PreviewTextInput="validarNumeros" IsEnabled="False" MaxLines="8"/>
+        <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="682,311,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"
+            PreviewTextInput="validarNumeros" IsEnabled="False" MaxLength="10"/>
+        <TextBox x:Name="txtCostoUnitario" HorizontalAlignment="Left" Height="23" Margin="200,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"
+            KeyDown="validarDecimal" IsEnabled="False" MaxLength="13"/>
+        <TextBox x:Name="txtPVenta" HorizontalAlignment="Left" Height="23" Margin="682,270,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"
+            KeyDown="validarDecimal" IsEnabled="False" MaxLength="13"/>
+        <TextBox x:Name="txtPMedicos" HorizontalAlignment="Left" Height="23" Margin="1099,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="218"
+            KeyDown="validarDecimal" IsEnabled="False" MaxLength="13"/>
+        <ComboBox x:Name="cbbAlmacen" HorizontalAlignment="Left" Margin="200,314,0,0" VerticalAlignment="Top" Width="218" IsEnabled="False">
+            <ComboBoxItem Content="Medicamentos"/>
+            <ComboBoxItem Content="Materiales"/>
+        </ComboBox>
+        <Button x:Name="btnNuevoMedic"  Content="Nuevo medicamento" HorizontalAlignment="Left" Margin="419,192,0,0" VerticalAlignment="Top" Width="117"
+                IsEnabled="False" Click="btnNuevoMedic_Click"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="969,315,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"
+                IsEnabled="False"/>
+        <Button x:Name="btnEditar" Content="Actualizar" HorizontalAlignment="Left" Margin="969,317,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"
+                Visibility="Hidden"/>
+        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="1112,315,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"
+                IsEnabled="False"/>
+        <telerik:GroupBox x:Name="groupBox_Copy" HorizontalAlignment="Left" Margin="27,175,0,0" VerticalAlignment="Top" Height="183" Width="1290" Header="Medicamentos"/>
+        <telerik:RadGridView x:Name="rgvDetalle" HorizontalAlignment="Left" Margin="32,379,0,0" VerticalAlignment="Top" Height="301" Width="1281" AutoGenerateColumns="False"
+            ShowColumnFooters="False">
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDI}" Header="NOMBRE MEDICAMENTO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding UMEDIDA}" Header="UNIDAD DE MEDIDA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="CANTIDAD"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO UNITARIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SUBTOTAL}" Header="SUBTOTAL"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <telerik:Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="840,705,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="1010,704,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+                 IsReadOnly="True"/>
+
+
+
+
+    </Grid>
+</Window>

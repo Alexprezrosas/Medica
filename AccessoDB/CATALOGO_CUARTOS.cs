@@ -31,6 +31,11 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
+        [StringLength(100)]
+        public string ESTADO { get; set; }
+
+        public int? MAX_PACIENTES { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUARTO> CUARTOS { get; set; }
     }

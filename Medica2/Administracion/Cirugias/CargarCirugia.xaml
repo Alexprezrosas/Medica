@@ -1,0 +1,41 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Cirugias"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Cirugias.CargarCirugia"
+        mc:Ignorable="d"
+        Title="CargarCirugia" Height="232.871" Width="539.941">
+    <Grid>
+        <Label x:Name="lblTitulo" Content="Registro de cirugias" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="31,53,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMedico" Content="Nombre del medico solicitante" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCirugia" Content="Nombre de la cirugia" HorizontalAlignment="Left" Margin="31,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="31,131,0,0" VerticalAlignment="Top"/>
+
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="231,54,0,0" VerticalAlignment="Top" Width="246"
+                                    x:Name="autoPaciente"
+                                    ItemsSource="{Binding PACIENTES}"
+                                    DisplayMemberPath="NOMBRE"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"/>
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="231,80,0,0" VerticalAlignment="Top" Width="246"
+                                    x:Name="autoMedico"
+                                    ItemsSource="{Binding MEDICOS}"
+                                    DisplayMemberPath="NOMBRE"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"/>
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="231,106,0,0" VerticalAlignment="Top" Width="246"
+                                    x:Name="autoCirugia"
+                                    ItemsSource="{Binding CATALOGO_ESTUDIOS}"
+                                    DisplayMemberPath="NOMBRE_CIRUGIA"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"
+                                    SelectionChanged="autoCirugia_SelectionChanged"/>
+        <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="231,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89" IsReadOnly="True"/>
+        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="419,137,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
+
+    </Grid>
+</Window>

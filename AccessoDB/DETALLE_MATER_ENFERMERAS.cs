@@ -23,7 +23,9 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual CATALOGO_MATERIALES CATALOGO_MATERIALES { get; set; }
+        public decimal? SUBTOTAL { get; set; }
+
+        public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
 
         public virtual MATERIALES_ENFERMERAS MATERIALES_ENFERMERAS { get; set; }
     }

@@ -1,0 +1,56 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Pacientes"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Pacientes.ConsultaPacientes"
+        mc:Ignorable="d"
+        Title="ConsultaPacientes" Height="397.774" Width="717.256">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" 
+            Width="665" Height="274" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+            AutoGenerateColumns="False" 
+            SelectedItem="{Binding ID_PACIENTE}"
+            ShowSearchPanel="True"
+            IsSearchingDeferred="True">
+
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_NACIMIENTO}" Header="FECHA DE NACIMIENTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CALLE}" Header="CALLE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MUNICIPIOO}" Header="MUNICIPIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TIPOPACIENTE}" Header="TIPO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding RESPONSABLE}" Header="RESPONSABLE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELEFONO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PARENTESCO}" Header="PARENTESCO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL CUENTA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+
+    </Grid>
+</Window>

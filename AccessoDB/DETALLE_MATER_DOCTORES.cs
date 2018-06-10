@@ -23,8 +23,6 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual CATALOGO_MATERIALES CATALOGO_MATERIALES { get; set; }
-
         public virtual MATERIALES_DOCTORES MATERIALES_DOCTORES { get; set; }
     }
 }

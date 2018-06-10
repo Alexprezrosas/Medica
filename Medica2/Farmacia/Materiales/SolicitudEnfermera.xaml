@@ -6,27 +6,72 @@
         xmlns:local="clr-namespace:Medica2.Farmacia.Materiales"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Materiales.SolicitudEnfermera"
         mc:Ignorable="d"
-        Title="SolicitudEnfermera" Height="484.364" Width="844.175">
+        WindowState="Maximized"
+        Title="SolicitudEnfermera" Height="578.874" Width="767.375">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
     <Grid>
-        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="25" Margin="688,344,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <Label x:Name="lblNombre" Content="Nombre Enfermera" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="597,344,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMaterial" Content="Material" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="264,406,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="440,406,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click" />
-        <Label x:Name="lblTitulo" Content="Solicitud de Material Enfermera" HorizontalAlignment="Left" Margin="124,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="268"/>
+        <Label x:Name="lblTitulo" Content="Solicitud de materiales" HorizontalAlignment="Left" Margin="303,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblDoctor" Content="Nombre de la enfermera" HorizontalAlignment="Left" Margin="36,56,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMaterial" Content="Nombre del material" HorizontalAlignment="Left" Margin="36,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="36,108,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="36,134,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="36,160,0,0" VerticalAlignment="Top"/>
 
-        <telerik:RadGridView HorizontalAlignment="Left" Margin="22,126,0,0" VerticalAlignment="Top" Width="794" Height="201"/>
-        <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="394,83,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="472,84,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" BorderBrush="#FF089CF6"/>
-        <telerik:RadAutoCompleteBox x:Name="autoMaterial" HorizontalAlignment="Left" Margin="173,85,0,0" VerticalAlignment="Top" Width="216" BorderBrush="#FF089CF6"
-                                    ItemsSource="{Binding CATALOGO_MATERIALES}"
-                                    DisplayMemberPath="NOMBRE"
-                                    AutoCompleteMode="Suggest"/>
-        <telerik:RadAutoCompleteBox x:Name="autoEnfermera" HorizontalAlignment="Left" Margin="173,55,0,0" VerticalAlignment="Top" Width="216" BorderBrush="#FF089CF6"
-                                    ItemsSource="{Binding ENFERMERAS}"
-                                    DisplayMemberPath="NOMBRE"
-                                    AutoCompleteMode="Suggest"/>
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="178,58,0,0" VerticalAlignment="Top" Width="254"
+            x:Name="autoEnfermera"
+            ItemsSource="{Binding MEDICOS}"
+            DisplayMemberPath="NOMBRE"
+            AutoCompleteMode="Suggest"
+            SelectionMode="Single"
+            PreviewTextInput="validarLetras"/>
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="178,82,0,0" VerticalAlignment="Top" Width="254"
+            x:Name="autoMaterial"
+            ItemsSource="{Binding CATALOGO_MEDICAMENTOS}"
+            DisplayMemberPath="NOMBRE"
+            AutoCompleteMode="Suggest"
+            SelectionMode="Single"
+            IsEnabled="False"
+            SelectionChanged="autoMaterial_SelectionChanged"
+            PreviewTextInput="validarLetras"/>
 
+        <telerik:RadGridView x:Name="rgvDetalle" HorizontalAlignment="Left" Margin="36,209,0,0" VerticalAlignment="Top" Height="327" Width="690" AutoGenerateColumns="False"
+            ShowColumnFooters="False">
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDI}" Header="NOMBRE MEDICAMENTO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding UMEDIDA}" Header="UNIDAD DE MEDIDA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="CANTIDAD"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+
+        <TextBox x:Name="txtUMedida" HorizontalAlignment="Left" Height="23" Margin="178,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+            IsReadOnly="True"/>
+        <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="178,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+            IsReadOnly="True"/>
+        <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="178,160,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"
+            IsReadOnly="False"
+            IsEnabled="False"
+                 PreviewTextInput="validarNumeros"
+                 MaxLength="8"/>
+
+        <Button x:Name="btnNuevaSolicitud" Content="Nueva Solicitud" HorizontalAlignment="Left" Margin="450,59,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevaSolicitud_Click"/>
+        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="303,163,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnAgregar_Click"/>
+        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="408,163,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnFinalizar_Click"/>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="303,163,0,0" VerticalAlignment="Top" Width="75"
+                Click="btnEditar_Click"
+                Visibility="Hidden"/>
     </Grid>
 </Window>

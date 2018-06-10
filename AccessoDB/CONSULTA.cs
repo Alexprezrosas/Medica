@@ -9,25 +9,10 @@ namespace AccessoDB
     [Table("CONSULTAS")]
     public partial class CONSULTA
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CONSULTA()
-        {
-            PACIENTES = new HashSet<PACIENTE>();
-        }
-
         [Key]
         public int ID_CONSULTA { get; set; }
 
         public int MEDICOID { get; set; }
-
-        public int PACIENTEID { get; set; }
-
-        public int DIAGNOSTICOID { get; set; }
-
-        [StringLength(200)]
-        public string DESCRIPCION { get; set; }
-
-        public int MEDICAMENTOID { get; set; }
 
         public decimal? COSTO { get; set; }
 
@@ -35,15 +20,26 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
-        public virtual CATALOGO_MEDICAMENTOS CATALOGO_MEDICAMENTOS { get; set; }
+        public int? PACIENTEID { get; set; }
 
-        public virtual DIAGNOSTICO DIAGNOSTICO { get; set; }
+        [StringLength(200)]
+        public string NOM_PACIENTE { get; set; }
+
+        [StringLength(200)]
+        public string DIAGNOSTICO { get; set; }
+
+        [StringLength(500)]
+        public string DESCRIPCION { get; set; }
+
+        [StringLength(1000)]
+        public string MEDICAMENTOS { get; set; }
+
+        public int? USUARIOID { get; set; }
 
         public virtual Medico Medico { get; set; }
 
         public virtual PACIENTE PACIENTE { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PACIENTE> PACIENTES { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

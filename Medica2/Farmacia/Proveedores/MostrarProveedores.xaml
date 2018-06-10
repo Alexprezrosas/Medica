@@ -6,13 +6,62 @@
         xmlns:local="clr-namespace:Medica2.Farmacia.Proveedores"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Proveedores.MostrarProveedores"
         mc:Ignorable="d"
-        Title="MostrarProveedores" Height="318.293" Width="482.195">
+        Title="MostrarProveedores" Height="419.5" Width="1005.681">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView Name="vistaProveedores" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Height="217" Width="476"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="591*"/>
+        </Grid.ColumnDefinitions>
+
+        <telerik:RadGridView x:Name="vistaProveedores"  HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" 
+                             Width="976" Height="312" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" 
+                             Grid.Column="1" AutoGenerateColumns="False" 
+                             SelectedItem="{Binding ID_ENFERMERA}"
+                             ShowSearchPanel="True"
+                             IsSearchingDeferred="True">
+
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding RFC}" Header="RFC"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELEFONO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOO}" Header="ESTADO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MUNICIPIOO}" Header="MUNICIPIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding LOCALIDADD}" Header="LOCALIDAD"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CALLE}" Header="CALLE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_NACIMIENTO}" Header="FECHA DE NACIMIENTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SEXO}" Header="SEXO"/>
+
+
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOTA}" Header="NOTA"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
 
 
         <Button x:Name="buttoneditar" Content="Editar" Click="buttoneditar_Click" HorizontalAlignment="Left" Margin="154,246,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label x:Name="lblTitulo" Content="Consulta de Proveedores" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
 
     </Grid>
 </Window>

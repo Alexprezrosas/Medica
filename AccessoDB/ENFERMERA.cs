@@ -15,6 +15,7 @@ namespace AccessoDB
             ESPECIALIDADES_ENFERMERAS = new HashSet<ESPECIALIDADES_ENFERMERAS>();
             ENFERMERAS_TRATANTES = new HashSet<ENFERMERAS_TRATANTES>();
             MATERIALES_ENFERMERAS = new HashSet<MATERIALES_ENFERMERAS>();
+            SUMINISTROS_MEDICAMENTOS = new HashSet<SUMINISTROS_MEDICAMENTOS>();
         }
 
         [Key]
@@ -39,5 +40,8 @@ namespace AccessoDB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MATERIALES_ENFERMERAS> MATERIALES_ENFERMERAS { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUMINISTROS_MEDICAMENTOS> SUMINISTROS_MEDICAMENTOS { get; set; }
     }
 }

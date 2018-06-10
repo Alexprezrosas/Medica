@@ -19,7 +19,7 @@ namespace Medica2.Farmacia.Materiales
         {
             InitializeComponent();
             MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
-            autoMate.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+            
 
             MostrarMateriales.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
 
@@ -118,9 +118,7 @@ namespace Medica2.Farmacia.Materiales
         {
             if (sender == itemAgregar)
             {
-                NuevoMaterial nmat = new NuevoMaterial();
-                nmat.Show();
-                MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+                
                 
             }
             else
@@ -164,13 +162,13 @@ namespace Medica2.Farmacia.Materiales
         {
             if (e.Cell.Column.UniqueName == "COD_BARRAS")
             {
-                var newValue = Int32.Parse(e.NewValue.ToString());
+                //var newValue = Int32.Parse(e.NewValue.ToString());
                 
-                if (newValue < 0 || newValue > 130)
-                {
-                    e.IsValid = false;
-                    e.ErrorMessage = "Solo enteros entre 0 y 130";
-                }
+                //if (newValue < 0 || newValue > 130)
+                //{
+                //    e.IsValid = false;
+                //    e.ErrorMessage = "Solo enteros entre 0 y 130";
+                //}
             } 
         }
     }

@@ -12,21 +12,27 @@ namespace AccessoDB
         [Key]
         public int ID_ESTUDIO { get; set; }
 
-        public int MEDICOID { get; set; }
-
         public int CATALOGO_ESTUDIOS_ID { get; set; }
 
         public decimal? TOTAL { get; set; }
 
         public decimal? CARGO_EXTRA { get; set; }
 
-        public int CUENTAID { get; set; }
-
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
         public int? USUARIOID { get; set; }
+
+        public int? MEDICOID { get; set; }
+
+        public int? CUENTAID { get; set; }
+
+        [StringLength(150)]
+        public string MEDICO_SOLICITANTE { get; set; }
+
+        [StringLength(150)]
+        public string PACIENTE_SOLICITANTE { get; set; }
 
         public virtual CATALOGO_ESTUDIOS CATALOGO_ESTUDIOS { get; set; }
 

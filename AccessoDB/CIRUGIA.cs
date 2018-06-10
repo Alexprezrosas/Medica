@@ -28,10 +28,14 @@ namespace AccessoDB
 
         public decimal? TOTAL { get; set; }
 
+        public int? USUARIOID { get; set; }
+
         public virtual CATALOGO_CIRUGIAS CATALOGO_CIRUGIAS { get; set; }
 
         public virtual CUENTA CUENTA { get; set; }
 
         public virtual Medico Medico { get; set; }
+
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +56,7 @@
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -77,6 +79,8 @@
     </Reference>
     <Reference Include="Telerik.Windows.Controls, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Data, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.DataVisualization, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Docking, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.EntityFramework, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.GridView, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.ImageEditor, Version=2017.3.1018.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
@@ -111,6 +115,74 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Administracion\Cirugias\CargarCirugia.xaml.cs">
+      <DependentUpon>CargarCirugia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cirugias\ConsultarCirugiasAplicadas.xaml.cs">
+      <DependentUpon>ConsultarCirugiasAplicadas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cuartos\CuartosDisponibles.xaml.cs">
+      <DependentUpon>CuartosDisponibles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Depositos\RegistrarDeposito.xaml.cs">
+      <DependentUpon>RegistrarDeposito.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Estudios\CargarEstudios.xaml.cs">
+      <DependentUpon>CargarEstudios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Estudios\EstudiosAplicados.xaml.cs">
+      <DependentUpon>EstudiosAplicados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Pacientes\ConsultaPacientes.xaml.cs">
+      <DependentUpon>ConsultaPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Pacientes\IngresoPaciente.xaml.cs">
+      <DependentUpon>IngresoPaciente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enfermeria\Pacientes\MostrarPacientes.xaml.cs">
+      <DependentUpon>MostrarPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enfermeria\Suministros\NuevoSuministro.xaml.cs">
+      <DependentUpon>NuevoSuministro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Compras\ConsultaCompras.xaml.cs">
+      <DependentUpon>ConsultaCompras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Compras\NuevaCompra.xaml.cs">
+      <DependentUpon>NuevaCompra.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Conversion\RegistroConversion.xaml.cs">
+      <DependentUpon>RegistroConversion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Devoluciones\AplicarDevolucion.xaml.cs">
+      <DependentUpon>AplicarDevolucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Devoluciones\DevolucionPacientes.xaml.cs">
+      <DependentUpon>DevolucionPacientes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\SolicitudDoctor.xaml.cs">
+      <DependentUpon>SolicitudDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Medicamentos\ConsultaMedicamentos.xaml.cs">
+      <DependentUpon>ConsultaMedicamentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Medicamentos\RegistroMedicamento.xaml.cs">
+      <DependentUpon>RegistroMedicamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\RegistroProveedor.xaml.cs">
+      <DependentUpon>RegistroProveedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\ConsultaVentas.xaml.cs">
+      <DependentUpon>ConsultaVentas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\RegistrarVenta.xaml.cs">
+      <DependentUpon>RegistrarVenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validacion.cs" />
+    <Page Include="Administracion\Cirugias\CargarCirugia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Cirugias\CatalogoCirugias.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,11 +191,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Cirugias\ConsultarCirugiasAplicadas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Cuartos\CatalogoCuartos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administracion\Cuartos\ConsultaCatalogoCuartos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Cuartos\CuartosDisponibles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Depositos\RegistrarDeposito.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,11 +243,55 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Estudios\CargarEstudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Estudios\EstudiosAplicados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Pacientes\ConsultaPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Pacientes\IngresoPaciente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Enfermeria\Pacientes\MostrarPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Enfermeria\Suministros\NuevoSuministro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Compras\ConsultaCompras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Compras\NuevaCompra.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Conversion\RegistroConversion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Devoluciones\AplicarDevolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Devoluciones\DevolucionPacientes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Farmacia\Materiales\ConsultaMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Materiales\NuevoMaterial.xaml">
+    <Page Include="Farmacia\Materiales\SolicitudDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,11 +299,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Farmacia\Medicamentos\ConsultaMedicamentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Farmacia\Medicamentos\NuevoMedicamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Proveedores\EditarProveedor.xaml">
+    <Page Include="Farmacia\Medicamentos\RegistroMedicamento.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,7 +315,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Farmacia\Proveedores\Proveedores.xaml">
+    <Page Include="Farmacia\Proveedores\RegistroProveedor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Ventas\ConsultaVentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Ventas\RegistrarVenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -240,23 +380,14 @@
     <Compile Include="Farmacia\Materiales\ConsultaMaterial.xaml.cs">
       <DependentUpon>ConsultaMaterial.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Materiales\NuevoMaterial.xaml.cs">
-      <DependentUpon>NuevoMaterial.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Farmacia\Materiales\SolicitudEnfermera.xaml.cs">
       <DependentUpon>SolicitudEnfermera.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Medicamentos\NuevoMedicamento.xaml.cs">
       <DependentUpon>NuevoMedicamento.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Farmacia\Proveedores\EditarProveedor.xaml.cs">
-      <DependentUpon>EditarProveedor.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Farmacia\Proveedores\MostrarProveedores.xaml.cs">
       <DependentUpon>MostrarProveedores.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Farmacia\Proveedores\Proveedores.xaml.cs">
-      <DependentUpon>Proveedores.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -345,11 +476,7 @@
       <Name>AccessoDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Farmacia\Compras\" />
-    <Folder Include="Farmacia\Devoluciones\" />
-    <Folder Include="Farmacia\Ventas\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

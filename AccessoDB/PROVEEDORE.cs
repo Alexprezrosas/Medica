@@ -20,16 +20,15 @@ namespace AccessoDB
 
         public int PERSONAID { get; set; }
 
-        [Required]
-        [StringLength(30)]
-        public string RFC { get; set; }
-
         [StringLength(200)]
         public string NOTA { get; set; }
 
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
+
+        [StringLength(50)]
+        public string RFC { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPRA> COMPRAS { get; set; }

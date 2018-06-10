@@ -28,32 +28,6 @@ namespace AccessoDB
         [StringLength(50)]
         public string NOMBRE { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string A_PATERNO { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string A_MATERNO { get; set; }
-
-        [Required]
-        [StringLength(15)]
-        public string SEXO { get; set; }
-
-        [Required]
-        [StringLength(150)]
-        public string CALLE { get; set; }
-
-        public int LOCALIDAD { get; set; }
-
-        public int MUNICIPIO { get; set; }
-
-        public int ESTADO { get; set; }
-
-        [Required]
-        [StringLength(20)]
-        public string T_CELULAR { get; set; }
-
         [StringLength(150)]
         public string CURP { get; set; }
 
@@ -63,6 +37,33 @@ namespace AccessoDB
 
         [Column(TypeName = "date")]
         public DateTime? F_NACIMIENTO { get; set; }
+
+        [StringLength(50)]
+        public string A_PATERNO { get; set; }
+
+        [StringLength(50)]
+        public string A_MATERNO { get; set; }
+
+        [StringLength(50)]
+        public string SEXO { get; set; }
+
+        [StringLength(50)]
+        public string T_CELULAR { get; set; }
+
+        [StringLength(150)]
+        public string CALLE { get; set; }
+
+        public int? LOCALIDAD { get; set; }
+
+        public int? MUNICIPIO { get; set; }
+
+        public int? ESTADO { get; set; }
+
+        [StringLength(100)]
+        public string NOMMUNICIPIO { get; set; }
+
+        [StringLength(100)]
+        public string NOMLOCALIDAD { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPLEADO> EMPLEADOS { get; set; }

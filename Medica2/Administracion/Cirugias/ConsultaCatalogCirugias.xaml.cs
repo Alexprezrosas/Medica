@@ -26,7 +26,7 @@ namespace Medica2.Administracion
             InitializeComponent();
             
             
-            radCatalogoCirugias.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES_ENFERMERAS.ToList();
+            radCatalogoCirugias.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
         }
     }
 }
