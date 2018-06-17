@@ -71,6 +71,8 @@
     <Compile Include="CUENTA.cs" />
     <Compile Include="DEPOSITO.cs" />
     <Compile Include="DETALLE_COMPRAS.cs" />
+    <Compile Include="DETALLE_EQUIPO_HOSPITAL.cs" />
+    <Compile Include="DETALLE_ESTUDIOS.cs" />
     <Compile Include="DETALLE_MATER_DOCTORES.cs" />
     <Compile Include="DETALLE_MATER_ENFERMERAS.cs" />
     <Compile Include="DETALLE_SUMINISTROS_MEDICAMENTOS.cs" />

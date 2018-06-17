@@ -22,7 +22,7 @@
         <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="28,78,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMedicoInterno" Content="Nombre del medico" HorizontalAlignment="Left" Margin="28,129,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="28,157,0,0" VerticalAlignment="Top"/>
-        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="189,50,0,0" VerticalAlignment="Top" Width="289"
+        <telerik:RadAutoCompleteBox IsEnabled="False" HorizontalAlignment="Left" Margin="189,50,0,0" VerticalAlignment="Top" Width="289"
                                     x:Name="autoEstudio"
                                     ItemsSource="{Binding CATALOGO_ESTUDIOS}"
                                     DisplayMemberPath="NOMBRE"
@@ -44,13 +44,12 @@
                                     DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
                                     SelectionMode="Single"/>
-        <CheckBox x:Name="cbTipoMedico" Content="Medico Interno" HorizontalAlignment="Left" Margin="31,109,0,0" VerticalAlignment="Top"
+        <CheckBox x:Name="cbTipoMedico" IsEnabled="False" Content="Medico Interno" HorizontalAlignment="Left" Margin="31,109,0,0" VerticalAlignment="Top"
                   Checked="cbTipoMedico_Checked" Unchecked="cbTipoMedico_Unchecked"/>
-        <TextBox x:Name="txtMedico" HorizontalAlignment="Left" Height="23" Margin="189,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
-        <TextBox x:Name="txtPaciente" HorizontalAlignment="Left" Height="23" Margin="189,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
-        <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="503,188,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
-        <Button x:Name="btnAgregar_Copy" Content="Agregar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Copy_Click"/>
+        <TextBox x:Name="txtMedico" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
+        <TextBox x:Name="txtPaciente" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
+        
+        
         <telerik:RadGridView x:Name="rgvEstudios"  HorizontalAlignment="Left" Margin="31,224,0,0" VerticalAlignment="Top" 
             Width="665" Height="274" 
             AutoGenerateColumns="False" 
@@ -58,16 +57,28 @@
             ShowColumnFooters="True"
             IsSearchingDeferred="True">
 
-            
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemEditar2" Header="Editar" IsEnabled="False" Click="itemAgregar_Click2" DisplayMemberPath="SelectedItem" Visibility="Hidden"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar2" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click2" DisplayMemberPath="SelectedItem" Visibility="Hidden"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem" Visibility="Hidden"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem" Visibility="Hidden"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding ESTUDIONOMBRE}" Header="ESTUDIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCION" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTOO}" Header="COSTO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="423,511,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="536,510,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
+        
+        <Button x:Name="btnNuevo_Estudio" IsEnabled="true" Content="Nuevo Estudio" HorizontalAlignment="Left" Margin="483,50,0,0" VerticalAlignment="Top" Width="95" Click="btnNuevo_Estudio_Click"/>
+        <Button x:Name="btnEditar" Visibility="Hidden" IsEnabled="False" Content="Actualizar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
+        <Button x:Name="btnAgregar" IsEnabled="False" Content="Agregar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
+        <Button x:Name="btnFinalizar" IsEnabled="False" Content="Finalizar" HorizontalAlignment="Left" Margin="503,188,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
 
 
     </Grid>

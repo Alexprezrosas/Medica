@@ -36,6 +36,8 @@ namespace AccessoDB
 
         public int? MAX_PACIENTES { get; set; }
 
+        public int? PAC_ACTUALES { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUARTO> CUARTOS { get; set; }
     }

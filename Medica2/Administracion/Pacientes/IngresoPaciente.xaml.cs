@@ -22,47 +22,74 @@ namespace Medica2.Administracion.Pacientes
     {
         int idf;
         int idp;
+        int idccp;
         public IngresoPaciente()
         {
             InitializeComponent();
             FillEstados();
-            autoCuarto.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
+            llenarAutocmpletes();
+            dpFecha_Nacimiento.DisplayDateEnd = DateTime.Now;
         }
 
-        public IngresoPaciente(PACIENTE idpaciente, FAM_RESPONSABLES idfamiliar , bool save)
+        void llenarAutocmpletes()
+        {
+            autoCuarto.ItemsSource = (from cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
+                                      where cuarto.ESTADO == "Libre"
+                                      select new
+                                      {
+                                          ID_CATALOGO_CUARTO = cuarto.ID_CATALOGO_CUARTO,
+                                          NOMBRE = cuarto.NOMBRE_CUARTO
+                                      });
+        }
+
+        public IngresoPaciente(PACIENTE idpaciente, FAM_RESPONSABLES idfamiliar , bool save, int id_cuarto)
         {
             InitializeComponent();
             FillEstados();
-            autoCuarto.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
+            
+            idccp = id_cuarto;
+            
+            var cc = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(id_cuarto);
+            autoCuarto.SearchText = cc.NOMBRE_CUARTO;
+            cc.PAC_ACTUALES = cc.PAC_ACTUALES - 1;
+            BaseDatos.GetBaseDatos().SaveChanges();
+
+            if (cc.PAC_ACTUALES <= cc.MAX_PACIENTES)
+            {
+                cc.ESTADO = "Libre";
+                BaseDatos.GetBaseDatos().SaveChanges();
+            }
+
+            llenarAutocmpletes();
+
             if (idpaciente.TIPO_PACIENTE == "Hospitalizado")
             {
                 idp = idpaciente.ID_PACIENTE;
                 idf = idfamiliar.ID_FAM_RESPOSABLE;
+
+                
 
                 txtNombre.Text = idpaciente.PERSONA.NOMBRE;
                 txtPaterno.Text = idpaciente.PERSONA.A_PATERNO;
                 txtMaterno.Text = idpaciente.PERSONA.A_MATERNO;
                 cbbSexo.Text = idpaciente.PERSONA.SEXO;
                 txtCalle.Text = idpaciente.PERSONA.CALLE;
-                comboBoxEstado.SelectedValue = idpaciente.PERSONA.ESTADO;
-                comboBoxEstado.Text = idpaciente.PERSONA.ESTADO.ToString();
-                comboBoxMunicipios.SelectedValue = idpaciente.PERSONA.MUNICIPIO;
-                comboBoxMunicipios.Text = idpaciente.PERSONA.MUNICIPIO.ToString();
-                comboBoxLocalidades.SelectedValue = idpaciente.PERSONA.LOCALIDAD;
-                comboBoxLocalidades.Text = idpaciente.PERSONA.LOCALIDAD.ToString();
+                int idestado = comboBoxEstado.Items.IndexOf(idpaciente.PERSONA.ESTADO1);
+                comboBoxEstado.SelectedIndex = idestado;
+                
+                txtMunicipio.Text = idpaciente.PERSONA.NOMMUNICIPIO;
+                txtLocalidad.Text = idpaciente.PERSONA.NOMLOCALIDAD;
                 txtCurp.Text = idpaciente.PERSONA.CURP;
                 dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();
-                autoCuarto.SelectedItem = idpaciente.CUARTOID;
-
                 txtNombreFam.Text = idfamiliar.PERSONA.NOMBRE;
                 txtPaternoRes.Text = idfamiliar.PERSONA.A_PATERNO;
-                txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;
-                cbbSexo.Text = idfamiliar.PERSONA.SEXO;
+                txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;                
+                cbbSexoFR.Text = idfamiliar.PERSONA.SEXO;
                 txtCelularRes.Text = idfamiliar.PERSONA.T_CELULAR;
                 txtParentezco.Text = idfamiliar.PARENTESCO;
                 cbTipoPaciente.IsChecked = true;
 
-                autoCuarto.IsEnabled = false;
+                
             }else
             {
                 idp = idpaciente.ID_PACIENTE;
@@ -73,28 +100,27 @@ namespace Medica2.Administracion.Pacientes
                 txtMaterno.Text = idpaciente.PERSONA.A_MATERNO;
                 cbbSexo.Text = idpaciente.PERSONA.SEXO;
                 txtCalle.Text = idpaciente.PERSONA.CALLE;
-                comboBoxEstado.SelectedValue = idpaciente.PERSONA.ESTADO;
-                comboBoxEstado.Text = idpaciente.PERSONA.ESTADO.ToString();
-                comboBoxMunicipios.SelectedValue = idpaciente.PERSONA.MUNICIPIO;
-                comboBoxMunicipios.Text = idpaciente.PERSONA.MUNICIPIO.ToString();
-                comboBoxLocalidades.SelectedValue = idpaciente.PERSONA.LOCALIDAD;
-                comboBoxLocalidades.Text = idpaciente.PERSONA.LOCALIDAD.ToString();
+                int idestado = comboBoxEstado.Items.IndexOf(idpaciente.PERSONA.ESTADO1);
+                comboBoxEstado.SelectedIndex = idestado;
+                txtMunicipio.Text = idpaciente.PERSONA.NOMMUNICIPIO;
+                txtLocalidad.Text = idpaciente.PERSONA.NOMLOCALIDAD;
                 txtCurp.Text = idpaciente.PERSONA.CURP;
-                dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();
-                autoCuarto.SelectedItem = idpaciente.CUARTOID;
-
+                dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();                
                 txtNombreFam.Text = idfamiliar.PERSONA.NOMBRE;
                 txtPaternoRes.Text = idfamiliar.PERSONA.A_PATERNO;
                 txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;
                 cbbSexoFR.Text = idfamiliar.PERSONA.SEXO;
                 txtCelularRes.Text = idfamiliar.PERSONA.T_CELULAR;
                 txtParentezco.Text = idfamiliar.PARENTESCO;
-                autoCuarto.IsEnabled = false;
+                
 
             }
 
             btnGuardar.IsEnabled = false;
             btnEditar.IsEnabled = true;
+
+            btnGuardar.Visibility = Visibility.Hidden;
+            btnEditar.Visibility = Visibility.Visible;
 
         }
 
@@ -160,24 +186,6 @@ namespace Medica2.Administracion.Pacientes
             comboBoxEstado.ItemsSource = lst;
         }
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int EstadosId = Convert.ToInt32(comboBoxEstado.SelectedValue);
-
-            List<MUNICIPIO> lst1 = BaseDatos.GetBaseDatos().MUNICIPIOS.Where(x => x.estado_id == EstadosId).ToList();
-            comboBoxMunicipios.ItemsSource = lst1;
-
-        }
-
-        private void comboBox_SelectionChangedL(object sender, SelectionChangedEventArgs e)
-        {
-            int Municipiosid = Convert.ToInt32(comboBoxMunicipios.SelectedValue);
-
-            List<LOCALIDADE> lst1 = BaseDatos.GetBaseDatos().LOCALIDADES.Where(x => x.municipio_id == Municipiosid).ToList();
-            comboBoxLocalidades.ItemsSource = lst1;
-
-        }
-
         void limpiar()
         {
             txtNombre.Text = String.Empty;
@@ -196,6 +204,8 @@ namespace Medica2.Administracion.Pacientes
             cbbSexoFR.SelectedIndex = -1;
             autoCuarto.SearchText = String.Empty;
             dpFecha_Nacimiento.Text = String.Empty;
+            txtMunicipio.Text = String.Empty;
+            txtLocalidad.Text = String.Empty;
         }
 
         void Guardar()
@@ -230,14 +240,14 @@ namespace Medica2.Administracion.Pacientes
                                     MessageBox.Show("Selecciona un estado");
                                 }else
                                 {
-                                    if (comboBoxMunicipios.Text == "")
+                                    if (txtMunicipio.Text == "")
                                     {
-                                        MessageBox.Show("Selecciona un municipio");
+                                        MessageBox.Show("Ingresa un municipio");
                                     }else
                                     {
-                                        if (comboBoxLocalidades.Text == "")
+                                        if (txtLocalidad.Text == "")
                                         {
-                                            MessageBox.Show("Selecciona una localidad");
+                                            MessageBox.Show("Ingresa una localidad");
                                         }else
                                         {
                                             if (txtCurp.Text == "" && txtCurp.Text.Length < 19)
@@ -275,157 +285,194 @@ namespace Medica2.Administracion.Pacientes
                                                                         MessageBox.Show("Ingresa el parentezco");
                                                                     }else
                                                                     {
-                                                                        if (cbTipoPaciente.IsChecked == true)
+                                                                        if (autoCuarto.SelectedItem == null)
                                                                         {
-                                                                            DateTime fregistro = DateTime.Now;
-                                                                            int idcuarto = ((CATALOGO_CUARTOS)autoCuarto.SelectedItem).ID_CATALOGO_CUARTO;
-
-                                                                            PERSONA pac = new PERSONA
-                                                                            {
-                                                                                NOMBRE = txtNombre.Text,
-                                                                                A_PATERNO = txtPaterno.Text,
-                                                                                A_MATERNO = txtMaterno.Text,
-                                                                                F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
-                                                                                SEXO = cbbSexo.Text,
-                                                                                CALLE = txtCalle.Text,
-                                                                                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
-                                                                                MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue),
-                                                                                LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),
-                                                                                CURP = txtCurp.Text,
-                                                                                FECHA_CREACION = fregistro
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(pac);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-                                                                            
-                                                                            PACIENTE paciente = new PACIENTE
-                                                                            {
-                                                                                PERSONAID = pac.ID_PERSONA,
-                                                                                TIPO_PACIENTE = "Hospitalizado",
-                                                                                FECHA_CREACION = fregistro,
-                                                                                CUARTOID = idcuarto
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().PACIENTES.Add(paciente);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            PERSONA fam = new PERSONA
-                                                                            {
-                                                                                NOMBRE = txtNombreFam.Text,
-                                                                                A_PATERNO = txtPaternoRes.Text,
-                                                                                A_MATERNO = txtMaternoRes.Text,
-                                                                                SEXO = cbbSexoFR.Text,
-                                                                                T_CELULAR = txtCelularRes.Text,
-                                                                                FECHA_CREACION = fregistro
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(fam);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            FAM_RESPONSABLES famres = new FAM_RESPONSABLES
-                                                                            {
-                                                                                PERSONAID = fam.ID_PERSONA,
-                                                                                PARENTESCO = txtParentezco.Text,
-                                                                                FECHA_CREACION = fregistro,
-                                                                                PACIENTEID = paciente.ID_PACIENTE
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Add(famres);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            CUENTA cupac = new CUENTA
-                                                                            {
-                                                                                PACIENTEID = paciente.ID_PACIENTE,
-                                                                                TOTAL = 0,
-                                                                                SALDO = -500
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            var cuartoid = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuarto);
-                                                                            cuartoid.ESTADO = "Ocupado";
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            MessageBox.Show("Registro exitoso");
-                                                                            limpiar();
-                                                                            //
-                                                                        }
-                                                                        else
+                                                                            MessageBox.Show("Selecciona un cuarto");
+                                                                        }else
                                                                         {
-                                                                            DateTime fregistro = DateTime.Now;
-                                                                            int idcuarto = ((CATALOGO_CUARTOS)autoCuarto.SelectedItem).ID_CATALOGO_CUARTO;
-
-                                                                            PERSONA pac = new PERSONA
+                                                                            if (cbTipoPaciente.IsChecked == true)
                                                                             {
-                                                                                NOMBRE = txtNombre.Text,
-                                                                                A_PATERNO = txtPaterno.Text,
-                                                                                A_MATERNO = txtMaterno.Text,
-                                                                                F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
-                                                                                SEXO = cbbSexo.Text,
-                                                                                CALLE = txtCalle.Text,
-                                                                                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
-                                                                                MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue),
-                                                                                LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),
-                                                                                CURP = txtCurp.Text,
-                                                                                FECHA_CREACION = fregistro
-                                                                            };
+                                                                                DateTime fregistro = DateTime.Now;
+                                                                                dynamic cua = autoCuarto.SelectedItem;
+                                                                                int idcua = cua.ID_CATALOGO_CUARTO;
 
-                                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(pac);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                PERSONA pac = new PERSONA
+                                                                                {
+                                                                                    NOMBRE = txtNombre.Text,
+                                                                                    A_PATERNO = txtPaterno.Text,
+                                                                                    A_MATERNO = txtMaterno.Text,
+                                                                                    F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
+                                                                                    SEXO = cbbSexo.Text,
+                                                                                    CALLE = txtCalle.Text,
+                                                                                    ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
+                                                                                    NOMMUNICIPIO = txtMunicipio.Text,
+                                                                                    NOMLOCALIDAD = txtLocalidad.Text,
+                                                                                    CURP = txtCurp.Text,
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    ESTADOPERSONA = "Activo"
+                                                                                };
 
-                                                                            PACIENTE paciente = new PACIENTE
+                                                                                BaseDatos.GetBaseDatos().PERSONAS.Add(pac);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                PACIENTE paciente = new PACIENTE
+                                                                                {
+                                                                                    PERSONAID = pac.ID_PERSONA,
+                                                                                    TIPO_PACIENTE = "Hospitalizado",
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    CUARTOID = idcua
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().PACIENTES.Add(paciente);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                PERSONA fam = new PERSONA
+                                                                                {
+                                                                                    NOMBRE = txtNombreFam.Text,
+                                                                                    A_PATERNO = txtPaternoRes.Text,
+                                                                                    A_MATERNO = txtMaternoRes.Text,
+                                                                                    SEXO = cbbSexoFR.Text,
+                                                                                    T_CELULAR = txtCelularRes.Text,
+                                                                                    FECHA_CREACION = fregistro
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().PERSONAS.Add(fam);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                FAM_RESPONSABLES famres = new FAM_RESPONSABLES
+                                                                                {
+                                                                                    PERSONAID = fam.ID_PERSONA,
+                                                                                    PARENTESCO = txtParentezco.Text,
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    PACIENTEID = paciente.ID_PACIENTE
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Add(famres);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                CUENTA cupac = new CUENTA
+                                                                                {
+                                                                                    PACIENTEID = paciente.ID_PACIENTE,
+                                                                                    TOTAL = 0,
+                                                                                    SALDO = -500
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                var cuarto = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcua);
+                                                                                if (cuarto.MAX_PACIENTES == cuarto.PAC_ACTUALES)
+                                                                                {
+                                                                                    cuarto.ESTADO = "Ocupado";
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                }else
+                                                                                {
+                                                                                    cuarto.PAC_ACTUALES = cuarto.PAC_ACTUALES + 1;
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                    if (cuarto.MAX_PACIENTES == cuarto.PAC_ACTUALES)
+                                                                                    {
+                                                                                        cuarto.ESTADO = "Ocupado";
+                                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                    }
+                                                                                }
+
+                                                                                MessageBox.Show("Registro exitoso");
+                                                                                llenarAutocmpletes();
+                                                                                limpiar();
+                                                                                //
+                                                                            }
+                                                                            else
                                                                             {
-                                                                                PERSONAID = pac.ID_PERSONA,
-                                                                                TIPO_PACIENTE = "Ambulatorio",
-                                                                                FECHA_CREACION = fregistro,
-                                                                                CUARTOID = idcuarto
-                                                                            };
+                                                                                DateTime fregistro = DateTime.Now;
+                                                                                dynamic cua = autoCuarto.SelectedItem;
+                                                                                int idcua = cua.ID_CATALOGO_CUARTO;
 
-                                                                            BaseDatos.GetBaseDatos().PACIENTES.Add(paciente);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                PERSONA pac = new PERSONA
+                                                                                {
+                                                                                    NOMBRE = txtNombre.Text,
+                                                                                    A_PATERNO = txtPaterno.Text,
+                                                                                    A_MATERNO = txtMaterno.Text,
+                                                                                    F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
+                                                                                    SEXO = cbbSexo.Text,
+                                                                                    CALLE = txtCalle.Text,
+                                                                                    ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
+                                                                                    NOMMUNICIPIO = txtMunicipio.Text,
+                                                                                    NOMLOCALIDAD = txtLocalidad.Text,
+                                                                                    CURP = txtCurp.Text,
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    ESTADOPERSONA = "Activo"
+                                                                                };
 
-                                                                            PERSONA fam = new PERSONA
-                                                                            {
-                                                                                NOMBRE = txtNombreFam.Text,
-                                                                                A_PATERNO = txtPaternoRes.Text,
-                                                                                A_MATERNO = txtMaternoRes.Text,
-                                                                                SEXO = cbbSexoFR.Text,
-                                                                                T_CELULAR = txtCelularRes.Text,
-                                                                                FECHA_CREACION = fregistro
-                                                                            };
+                                                                                BaseDatos.GetBaseDatos().PERSONAS.Add(pac);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(fam);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                PACIENTE paciente = new PACIENTE
+                                                                                {
+                                                                                    PERSONAID = pac.ID_PERSONA,
+                                                                                    TIPO_PACIENTE = "Ambulatorio",
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    CUARTOID = idcua
+                                                                                };
 
-                                                                            FAM_RESPONSABLES famres = new FAM_RESPONSABLES
-                                                                            {
-                                                                                PERSONAID = fam.ID_PERSONA,
-                                                                                PARENTESCO = txtParentezco.Text,
-                                                                                FECHA_CREACION = fregistro,
-                                                                                PACIENTEID = paciente.ID_PACIENTE
-                                                                            };
+                                                                                BaseDatos.GetBaseDatos().PACIENTES.Add(paciente);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                            BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Add(famres);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                PERSONA fam = new PERSONA
+                                                                                {
+                                                                                    NOMBRE = txtNombreFam.Text,
+                                                                                    A_PATERNO = txtPaternoRes.Text,
+                                                                                    A_MATERNO = txtMaternoRes.Text,
+                                                                                    SEXO = cbbSexoFR.Text,
+                                                                                    T_CELULAR = txtCelularRes.Text,
+                                                                                    FECHA_CREACION = fregistro
+                                                                                };
 
-                                                                            CUENTA cupac = new CUENTA
-                                                                            {
-                                                                                PACIENTEID = paciente.ID_PACIENTE,
-                                                                                TOTAL = 0,
-                                                                                SALDO = -500
-                                                                            };
+                                                                                BaseDatos.GetBaseDatos().PERSONAS.Add(fam);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                            BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                FAM_RESPONSABLES famres = new FAM_RESPONSABLES
+                                                                                {
+                                                                                    PERSONAID = fam.ID_PERSONA,
+                                                                                    PARENTESCO = txtParentezco.Text,
+                                                                                    FECHA_CREACION = fregistro,
+                                                                                    PACIENTEID = paciente.ID_PACIENTE
+                                                                                };
 
-                                                                            var cuartoid = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuarto);
-                                                                            cuartoid.ESTADO = "Ocupado";
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Add(famres);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                            MessageBox.Show("Registro exitoso");
-                                                                            limpiar();
-                                                                            //
+                                                                                CUENTA cupac = new CUENTA
+                                                                                {
+                                                                                    PACIENTEID = paciente.ID_PACIENTE,
+                                                                                    TOTAL = 0,
+                                                                                    SALDO = -500
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                var cuarto = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcua);
+                                                                                if (cuarto.MAX_PACIENTES == cuarto.PAC_ACTUALES)
+                                                                                {
+                                                                                    cuarto.ESTADO = "Ocupado";
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    cuarto.PAC_ACTUALES = cuarto.PAC_ACTUALES + 1;
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                    if (cuarto.MAX_PACIENTES == cuarto.PAC_ACTUALES)
+                                                                                    {
+                                                                                        cuarto.ESTADO = "Ocupado";
+                                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                    }
+                                                                                }
+
+                                                                                MessageBox.Show("Registro exitoso");
+                                                                                limpiar();
+                                                                                llenarAutocmpletes();
+                                                                                //
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -482,15 +529,15 @@ namespace Medica2.Administracion.Pacientes
                                 }
                                 else
                                 {
-                                    if (comboBoxMunicipios.Text == "")
+                                    if (txtMunicipio.Text == "")
                                     {
-                                        MessageBox.Show("Selecciona un municipio");
+                                        MessageBox.Show("Ingresa un municipio");
                                     }
                                     else
                                     {
-                                        if (comboBoxLocalidades.Text == "")
+                                        if (txtLocalidad.Text == "")
                                         {
-                                            MessageBox.Show("Selecciona una localidad");
+                                            MessageBox.Show("Ingresa una localidad");
                                         }
                                         else
                                         {
@@ -536,73 +583,106 @@ namespace Medica2.Administracion.Pacientes
                                                                     }
                                                                     else
                                                                     {
-                                                                        if (cbTipoPaciente.IsChecked == true)
+                                                                        if (autoCuarto.SelectedItem == null)
                                                                         {
-                                                                            DateTime fmod = DateTime.Now;
-
-                                                                            var pa = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
-                                                                            pa.PERSONA.NOMBRE = txtNombre.Text;
-                                                                            pa.PERSONA.A_MATERNO = txtMaterno.Text;
-                                                                            pa.PERSONA.A_PATERNO = txtPaterno.Text;
-                                                                            pa.PERSONA.F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate;
-                                                                            pa.PERSONA.SEXO = cbbSexo.Text;
-                                                                            pa.PERSONA.CALLE = txtCalle.Text;
-                                                                            pa.PERSONA.ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue);
-                                                                            pa.PERSONA.MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue);
-                                                                            pa.PERSONA.LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue);
-                                                                            pa.PERSONA.CURP = txtCurp.Text;
-                                                                            pa.TIPO_PACIENTE = "Hospitalizado";
-                                                                            pa.FECHA_MOD = fmod;
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            var fam = BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Find(idf);
-                                                                            fam.PERSONA.NOMBRE = txtNombreFam.Text;
-                                                                            fam.PERSONA.A_PATERNO = txtPaternoRes.Text;
-                                                                            fam.PERSONA.A_MATERNO = txtMaternoRes.Text;
-                                                                            fam.PERSONA.SEXO = cbbSexo.Text;
-                                                                            fam.PERSONA.T_CELULAR = txtCelularRes.Text;
-                                                                            fam.PARENTESCO = txtParentezco.Text;
-                                                                            fam.FECHA_MOD = fmod;
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            MessageBox.Show("Se actualizo el registro");
-                                                                            ConsultaPacientes cp = new ConsultaPacientes();
-                                                                            cp.Show();
-                                                                            this.Close();
-                                                                        }
-                                                                        else
+                                                                            MessageBox.Show("Selecciona un cuarto");
+                                                                        }else
                                                                         {
-                                                                            DateTime fmod = DateTime.Now;
+                                                                            if (cbTipoPaciente.IsChecked == true)
+                                                                            {
+                                                                                //var ccua = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idccp);
+                                                                                //ccua.PAC_ACTUALES = -1;
+                                                                                //BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                            var pa = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
-                                                                            pa.PERSONA.NOMBRE = txtNombre.Text;
-                                                                            pa.PERSONA.A_MATERNO = txtMaterno.Text;
-                                                                            pa.PERSONA.A_PATERNO = txtPaterno.Text;
-                                                                            pa.PERSONA.F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate;
-                                                                            pa.PERSONA.SEXO = cbbSexo.Text;
-                                                                            pa.PERSONA.CALLE = txtCalle.Text;
-                                                                            pa.PERSONA.ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue);
-                                                                            pa.PERSONA.MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue);
-                                                                            pa.PERSONA.LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue);
-                                                                            pa.PERSONA.CURP = txtCurp.Text;
-                                                                            pa.TIPO_PACIENTE = "Hospitalizado";
-                                                                            pa.FECHA_MOD = fmod;
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                DateTime fmod = DateTime.Now;
 
-                                                                            var fam = BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Find(idf);
-                                                                            fam.PERSONA.NOMBRE = txtNombreFam.Text;
-                                                                            fam.PERSONA.A_PATERNO = txtPaternoRes.Text;
-                                                                            fam.PERSONA.A_MATERNO = txtMaternoRes.Text;
-                                                                            fam.PERSONA.SEXO = cbbSexo.Text;
-                                                                            fam.PERSONA.T_CELULAR = txtCelularRes.Text;
-                                                                            fam.PARENTESCO = txtParentezco.Text;
-                                                                            fam.FECHA_MOD = fmod;
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                dynamic c = autoCuarto.SelectedItem;
+                                                                                int idcuart = c.ID_CATALOGO_CUARTO;
 
-                                                                            MessageBox.Show("Se actualizo el registro");
-                                                                            ConsultaPacientes cp = new ConsultaPacientes();
-                                                                            cp.Show();
-                                                                            this.Close();
+                                                                                var pcc = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuart);
+                                                                                pcc.PAC_ACTUALES = pcc.PAC_ACTUALES + 1;
+                                                                                if (pcc.MAX_PACIENTES == pcc.PAC_ACTUALES)
+                                                                                {
+                                                                                    pcc.ESTADO = "Ocupado";
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                }
+
+                                                                                var pa = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
+                                                                                pa.PERSONA.NOMBRE = txtNombre.Text;
+                                                                                pa.PERSONA.A_MATERNO = txtMaterno.Text;
+                                                                                pa.PERSONA.A_PATERNO = txtPaterno.Text;
+                                                                                pa.PERSONA.F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate;
+                                                                                pa.PERSONA.SEXO = cbbSexo.Text;
+                                                                                pa.PERSONA.CALLE = txtCalle.Text;
+                                                                                pa.PERSONA.ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue);
+                                                                                pa.PERSONA.NOMMUNICIPIO = txtMunicipio.Text;
+                                                                                pa.PERSONA.NOMLOCALIDAD = txtLocalidad.Text;
+                                                                                pa.PERSONA.CURP = txtCurp.Text;
+                                                                                pa.TIPO_PACIENTE = "Hospitalizado";
+                                                                                pa.FECHA_MOD = fmod;
+                                                                                pa.CUARTOID = idcuart;
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                var fam = BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Find(idf);
+                                                                                fam.PERSONA.NOMBRE = txtNombreFam.Text;
+                                                                                fam.PERSONA.A_PATERNO = txtPaternoRes.Text;
+                                                                                fam.PERSONA.A_MATERNO = txtMaternoRes.Text;
+                                                                                fam.PERSONA.SEXO = cbbSexo.Text;
+                                                                                fam.PERSONA.T_CELULAR = txtCelularRes.Text;
+                                                                                fam.PARENTESCO = txtParentezco.Text;
+                                                                                fam.FECHA_MOD = fmod;
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                MessageBox.Show("Se actualizo el registro");
+                                                                                ConsultaPacientes cp = new ConsultaPacientes();
+                                                                                cp.Show();
+                                                                                this.Close();
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                DateTime fmod = DateTime.Now;
+                                                                                dynamic c = autoCuarto.SelectedItem;
+                                                                                int idcuart = c.ID_CATALOGO_CUARTO;
+
+                                                                                var pcc = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuart);
+                                                                                pcc.PAC_ACTUALES = pcc.PAC_ACTUALES + 1;
+                                                                                if (pcc.MAX_PACIENTES == pcc.PAC_ACTUALES)
+                                                                                {
+                                                                                    pcc.ESTADO = "Ocupado";
+                                                                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                                                                }
+
+                                                                                var pa = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
+                                                                                pa.PERSONA.NOMBRE = txtNombre.Text;
+                                                                                pa.PERSONA.A_MATERNO = txtMaterno.Text;
+                                                                                pa.PERSONA.A_PATERNO = txtPaterno.Text;
+                                                                                pa.PERSONA.F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate;
+                                                                                pa.PERSONA.SEXO = cbbSexo.Text;
+                                                                                pa.PERSONA.CALLE = txtCalle.Text;
+                                                                                pa.PERSONA.ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue);
+                                                                                pa.PERSONA.NOMMUNICIPIO = txtMunicipio.Text;
+                                                                                pa.PERSONA.NOMLOCALIDAD = txtLocalidad.Text;
+                                                                                pa.PERSONA.CURP = txtCurp.Text;
+                                                                                pa.TIPO_PACIENTE = "Hospitalizado";
+                                                                                pa.FECHA_MOD = fmod;
+                                                                                pa.CUARTOID = idcuart;
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                var fam = BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Find(idf);
+                                                                                fam.PERSONA.NOMBRE = txtNombreFam.Text;
+                                                                                fam.PERSONA.A_PATERNO = txtPaternoRes.Text;
+                                                                                fam.PERSONA.A_MATERNO = txtMaternoRes.Text;
+                                                                                fam.PERSONA.SEXO = cbbSexo.Text;
+                                                                                fam.PERSONA.T_CELULAR = txtCelularRes.Text;
+                                                                                fam.PARENTESCO = txtParentezco.Text;
+                                                                                fam.FECHA_MOD = fmod;
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                                MessageBox.Show("Se actualizo el registro");
+                                                                                ConsultaPacientes cp = new ConsultaPacientes();
+                                                                                cp.Show();
+                                                                                this.Close();
+                                                                            }
                                                                         }
                                                                     }
                                                                 }

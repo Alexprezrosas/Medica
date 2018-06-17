@@ -27,6 +27,8 @@ namespace AccessoDB
         public virtual DbSet<CUENTA> CUENTAS { get; set; }
         public virtual DbSet<DEPOSITO> DEPOSITOS { get; set; }
         public virtual DbSet<DETALLE_COMPRAS> DETALLE_COMPRAS { get; set; }
+        public virtual DbSet<DETALLE_EQUIPO_HOSPITAL> DETALLE_EQUIPO_HOSPITAL { get; set; }
+        public virtual DbSet<DETALLE_ESTUDIOS> DETALLE_ESTUDIOS { get; set; }
         public virtual DbSet<DETALLE_MATER_DOCTORES> DETALLE_MATER_DOCTORES { get; set; }
         public virtual DbSet<DETALLE_MATER_ENFERMERAS> DETALLE_MATER_ENFERMERAS { get; set; }
         public virtual DbSet<DETALLE_SUMINISTROS_MEDICAMENTOS> DETALLE_SUMINISTROS_MEDICAMENTOS { get; set; }
@@ -112,9 +114,10 @@ namespace AccessoDB
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<CATALOGO_EQUIPO_HOSPITAL>()
-                .HasMany(e => e.EQUIPO_HOSPITAL)
-                .WithRequired(e => e.CATALOGO_EQUIPO_HOSPITAL)
-                .HasForeignKey(e => e.CATALOGO_EQUIPO_HOSPITALID);
+                .HasMany(e => e.DETALLE_EQUIPO_HOSPITAL)
+                .WithOptional(e => e.CATALOGO_EQUIPO_HOSPITAL)
+                .HasForeignKey(e => e.CATALOGO_EQUIPO_HOSPITALID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<CATALOGO_ESPECIALIDADES>()
                 .Property(e => e.NOMBRE_ESPECIALIDAD)
@@ -147,9 +150,10 @@ namespace AccessoDB
                 .HasPrecision(10, 3);
 
             modelBuilder.Entity<CATALOGO_ESTUDIOS>()
-                .HasMany(e => e.ESTUDIOS)
-                .WithRequired(e => e.CATALOGO_ESTUDIOS)
-                .HasForeignKey(e => e.CATALOGO_ESTUDIOS_ID);
+                .HasMany(e => e.DETALLE_ESTUDIOS)
+                .WithOptional(e => e.CATALOGO_ESTUDIOS)
+                .HasForeignKey(e => e.CATALOGO_ESTUDIOS_ID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<CATALOGO_MATERIALES>()
                 .Property(e => e.NOMBRE)
@@ -202,6 +206,10 @@ namespace AccessoDB
             modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
                 .Property(e => e.COD_BARRAS)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
+                .Property(e => e.IVA)
+                .HasPrecision(10, 3);
 
             modelBuilder.Entity<CATALOGO_MEDICAMENTOS>()
                 .HasMany(e => e.DETALLE_MATER_ENFERMERAS)
@@ -280,6 +288,30 @@ namespace AccessoDB
             modelBuilder.Entity<CONSULTA>()
                 .Property(e => e.MEDICAMENTOS)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.TALLA)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.PESO)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.TEMPERATURA)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.ALERGIAS)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.P_ARTERIAL)
+                .HasPrecision(10, 2);
+
+            modelBuilder.Entity<CONSULTA>()
+                .Property(e => e.GLUCOSA)
+                .HasPrecision(10, 2);
 
             modelBuilder.Entity<CUARTO>()
                 .Property(e => e.TOTAL)
@@ -376,6 +408,18 @@ namespace AccessoDB
                 .Property(e => e.NOMEDI)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<DETALLE_EQUIPO_HOSPITAL>()
+                .Property(e => e.COSTO)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<DETALLE_ESTUDIOS>()
+                .Property(e => e.COSTO)
+                .HasPrecision(10, 3);
+
+            modelBuilder.Entity<DETALLE_ESTUDIOS>()
+                .Property(e => e.SUBTOTAL)
+                .HasPrecision(10, 3);
+
             modelBuilder.Entity<DETALLE_MATER_DOCTORES>()
                 .Property(e => e.COSTO)
                 .HasPrecision(10, 3);
@@ -451,6 +495,12 @@ namespace AccessoDB
                 .Property(e => e.TOTAL)
                 .HasPrecision(10, 3);
 
+            modelBuilder.Entity<EQUIPO_HOSPITAL>()
+                .HasMany(e => e.DETALLE_EQUIPO_HOSPITAL)
+                .WithOptional(e => e.EQUIPO_HOSPITAL)
+                .HasForeignKey(e => e.EQUIPO_HOSPITALID)
+                .WillCascadeOnDelete();
+
             modelBuilder.Entity<ESTADO>()
                 .Property(e => e.clave)
                 .IsUnicode(false);
@@ -493,6 +543,12 @@ namespace AccessoDB
             modelBuilder.Entity<ESTUDIO>()
                 .Property(e => e.PACIENTE_SOLICITANTE)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<ESTUDIO>()
+                .HasMany(e => e.DETALLE_ESTUDIOS)
+                .WithOptional(e => e.ESTUDIO)
+                .HasForeignKey(e => e.ESTUDIOSID)
+                .WillCascadeOnDelete();
 
             modelBuilder.Entity<FAM_RESPONSABLES>()
                 .Property(e => e.PARENTESCO)
@@ -719,6 +775,10 @@ namespace AccessoDB
 
             modelBuilder.Entity<PERSONA>()
                 .Property(e => e.NOMLOCALIDAD)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<PERSONA>()
+                .Property(e => e.ESTADOPERSONA)
                 .IsUnicode(false);
 
             modelBuilder.Entity<PERSONA>()

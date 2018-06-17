@@ -9,10 +9,14 @@ namespace AccessoDB
     [Table("ESTUDIOS")]
     public partial class ESTUDIO
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ESTUDIO()
+        {
+            DETALLE_ESTUDIOS = new HashSet<DETALLE_ESTUDIOS>();
+        }
+
         [Key]
         public int ID_ESTUDIO { get; set; }
-
-        public int CATALOGO_ESTUDIOS_ID { get; set; }
 
         public decimal? TOTAL { get; set; }
 
@@ -34,9 +38,10 @@ namespace AccessoDB
         [StringLength(150)]
         public string PACIENTE_SOLICITANTE { get; set; }
 
-        public virtual CATALOGO_ESTUDIOS CATALOGO_ESTUDIOS { get; set; }
-
         public virtual CUENTA CUENTA { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_ESTUDIOS> DETALLE_ESTUDIOS { get; set; }
 
         public virtual Medico Medico { get; set; }
 

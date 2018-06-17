@@ -46,8 +46,8 @@
 
             <!-- ADMINISTRACION -->
             
-            <telerik:RadRibbonTab Header="Administracion">
-                <telerik:RadRibbonGroup Header="">
+            <telerik:RadRibbonTab Header="Administracion" x:Name="MenuAdministracion" >
+                <telerik:RadRibbonGroup Header="" x:Name="SubAdministracion">
 
                     <!-- PACIENTES -->
 
@@ -56,6 +56,7 @@
                             <telerik:RadContextMenu  BorderThickness="0">
                                 <telerik:RadMenuItem x:Name="itemRegistrarPaciente" Header="Registrar paciente" Click="RadMenuItem_Click"/>
                                 <telerik:RadMenuItem x:Name="itemVisualizarPacientes" Header="Visualizar pacientes" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem x:Name="itemReporte" Header="Reporte" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -130,9 +131,9 @@
                                     <telerik:RadMenuItem x:Name="itemCargarCirugia" Header="CargarCirugia" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemMostrarCirugiasCargadas" Header="Visualizar cirugias realizadas" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
-                                <telerik:RadMenuItem Header="Equipo de Hospital" Click="RadMenuItem_Click">
-                                    <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
-                                    <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem  Header="Equipo de Hospital" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemcargarequipoh" Header="Cargar Equipo Hospital" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemrvizualizacargaequipoh" Header="Visualizar" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Honorario Medico" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
@@ -141,6 +142,7 @@
                                 <telerik:RadMenuItem Header="Consulta" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="reporte" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
@@ -157,6 +159,7 @@
                                     <telerik:RadMenuItem Header="Visualizar" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem x:Name="itemNuevoDeposito" Header="Registrar deposito" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem x:Name="itemConsultarDepositosAplicados" Header="Consultar depositos" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -185,8 +188,8 @@
             
         <!-- FARMACIA -->
 
-            <telerik:RadRibbonTab Header="Farmacia">
-                <telerik:RadRibbonGroup Header="">
+            <telerik:RadRibbonTab Header="Farmacia" x:Name="MenuFarmacia">
+                <telerik:RadRibbonGroup Header="" x:Name="SubFarmacia">
 
                     <!-- PROVEEDORES -->
 
@@ -232,11 +235,14 @@
                     <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/material.png" Size="Large" Text="Materiales">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
-                                <telerik:RadMenuItem x:Name="itemConsultarMaterial" Header="Consultar material" Click="RadMenuItem_Click">
-                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemConsultarMaterial" Header="Consultar material" Click="RadMenuItem_Click"/>
                                 <telerik:RadMenuItem Header="Solicitud de Material">
                                     <telerik:RadMenuItem x:Name="itemMaterialEnfermera" Header="Solicitud Enfermera" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemMaterialDoctor" Header="Solicitud Doctor" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemConsultarSolicitudMaterial" Header="Consultar Solicitud de Materiales" Click="RadMenuItem_Click">
+                                    <telerik:RadMenuItem x:Name="itemConsultarSolicitudMaterialEnfermera" Header="Enfermeras" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemConsultarSolicitudMaterialDoctor" Header="Doctores" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
@@ -285,8 +291,8 @@
 
             <!--ENFERMERIA-->
 
-            <telerik:RadRibbonTab Header="Enfermeria">
-                <telerik:RadRibbonGroup Header="">
+            <telerik:RadRibbonTab Header="Enfermeria" x:Name="MenuEnfermeria">
+                <telerik:RadRibbonGroup Header="" x:Name="SubEnfermeria">
 
                     <!-- PACIENTES -->
 

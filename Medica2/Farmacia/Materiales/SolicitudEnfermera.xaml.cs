@@ -31,6 +31,25 @@ namespace Medica2.Farmacia.Materiales
             llenarAutocompletes();
         }
 
+        public SolicitudEnfermera(int idso, int ide)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idsol = idso;
+
+            var enferm = BaseDatos.GetBaseDatos().ENFERMERAS.Find(ide);
+            var solicitud = BaseDatos.GetBaseDatos().MATERIALES_ENFERMERAS.Find(idsol);
+            autoEnfermera.SearchText = enferm.PERSONA.NOMBRE + " " + enferm.PERSONA.A_PATERNO + " " + enferm.PERSONA.A_MATERNO;
+            autoEnfermera.IsEnabled = false;
+            btnNuevaSolicitud.IsEnabled = false;
+            autoMaterial.IsEnabled = true;
+            txtCantidad.IsEnabled = true;
+            btnAgregar.IsEnabled = true;
+            VistaGrid();
+            total = Decimal.Parse(solicitud.TOTAL.ToString());
+            
+        }
+
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {
             int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
@@ -90,7 +109,7 @@ namespace Medica2.Farmacia.Materiales
                                       select new
                                       {
                                           ID_ENFERMERA = e.ID_ENFERMERA,
-                                          NOMBRE = PERSONA.NOMBRE,
+                                          NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
                                       }).ToList();
 
             autoMaterial.ItemsSource = (from CATALOGO_MEDICAMENTOS in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
@@ -109,6 +128,7 @@ namespace Medica2.Farmacia.Materiales
             txtUMedida.Text = String.Empty;
             txtCosto.Text = String.Empty;
             txtCantidad.Text = String.Empty;
+            txtExistencias.Text = String.Empty;
         }
 
         void Bloquear()
@@ -140,6 +160,7 @@ namespace Medica2.Farmacia.Materiales
                 var medicamento = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
                 txtUMedida.Text = medicamento.U_MEDIDA;
                 txtCosto.Text = medicamento.P_COMPRA.ToString();
+                txtExistencias.Text = medicamento.CANTIDAD.ToString();
             }
 
         }

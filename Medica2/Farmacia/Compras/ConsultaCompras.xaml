@@ -20,7 +20,6 @@
 
         <telerik:RadGridView x:Name="rgvCompras" HorizontalAlignment="Left" Margin="10,54,0,0" 
         VerticalAlignment="Top" Width="798" Height="396" AutoGenerateColumns="False" 
-        ShowColumnFooters="True"
         ShowSearchPanel="True"
         IsSearchingDeferred="True">
 
@@ -32,13 +31,12 @@
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID_COMPRA}" Header="ID COMPRA" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FACTURA}" Header="NUMERO DE FACTURA" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PROVEEDOR}" Header="PROVEEDOR" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTAL}" Header="TOTAL"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_COMPRA}" Header="FECHA DE COMPRA" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_VENCIMIENTO}" Header="FECHA DE VENCIMIENTO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PROVEEDOR}" Header="PROVEEDOR" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUSUARIO}" Header="USUARIO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTAL}" Header="TOTAL"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTitulo" Content="Consulta de compras" HorizontalAlignment="Left" Margin="303,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>

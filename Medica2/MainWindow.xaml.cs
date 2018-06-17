@@ -8,6 +8,7 @@ using Medica2.Administracion.Especialidades;
 using Medica2.Administracion.EspecialidadesEnfermeras;
 using Medica2.Administracion.Estudios;
 using Medica2.Administracion.Pacientes;
+using Medica2.Administracion.Reportes;
 using Medica2.Enfermeria.Pacientes;
 using Medica2.Farmacia;
 using Medica2.Farmacia.Compras;
@@ -17,8 +18,9 @@ using Medica2.Farmacia.Materiales;
 using Medica2.Farmacia.Medicamentos;
 using Medica2.Farmacia.Proveedores;
 using Medica2.Farmacia.Ventas;
+using System;
 using System.Windows;
-
+using Telerik.Windows.Controls;
 
 namespace Medica2
 {
@@ -27,9 +29,60 @@ namespace Medica2
     /// </summary>
     public partial class MainWindow : Window
     {
+        int idusuario;
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        public MainWindow(int idusu)
+        {
+            InitializeComponent();
+            idusuario = idusu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idusuario);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                MenuAdministracion.IsEnabled = true;
+                MenuFarmacia.IsEnabled = true;
+                MenuEnfermeria.IsEnabled = true;
+                
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Farmaceutico")
+                {
+                    MenuAdministracion.Visibility = Visibility.Hidden;
+                    SubAdministracion.Visibility = Visibility.Hidden;
+                    MenuEnfermeria.Visibility = Visibility.Hidden;
+                    SubEnfermeria.Visibility = Visibility.Hidden;
+                }else
+                {
+                    if (usuario.EMPLEADO.PUESTO == "Enfermeria")
+                    {
+                        MenuAdministracion.Visibility = Visibility.Hidden;
+                        SubAdministracion.Visibility = Visibility.Hidden;
+                        MenuFarmacia.Visibility = Visibility.Hidden;
+                        SubFarmacia.Visibility = Visibility.Hidden;
+                    }else
+                    {
+                        if (usuario.EMPLEADO.PUESTO == "Recepcion")
+                        {
+                            MenuEnfermeria.Visibility = Visibility.Hidden;
+                            SubEnfermeria.Visibility = Visibility.Hidden;
+                            MenuFarmacia.Visibility = Visibility.Hidden;
+                            SubFarmacia.Visibility = Visibility.Hidden;
+                        }else
+                        {
+                            if (usuario.EMPLEADO.PUESTO == "Medico")
+                            {
+                                MenuEnfermeria.Visibility = Visibility.Hidden;
+                                SubEnfermeria.Visibility = Visibility.Hidden;
+                                MenuFarmacia.Visibility = Visibility.Hidden;
+                                SubFarmacia.Visibility = Visibility.Hidden;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void RadMenuItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
@@ -63,6 +116,11 @@ namespace Medica2
                 
                 
             }
+            if (sender == itemReporte)
+            {
+                reporte1 rp = new reporte1();
+                rp.Show();
+            }
 
             //Materiales
             //if (sender == itemNuevoMaterial)
@@ -72,27 +130,41 @@ namespace Medica2
             //}
             //else
             //{
-                if (sender == itemConsultarMaterial)
+            if (sender == itemConsultarMaterial)
+            {
+                ConsultaMaterial mat = new ConsultaMaterial();
+                mat.Show();
+            }
+            else
+            {
+                if (sender == itemMaterialEnfermera)
                 {
-                    ConsultaMaterial mat = new ConsultaMaterial();
-                    mat.Show();
+                    SolicitudEnfermera solenf = new SolicitudEnfermera();
+                    solenf.Show();
                 }
                 else
                 {
-                    if (sender == itemMaterialEnfermera)
+                    if (sender == itemMaterialDoctor)
                     {
-                        SolicitudEnfermera solenf = new SolicitudEnfermera();
-                        solenf.Show();
-                    }
-                    else
+                        SolicitudDoctor soldoc = new SolicitudDoctor();
+                        soldoc.Show();
+                    }else
                     {
-                        if (sender == itemMaterialDoctor)
+                        if (sender == itemConsultarSolicitudMaterialEnfermera)
                         {
-                            SolicitudDoctor soldoc = new SolicitudDoctor();
-                            soldoc.Show();
+                            ConsultarSolicitudEnfermera cd = new ConsultarSolicitudEnfermera();
+                            cd.Show();
+                        }else
+                        {
+                            if (sender == itemConsultarSolicitudMaterialDoctor)
+                            {
+                                ConsultarSolicitudDoctor cdoc = new ConsultarSolicitudDoctor();
+                                cdoc.Show();
+                            }
                         }
                     }
                 }
+            }
             //}
 
             //Medicamentos
@@ -216,6 +288,19 @@ namespace Medica2
                 ConsultaCatalogoEquipoHospital ccehm = new ConsultaCatalogoEquipoHospital();
                 ccehm.Show();
             }
+            if(sender== itemcargarequipoh)
+            {
+                CargarEquipoHospital obj = new CargarEquipoHospital();
+                obj.Show();
+            }
+            else
+            {
+                if(sender== itemrvizualizacargaequipoh)
+                {
+                    ConsultaCatalogoEquipoHospital obj = new ConsultaCatalogoEquipoHospital();
+                    obj.Show();
+                }
+            }
 
             //Especialidades Medicos
 
@@ -273,10 +358,18 @@ namespace Medica2
                 }
             }
 
+            //Depositos
             if (sender == itemNuevoDeposito)
             {
                 RegistrarDeposito rd = new RegistrarDeposito();
                 rd.Show();
+            }else
+            {
+               if (sender == itemConsultarDepositosAplicados)
+                {
+                    ConsultarDepositosAplicados cda = new ConsultarDepositosAplicados();
+                    cda.Show();
+                }
             }
 
             //Estudios cargas

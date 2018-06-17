@@ -30,8 +30,8 @@
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="22,221,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="337,55,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTitulo" Content="Registro de Enfermeras" HorizontalAlignment="Left" Margin="220,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lblCProfesional" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="337,170,0,0" VerticalAlignment="Top" Width="112"/>
-        <TextBox x:Name="txtCProfesional" HorizontalAlignment="Left" Height="23" Margin="459,172,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
+        <Label x:Name="lblCProfesional" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="337,165,0,0" VerticalAlignment="Top" Width="112"/>
+        <TextBox x:Name="txtCProfesional" HorizontalAlignment="Left" Height="23" Margin="459,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="178,300,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="354,300,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
 
@@ -39,18 +39,10 @@
         <ComboBox x:Name="comboBoxEstado" HorizontalAlignment="Left" 
                   Margin="173,222,0,0" VerticalAlignment="Top" Width="120"
                   DisplayMemberPath="nombre" 
-                  SelectedValuePath="id" SelectedValue="{Binding id}" SelectionChanged="comboBox_SelectionChanged" />
-
-        <ComboBox x:Name="comboBoxMunicipios" HorizontalAlignment="Left" 
-                  Margin="458,55,0,0" VerticalAlignment="Top" Width="120"
-                  DisplayMemberPath="nombre" SelectedValuePath="id"
-                  SelectedValue="{Binding id}"  SelectionChanged="comboBox_SelectionChangedL"/>
-
-        <ComboBox x:Name="comboBoxLocalidades" HorizontalAlignment="Left" 
-                  Margin="459,83,0,0" VerticalAlignment="Top" Width="120"
-                  DisplayMemberPath="nombre" SelectedValuePath="id"
-                  SelectedValue="{Binding id}" />
+                  SelectedValuePath="id" SelectedValue="{Binding id}" />
         <TextBox x:Name="txtEdad" HorizontalAlignment="Left" Height="23" Margin="173,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="validarNumeros"/>
+        <TextBox x:Name="txtLocalidad" HorizontalAlignment="Left" Height="23" Margin="459,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtMunicipio" HorizontalAlignment="Left" Height="23" Margin="459,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
 
 
 

@@ -53,10 +53,6 @@ namespace AccessoDB
         [StringLength(150)]
         public string CALLE { get; set; }
 
-        public int? LOCALIDAD { get; set; }
-
-        public int? MUNICIPIO { get; set; }
-
         public int? ESTADO { get; set; }
 
         [StringLength(100)]
@@ -64,6 +60,9 @@ namespace AccessoDB
 
         [StringLength(100)]
         public string NOMLOCALIDAD { get; set; }
+
+        [StringLength(50)]
+        public string ESTADOPERSONA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EMPLEADO> EMPLEADOS { get; set; }

@@ -36,6 +36,21 @@ namespace AccessoDB
 
         public int? USUARIOID { get; set; }
 
+        public int? EDAD { get; set; }
+
+        public decimal? TALLA { get; set; }
+
+        public decimal? PESO { get; set; }
+
+        public decimal? TEMPERATURA { get; set; }
+
+        [StringLength(500)]
+        public string ALERGIAS { get; set; }
+
+        public decimal? P_ARTERIAL { get; set; }
+
+        public decimal? GLUCOSA { get; set; }
+
         public virtual Medico Medico { get; set; }
 
         public virtual PACIENTE PACIENTE { get; set; }

@@ -43,8 +43,8 @@ namespace Medica2.Administracion.Enfermeras
             cbbSexo.Text = "";
             txtCalle.Text = "";
             comboBoxEstado.Text = "";
-            comboBoxMunicipios.Text = "";
-            comboBoxLocalidades.Text = "";
+            txtLocalidad.Text = "";
+            txtMunicipio.Text = "";
             txtCelular.Text = "";
             txtCurp.Text = "";
             txtCProfesional.Text = "";
@@ -88,12 +88,12 @@ namespace Medica2.Administracion.Enfermeras
                                         MessageBox.Show("Seleccionar un mstado");
                                     }else
                                     {
-                                        if (comboBoxMunicipios.Text == "")
+                                        if (txtMunicipio.Text == "")
                                         {
                                             MessageBox.Show("Seleccionar un municipio");
                                         }else
                                         {
-                                            if (comboBoxLocalidades.Text == "")
+                                            if (txtLocalidad.Text == "")
                                             {
                                                 MessageBox.Show("Seleccionar una localidad");
                                             }else
@@ -131,8 +131,8 @@ namespace Medica2.Administracion.Enfermeras
                                                                 //EDAD = ed,
                                                                 SEXO = cbbSexo.Text,
                                                                 CALLE = txtCalle.Text,
-                                                                LOCALIDAD = Convert.ToInt32(comboBoxLocalidades.SelectedValue),
-                                                                MUNICIPIO = Convert.ToInt32(comboBoxMunicipios.SelectedValue),
+                                                                NOMMUNICIPIO = txtMunicipio.Text,
+                                                                NOMLOCALIDAD = txtLocalidad.Text,
                                                                 ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                                 T_CELULAR = txtCelular.Text,
                                                                 CURP = txtCurp.Text,
@@ -185,24 +185,6 @@ namespace Medica2.Administracion.Enfermeras
             
             List<ESTADO> lst = BaseDatos.GetBaseDatos().ESTADOS.ToList();
             comboBoxEstado.ItemsSource = lst;
-        }
-
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            int EstadosId = Convert.ToInt32(comboBoxEstado.SelectedValue);
-            
-            List<MUNICIPIO> lst1 = BaseDatos.GetBaseDatos().MUNICIPIOS.Where(x => x.estado_id == EstadosId).ToList();
-            comboBoxMunicipios.ItemsSource = lst1;
-
-        }
-
-        private void comboBox_SelectionChangedL(object sender, SelectionChangedEventArgs e)
-        {
-            int Municipiosid = Convert.ToInt32(comboBoxMunicipios.SelectedValue);
-            
-            List<LOCALIDADE> lst1 = BaseDatos.GetBaseDatos().LOCALIDADES.Where(x => x.municipio_id == Municipiosid).ToList();
-            comboBoxLocalidades.ItemsSource = lst1;
-
         }
         ///////
         private void validarLetras(object sender, TextCompositionEventArgs e)

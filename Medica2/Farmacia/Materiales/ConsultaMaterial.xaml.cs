@@ -18,11 +18,24 @@ namespace Medica2.Farmacia.Materiales
         public ConsultaMaterial()
         {
             InitializeComponent();
-            MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
-            
+            VistaGrid();
+            rgvMostrarMateriales.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
 
-            MostrarMateriales.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
 
+        void VistaGrid()
+        {
+            rgvMostrarMateriales.ItemsSource = (from mate in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                                where mate.ALMACEN == "Materiales"
+                                                select new
+                                                {
+                                                    NOMBRE = mate.NOMBRE_MEDI,
+                                                    COD_BARRAS = mate.COD_BARRAS,
+                                                    DESCRIPCION = mate.COMENTARIO,
+                                                    CANTIDAD = mate.CANTIDAD,
+                                                    COSTO = mate.P_COMPRA,
+                                                    F_CREACION = mate.FECHA_CREACION
+                                                });
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
@@ -30,21 +43,14 @@ namespace Medica2.Farmacia.Materiales
             if (e.NewVisibility == Visibility.Collapsed)
             {
                 var clearSearchValue = GridViewSearchPanelCommands.ClearSearchValue as RoutedUICommand;
-                clearSearchValue.Execute(null, MostrarMateriales.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
+                clearSearchValue.Execute(null, rgvMostrarMateriales.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
             }
         }
-
-
-        ////
-
-
-
-
+        
         private void MostrarMateriales_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
         {
             BaseDatos.GetBaseDatos().SaveChanges();
         }
-
         
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {
@@ -129,15 +135,15 @@ namespace Medica2.Farmacia.Materiales
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idmat = (MostrarMateriales.SelectedItem as CATALOGO_MATERIALES).ID_CATALOGO_MATERIAL;
-                            if (MostrarMateriales.SelectedItem != null)
+                            int idmat = (rgvMostrarMateriales.SelectedItem as CATALOGO_MATERIALES).ID_CATALOGO_MATERIAL;
+                            if (rgvMostrarMateriales.SelectedItem != null)
                             {
                                 var cmatt = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Find(idmat);
                                 BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Remove(cmatt);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
                             MessageBox.Show("Se ha eliminado el material", "Farmacia Materiales");
-                            MostrarMateriales.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.ToList();
+                            VistaGrid();
                             break;
 
                         case MessageBoxResult.No:

@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Farmacia.Materiales"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Materiales.ConsultarSolicitudDoctor"
+        mc:Ignorable="d"
+        Title="ConsultarSolicitudDoctor" Height="397.2" Width="645.6">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <telerik:RadGridView x:Name="rgvConsultaDoctoresSol" HorizontalAlignment="Left" Margin="10,54,-330.4,-79.6" 
+        VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
+        ShowSearchPanel="True"
+        IsSearchingDeferred="True">
+
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIO}" Header="NOMBRE DEL USUARIO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDIC}" Header="MEDICO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTAL}" Header="TOTAL"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_SOLICITUD}" Header="FECHA DE LA SOLICITUD"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Consulta solicitudes de doctores" HorizontalAlignment="Left" Margin="133,10,-209,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+
+    </Grid>
+</Window>

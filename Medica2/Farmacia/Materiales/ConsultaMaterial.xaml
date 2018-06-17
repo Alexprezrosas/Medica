@@ -20,13 +20,12 @@
 
     <Grid>
 
-        <telerik:RadGridView Name="MostrarMateriales" HorizontalAlignment="Left" Margin="10,54,0,0" 
+        <telerik:RadGridView Name="rgvMostrarMateriales" HorizontalAlignment="Left" Margin="10,54,0,0" 
                              VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
                              SelectedCellsChanged="MostrarMateriales_SelectedCellsChanged" 
-                             CellValidating="MostrarMateriales_CellValidating" ShowColumnFooters="True"
+                             CellValidating="MostrarMateriales_CellValidating"
                              ShowSearchPanel="True"
-                             IsSearchingDeferred="True"
-                             NewRowPosition="Top">
+                             IsSearchingDeferred="True">
             
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
@@ -37,11 +36,11 @@
             
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Material" KeyDown="GridViewDataColumn_KeyDown" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COMENTARIO}" Header="Comentario" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="Codigo de Barras" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="Cantidad" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCION" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="CODIGO DE BARRAS" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="EXISTENCIAS" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO UNITARIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="FECHA DE REGISTRO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 

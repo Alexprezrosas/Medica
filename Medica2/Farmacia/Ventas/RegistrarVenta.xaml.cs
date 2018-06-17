@@ -256,6 +256,8 @@ namespace Medica2.Farmacia.Ventas
 
                             //Habilitamos el btn Finalizar
                             btnFinalizar.IsEnabled = true;
+
+                            chbVenta.IsEnabled = false;
                         }
                     }
                 }
@@ -310,6 +312,7 @@ namespace Medica2.Farmacia.Ventas
             var comp = BaseDatos.GetBaseDatos().VENTAS_GENERALES.Find(venta);
             comp.IMPORTE = total;
             comp.TOTAL = total;
+            comp.CLIENTE = txtCliente.Text;
             BaseDatos.GetBaseDatos().SaveChanges();
             MessageBox.Show("Se ha finalizado la venta");
             autoMedicamentos.IsEnabled = false;
@@ -323,6 +326,8 @@ namespace Medica2.Farmacia.Ventas
             Limpiar();
             venta = 0;
             VistaRad();
+            chbVenta.IsChecked = false;
+            chbVenta.IsEnabled = false;
         }
 
         //Editar
@@ -451,12 +456,12 @@ namespace Medica2.Farmacia.Ventas
 
         private void chbVenta_Checked(object sender, RoutedEventArgs e)
         {
-            llenar();
+            txtCliente.Text = "Medico";
         }
 
         private void chbVenta_Unchecked(object sender, RoutedEventArgs e)
         {
-            llenar();
+            txtCliente.Text = "Mostrador";
         }
     }
 }

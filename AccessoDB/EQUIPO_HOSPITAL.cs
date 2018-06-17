@@ -8,12 +8,16 @@ namespace AccessoDB
 
     public partial class EQUIPO_HOSPITAL
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EQUIPO_HOSPITAL()
+        {
+            DETALLE_EQUIPO_HOSPITAL = new HashSet<DETALLE_EQUIPO_HOSPITAL>();
+        }
+
         [Key]
         public int ID_EQUIPO_HOSPITAL { get; set; }
 
         public int MEDICOID { get; set; }
-
-        public int CATALOGO_EQUIPO_HOSPITALID { get; set; }
 
         public decimal? TOTAL { get; set; }
 
@@ -25,9 +29,10 @@ namespace AccessoDB
 
         public int? USUARIOID { get; set; }
 
-        public virtual CATALOGO_EQUIPO_HOSPITAL CATALOGO_EQUIPO_HOSPITAL { get; set; }
-
         public virtual CUENTA CUENTA { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DETALLE_EQUIPO_HOSPITAL> DETALLE_EQUIPO_HOSPITAL { get; set; }
 
         public virtual Medico Medico { get; set; }
 

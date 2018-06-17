@@ -37,7 +37,7 @@ namespace Medica2.Farmacia.Compras
                                          select new
                                          {
                                              ID_PROVEEDOR = e.ID_PROVEEDOR,
-                                             NOMBRE = PERSONA.NOMBRE
+                                             NOMBRE = PERSONA.NOMBRE + " " +PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
                                          });
         }
 
@@ -51,12 +51,12 @@ namespace Medica2.Farmacia.Compras
                                          select new
                                          {
                                              ID_PROVEEDOR = e.ID_PROVEEDOR,
-                                             NOMBRE = PERSONA.NOMBRE
+                                             NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
                                          });
             //Datos del proveedor
             idcompra = idc;
             var compraedit = BaseDatos.GetBaseDatos().COMPRAS.Find(idcompra);
-            autoProveedor.SearchText = compraedit.PROVEEDORE.PERSONA.NOMBRE;
+            autoProveedor.SearchText = compraedit.PROVEEDORE.PERSONA.NOMBRE + " " + compraedit.PROVEEDORE.PERSONA.A_PATERNO + " " + compraedit.PROVEEDORE.PERSONA.A_MATERNO;
             txtTelefono.Text = compraedit.PROVEEDORE.PERSONA.T_CELULAR;
             txtRFC.Text = compraedit.PROVEEDORE.RFC;
             txtFactura.Text = compraedit.NUM_FACTURA.ToString();
@@ -102,6 +102,7 @@ namespace Medica2.Farmacia.Compras
             dpFVencimiento.Text = String.Empty;
             txtRFC.Text = String.Empty;
             txtTelefono.Text = String.Empty;
+            
         }
 
         void LimpiarDetalle()
@@ -117,6 +118,7 @@ namespace Medica2.Farmacia.Compras
             txtPVenta.Text = String.Empty;
             txtPMedicos.Text = String.Empty;
             cbbAlmacen.SelectedIndex = -1;
+            txtIVA.Text = String.Empty;
         }
 
         void Bloquear()
@@ -148,6 +150,7 @@ namespace Medica2.Farmacia.Compras
             btnAgregar.IsEnabled = false;
             btnNuevoMedic.IsEnabled = false;
             btnFinalizar.IsEnabled = false;
+            txtIVA.IsEnabled = false;
         }
 
         void HabilitarCompra()
@@ -178,6 +181,7 @@ namespace Medica2.Farmacia.Compras
             txtCantidad.IsEnabled = true;
             btnAgregar.IsEnabled = true;
             btnNuevoMedic.IsEnabled = true;
+            txtIVA.IsEnabled = true;
         }
 
         public bool ConsultaFactura(int fac, int prov)
@@ -317,43 +321,50 @@ namespace Medica2.Farmacia.Compras
                                                     }
                                                     else
                                                     {
-                                                        int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
-                                                        var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
-                                                        DETALLE_COMPRAS dc = new DETALLE_COMPRAS()
+                                                        if (txtIVA.Text == "")
                                                         {
-                                                            COMPRAID = idcompra,
-                                                            MEDICAMENTOID = idm,
-                                                            NOMEDI = medic.NOMBRE_MEDI,
-                                                            CANTIDAD = int.Parse(txtCantidad.Text),
-                                                            COSTO_UNITARIO = Decimal.Parse(txtCostoUnitario.Text),
-                                                            U_MEDIDA = txtUMedida.Text,
-                                                            CFDI = int.Parse(txtCFDI.Text),
-                                                            ALMACEN = cbbAlmacen.Text,
-                                                            SUBTOTAL = (Decimal.Parse(txtCantidad.Text) * Decimal.Parse(txtCostoUnitario.Text))
-                                                        };
-                                                        //Se guarda el medicamento en compra
-                                                        BaseDatos.GetBaseDatos().DETALLE_COMPRAS.Add(dc);
-                                                        BaseDatos.GetBaseDatos().SaveChanges();
-                                                        //Almacenamos los subtotales
-                                                        total = total + (Decimal.Parse(txtCantidad.Text) * Decimal.Parse(txtCostoUnitario.Text));
-                                                        txtTotal.Text = total.ToString();
-                                                        //actualizamos las existencias
-                                                        //var exis = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
-                                                        medic.CANTIDAD = medic.CANTIDAD + int.Parse(txtCantidad.Text);
-                                                        medic.ALMACEN = cbbAlmacen.Text;
-                                                        medic.CADUCIDAD = dpCaducidad.SelectedDate;
-                                                        medic.COD_BARRAS = txtCBarras.Text;
-                                                        medic.CFDI = int.Parse(txtCFDI.Text);
-                                                        medic.P_COMPRA = Decimal.Parse(txtCostoUnitario.Text);
-                                                        medic.P_VENTA = Decimal.Parse(txtPVenta.Text);
-                                                        medic.P_MEDICOS = Decimal.Parse(txtPMedicos.Text);
-                                                        medic.U_MEDIDA = txtUMedida.Text;
-                                                        BaseDatos.GetBaseDatos().SaveChanges();
-                                                        //Se limpian las casillas
-                                                        LimpiarDetalle();
-                                                        //Se actualiza la datagrid
-                                                        VistaGrid();
-                                                        btnFinalizar.IsEnabled = true;
+                                                            MessageBox.Show("Ingresa el porcentaje del IVA");
+                                                        }else
+                                                        {
+                                                            int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                                                            var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
+                                                            DETALLE_COMPRAS dc = new DETALLE_COMPRAS()
+                                                            {
+                                                                COMPRAID = idcompra,
+                                                                MEDICAMENTOID = idm,
+                                                                NOMEDI = medic.NOMBRE_MEDI,
+                                                                CANTIDAD = int.Parse(txtCantidad.Text),
+                                                                COSTO_UNITARIO = Decimal.Parse(txtCostoUnitario.Text),
+                                                                U_MEDIDA = txtUMedida.Text,
+                                                                CFDI = int.Parse(txtCFDI.Text),
+                                                                ALMACEN = cbbAlmacen.Text,
+                                                                SUBTOTAL = (Decimal.Parse(txtCantidad.Text) * Decimal.Parse(txtCostoUnitario.Text))
+                                                            };
+                                                            //Se guarda el medicamento en compra
+                                                            BaseDatos.GetBaseDatos().DETALLE_COMPRAS.Add(dc);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                            //Almacenamos los subtotales
+                                                            total = total + (Decimal.Parse(txtCantidad.Text) * Decimal.Parse(txtCostoUnitario.Text));
+                                                            txtTotal.Text = total.ToString();
+                                                            //actualizamos las existencias
+                                                            //var exis = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
+                                                            medic.CANTIDAD = medic.CANTIDAD + int.Parse(txtCantidad.Text);
+                                                            medic.ALMACEN = cbbAlmacen.Text;
+                                                            medic.CADUCIDAD = dpCaducidad.SelectedDate;
+                                                            medic.COD_BARRAS = txtCBarras.Text;
+                                                            medic.CFDI = int.Parse(txtCFDI.Text);
+                                                            medic.P_COMPRA = Decimal.Parse(txtCostoUnitario.Text);
+                                                            medic.P_VENTA = Decimal.Parse(txtPVenta.Text);
+                                                            medic.P_MEDICOS = Decimal.Parse(txtPMedicos.Text);
+                                                            medic.U_MEDIDA = txtUMedida.Text;
+                                                            medic.IVA = Decimal.Parse(txtIVA.Text);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                            //Se limpian las casillas
+                                                            LimpiarDetalle();
+                                                            //Se actualiza la datagrid
+                                                            VistaGrid();
+                                                            btnFinalizar.IsEnabled = true;
+                                                        }
                                                     }   
                                                 }
                                             }
@@ -531,6 +542,7 @@ namespace Medica2.Farmacia.Compras
                 txtPVenta.Text = busquedamed.P_VENTA.ToString();
                 txtPMedicos.Text = busquedamed.P_MEDICOS.ToString();
                 cbbAlmacen.Text = busquedamed.ALMACEN;
+                txtIVA.Text = busquedamed.IVA.ToString();
                 //
 
             }

@@ -68,6 +68,7 @@ namespace Medica2.Farmacia.Conversion
             txtUMedidaDestino.Text = String.Empty;
             txtCantidadDestino.Text = String.Empty;
             txtExistencias.Text = String.Empty;
+            txtExistenciasDestino.Text = String.Empty;
         }
 
         void GuardarConversion()
@@ -114,6 +115,7 @@ namespace Medica2.Farmacia.Conversion
                                     BaseDatos.GetBaseDatos().SaveChanges();
                                     MessageBox.Show("La conversion se realizo correctamente");
                                     limpiar();
+                                    
                                 }
                             }
                         }
@@ -155,6 +157,11 @@ namespace Medica2.Farmacia.Conversion
         {
             RegistroMedicamento rm = new RegistroMedicamento(autoMedicamentoDestino);
             rm.Show();
+        }
+
+        private void btnSalir_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

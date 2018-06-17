@@ -58,6 +58,8 @@ namespace AccessoDB
         [StringLength(20)]
         public string COD_BARRAS { get; set; }
 
+        public decimal? IVA { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_MATER_ENFERMERAS> DETALLE_MATER_ENFERMERAS { get; set; }
 

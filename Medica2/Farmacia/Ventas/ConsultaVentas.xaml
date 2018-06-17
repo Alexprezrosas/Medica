@@ -30,12 +30,10 @@
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID_VENTA}" Header="ID VENTA" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIO}" Header="ID USUARIO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUSUARIO}" Header="NOMBRE DEL USUARIO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_VENTA}" Header="FECHA DE LA VENTA"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CLIENTE}" Header="CLIENTE" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTAL}" Header="TOTAL"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CLIENTE}" Header="CLIENTE" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_VENTA}" Header="FECHA DE LA VENTA"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTitulo" Content="Consulta de ventas" HorizontalAlignment="Left" Margin="211,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>

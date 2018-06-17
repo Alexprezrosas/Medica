@@ -11,7 +11,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATALOGO_EQUIPO_HOSPITAL()
         {
-            EQUIPO_HOSPITAL = new HashSet<EQUIPO_HOSPITAL>();
+            DETALLE_EQUIPO_HOSPITAL = new HashSet<DETALLE_EQUIPO_HOSPITAL>();
         }
 
         [Key]
@@ -32,6 +32,6 @@ namespace AccessoDB
         public DateTime? FECHA_MOD { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EQUIPO_HOSPITAL> EQUIPO_HOSPITAL { get; set; }
+        public virtual ICollection<DETALLE_EQUIPO_HOSPITAL> DETALLE_EQUIPO_HOSPITAL { get; set; }
     }
 }

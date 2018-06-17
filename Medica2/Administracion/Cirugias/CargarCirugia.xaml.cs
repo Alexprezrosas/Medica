@@ -20,11 +20,42 @@ namespace Medica2.Administracion.Cirugias
     /// </summary>
     public partial class CargarCirugia : Window
     {
+        int idper, idmedi, idcirug;
+
         DateTime fr = DateTime.Now;
+
         public CargarCirugia()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public CargarCirugia(int idp, int idmed, int idciru, int idcuent)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+
+            idper = idp;
+            idmedi = idmed;
+            idcirug = idciru;
+
+            var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idper);
+            var medico = BaseDatos.GetBaseDatos().MEDICOS.Find(idmedi);
+            var cirugia = BaseDatos.GetBaseDatos().CIRUGIAS.Find(idcirug);
+            var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuent);
+
+            cuenta.TOTAL = cuenta.TOTAL - cirugia.TOTAL;
+            cuenta.SALDO = cuenta.SALDO - cirugia.TOTAL;
+            BaseDatos.GetBaseDatos().SaveChanges();
+
+            autoPaciente.SearchText = paciente.PERSONA.NOMBRE +" "+paciente.PERSONA.A_PATERNO+" "+paciente.PERSONA.A_MATERNO;
+            autoMedico.SearchText = medico.PERSONA.NOMBRE+" "+medico.PERSONA.A_PATERNO+" "+medico.PERSONA.A_MATERNO;
+            autoCirugia.SearchText = cirugia.CATALOGO_CIRUGIAS.NOMBRE_CIRUGIA;
+            txtCosto.Text = cirugia.TOTAL.ToString();
+            llenarAutocompletes();
+            btnFinalizar.Visibility = Visibility.Hidden;
+            btnEditar.Visibility = Visibility.Visible;
+
         }
 
         void llenarAutocompletes()
@@ -37,7 +68,7 @@ namespace Medica2.Administracion.Cirugias
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
-                                          NOMBRE = PERSONA.NOMBRE,
+                                          NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO +" "+PERSONA.A_MATERNO,
                                       }).ToList();
 
             autoPaciente.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
@@ -48,11 +79,61 @@ namespace Medica2.Administracion.Cirugias
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE,
+                                            NOMBRE = PERSONA.NOMBRE +" "+ PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
                                         }).ToList();
         }
+
+        void Editar()
+        {
+            if (autoPaciente.SelectedItem == null)
+            {
+                MessageBox.Show("Selecciona un paciente");
+            }
+            else
+            {
+                if (autoMedico.SelectedItem == null)
+                {
+                    MessageBox.Show("Selecciona al medico solicitante");
+                }
+                else
+                {
+                    if (autoCirugia.SelectedItem == null)
+                    {
+                        MessageBox.Show("Selecciona una cirugia");
+                    }
+                    else
+                    {
+                        dynamic medico = autoMedico.SelectedItem;
+                        dynamic paciente = autoPaciente.SelectedItem;
+                        int  cirugia = ((CATALOGO_CIRUGIAS)autoCirugia.SelectedItem).ID_CATALOGO_CIRUGIA;
+                        int idmed = medico.ID_MEDICO;
+                        int idpaciente = paciente.ID_PACIENTE;
+                        int idcuenta = paciente.ID_CUENTA;
+
+                        
+                        var cgia = BaseDatos.GetBaseDatos().CIRUGIAS.Find(idcirug);
+                        cgia.CATALOGO_CIRUGIAID = cirugia;
+                        cgia.TOTAL = Decimal.Parse(txtCosto.Text);
+                        cgia.MEDICOID = idmed;
+                        //cgia.CUENTAID = idcuenta;
+                        BaseDatos.GetBaseDatos().SaveChanges();                        
+
+                        var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
+                        cuenta.TOTAL = ((cuenta.TOTAL) + (Decimal.Parse(txtCosto.Text)));
+                        cuenta.SALDO = ((cuenta.SALDO) + (Decimal.Parse(txtCosto.Text)));
+                        BaseDatos.GetBaseDatos().SaveChanges();
+                        MessageBox.Show("Actualización exitosa");
+                        
+                        ConsultarCirugiasAplicadas obj=new ConsultarCirugiasAplicadas();
+                        obj.Show();
+                        Close();
+                    }
+                }
+            }
+        }
+
 
         void limpiar()
         {
@@ -120,6 +201,11 @@ namespace Medica2.Administracion.Cirugias
         private void autoCirugia_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             llenarCosto();
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
         }
 
         private void btnFinalizar_Click(object sender, RoutedEventArgs e)

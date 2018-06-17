@@ -11,7 +11,7 @@ namespace AccessoDB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CATALOGO_ESTUDIOS()
         {
-            ESTUDIOS = new HashSet<ESTUDIO>();
+            DETALLE_ESTUDIOS = new HashSet<DETALLE_ESTUDIOS>();
         }
 
         [Key]
@@ -35,6 +35,6 @@ namespace AccessoDB
         public virtual CLASIFICACION_ESTUDIOS CLASIFICACION_ESTUDIOS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ESTUDIO> ESTUDIOS { get; set; }
+        public virtual ICollection<DETALLE_ESTUDIOS> DETALLE_ESTUDIOS { get; set; }
     }
 }

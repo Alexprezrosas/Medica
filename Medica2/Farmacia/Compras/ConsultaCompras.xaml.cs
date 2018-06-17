@@ -49,14 +49,14 @@ namespace Medica2.Farmacia.Compras
                                      join f in BaseDatos.GetBaseDatos().PERSONAS
                                      on c.PERSONAID equals f.ID_PERSONA
                                      join p in BaseDatos.GetBaseDatos().PROVEEDORES
-                                     on f.ID_PERSONA equals p.PERSONAID
+                                     on COMPRAS.PROVEEDORID equals p.ID_PROVEEDOR
                                      select new
                                      {
                                          ID_COMPRA = COMPRAS.ID_COMPRA,
                                          FACTURA = COMPRAS.NUM_FACTURA,
                                          F_COMPRA = COMPRAS.FECHA_COMPRA,
                                          F_VENCIMIENTO = COMPRAS.FECHA_VENCIMIENTO,
-                                         PROVEEDOR = f.NOMBRE,
+                                         PROVEEDOR = p.PERSONA.NOMBRE,
                                          NOMUSUARIO = f.NOMBRE,
                                          TOTAL = COMPRAS.TOTAL
                                      }).ToList();

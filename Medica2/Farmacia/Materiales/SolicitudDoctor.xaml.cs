@@ -30,6 +30,24 @@ namespace Medica2.Farmacia.Materiales
             llenarAutocompletes();
         }
 
+        public SolicitudDoctor(int ids, int idmedic)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idsol = ids;
+            var m = BaseDatos.GetBaseDatos().MEDICOS.Find(idmedic);
+
+            var solicitud = BaseDatos.GetBaseDatos().MATERIALES_DOCTORES.Find(idsol);
+            autoMedico.SearchText = m.PERSONA.NOMBRE + " " + m.PERSONA.A_PATERNO + " " + m.PERSONA.A_MATERNO;
+            autoMedico.IsEnabled = false;
+            btnNuevaSolicitud.IsEnabled = false;
+            autoMaterial.IsEnabled = true;
+            txtCantidad.IsEnabled = true;
+            btnAgregar.IsEnabled = true;
+            VistaGrid();
+            total = Decimal.Parse(solicitud.TOTAL.ToString());
+        }
+
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {
             int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
@@ -89,7 +107,7 @@ namespace Medica2.Farmacia.Materiales
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
-                                          NOMBRE = PERSONA.NOMBRE,
+                                          NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
                                       }).ToList();
 
             autoMaterial.ItemsSource = (from CATALOGO_MEDICAMENTOS in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
@@ -108,6 +126,7 @@ namespace Medica2.Farmacia.Materiales
             txtUMedida.Text = String.Empty;
             txtCosto.Text = String.Empty;
             txtCantidad.Text = String.Empty;
+            txtExistencias.Text = String.Empty;
         }
 
         void Bloquear()
@@ -135,6 +154,7 @@ namespace Medica2.Farmacia.Materiales
                 var medicamento = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
                 txtUMedida.Text = medicamento.U_MEDIDA;
                 txtCosto.Text = medicamento.P_COMPRA.ToString();
+                txtExistencias.Text = medicamento.CANTIDAD.ToString();
             }
 
         }
@@ -383,7 +403,6 @@ namespace Medica2.Farmacia.Materiales
                 }
             }
         }
-        //
 
         private void btnNuevaSolicitud_Click(object sender, RoutedEventArgs e)
         {

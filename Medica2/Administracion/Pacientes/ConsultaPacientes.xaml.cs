@@ -23,11 +23,12 @@ namespace Medica2.Administracion.Pacientes
     /// </summary>
     public partial class ConsultaPacientes : Window
     {
+        
         public ConsultaPacientes()
         {
             InitializeComponent();
 
-            VistaPacientesPersonas();
+            VistaPacientesPersonasActivos();
 
             rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
         }
@@ -52,27 +53,66 @@ namespace Medica2.Administracion.Pacientes
                                             on e.ID_PACIENTE equals cuenta.PACIENTEID
                                             join estado in BaseDatos.GetBaseDatos().ESTADOS
                                             on PERSONA.ESTADO equals estado.id
-                                            join muni in BaseDatos.GetBaseDatos().MUNICIPIOS
-                                            on PERSONA.MUNICIPIO equals muni.id
+                                            join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
+                                            on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO                                                                                 
                                             select new
                                             {
                                                 ID_PACIENTE = e.ID_PACIENTE,
                                                 ID_FAMILIAR = f.ID_FAM_RESPOSABLE,
+                                                ID_CUENTA = cuenta.ID_CUENTA,
+                                                ID_CAT_CUARTO=cuarto.ID_CATALOGO_CUARTO,
                                                 NOMBRE = PERSONA.NOMBRE,
                                                 APATERNO = PERSONA.A_PATERNO,
                                                 AMATERNO = PERSONA.A_MATERNO,
                                                 F_NACIMIENTO = PERSONA.F_NACIMIENTO,
                                                 CALLE = PERSONA.CALLE,
                                                 ESTADO = estado.nombre,
-                                                MUNICIPIOO = muni.nombre,
+                                                MUNICIPIO=PERSONA.NOMMUNICIPIO,
                                                 CURP = PERSONA.CURP,
                                                 TIPOPACIENTE = e.TIPO_PACIENTE,
                                                 RESPONSABLE = f.PERSONA.NOMBRE,
                                                 TELEFONO = f.PERSONA.T_CELULAR,
                                                 PARENTESCO = f.PARENTESCO,
                                                 CUENTAA = cuenta.TOTAL,
-                                                SALDO = cuenta.SALDO
+                                                SALDO = cuenta.SALDO,
+                                                CUARTOO = cuarto.NOMBRE_CUARTO
                                             }).ToList();
+        }
+        public void VistaPacientesPersonasActivos()
+        {
+            rgvPacientes.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
+                                        join e in BaseDatos.GetBaseDatos().PACIENTES
+                                        on PERSONA.ID_PERSONA equals e.PERSONAID
+                                        join f in BaseDatos.GetBaseDatos().FAM_RESPONSABLES
+                                        on e.ID_PACIENTE equals f.PACIENTEID
+                                        join cuenta in BaseDatos.GetBaseDatos().CUENTAS
+                                        on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        join estado in BaseDatos.GetBaseDatos().ESTADOS
+                                        on PERSONA.ESTADO equals estado.id
+                                        join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
+                                        on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO
+                                        where PERSONA.ESTADOPERSONA == "Activo"
+                                        select new
+                                        {
+                                            ID_PACIENTE = e.ID_PACIENTE,
+                                            ID_FAMILIAR = f.ID_FAM_RESPOSABLE,
+                                            NOMBRE = PERSONA.NOMBRE,
+                                            APATERNO = PERSONA.A_PATERNO,
+                                            AMATERNO = PERSONA.A_MATERNO,
+                                            F_NACIMIENTO = PERSONA.F_NACIMIENTO,
+                                            ID_CAT_CUARTO = cuarto.ID_CATALOGO_CUARTO,
+                                            CALLE = PERSONA.CALLE,
+                                            ESTADO = estado.nombre,
+                                            MUNICIPIO = PERSONA.NOMMUNICIPIO,
+                                            CURP = PERSONA.CURP,
+                                            TIPOPACIENTE = e.TIPO_PACIENTE,
+                                            RESPONSABLE = f.PERSONA.NOMBRE,
+                                            TELEFONO = f.PERSONA.T_CELULAR,
+                                            PARENTESCO = f.PARENTESCO,
+                                            CUENTAA = cuenta.TOTAL,
+                                            SALDO = cuenta.SALDO,
+                                            CUARTOO = cuarto.NOMBRE_CUARTO
+                                        }).ToList();
         }
 
         /////////////////////
@@ -126,15 +166,28 @@ namespace Medica2.Administracion.Pacientes
 
                             dynamic idpaci = rgvPacientes.SelectedItem;
                             int idp = idpaci.ID_PACIENTE;
+                            decimal idc = idpaci.SALDO;
 
                             if (rgvPacientes.SelectedItem != null)
                             {
-                                var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
-                                BaseDatos.GetBaseDatos().PACIENTES.Remove(paciente);
-                                BaseDatos.GetBaseDatos().SaveChanges();
+                                var ceunt = BaseDatos.GetBaseDatos().CUENTAS.Find(idc);
+                                if (idpaci.SALDO == 0)
+                                {
+                                    var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
+
+                                    //BaseDatos.GetBaseDatos().PACIENTES.Remove(paciente);
+                                    paciente.PERSONA.ESTADOPERSONA = "Inactivo";
+                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                    MessageBox.Show("Se ha eliminado el paciente", "Administracion");
+                                    VistaPacientesPersonasActivos();
+                                }
+                                else {
+                                    MessageBox.Show("No se puede ELIMINAR \n Por que la cuenta no ha sido saldada");
+                                }
+                               
+                                
                             }
-                            MessageBox.Show("Se ha eliminado el paciente", "Administracion");
-                            VistaPacientesPersonas();
+                           
 
                             ////
 
@@ -154,17 +207,38 @@ namespace Medica2.Administracion.Pacientes
                             dynamic idpaci = rgvPacientes.SelectedItem;
                             int idp = idpaci.ID_PACIENTE;
                             int idf = idpaci.ID_FAMILIAR;
+                            int idcuar = idpaci.ID_CAT_CUARTO;
                             var p = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
                             var f = BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Find(idf);
                             //IngresoPaciente inpaci = new IngresoPaciente(
                             //    (PACIENTE)p, false);
                             //inpaci.Show();
                             IngresoPaciente inpaci = new IngresoPaciente(
-                                (PACIENTE)p, (FAM_RESPONSABLES)f, false);
+                                (PACIENTE)p, (FAM_RESPONSABLES)f, false, idcuar);
                             inpaci.Show();
+                            this.Close();
                         }
                     }
                 }
+            }
+        }
+
+        private void checkBoxtodosP_Checked(object sender, RoutedEventArgs e)
+        {
+
+            if(checkBoxtodosP.IsChecked==true)
+            {
+                VistaPacientesPersonas();
+            }
+            
+        }
+
+        private void checkBoxtodosP_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+            if (checkBoxtodosP.IsChecked == false)
+            {
+                VistaPacientesPersonasActivos();
             }
         }
 

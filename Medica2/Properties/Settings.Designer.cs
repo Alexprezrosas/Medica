@@ -43,5 +43,35 @@ namespace Medica2.Properties {
                 return ((string)(this["MEDICASILOEv3ConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=MEDICASILOEv3;User ID=sa;Password=123")]
+        public string MEDICASILOEv3 {
+            get {
+                return ((string)(this["MEDICASILOEv3"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=MEDICASILOEv3;User ID=sa;Password=123")]
+        public string MEDICASILOEv31 {
+            get {
+                return ((string)(this["MEDICASILOEv31"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=./;Initial Catalog=MEDICASILOEv3;User ID=sa;Password=123")]
+        public string MEDICASILOEv32 {
+            get {
+                return ((string)(this["MEDICASILOEv32"]));
+            }
+        }
     }
 }

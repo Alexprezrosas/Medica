@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Pacientes"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Pacientes.ConsultaPacientes"
         mc:Ignorable="d"
-        Title="ConsultaPacientes" Height="397.774" Width="717.256">
+        WindowState="Maximized"
+        Title="ConsultaPacientes" Height="868.174" Width="1448.456">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -18,8 +19,8 @@
     </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" 
-            Width="665" Height="274" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="53,124,0,0" VerticalAlignment="Top" 
+            Width="1335" Height="663" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
             AutoGenerateColumns="False" 
             SelectedItem="{Binding ID_PACIENTE}"
             ShowSearchPanel="True"
@@ -37,10 +38,11 @@
                 <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUARTOO}" Header="CUARTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_NACIMIENTO}" Header="FECHA DE NACIMIENTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CALLE}" Header="CALLE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MUNICIPIOO}" Header="MUNICIPIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MUNICIPIO}" Header="MUNICIPIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TIPOPACIENTE}" Header="TIPO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding RESPONSABLE}" Header="RESPONSABLE"/>
@@ -50,7 +52,8 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="706,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <CheckBox Checked="checkBoxtodosP_Checked" Unchecked="checkBoxtodosP_Unchecked" x:Name="checkBoxtodosP" Content="Todo el Historial de Pacientes" HorizontalAlignment="Left" Margin="10,105,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

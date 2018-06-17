@@ -20,10 +20,39 @@ namespace Medica2.Administracion.Depositos
     /// </summary>
     public partial class RegistrarDeposito : Window
     {
+        int idpa;
+        int idcuen;
+        DateTime fr = DateTime.Now;
         public RegistrarDeposito()
         {
             InitializeComponent();
             vistaPaciente();
+        }
+
+        public RegistrarDeposito(int idp, int iddepo, int idc)
+        {
+            InitializeComponent();
+            vistaPaciente();
+
+            idpa = idp;
+            idcuen = idc;
+
+            var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idp);
+            autoPaciente.SearchText = paciente.PERSONA.NOMBRE + " " + paciente.PERSONA.A_PATERNO + " " + paciente.PERSONA.A_MATERNO;
+            autoPaciente.IsEnabled = false;
+
+            var deposito = BaseDatos.GetBaseDatos().DEPOSITOS.Find(iddepo);
+            txtMonto.Text = deposito.MONTO.ToString();
+            txtConcepto.Text = deposito.CONCEPTO;
+
+            var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idc);
+            cuenta.SALDO = cuenta.SALDO + deposito.MONTO;
+            txtSaldo.Text = cuenta.SALDO.ToString();
+            BaseDatos.GetBaseDatos().SaveChanges();
+
+            btnEditar.Visibility = Visibility.Visible;
+            btnGuardar.Visibility = Visibility.Hidden;
+
         }
 
         void vistaPaciente()
@@ -77,7 +106,8 @@ namespace Medica2.Administracion.Depositos
                                 MONTO = Decimal.Parse(txtMonto.Text),
                                 CONCEPTO = txtConcepto.Text,
                                 USUARIOID = 2,
-                                CUENTAID = idc
+                                CUENTAID = idc,
+                                FECHA_CREACION = fr
                             };
 
                             BaseDatos.GetBaseDatos().DEPOSITOS.Add(d);
@@ -96,6 +126,44 @@ namespace Medica2.Administracion.Depositos
                 }
             }
         }
+
+        void Editar()
+        {
+            if (txtMonto.Text == "")
+            {
+                MessageBox.Show("Ingresa el monto");
+            }
+            else
+            {
+                if (txtConcepto.Text == "")
+                {
+                   MessageBox.Show("Ingresa el concepto");
+                }
+                else
+                {
+                        
+                    var cue = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuen);
+
+                    if (Decimal.Parse(txtMonto.Text) <= cue.SALDO)
+                    {
+                        
+                        cue.SALDO = ((cue.SALDO) - (Decimal.Parse(txtMonto.Text)));
+                        cue.FECHA_MOD = fr;
+                        BaseDatos.GetBaseDatos().SaveChanges();
+                        MessageBox.Show("Actualizacion exitosa");
+                        Limpiar();
+                        ConsultarDepositosAplicados cda = new ConsultarDepositosAplicados();
+                        cda.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El monto no pede ser mayor al saldo, Saldo: " + cue.SALDO);
+                    }
+                }
+            }
+        }
+        
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {
@@ -141,6 +209,22 @@ namespace Medica2.Administracion.Depositos
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
+        }
+
+        private void autoPaciente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (autoPaciente.SelectedItem != null)
+            {
+                dynamic paci = autoPaciente.SelectedItem;
+                int idcu = paci.ID_CUENTA;
+                var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcu);
+                txtSaldo.Text = cuenta.SALDO.ToString();
+            }
         }
     }
 }
