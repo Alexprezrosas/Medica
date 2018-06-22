@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="RegistroConversion" Height="448.721" Width="712.683">
     <Grid>
-        <Label x:Name="lblOrigen" Content="Nombre del medicamento a convertir origen" HorizontalAlignment="Left" Margin="33,58,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblOrigen" Content="Nombre del medicamento a convertir orígen" HorizontalAlignment="Left" Margin="33,58,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblOrigenUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="33,89,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblExistencias" Content="Existencias" HorizontalAlignment="Left" Margin="33,115,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblDestino" Content="Nombre del medicamento a convertir destino" HorizontalAlignment="Left" Margin="33,198,0,0" VerticalAlignment="Top"/>

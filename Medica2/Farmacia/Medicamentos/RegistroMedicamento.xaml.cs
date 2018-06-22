@@ -85,12 +85,12 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 if (txtComentario.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
                 }else
                 {
                     if (cbbAlmacen.Text == "")
                     {
-                        MessageBox.Show("Selecciona un tipo de almacen");
+                        MessageBox.Show("Selecciona un tipo de almacén");
                     }else
                     {
                         CATALOGO_MEDICAMENTOS med = new CATALOGO_MEDICAMENTOS()
@@ -105,7 +105,7 @@ namespace Medica2.Farmacia.Medicamentos
                         BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Add(med);
                         BaseDatos.GetBaseDatos().SaveChanges();
                         limpiar();
-                        MessageBox.Show("Medicamento guardado correctamente");
+                        MessageBox.Show("Registro exitoso");
                     }
                 }
             }
@@ -121,13 +121,13 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 if (txtComentario.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
                 }
                 else
                 {
                     if (cbbAlmacen.Text == "")
                     {
-                        MessageBox.Show("Selecciona un tipo de almacen");
+                        MessageBox.Show("Selecciona un tipo de almacén");
                     }
                     else
                     {
@@ -144,7 +144,7 @@ namespace Medica2.Farmacia.Medicamentos
                         BaseDatos.GetBaseDatos().SaveChanges();
                         limpiar();
                         autoMedi.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
-                        MessageBox.Show("Medicamento guardado correctamente");
+                        MessageBox.Show("Registro exitoso");
                         this.Close();
                     }
                 }

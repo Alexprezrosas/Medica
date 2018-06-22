@@ -27,9 +27,9 @@
         <Label x:Name="lblIDMEdicamento" Content="Nombre del medicamento" HorizontalAlignment="Left" Margin="24,103,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="24,155,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="477,127,0,0" VerticalAlignment="Top" Width="73" Grid.Column="1"/>
-        <Label x:Name="lblDescripcion" Content="Descripcion" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+        <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="476,158,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblTitulo" Content="Registro de ventas" HorizontalAlignment="Left" Margin="368,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Grid.Column="1"/>
+        <Label x:Name="lblTitulo" Content="Registro de ventas" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Grid.Column="1"/>
 
 
         <telerik:RadAutoCompleteBox x:Name="autoMedicamentos" HorizontalAlignment="Left" Margin="192,105,0,0" VerticalAlignment="Top" Width="214"

@@ -75,12 +75,12 @@ namespace Medica2.Farmacia.Conversion
         {
             if (autoMedicamentoOrigen.SelectedItem == null)
             {
-                MessageBox.Show("Selecciona un medicamento de origen");
+                MessageBox.Show("Selecciona un medicamento de orígen");
             }else
             {
                 if (txtCantidadOrigen.Text == "")
                 {
-                    MessageBox.Show("Ingresa una cantidad de origen");
+                    MessageBox.Show("Ingresa una cantidad de orígen");
                 }else
                 {
                     if (autoMedicamentoDestino.SelectedItem == null)
@@ -98,7 +98,7 @@ namespace Medica2.Farmacia.Conversion
 
                             if (mori.CANTIDAD <= 0)
                             {
-                                MessageBox.Show("Ya no hay existencias");
+                                MessageBox.Show("No se cuenta con existencias");
                             }else
                             {
                                 if (Convert.ToInt32(txtCantidadOrigen.Text) > mori.CANTIDAD)
@@ -113,7 +113,7 @@ namespace Medica2.Farmacia.Conversion
                                     var mdes = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmdes);
                                     mdes.CANTIDAD = mdes.CANTIDAD + Convert.ToInt32(txtCantidadDestino.Text);
                                     BaseDatos.GetBaseDatos().SaveChanges();
-                                    MessageBox.Show("La conversion se realizo correctamente");
+                                    MessageBox.Show("La conversion se realizó correctamente");
                                     limpiar();
                                     
                                 }

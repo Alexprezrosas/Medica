@@ -63,11 +63,7 @@ namespace Medica2.Farmacia.Materiales
             get
             {
                 return this.GridContextMenu2.GetClickedElement<GridViewRow>();
-
-
             }
-
-
         }
 
         private void GridContextMenu_Opened(object sender, RoutedEventArgs e)
@@ -85,7 +81,7 @@ namespace Medica2.Farmacia.Materiales
 
             if (sender == itemEliminar)
             {
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar la venta?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar la solicitud?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -98,7 +94,7 @@ namespace Medica2.Farmacia.Materiales
                             BaseDatos.GetBaseDatos().MATERIALES_ENFERMERAS.Remove(solicitud);
                             BaseDatos.GetBaseDatos().SaveChanges();
                         }
-                        MessageBox.Show("Se ha eliminado la solicitud", "Farmacia");
+                        MessageBox.Show("Se eliminó la solicitud", "Farmacia");
                         VistaGrid();
                         break;
 

@@ -1,0 +1,35 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.HonorarioMedicos"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.HonorarioMedicos.VizualizarHonorariosCargados"
+        mc:Ignorable="d"
+        Title="VizualizarHonorariosCargados" Height="386.707" Width="529.757">
+    <Grid>
+
+        <telerik:RadGridView x:Name="rgvVHonorariosc" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="311" Width="503"
+            ShowSearchPanel="True"
+            IsSearchingDeferred="True"  
+            SelectedItem="{Binding HONORARIOS_MEDICOS}"
+            AlternateRowBackground="BlueViolet"                                                      
+            AutoGenerateColumns="False" >
+
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOM_EQUIPO_HOSPITAL}"
+                    Header="Equipo Hospital" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}"
+                    Header="Descripción" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}"
+                    Header="Costo"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"
+                    Header="FechaCreacion"/>
+
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>
+
+    </Grid>
+</Window>

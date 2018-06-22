@@ -89,7 +89,7 @@ namespace Medica2.Farmacia.Compras
 
             if (sender == itemEliminar)
             {
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar la compra?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar la compra?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

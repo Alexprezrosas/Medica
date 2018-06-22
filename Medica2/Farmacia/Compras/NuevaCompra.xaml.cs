@@ -208,7 +208,7 @@ namespace Medica2.Farmacia.Compras
         {
             if (txtFactura.Text == "")
             {
-                MessageBox.Show("Ingresa el numero de factura");
+                MessageBox.Show("Ingresa el número de factura");
             }
             else
             {
@@ -247,7 +247,7 @@ namespace Medica2.Farmacia.Compras
                         }
                     }else
                     {
-                        MessageBox.Show("EL numero de factura con el proveedor ya existe");
+                        MessageBox.Show("EL número de factura con el proveedor ya existe");
                     }
                 }
             }
@@ -263,7 +263,7 @@ namespace Medica2.Farmacia.Compras
             {
                 if (txtDescripcion.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
                 }
                 else
                 {
@@ -281,7 +281,7 @@ namespace Medica2.Farmacia.Compras
                         {
                             if (txtCBarras.Text == "")
                             {
-                                MessageBox.Show("Ingresa el codigo de barras");
+                                MessageBox.Show("Ingresa el código de barras");
                             }
                             else
                             {
@@ -384,7 +384,7 @@ namespace Medica2.Farmacia.Compras
             comp.IMPORTE = total;
             comp.TOTAL = total;
             BaseDatos.GetBaseDatos().SaveChanges();
-            MessageBox.Show("Se ha finalizado la compra");
+            MessageBox.Show("Se finalizó la compra");
             HabilitarCompra();
             idcompra = 0;
             VistaGrid();
@@ -428,7 +428,7 @@ namespace Medica2.Farmacia.Compras
             {
                 if (txtDescripcion.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
                 }
                 else
                 {
@@ -446,7 +446,7 @@ namespace Medica2.Farmacia.Compras
                         {
                             if (txtCBarras.Text == "")
                             {
-                                MessageBox.Show("Ingresa el codigo de barras");
+                                MessageBox.Show("Ingresa el código de barras");
                             }
                             else
                             {
@@ -476,7 +476,7 @@ namespace Medica2.Farmacia.Compras
                                             {
                                                 if (cbbAlmacen.Text == "")
                                                 {
-                                                    MessageBox.Show("Selecciona el tipo de almacen");
+                                                    MessageBox.Show("Selecciona el tipo de almacén");
                                                 }
                                                 else
                                                 {
@@ -630,7 +630,7 @@ namespace Medica2.Farmacia.Compras
             if (sender == itemEliminar)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

@@ -57,6 +57,8 @@ namespace Medica2.Farmacia.Proveedores
                 txtCurp.Text = idprove.PERSONA.CURP;
                 txtRFC.Text = idprove.RFC;
                 txtNota.Text = idprove.NOTA;
+                cbbStatus.Visibility = Visibility.Visible;
+                cbbStatus.Text = idprove.PERSONA.ESTADOPERSONA;
             }
             else
             {
@@ -77,6 +79,8 @@ namespace Medica2.Farmacia.Proveedores
                 txtCelular.Text = idprove.PERSONA.T_CELULAR;
                 txtRFC.Text = idprove.RFC;
                 txtNota.Text = idprove.NOTA;
+                cbbStatus.Visibility = Visibility.Visible;
+                cbbStatus.Text = idprove.PERSONA.ESTADOPERSONA;
             }
             
 
@@ -134,7 +138,7 @@ namespace Medica2.Farmacia.Proveedores
                                 {
                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 12)
                                     {
-                                        MessageBox.Show("Ingresa un RFC valido");
+                                        MessageBox.Show("Ingresa un RFC válido");
                                     }
                                     else
                                     {
@@ -154,7 +158,8 @@ namespace Medica2.Farmacia.Proveedores
                                                     NOMMUNICIPIO = txtMunicipio.Text,
                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                     FECHA_CREACION = FechaRegistro,
-                                                    T_CELULAR = txtCelular.Text
+                                                    T_CELULAR = txtCelular.Text,
+                                                    ESTADOPERSONA = "Activo"
                                                 };
                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -169,7 +174,7 @@ namespace Medica2.Farmacia.Proveedores
                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                 //Mensaje
-                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                 autoProve.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                                                          join e in BaseDatos.GetBaseDatos().PROVEEDORES
                                                                          on PERSONA.ID_PERSONA equals e.PERSONAID
@@ -194,7 +199,8 @@ namespace Medica2.Farmacia.Proveedores
                                                     NOMMUNICIPIO = txtMunicipio.Text,
                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                     FECHA_CREACION = FechaRegistro,
-                                                    T_CELULAR = txtCelular.Text
+                                                    T_CELULAR = txtCelular.Text,
+                                                    ESTADOPERSONA = "Activo"
                                                 };
                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -213,7 +219,7 @@ namespace Medica2.Farmacia.Proveedores
                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                 //Mensaje
-                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                 autoProve.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                                                          join e in BaseDatos.GetBaseDatos().PROVEEDORES
                                                                          on PERSONA.ID_PERSONA equals e.PERSONAID
@@ -296,13 +302,13 @@ namespace Medica2.Farmacia.Proveedores
                                             {
                                                 if (txtCurp.Text == "" && txtCurp.Text.Length < 18)
                                                 {
-                                                    MessageBox.Show("Insertar una curp valida");
+                                                    MessageBox.Show("Insertar una curp válida");
                                                 }
                                                 else
                                                 {
                                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 13)
                                                     {
-                                                        MessageBox.Show("Insertar un RFC valido");
+                                                        MessageBox.Show("Insertar un RFC válido");
                                                     }
                                                     else
                                                     {
@@ -331,7 +337,8 @@ namespace Medica2.Farmacia.Proveedores
                                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                                     T_CELULAR = txtCelular.Text,
                                                                     CURP = txtCurp.Text,
-                                                                    FECHA_CREACION = FechaRegistro
+                                                                    FECHA_CREACION = FechaRegistro,
+                                                                    ESTADOPERSONA = "Activo"
                                                                 };
                                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -346,7 +353,7 @@ namespace Medica2.Farmacia.Proveedores
                                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                                 //Mensaje
-                                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                                 autoProve.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                                                                          join e in BaseDatos.GetBaseDatos().PROVEEDORES
                                                                                          on PERSONA.ID_PERSONA equals e.PERSONAID
@@ -378,7 +385,8 @@ namespace Medica2.Farmacia.Proveedores
                                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                                     T_CELULAR = txtCelular.Text,
                                                                     CURP = txtCurp.Text,
-                                                                    FECHA_CREACION = FechaRegistro
+                                                                    FECHA_CREACION = FechaRegistro,
+                                                                    ESTADOPERSONA = "Activo"
                                                                 };
                                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -394,7 +402,7 @@ namespace Medica2.Farmacia.Proveedores
                                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                                 //Mensaje
-                                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                                 autoProve.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                                                                          join e in BaseDatos.GetBaseDatos().PROVEEDORES
                                                                                          on PERSONA.ID_PERSONA equals e.PERSONAID
@@ -463,7 +471,7 @@ namespace Medica2.Farmacia.Proveedores
                                 {
                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 12)
                                     {
-                                        MessageBox.Show("Ingresa un RFC valido");
+                                        MessageBox.Show("Ingresa un RFC válido");
                                     }
                                     else
                                     {//
@@ -483,7 +491,8 @@ namespace Medica2.Farmacia.Proveedores
                                                     NOMMUNICIPIO = txtMunicipio.Text,
                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                     FECHA_CREACION = FechaRegistro,
-                                                    T_CELULAR = txtCelular.Text
+                                                    T_CELULAR = txtCelular.Text,
+                                                    ESTADOPERSONA = "Activo"
                                                 };
                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -498,7 +507,7 @@ namespace Medica2.Farmacia.Proveedores
                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                 //Mensaje
-                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                 //autoProveedor.ItemsSource = BaseDatos.GetBaseDatos().PROVEEDORES;
                                                 //MostrarProveedores mp = new MostrarProveedores();
                                                 //mp.Show();
@@ -518,7 +527,8 @@ namespace Medica2.Farmacia.Proveedores
                                                     NOMMUNICIPIO = txtMunicipio.Text,
                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                     FECHA_CREACION = FechaRegistro,
-                                                    T_CELULAR = txtCelular.Text
+                                                    T_CELULAR = txtCelular.Text,
+                                                    ESTADOPERSONA = "Activo"
                                                 };
                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -537,7 +547,7 @@ namespace Medica2.Farmacia.Proveedores
                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                 //Mensaje
-                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                 //autoProveedor.ItemsSource = BaseDatos.GetBaseDatos().PROVEEDORES;
                                                 //MostrarProveedores mp = new MostrarProveedores();
                                                 //mp.Show();
@@ -616,13 +626,13 @@ namespace Medica2.Farmacia.Proveedores
                                             {
                                                 if (txtCurp.Text == "" && txtCurp.Text.Length < 18)
                                                 {
-                                                    MessageBox.Show("Insertar una curp valida");
+                                                    MessageBox.Show("Insertar una curp válida");
                                                 }
                                                 else
                                                 {
                                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 13)
                                                     {
-                                                        MessageBox.Show("Insertar un RFC valido");
+                                                        MessageBox.Show("Insertar un RFC válido");
                                                     }
                                                     else
                                                     {
@@ -651,7 +661,8 @@ namespace Medica2.Farmacia.Proveedores
                                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                                     T_CELULAR = txtCelular.Text,
                                                                     CURP = txtCurp.Text,
-                                                                    FECHA_CREACION = FechaRegistro
+                                                                    FECHA_CREACION = FechaRegistro,
+                                                                    ESTADOPERSONA = "Activo"
                                                                 };
                                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -667,7 +678,7 @@ namespace Medica2.Farmacia.Proveedores
                                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                                 //Mensaje
-                                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                                 Limpiar();
                                                             }
                                                             else
@@ -691,7 +702,8 @@ namespace Medica2.Farmacia.Proveedores
                                                                     ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
                                                                     T_CELULAR = txtCelular.Text,
                                                                     CURP = txtCurp.Text,
-                                                                    FECHA_CREACION = FechaRegistro
+                                                                    FECHA_CREACION = FechaRegistro,
+                                                                    ESTADOPERSONA = "Activo"
                                                                 };
                                                                 BaseDatos.GetBaseDatos().PERSONAS.Add(cc);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -707,7 +719,7 @@ namespace Medica2.Farmacia.Proveedores
                                                                 BaseDatos.GetBaseDatos().PROVEEDORES.Add(prv);
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
                                                                 //Mensaje
-                                                                MessageBoxResult result = MessageBox.Show("Se guardo correctamente el proveedor", "Registro exitoso");
+                                                                MessageBoxResult result = MessageBox.Show("Se guardó correctamente el proveedor", "Registro exitoso");
                                                                 Limpiar();
                                                             }
                                                         }
@@ -770,7 +782,7 @@ namespace Medica2.Farmacia.Proveedores
                                 {
                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 12)
                                     {
-                                        MessageBox.Show("Ingresa un RFC valido");
+                                        MessageBox.Show("Ingresa un RFC válido");
                                     }
                                     else
                                     {
@@ -793,10 +805,10 @@ namespace Medica2.Farmacia.Proveedores
 
                                                 prove.RFC = txtRFC.Text;
                                                 prove.FECHA_MOD = FechaModificacion;
-
+                                                prove.PERSONA.ESTADOPERSONA = cbbStatus.Text;
 
                                                 BaseDatos.GetBaseDatos().SaveChanges();
-                                                MessageBox.Show("Se ha editado correctamente el proveedor");
+                                                MessageBox.Show("Actualización exitosa");
                                                 this.Close();
                                                 MostrarProveedores mp = new MostrarProveedores();
                                                 mp.Show();
@@ -819,10 +831,10 @@ namespace Medica2.Farmacia.Proveedores
                                                 prove.RFC = txtRFC.Text;
                                                 prove.NOTA = txtNota.Text;
                                                 prove.FECHA_MOD = FechaModificacion;
-
+                                                prove.PERSONA.ESTADOPERSONA = cbbStatus.Text;
 
                                                 BaseDatos.GetBaseDatos().SaveChanges();
-                                                MessageBox.Show("Se ha editado correctamente el proveedor");
+                                                MessageBox.Show("Actualización exitosa");
                                                 this.Close();
                                                 MostrarProveedores mp = new MostrarProveedores();
                                                 mp.Show();
@@ -900,13 +912,13 @@ namespace Medica2.Farmacia.Proveedores
                                             {
                                                 if (txtCurp.Text == "" && txtCurp.Text.Length < 18)
                                                 {
-                                                    MessageBox.Show("Insertar una curp valida");
+                                                    MessageBox.Show("Insertar una curp válida");
                                                 }
                                                 else
                                                 {
                                                     if (txtRFC.Text == "" && txtRFC.Text.Length < 12)
                                                     {
-                                                        MessageBox.Show("Insertar un RFC valido");
+                                                        MessageBox.Show("Insertar un RFC válido");
                                                     }
                                                     else
                                                     {
@@ -934,10 +946,10 @@ namespace Medica2.Farmacia.Proveedores
 
                                                                 prove.RFC = txtRFC.Text;
                                                                 prove.FECHA_MOD = FechaModificacion;
-
+                                                                prove.PERSONA.ESTADOPERSONA = cbbStatus.Text;
 
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
-                                                                MessageBox.Show("Se ha editado correctamente el proveedor");
+                                                                MessageBox.Show("Actualización exitosa");
                                                                 this.Close();
                                                                 MostrarProveedores mp = new MostrarProveedores();
                                                                 mp.Show();
@@ -965,10 +977,10 @@ namespace Medica2.Farmacia.Proveedores
                                                                 prove.RFC = txtRFC.Text;
                                                                 prove.NOTA = txtNota.Text;
                                                                 prove.FECHA_MOD = FechaModificacion;
-
+                                                                prove.PERSONA.ESTADOPERSONA = cbbStatus.Text;
 
                                                                 BaseDatos.GetBaseDatos().SaveChanges();
-                                                                MessageBox.Show("Se ha editado correctamente el proveedor");
+                                                                MessageBox.Show("Actualización exitosa");
                                                                 this.Close();
                                                                 MostrarProveedores mp = new MostrarProveedores();
                                                                 mp.Show();
@@ -994,14 +1006,6 @@ namespace Medica2.Farmacia.Proveedores
 
         public bool ConsultaRFC(String rfc )
         {
-            //var factura = (from COMPRA in BaseDatos.GetBaseDatos().COMPRAS
-            //               where COMPRA.NUM_FACTURA == fac
-            //               select COMPRA).Count();
-            //if (factura == 0)
-            //    return false;
-            //else
-            //    return true;
-
             var rfcpr = (from PROVEEDORE in BaseDatos.GetBaseDatos().PROVEEDORES
                            where PROVEEDORE.RFC == rfc
                            select PROVEEDORE).Count();

@@ -1,0 +1,56 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Estudios"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Estudios.MostrarEstudios"
+        mc:Ignorable="d"
+        Title="MostrarEstudios" Height="417.622" Width="539.268">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <telerik:RadGridView AutoGenerateColumns="False" x:Name="rdgvMostrarEstudio" HorizontalAlignment="Left" Margin="10,46,-229.4,-108.6" VerticalAlignment="Top"
+            ShowSearchPanel="True"
+            IsSearchingDeferred="True"
+                             
+            AlternateRowBackground="BlueViolet"
+                                                      
+            CellEditEnded="radGridView_CellEditEnded"
+            ShowColumnFooters="True" Width="513" Height="333"
+                             >
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}"
+                    Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}"
+                    Header="Estudio" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}"
+                    Header="Desccripción" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CLASIFICACION}"
+                    Header="Clasificacion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}"
+                    Header="Costo"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"
+                    Header="Fecha de Creacion" />
+
+            </telerik:RadGridView.Columns>
+
+        </telerik:RadGridView>
+
+    </Grid>
+</Window>

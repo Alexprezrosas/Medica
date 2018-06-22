@@ -56,6 +56,12 @@
         <TextBox x:Name="txtLocalidad" HorizontalAlignment="Left" Height="23" Margin="499,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" MaxLength="99"/>
         <Button x:Name="btnCompras" Content="Guardar" HorizontalAlignment="Left" Margin="212,343,0,0" VerticalAlignment="Top" Width="75" Click="btnCompras_Click"
                 Visibility="Hidden"/>
+        <Label x:Name="lblStatus" Content="Status" HorizontalAlignment="Left" Margin="392,278,0,0" VerticalAlignment="Top"
+               Visibility="Hidden"/>
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="499,281,0,0" VerticalAlignment="Top" Width="155" Visibility="Hidden" >
+            <ComboBoxItem Content="Activo"/>
+            <ComboBoxItem Content="Inactivo"/>
+        </ComboBox>
 
     </Grid>
 </Window>

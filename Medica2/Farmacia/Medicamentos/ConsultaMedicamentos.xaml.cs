@@ -118,7 +118,7 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el medicamento?", "Farmacia Medicamentos", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el medicamento?", "Farmacia Medicamentos", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -129,7 +129,7 @@ namespace Medica2.Farmacia.Medicamentos
                                 BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Remove(cmed);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado el medicamento", "Farmacia Medicamentos");
+                            MessageBox.Show("Se eliminó el medicamento", "Farmacia Medicamentos");
                             rgvMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
                             break;
 

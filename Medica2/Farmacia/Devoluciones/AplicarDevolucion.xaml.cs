@@ -137,7 +137,7 @@ namespace Medica2.Farmacia.Devoluciones
                 {
                     if (Int32.Parse(txtCantidad.Text) > cantidad)
                     {
-                        MessageBox.Show("No se puede devolver mas de la cantidad solicitada");
+                        MessageBox.Show("No se puede devolver más de la cantidad solicitada");
                     }else
                     {
                         if (Int32.Parse(txtCantidad.Text) < 0)
@@ -171,7 +171,7 @@ namespace Medica2.Farmacia.Devoluciones
                                 BaseDatos.GetBaseDatos().SaveChanges();
 
                                 //Llamamos la vista
-                                MessageBox.Show("Devolucion correcta");
+                                MessageBox.Show("Devolución correcta");
                                 VistaSuministros();
 
                                 //Deshabilitamos los controles
@@ -185,7 +185,7 @@ namespace Medica2.Farmacia.Devoluciones
                             {
                                 if (Convert.ToInt32(txtCantidad.Text) == 0)
                                 {
-                                    MessageBox.Show("La cantidad minima a devolver es 1");
+                                    MessageBox.Show("La cantidad mínima a devolver es 1");
                                 }else
                                 {
                                     nexi = cantidad - Int32.Parse(txtCantidad.Text);
@@ -220,7 +220,7 @@ namespace Medica2.Farmacia.Devoluciones
                                     BaseDatos.GetBaseDatos().SaveChanges();
 
                                     //Llamamos la vista
-                                    MessageBox.Show("Devolucion correcta");
+                                    MessageBox.Show("Devolución correcta");
                                     VistaSuministros();
 
                                     //Deshabilitamos los controles

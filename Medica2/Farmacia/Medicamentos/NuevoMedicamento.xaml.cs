@@ -61,7 +61,7 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 if (txtComentario.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
 
                 }else
                 {
@@ -72,7 +72,7 @@ namespace Medica2.Farmacia.Medicamentos
                     {
                         if (txtCodBarras.Text == "" && txtCodBarras.Text.Length < 13)
                         {
-                            MessageBox.Show("Ingresa un codigo de barras valido");
+                            MessageBox.Show("Ingresa un código de barras válido");
                         }else
                         {
                             if (txtPCompra.Text == "")
@@ -87,7 +87,7 @@ namespace Medica2.Farmacia.Medicamentos
                                 {
                                     if (txtPMedicos.Text == "")
                                     {
-                                        MessageBox.Show("Ingresa el precio para medicos");
+                                        MessageBox.Show("Ingresa el precio para médicos");
                                     }else
                                     {
                                         if (txtDescuento.Text == "")
@@ -102,12 +102,12 @@ namespace Medica2.Farmacia.Medicamentos
                                             {
                                                 if (txtCFDI.Text == "" && txtCFDI.Text.Length < 8)
                                                 {
-                                                    MessageBox.Show("Ingresa un CFDI valido");
+                                                    MessageBox.Show("Ingresa un CFDI válido");
                                                 }else
                                                 {
                                                     if (cbbAlmacen.Text == "")
                                                     {
-                                                        MessageBox.Show("Selecciona el tipo de almacen");
+                                                        MessageBox.Show("Selecciona el tipo de almacén");
                                                     }else
                                                     {
                                                         DateTime fec = DateTime.Now;
@@ -131,7 +131,7 @@ namespace Medica2.Farmacia.Medicamentos
                                                         };
                                                         BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Add(cm);
                                                         BaseDatos.GetBaseDatos().SaveChanges();
-                                                        MessageBoxResult result = MessageBox.Show("Se guardo correctamente el medicamento", "Registro exitoso");
+                                                        MessageBoxResult result = MessageBox.Show("Se guardó correctamente el medicamento", "Registro exitoso");
                                                         Limpiar();
                                                     }
                                                 }
@@ -156,7 +156,7 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 if (txtComentario.Text == "")
                 {
-                    MessageBox.Show("Ingresa una descripcion");
+                    MessageBox.Show("Ingresa una descripción");
 
                 }
                 else
@@ -169,7 +169,7 @@ namespace Medica2.Farmacia.Medicamentos
                     {
                         if (txtCodBarras.Text == "" && txtCodBarras.Text.Length < 13)
                         {
-                            MessageBox.Show("Ingresa un codigo de barras valido");
+                            MessageBox.Show("Ingresa un código de barras válido");
                         }
                         else
                         {
@@ -187,7 +187,7 @@ namespace Medica2.Farmacia.Medicamentos
                                 {
                                     if (txtPMedicos.Text == "")
                                     {
-                                        MessageBox.Show("Ingresa el precio para medicos");
+                                        MessageBox.Show("Ingresa el precio para médicos");
                                     }
                                     else
                                     {
@@ -225,7 +225,7 @@ namespace Medica2.Farmacia.Medicamentos
                                                     medic.FECHA_MOD = fec;
                                                     
                                                     BaseDatos.GetBaseDatos().SaveChanges();
-                                                    MessageBoxResult result = MessageBox.Show("Se actualizo correctamente el medicamento", "Farmacia");
+                                                    MessageBoxResult result = MessageBox.Show("Se actualizó correctamente el medicamento", "Farmacia");
                                                     Limpiar();
                                                 }
                                             }

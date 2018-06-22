@@ -21,12 +21,12 @@
     </Window.Resources>
     <Grid>
 
-        <Label x:Name="lblFactura" Content="Numero de factura" HorizontalAlignment="Left" Margin="27,64,0,0" VerticalAlignment="Top" Width="127"/>
+        <Label x:Name="lblFactura" Content="Número de factura" HorizontalAlignment="Left" Margin="27,64,0,0" VerticalAlignment="Top" Width="127"/>
         <Label x:Name="lblFCompra" Content="Fecha de compra" HorizontalAlignment="Left" Margin="410,63,0,0" VerticalAlignment="Top" Width="109"/>
         <Label x:Name="lblProveedor" Content="Nombre del proveedor" HorizontalAlignment="Left" Margin="27,93,0,0" VerticalAlignment="Top" Width="132"/>
         <Label x:Name="lblFVencimiento" Content="Fecha de vencimiento" HorizontalAlignment="Left" Margin="744,64,0,0" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="lblRFC" Content="RFC" HorizontalAlignment="Left" Margin="410,93,0,0" VerticalAlignment="Top" Width="109"/>
-        <Label x:Name="lblTelefono" Content="Telefono" HorizontalAlignment="Left" Margin="744,93,0,0" VerticalAlignment="Top" Width="109"/>
+        <Label x:Name="lblTelefono" Content="Teléfono" HorizontalAlignment="Left" Margin="744,93,0,0" VerticalAlignment="Top" Width="109"/>
         <Label x:Name="lblTitulo" Content="Registro de compras" HorizontalAlignment="Left" Margin="542,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
 
         <TextBox x:Name="txtFactura" HorizontalAlignment="Left" Height="23" Margin="159,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
@@ -69,10 +69,10 @@
                                     SelectionChanged="autoMedicamentos_SelectionChanged" 
                                     PreviewTextInput="validarLetras"
                                     IsEnabled="False"/>
-        <Label x:Name="lblAlmacen" Content="Tipo de almacen" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblDescripcion" Content="Descripcion" HorizontalAlignment="Left" Margin="576,189,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblAlmacen" Content="Tipo de almacén" HorizontalAlignment="Left" Margin="32,312,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="576,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCaducidad" Content="Fecha de caducidad" HorizontalAlignment="Left" Margin="32,231,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblBarras" Content="Codigo de barras" HorizontalAlignment="Left" Margin="576,226,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblBarras" Content="Código de barras" HorizontalAlignment="Left" Margin="576,226,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="576,267,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPMedicos" Content="Precio a medicos" HorizontalAlignment="Left" Margin="962,267,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="23" Margin="682,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"

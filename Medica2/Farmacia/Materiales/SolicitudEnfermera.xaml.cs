@@ -47,7 +47,7 @@ namespace Medica2.Farmacia.Materiales
             btnAgregar.IsEnabled = true;
             VistaGrid();
             total = Decimal.Parse(solicitud.TOTAL.ToString());
-            
+            btnFinalizar.IsEnabled = true;
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -266,7 +266,7 @@ namespace Medica2.Farmacia.Materiales
             var solicitud = BaseDatos.GetBaseDatos().MATERIALES_ENFERMERAS.Find(idsol);
             solicitud.TOTAL = total;
             BaseDatos.GetBaseDatos().SaveChanges();
-            MessageBox.Show("Se finalizo la solicitud correctamente");
+            MessageBox.Show("Se finalizó la solicitud correctamente");
             Bloquear();
         }
 
@@ -375,7 +375,7 @@ namespace Medica2.Farmacia.Materiales
             if (sender == itemEliminar)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

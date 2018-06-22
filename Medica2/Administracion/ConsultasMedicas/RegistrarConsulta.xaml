@@ -1,0 +1,49 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.ConsultasMedicas"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.ConsultasMedicas.RegistrarConsulta"
+        mc:Ignorable="d"
+        Title="RegistrarConsulta" Height="535.427" Width="716.524">
+    <Grid>
+
+        <Label x:Name="labelNombrePaciente" Content="Paceinte" HorizontalAlignment="Left" Margin="61,145,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreMedico" Content="Medico" HorizontalAlignment="Left" Margin="61,117,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreDiagnostico" Content="Diagnostico" HorizontalAlignment="Left" Margin="59,173,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreDiagnostico_Copy" Content="Descripción" HorizontalAlignment="Left" Margin="61,204,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreDiagnostico_Copy1" Content="Medicamento" HorizontalAlignment="Left" Margin="63,269,0,-24.2" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreMedico_Copy" Content="Consultas Médicas" HorizontalAlignment="Left" Margin="261,22,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="31" Width="135" FontSize="14"/>
+        <Label x:Name="labelcostoconsulta" Content="Costo Consulta" HorizontalAlignment="Left" Margin="369,381,-165,-136.2" VerticalAlignment="Top"/>
+
+
+        <telerik:RadAutoCompleteBox x:Name="autoMedico" HorizontalAlignment="Left" Height="28" Margin="197,117,-199.4,0" VerticalAlignment="Top" Width="296" IsHitTestVisible="True"
+        ItemsSource="{Binding MEDICOS}"
+        DisplayMemberPath="NOMBRE"
+        AutoCompleteMode="Suggest"
+        SelectionMode="Single"/>
+
+        <telerik:RadAutoCompleteBox x:Name="autoPacienteC" Visibility="Hidden" HorizontalAlignment="Left" Height="28" Margin="197,145,0,0" VerticalAlignment="Top" Width="296" IsHitTestVisible="True"
+                                    ItemsSource="{Binding PACIENTES}"
+                                    DisplayMemberPath="NOMBRE"
+                                    AutoCompleteMode="Suggest"
+                                    SelectionMode="Single"/>
+
+
+
+        <CheckBox x:Name="checkBoxConsulta" IsChecked="False" Content="Consulta General" HorizontalAlignment="Left"  Margin="274,97,-92.4,0" VerticalAlignment="Top"
+        Checked="checkBoxConsulta_Checked" Unchecked="checkBoxConsulta_Unchecked"/>
+
+        <Button x:Name="button_Copy" Content="Guardar" HorizontalAlignment="Left" Margin="197,460,0,-221.6" VerticalAlignment="Top" Width="89" Click="button_Copy_Click" Height="32"/>
+        <Button x:Name="cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="406,460,-199.4,-221.6" VerticalAlignment="Top" Width="87" Click="cancelar_Click" Height="32"/>
+        <Button x:Name="buttonRegistrarPaciente" Content="Registrar Paciente" HorizontalAlignment="Left" Margin="526,153,-351.4,0" VerticalAlignment="Top" Width="119" Click="buttonRegistrarPaciente_Click"/>
+
+        <TextBox x:Name="txtPaciente" Visibility="Visible" HorizontalAlignment="Left" Height="28" Margin="197,145,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
+        <TextBox x:Name="txtdiagnostico" HorizontalAlignment="Left" Height="28" Margin="197,173,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
+        <TextBox x:Name="txtdescripcion" HorizontalAlignment="Left" Height="69" Margin="197,201,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
+        <TextBox x:Name="txtmedicamento" HorizontalAlignment="Left" Height="75" Margin="197,269,-199.4,-73.6" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
+        <TextBox x:Name="txtcostoconsulta" HorizontalAlignment="Left" Height="26" Margin="499,381,-351.4,-136.6" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+
+    </Grid>
+</Window>

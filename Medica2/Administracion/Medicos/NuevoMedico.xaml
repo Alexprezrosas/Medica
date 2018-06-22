@@ -1,0 +1,75 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Medicos"
+        xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="Medica2.Administracion.Medicos.NuevoMedico"
+        mc:Ignorable="d"
+        Title="NuevoMedico" Height="472.77" Width="914.003">
+    <Grid>
+
+        <TextBox x:Name="txtNombre" TabIndex="1" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="173,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCurp" MaxLength="18" TabIndex="2" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="612,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCelular" MaxLength="10" TabIndex="3" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="23" Margin="612,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCalle" TabIndex="4" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="173,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtMaterno" TabIndex="5" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="173,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtPaterno" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="173,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtTconsultorio" MaxLength="10" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="22" Margin="612,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtTparticular" MaxLength="10" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="24" Margin="612,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCorreo" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="28" Margin="611,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtCedulap"  MaxLength="8" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="24" Margin="611,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"  Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+
+
+        <Label x:Name="label" Content="Nombre" HorizontalAlignment="Left" Margin="22,55,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy3" Content="CURP" HorizontalAlignment="Left" Margin="444,80,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy4" Content="Celular" HorizontalAlignment="Left" Margin="444,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy5" Content="Estado" HorizontalAlignment="Left" Margin="22,225,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy6" Content="Minicipio" HorizontalAlignment="Left" Margin="22,254,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy7" Content="Localidad" HorizontalAlignment="Left" Margin="22,285,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy8" Content="Calle" HorizontalAlignment="Left" Margin="22,197,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy9" Content="Sexo" HorizontalAlignment="Left" Margin="22,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy10" Content="Fecha Nacimiento" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy11" Content="Apellido materno" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy12" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Registro de Médicos" HorizontalAlignment="Left" Margin="353,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Height="30" Width="150"/>
+        <Label x:Name="label_Copy" Content="Teléfono Consultorio" HorizontalAlignment="Left" Margin="444,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy13" Content="Teléfono Particular" HorizontalAlignment="Left" Margin="442,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy14" Content="Correo" HorizontalAlignment="Left" Margin="444,200,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy15" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="442,167,0,0" VerticalAlignment="Top"/>
+
+
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" 
+        Margin="309,361,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" 
+        Margin="489,361,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+
+
+        <ComboBox x:Name="cbbSexo" HorizontalAlignment="Left" Margin="173,169,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Selecciona el sexo"/>
+            <ComboBoxItem Content="Masculino"/>
+            <ComboBoxItem Content="Femenino"/>
+        </ComboBox>
+
+
+        <ComboBox x:Name="comboBoxEstado" HorizontalAlignment="Left" 
+        Margin="172,226,0,0" VerticalAlignment="Top" Width="120"
+        DisplayMemberPath="nombre" 
+        SelectedValuePath="id"  />
+
+        <DatePicker
+        x:Name="dpFecha_Nacimiento" HorizontalAlignment="Left" Margin="172,139,0,0" VerticalAlignment="Top" Height="23" Width="121"
+        SelectedDateChanged="dpFecha_Nacimiento_SelectedDateChanged"
+        DisplayDateEnd="{x:Static System:DateTime.Now}"
+                    />
+
+        <Button Visibility="Hidden" x:Name="btnEditar" Content="Actualizar" IsEnabled="False" HorizontalAlignment="Left" 
+        Margin="309,361,0,0" VerticalAlignment="Top" Width="74" Click="EditarMedico" />
+        <TextBox x:Name="txtmunicipio" TabIndex="4" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="173,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <TextBox x:Name="txtlocalidad" TabIndex="4" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="172,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <Label x:Name="lblContrasena" Content="Contraseña" HorizontalAlignment="Left" Margin="444,232,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="psContrasena" MaxLength="10" HorizontalAlignment="Left" Margin="611,233,0,0" VerticalAlignment="Top" Width="220" Height="26"
+                     Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+
+    </Grid>
+</Window>

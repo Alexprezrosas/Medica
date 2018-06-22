@@ -35,14 +35,15 @@
             </telerik:RadContextMenu.ContextMenu>
             
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Material" KeyDown="GridViewDataColumn_KeyDown" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCION" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="CODIGO DE BARRAS" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="MATERIAL" KeyDown="GridViewDataColumn_KeyDown" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="CÓDIGO DE BARRAS" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="EXISTENCIAS" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO UNITARIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="FECHA DE REGISTRO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Consulta de materiales" HorizontalAlignment="Left" Margin="195,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using AccessoDB;
+using Medica2.Farmacia.Medicamentos;
 using System;
 using System.Linq;
 using System.Windows;
@@ -124,14 +125,15 @@ namespace Medica2.Farmacia.Materiales
         {
             if (sender == itemAgregar)
             {
-                
-                
+                RegistroMedicamento rm = new RegistroMedicamento();
+                rm.Show();
+                this.Close();
             }
             else
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia Materiales", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el material?", "Farmacia Materiales", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -142,7 +144,7 @@ namespace Medica2.Farmacia.Materiales
                                 BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Remove(cmatt);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado el material", "Farmacia Materiales");
+                            MessageBox.Show("Se eliminó el material", "Farmacia Materiales");
                             VistaGrid();
                             break;
 

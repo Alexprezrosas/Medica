@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.WinControls.UI;
 
 namespace Medica2.Administracion.Pacientes
 {
@@ -23,12 +24,25 @@ namespace Medica2.Administracion.Pacientes
         int idf;
         int idp;
         int idccp;
+        private RadAutoCompleteBox autoPacienteC;
+
         public IngresoPaciente()
         {
             InitializeComponent();
             FillEstados();
             llenarAutocmpletes();
             dpFecha_Nacimiento.DisplayDateEnd = DateTime.Now;
+        }
+
+        public IngresoPaciente(RadAutoCompleteBox autoPacienteC)
+        {
+
+            InitializeComponent();
+            this.autoPacienteC = autoPacienteC;
+            FillEstados();
+            autoCuarto.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
+
+
         }
 
         void llenarAutocmpletes()
@@ -168,16 +182,16 @@ namespace Medica2.Administracion.Pacientes
 
         }
 
-        private void dpFecha_Nacimiento_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var picker = sender as DatePicker;
-            DateTime? date = picker.SelectedDate;
+        //private void dpFecha_Nacimiento_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var picker = sender as DatePicker;
+        //    DateTime? date = picker.SelectedDate;
 
-            if (date == null)
-            {
-                this.Title = "No se ha seleccionado una fecha";
-            }
-        }
+        //    if (date == null)
+        //    {
+        //        this.Title = "No se ha seleccionado una fecha";
+        //    }
+        //}
 
         public void FillEstados()
         {

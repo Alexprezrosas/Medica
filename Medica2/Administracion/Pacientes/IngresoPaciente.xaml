@@ -44,7 +44,7 @@
             DisplayMemberPath="nombre" 
             SelectedValuePath="id"
             Text="Selecciona el estado"/>
-        <DatePicker x:Name="dpFecha_Nacimiento" HorizontalAlignment="Left" Margin="220,202,0,0" VerticalAlignment="Top" Width="120" SelectedDateChanged="dpFecha_Nacimiento_SelectedDateChanged" 
+        <DatePicker x:Name="dpFecha_Nacimiento" HorizontalAlignment="Left" Margin="220,202,0,0" VerticalAlignment="Top" Width="120"
                     DisplayDateEnd="{x:Static System:DateTime.Now}"/>
         <CheckBox x:Name="cbTipoPaciente" Content="Hozpitalizado" HorizontalAlignment="Left" Margin="68,96,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="220,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" MaxLength="30"/>

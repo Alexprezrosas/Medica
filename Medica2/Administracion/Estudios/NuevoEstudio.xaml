@@ -1,0 +1,36 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Estudios"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Estudios.NuevoEstudio"
+        mc:Ignorable="d"
+        Title="NuevoEstudio" Height="279.512" Width="452.195">
+    <Grid>
+
+        <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="lblComentario" Content="Descripción" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" Width="128"/>
+
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="169,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" />
+        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="23" Margin="169,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="169,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="146" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumeros" />
+
+        <Label x:Name="lblTitulo" Content="Nuevo Estudio" HorizontalAlignment="Left" Margin="169,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="130,198,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="270,198,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Label x:Name="lblClasi" Content="Clasificación" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top" Width="128"/>
+
+        <telerik:RadAutoCompleteBox  x:Name="AutoClasifica" HorizontalAlignment="Left" Margin="169,126,0,0" 
+        VerticalAlignment="Top" Width="146" 
+        ItemsSource="{Binding CLASIFICACION_ESTUDIOS}" 
+        DisplayMemberPath="NOMBRE" 
+        AutoCompleteMode="Suggest" 
+        SelectionMode="Single"/>
+
+        <Button x:Name="btnnuevaclasificacion" Content="Nueva Clasificación" HorizontalAlignment="Left" Margin="320,126,0,0" VerticalAlignment="Top" Width="116" Click="btnnuevaclasificacion_Click"/>
+
+    </Grid>
+</Window>

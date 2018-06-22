@@ -126,7 +126,7 @@ namespace Medica2.Farmacia.Ventas
                     var mediexistencia = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idma);
                     if (mediexistencia.CANTIDAD == 0)
                     {
-                        MessageBox.Show("Se agotarion las existencias");
+                        MessageBox.Show("Se agotarón las existencias");
                     }
                     else
                     {
@@ -162,7 +162,7 @@ namespace Medica2.Farmacia.Ventas
                         }
                         else
                         {
-                            MessageBox.Show("Solo hay en existencia: " + mediexistencia.CANTIDAD.ToString());
+                            MessageBox.Show("Existencias: " + mediexistencia.CANTIDAD.ToString());
                         }
                     }
                 }
@@ -207,7 +207,7 @@ namespace Medica2.Farmacia.Ventas
         {
             if (autoMedicamentos.SelectedItem == null)
             {
-                MessageBox.Show("Selecciona un medicamento valido");
+                MessageBox.Show("Selecciona un medicamento válido");
             }else
             {
                 if (txtCantidad.Text == "")
@@ -381,7 +381,7 @@ namespace Medica2.Farmacia.Ventas
             if (sender == itemEliminar)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el material?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

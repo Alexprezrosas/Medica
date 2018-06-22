@@ -27,27 +27,68 @@ namespace Medica2.Administracion.Enfermeras
         public ConsultaEnfermera()
         {
             InitializeComponent();
-            //MostrarEnfermera.ItemsSource = BaseDatos.GetBaseDatos().ENFERMERAS.Join(PERSONA(n);
-
-            //autoEnfermera.ItemsSource = BaseDatos.GetBaseDatos().ENFERMERAS.ToList();
-            VistaEnfermerasPersonas();
             
+            VistaEnfermerasPersonas();
 
         }
-        
+
         public void VistaEnfermerasPersonas()
         {
             MostrarEnfermera.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                          join e in BaseDatos.GetBaseDatos().ENFERMERAS
-                          on PERSONA.ID_PERSONA equals e.PERSONAID
-                          select new
-                          {
-                              ID_ENFERMERA = e.ID_ENFERMERA,
-                              NOMBRE = PERSONA.NOMBRE,
-                              APATERNO = PERSONA.A_PATERNO,
-                              AMATERNO = PERSONA.A_MATERNO,
-                              CPROFESIONAL = e.C_PROFESIONAL
-                          }).ToList();
+                                                  join e in BaseDatos.GetBaseDatos().ENFERMERAS
+                                                  on PERSONA.ID_PERSONA equals e.PERSONAID
+                                                  join emple in BaseDatos.GetBaseDatos().EMPLEADOS
+                                                  on PERSONA.ID_PERSONA equals emple.PERSONAID
+                                                  join usu in BaseDatos.GetBaseDatos().USUARIOS
+                                                  on emple.ID_EMPLEADO equals usu.EMPLEADOID
+                                                  where PERSONA.ESTADOPERSONA=="Activo"
+                                                  select new
+                                                  {
+                                                      ID_ENFERMERA = e.ID_ENFERMERA,
+                                                      ID_USUARIO = usu.ID_USUARIO,
+                                                      NOMBRE = PERSONA.NOMBRE,
+                                                      APATERNO = PERSONA.A_PATERNO,
+                                                      AMATERNO = PERSONA.A_MATERNO,
+                                                      CPROFESIONAL = e.C_PROFESIONAL,
+                                                      CALLE = PERSONA.CALLE,
+                                                      ESTADO = PERSONA.ESTADO1.nombre,
+                                                      NOMUNI = PERSONA.NOMMUNICIPIO,
+                                                      NOMLOC = PERSONA.NOMLOCALIDAD,
+                                                      T_CELULAR = PERSONA.T_CELULAR,
+                                                      CURP = PERSONA.CURP,
+                                                      FECHA_CREACION = PERSONA.FECHA_CREACION,
+                                                      CONTRA=usu.CONTRASENA,
+                                                      PUESTO = emple.PUESTO,
+                                                      CONTRASE = usu.CONTRASENA
+                                                  }).ToList();
+        }
+
+        public void VistaEnfermerasTodas()
+        {
+            MostrarEnfermera.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
+                                            join e in BaseDatos.GetBaseDatos().ENFERMERAS
+                                            on PERSONA.ID_PERSONA equals e.PERSONAID
+                                            join emple in BaseDatos.GetBaseDatos().EMPLEADOS
+                                            on PERSONA.ID_PERSONA equals emple.PERSONAID
+                                            join usu in BaseDatos.GetBaseDatos().USUARIOS
+                                            on emple.ID_EMPLEADO equals usu.EMPLEADOID
+                                            select new
+                                            {
+                                                ID_ENFERMERA = e.ID_ENFERMERA,
+                                                ID_USUARIO = usu.ID_USUARIO,
+                                                NOMBRE = PERSONA.NOMBRE,
+                                                APATERNO = PERSONA.A_PATERNO,
+                                                AMATERNO = PERSONA.A_MATERNO,
+                                                CPROFESIONAL = e.C_PROFESIONAL,
+                                                CALLE = PERSONA.CALLE,
+                                                ESTADO = PERSONA.ESTADO1.nombre,
+                                                NOMUNI = PERSONA.NOMMUNICIPIO,
+                                                NOMLOC = PERSONA.NOMLOCALIDAD,
+                                                T_CELULAR = PERSONA.T_CELULAR,
+                                                CURP = PERSONA.CURP,
+                                                FECHA_CREACION = PERSONA.FECHA_CREACION,
+                                                CONTRA=usu.CONTRASENA
+                                            }).ToList();
         }
 
         private void MostrarEnfermeras_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
@@ -74,6 +115,8 @@ namespace Medica2.Administracion.Enfermeras
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
+
             }
 
         }
@@ -102,19 +145,14 @@ namespace Medica2.Administracion.Enfermeras
                             if (MostrarEnfermera.SelectedItem != null)
                             {
                                 var cenfer = BaseDatos.GetBaseDatos().ENFERMERAS.Find(idenf);
-                                BaseDatos.GetBaseDatos().ENFERMERAS.Remove(cenfer);
+                                cenfer.PERSONA.ESTADOPERSONA = "Inactivo";
+                              
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
                             MessageBox.Show("Se ha eliminado la enfermera", "Administracion");
                             VistaEnfermerasPersonas();
 
                             ////
-
-                            IList objectList = MostrarEnfermera.SelectedItem as IList;
-                            List obj = MostrarEnfermera.SelectedItem as List;
-                            var lis = MostrarEnfermera.SelectedItems[1];
-
-                            MessageBox.Show("" + lis);
 
                             break;
 
@@ -123,7 +161,44 @@ namespace Medica2.Administracion.Enfermeras
                             break;
                     }
                 }
+                    else
+                    {
+                        if (sender == itemEditar)
+                        {
+                            if (MostrarEnfermera.SelectedItem != null)
+                            {
+                                dynamic objmed = MostrarEnfermera.SelectedItem;
+                                int idenfe = objmed.ID_ENFERMERA;
+                                int idus = objmed.ID_USUARIO;
+
+                                var cenfe = BaseDatos.GetBaseDatos().ENFERMERAS.Find(idenfe);
+                                var idusu = BaseDatos.GetBaseDatos().USUARIOS.Find(idus);
+
+                                NuevaEnfermera nmed = new NuevaEnfermera((ENFERMERA)cenfe, (USUARIO)idusu, false);
+                                nmed.Show();
+                                this.Close();
+                            }
+                        }
+                 }
+                
             }
-        }        
+        }
+
+        private void checkboxenfe_Checked(object sender, RoutedEventArgs e)
+        {
+            if (checkboxenfe.IsChecked == true)
+            {
+                VistaEnfermerasTodas();
+            }
+
+        }
+
+        private void checkboxenfe_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (checkboxenfe.IsChecked == false)
+            {
+                VistaEnfermerasPersonas();
+            }
+        }
     }
 }

@@ -125,8 +125,23 @@
     <Compile Include="Administracion\Cirugias\ConsultarCirugiasAplicadas.xaml.cs">
       <DependentUpon>ConsultarCirugiasAplicadas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Clasificacion Estudios\NuevaClasificacionEstudios.xaml.cs">
+      <DependentUpon>NuevaClasificacionEstudios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\RegistrarConsulta.xaml.cs">
+      <DependentUpon>RegistrarConsulta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\VisualizarConsultas.xaml.cs">
+      <DependentUpon>VisualizarConsultas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Cuartos\CuartosDisponibles.xaml.cs">
       <DependentUpon>CuartosDisponibles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cuartos\NuevoCuarto.xaml.cs">
+      <DependentUpon>NuevoCuarto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cuentas\VizualizarCuentas.xaml.cs">
+      <DependentUpon>VizualizarCuentas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Depositos\ConsultarDepositosAplicados.xaml.cs">
       <DependentUpon>ConsultarDepositosAplicados.xaml</DependentUpon>
@@ -134,8 +149,14 @@
     <Compile Include="Administracion\Depositos\RegistrarDeposito.xaml.cs">
       <DependentUpon>RegistrarDeposito.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Empleados\RegistroEmpleados.xaml.cs">
+      <DependentUpon>RegistroEmpleados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\EquipoHospital\CargarEquipoHospital.xaml.cs">
       <DependentUpon>CargarEquipoHospital.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\EquipoHospital\ConsultaEquipoHospital.xaml.cs">
+      <DependentUpon>ConsultaEquipoHospital.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Estudios\CargarEstudios.xaml.cs">
       <DependentUpon>CargarEstudios.xaml</DependentUpon>
@@ -143,11 +164,32 @@
     <Compile Include="Administracion\Estudios\EstudiosAplicados.xaml.cs">
       <DependentUpon>EstudiosAplicados.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Estudios\MostrarEstudios.xaml.cs">
+      <DependentUpon>MostrarEstudios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Estudios\NuevoEstudio.xaml.cs">
+      <DependentUpon>NuevoEstudio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\CargarHonorarioMedico.xaml.cs">
+      <DependentUpon>CargarHonorarioMedico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\VizualizarHonorariosCargados.xaml.cs">
+      <DependentUpon>VizualizarHonorariosCargados.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Medicos\MostrarMedicos.xaml.cs">
+      <DependentUpon>MostrarMedicos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Medicos\NuevoMedico.xaml.cs">
+      <DependentUpon>NuevoMedico.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Pacientes\ConsultaPacientes.xaml.cs">
       <DependentUpon>ConsultaPacientes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Pacientes\IngresoPaciente.xaml.cs">
       <DependentUpon>IngresoPaciente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Permisos\RegistroPermisosUsuarios.xaml.cs">
+      <DependentUpon>RegistroPermisosUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Reportes\Report1.cs">
       <SubType>Component</SubType>
@@ -163,6 +205,12 @@
     </Compile>
     <Compile Include="Administracion\Reportes\reporte1.xaml.cs">
       <DependentUpon>reporte1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Usuarios\AgregarUsuarios.xaml.cs">
+      <DependentUpon>AgregarUsuarios.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Usuarios\VizualizarUsuarios.xaml.cs">
+      <DependentUpon>VizualizarUsuarios.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enfermeria\Pacientes\MostrarPacientes.xaml.cs">
       <DependentUpon>MostrarPacientes.xaml</DependentUpon>
@@ -226,6 +274,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Clasificacion Estudios\NuevaClasificacionEstudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\ConsultasMedicas\RegistrarConsulta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\ConsultasMedicas\VisualizarConsultas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Cuartos\CatalogoCuartos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,11 +298,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Cuartos\NuevoCuarto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Cuentas\VizualizarCuentas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Depositos\ConsultarDepositosAplicados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administracion\Depositos\RegistrarDeposito.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Empleados\RegistroEmpleados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -263,6 +335,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administracion\EquipoHospital\ConsultaCatalogoEquipoHospital.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\EquipoHospital\ConsultaEquipoHospital.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -290,6 +366,30 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Estudios\MostrarEstudios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Estudios\NuevoEstudio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\HonorarioMedicos\CargarHonorarioMedico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\HonorarioMedicos\VizualizarHonorariosCargados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Medicos\MostrarMedicos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Medicos\NuevoMedico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Pacientes\ConsultaPacientes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -298,7 +398,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Permisos\RegistroPermisosUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Reportes\reporte1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Usuarios\AgregarUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Usuarios\VizualizarUsuarios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -533,7 +645,9 @@
       <Name>AccessoDB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Image1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,42 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Usuarios"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Usuarios.AgregarUsuarios"
+        mc:Ignorable="d"
+        Title="AgregarUsuarios" Height="279.512" Width="471.951">
+    <Grid>
+
+        <Label x:Name="lblacceso" Content="Registrar Usuario" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="label" Content="Empleado" HorizontalAlignment="Left" Margin="14,53,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblpuesto_Copy" Content="Contraseña" HorizontalAlignment="Left" Margin="14,99,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblpermiso" Content="Permiso" HorizontalAlignment="Left" Margin="14,140,0,0" VerticalAlignment="Top"/>
+
+        <telerik:RadAutoCompleteBox x:Name="autoempleado" HorizontalAlignment="Left" Height="26" Margin="133,53,-13.4,0" VerticalAlignment="Top" Width="174"
+        ItemsSource="{Binding EMPLEADOS}"
+        DisplayMemberPath="NOMBRE"
+        SelectionMode="Single"
+        AutoCompleteMode="Suggest"
+        WatermarkContent="ingresa el NOMBRE del Empleado" />
+
+        <telerik:RadAutoCompleteBox x:Name="autoPermiso" HorizontalAlignment="Left" Height="25" Margin="133,140,0,0" VerticalAlignment="Top" Width="174"
+        ItemsSource="{Binding PERMISOS}"
+        DisplayMemberPath="NOM_PERMISO"
+        SelectionMode="Single"
+        AutoCompleteMode="Suggest"
+        WatermarkContent="ingresa el Permiso"/>
+
+        <Button x:Name="btnRegistrar" Content="Registrar Empleado" HorizontalAlignment="Left" Margin="329,55,-150.4,0" VerticalAlignment="Top" Width="115" Click="btnRegistrar_Click"/>
+        <Button x:Name="btnguardar" Content="Guardar" HorizontalAlignment="Left" Margin="80,205,0,0" VerticalAlignment="Top" Width="92" Click="btnguardar_Click"/>
+        <Button x:Name="btncancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="262,205,-60.4,0" VerticalAlignment="Top" Width="92" Click="btncancelar_Click"/>
+        <Button x:Name="btnRegistrar_Permiso" Content="Registrar Permiso" HorizontalAlignment="Left" Margin="329,146,-150.4,0" VerticalAlignment="Top" Width="115" Click="btnRegistrar_Permiso_Click"/>
+
+        <TextBox x:Name="txtcontraseña" HorizontalAlignment="Left" Height="23" Margin="134,99,-14.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174" TextInput="validarNumLetras"/>
+
+
+
+
+    </Grid>
+</Window>

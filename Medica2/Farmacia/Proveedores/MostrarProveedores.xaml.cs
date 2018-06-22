@@ -53,6 +53,33 @@ namespace Medica2.Farmacia.Proveedores
                                             on PERSONA.ID_PERSONA equals e.PERSONAID
                                             join esta in BaseDatos.GetBaseDatos().ESTADOS
                                             on PERSONA.ESTADO equals esta.id
+                                            where PERSONA.ESTADOPERSONA == "Activo"
+                                            select new
+                                            {
+                                                ID_PROVEEDOR = e.ID_PROVEEDOR,
+                                                NOMBRE = PERSONA.NOMBRE,
+                                                APATERNO = PERSONA.A_PATERNO,
+                                                AMATERNO = PERSONA.A_MATERNO,
+                                                SEXO = PERSONA.SEXO,
+                                                F_NACIMIENTO = PERSONA.F_NACIMIENTO,
+                                                CALLE = PERSONA.CALLE,
+                                                ESTADOO = esta.nombre,
+                                                MUNICIPIOO = PERSONA.NOMMUNICIPIO,
+                                                LOCALIDADD = PERSONA.NOMLOCALIDAD,
+                                                TELEFONO = e.PERSONA.T_CELULAR,
+                                                CURP = PERSONA.CURP,
+                                                RFC = e.RFC,
+                                                NOTA = e.NOTA
+                                            }).ToList();
+        }
+
+        public void VistaProveedoresPersonasTodos()
+        {
+            vistaProveedores.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
+                                            join e in BaseDatos.GetBaseDatos().PROVEEDORES
+                                            on PERSONA.ID_PERSONA equals e.PERSONAID
+                                            join esta in BaseDatos.GetBaseDatos().ESTADOS
+                                            on PERSONA.ESTADO equals esta.id
                                             select new
                                             {
                                                 ID_PROVEEDOR = e.ID_PROVEEDOR,
@@ -128,7 +155,7 @@ namespace Medica2.Farmacia.Proveedores
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar e; proveedor?", "Farmacia", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el proveedor?", "Farmacia", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -138,11 +165,11 @@ namespace Medica2.Farmacia.Proveedores
 
                             if (vistaProveedores.SelectedItem != null)
                             {
-                                var cenfer = BaseDatos.GetBaseDatos().PROVEEDORES.Find(idp);
-                                BaseDatos.GetBaseDatos().PROVEEDORES.Remove(cenfer);
+                                var prove = BaseDatos.GetBaseDatos().PROVEEDORES.Find(idp);
+                                prove.PERSONA.ESTADOPERSONA = "Inactivo";
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado el proveedor", "Farmacia");
+                            MessageBox.Show("Se eliminó el proveedor", "Farmacia");
                             VistaProveedoresPersonas();
 
                             ////
@@ -172,8 +199,24 @@ namespace Medica2.Farmacia.Proveedores
                 }
             }
         }
-    
-    //
+
+        private void cbTProveedores_Checked(object sender, RoutedEventArgs e)
+        {
+            if (cbTProveedores.IsChecked == true)
+            {
+                VistaProveedoresPersonasTodos();
+            }
+        }
+
+        private void cbTProveedores_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (cbTProveedores.IsChecked == false)
+            {
+                VistaProveedoresPersonas();
+            }
+        }
+
+        //
 
     }
 }

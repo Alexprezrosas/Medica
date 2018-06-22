@@ -39,7 +39,7 @@
         <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="219,131,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90" PreviewTextInput="validarNumeros"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="324,135,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
         <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="427,135,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnFinalizar_Click"/>
-        <Label x:Name="lblHabitacion" Content="Habitacion" HorizontalAlignment="Left" Margin="500,19,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHabitacion" Content="Habitación" HorizontalAlignment="Left" Margin="500,19,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtHabitacion" HorizontalAlignment="Left" Height="23" Margin="590,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
 
         <telerik:RadGridView x:Name="rgvDetalle" HorizontalAlignment="Left" Margin="32,162,0,0" VerticalAlignment="Top" Height="298" Width="670" AutoGenerateColumns="False"

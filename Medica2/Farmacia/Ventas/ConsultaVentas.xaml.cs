@@ -86,7 +86,7 @@ namespace Medica2.Farmacia.Ventas
             
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar la venta?", "Farmacia", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar la venta?", "Farmacia", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -99,7 +99,7 @@ namespace Medica2.Farmacia.Ventas
                                 BaseDatos.GetBaseDatos().VENTAS_GENERALES.Remove(venta);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado la venta", "Farmacia");
+                            MessageBox.Show("Se eliminó la venta", "Farmacia");
                             VistaVentas();
                             break;
 

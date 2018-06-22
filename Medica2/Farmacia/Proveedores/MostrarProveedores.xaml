@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Farmacia.Proveedores"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Proveedores.MostrarProveedores"
         mc:Ignorable="d"
-        Title="MostrarProveedores" Height="419.5" Width="1005.681">
+        Title="MostrarProveedores" Height="557.5" Width="1005.681">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -23,8 +23,8 @@
             <ColumnDefinition Width="591*"/>
         </Grid.ColumnDefinitions>
 
-        <telerik:RadGridView x:Name="vistaProveedores"  HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" 
-                             Width="976" Height="312" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" 
+        <telerik:RadGridView x:Name="vistaProveedores"  HorizontalAlignment="Left" Margin="5,82,0,0" VerticalAlignment="Top" 
+                             Width="976" Height="436" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" 
                              Grid.Column="1" AutoGenerateColumns="False" 
                              SelectedItem="{Binding ID_ENFERMERA}"
                              ShowSearchPanel="True"
@@ -41,7 +41,7 @@
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding RFC}" Header="RFC"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELEFONO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELÉFONO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOO}" Header="ESTADO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MUNICIPIOO}" Header="MUNICIPIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding LOCALIDADD}" Header="LOCALIDAD"/>
@@ -61,7 +61,9 @@
 
 
         <Button x:Name="buttoneditar" Content="Editar" Click="buttoneditar_Click" HorizontalAlignment="Left" Margin="154,246,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="lblTitulo" Content="Consulta de Proveedores" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+        <Label x:Name="lblTitulo" Content="Consulta de proveedores" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+        <CheckBox x:Name="cbTProveedores" Content="Todos los proveedores" Grid.Column="1" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"
+                  Checked="cbTProveedores_Checked" Unchecked="cbTProveedores_Unchecked"/>
 
     </Grid>
 </Window>

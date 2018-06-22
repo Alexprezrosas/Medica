@@ -31,7 +31,7 @@
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FACTURA}" Header="NUMERO DE FACTURA" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FACTURA}" Header="NÚMERO DE FACTURA" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PROVEEDOR}" Header="PROVEEDOR" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTAL}" Header="TOTAL"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_COMPRA}" Header="FECHA DE COMPRA" />

@@ -22,29 +22,32 @@
             <ColumnDefinition Width="591*"/>
         </Grid.ColumnDefinitions>
 
-        <telerik:RadGridView  x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="273" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" SelectedItem="{Binding ID_ENFERMERA}">
+        <telerik:RadGridView ShowSearchPanel="True" x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="273" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" SelectedItem="{Binding ID_ENFERMERA}">
 
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click"/>
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Name="itid" IsReadOnly="true" DataMemberBinding="{Binding ID_ENFERMERA}" Header="ID"/>
-                <telerik:GridViewDataColumn Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CPROFESIONAL}" Header="CPROFESIONAL"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUNI}" Header="MUNICIPIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMLOC}" Header="LOCALIDAD"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_CELULAR}" Header="CELULAR"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PUESTO}" Header="PUESTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CONTRASE}" Header="CONTRASEÑA"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblEnfermera" Content="Enfermera" HorizontalAlignment="Left" Margin="29.334,23,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-
-        <telerik:RadAutoCompleteBox x:Name="autoEnfermera" HorizontalAlignment="Left" Margin="114.334,23,0,0" VerticalAlignment="Top" Width="252"
-        ItemsSource="{Binding ENFERMERA}"
-        DisplayMemberPath="NOMBRE"
-        AutoCompleteMode="Suggest" Grid.Column="1"/>
+        <CheckBox x:Name="checkboxenfe" Content="Mostrar todas Enfermeras" Unchecked="checkboxenfe_Unchecked" Checked="checkboxenfe_Checked" Grid.Column="1" HorizontalAlignment="Left" Margin="10.4,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Consultar Enfermeras" Grid.Column="1" HorizontalAlignment="Left" Margin="207.4,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

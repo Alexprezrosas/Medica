@@ -1,0 +1,23 @@
+﻿<Window x:Class="Medica2.Administracion.Permisos.RegistroPermisosUsuarios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Administracion.Permisos"
+        mc:Ignorable="d"
+        Title="RegistroPermisosUsuarios" Height="324.878" Width="395.854">
+    <Grid>
+        <Label x:Name="label" Content="Nombre del Permiso" HorizontalAlignment="Left" Margin="7,68,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtnombrep" HorizontalAlignment="Left" Height="23" Margin="173,72,-53.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174"/>
+        <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="7,112,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblmodulo" Content="Modulos" HorizontalAlignment="Left" Margin="7,158,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblrol_Copy" Content="Rol" HorizontalAlignment="Left" Margin="7,203,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtdescripcion" HorizontalAlignment="Left" Height="23" Margin="173,112,-53.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="txtmodulos" HorizontalAlignment="Left" Height="22" Margin="173,162,-53.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174"/>
+        <TextBox x:Name="txtrol" HorizontalAlignment="Left" Height="22" Margin="173,206,-53.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="174"/>
+        <Label x:Name="label_Copy" Content="Nombre del Permiso" HorizontalAlignment="Left" Margin="126,3,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="71,255,0,0" VerticalAlignment="Top" Width="76" Click="btnGuardar_Click_1" />
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="261,255,0,0" VerticalAlignment="Top" Width="76" Click="btnCancelar_Click_1"/>
+
+    </Grid>
+</Window>

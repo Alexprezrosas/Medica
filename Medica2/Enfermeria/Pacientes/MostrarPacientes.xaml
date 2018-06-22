@@ -39,7 +39,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_NACIMIENTO}" Header="FECHA DE NACIMIENTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TIPOPACIENTE}" Header="TIPO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding RESPONSABLE}" Header="RESPONSABLE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELEFONO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TÉLEFONO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL CUENTA"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>

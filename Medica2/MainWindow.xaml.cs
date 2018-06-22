@@ -1,14 +1,19 @@
 ﻿using Medica2.Administracion;
 using Medica2.Administracion.Cirugias;
+using Medica2.Administracion.ConsultasMedicas;
 using Medica2.Administracion.Cuartos;
+using Medica2.Administracion.Cuentas;
 using Medica2.Administracion.Depositos;
 using Medica2.Administracion.Enfermeras;
 using Medica2.Administracion.EquipoHospital;
 using Medica2.Administracion.Especialidades;
 using Medica2.Administracion.EspecialidadesEnfermeras;
 using Medica2.Administracion.Estudios;
+using Medica2.Administracion.HonorarioMedicos;
+using Medica2.Administracion.Medicos;
 using Medica2.Administracion.Pacientes;
 using Medica2.Administracion.Reportes;
+using Medica2.Administracion.Usuarios;
 using Medica2.Enfermeria.Pacientes;
 using Medica2.Farmacia;
 using Medica2.Farmacia.Compras;
@@ -261,7 +266,7 @@ namespace Medica2
             //Cuartos
             if(sender == itemregistrarcuarto)
             {
-                CatalogoCuartos catcuartor = new CatalogoCuartos();
+                NuevoCuarto catcuartor = new NuevoCuarto();
                 catcuartor.Show();
             }
             else if(sender == itemconsultarcuarto)
@@ -300,6 +305,18 @@ namespace Medica2
                     ConsultaCatalogoEquipoHospital obj = new ConsultaCatalogoEquipoHospital();
                     obj.Show();
                 }
+            }
+            //Medicos
+
+            if (sender == itemNuevoMedico)
+            {
+                NuevoMedico nmed = new NuevoMedico();
+                nmed.Show();
+            }
+            else if (sender == itemitemConsultaMedicos)
+            {
+                MostrarMedicos mmed = new MostrarMedicos();
+                mmed.Show();
             }
 
             //Especialidades Medicos
@@ -344,7 +361,20 @@ namespace Medica2
                 }
             }
 
-            //Pacientes
+            //Estudios
+            if (sender == itemregistrarestudio)
+            {
+                NuevoEstudio nestudio = new NuevoEstudio();
+                nestudio.Show();
+            }
+            else
+            if (sender == itemconsultarestudio)
+            {
+                MostrarEstudios mestu = new MostrarEstudios();
+                mestu.Show();
+            }
+
+            // Registro Pacientes
             if (sender == itemRegistrarPaciente)
             {
                 IngresoPaciente ip = new IngresoPaciente();
@@ -355,6 +385,20 @@ namespace Medica2
                 {
                     ConsultaPacientes cp = new ConsultaPacientes();
                     cp.Show();
+                }
+            }
+
+            //-----REgistro de ususarios
+            if (sender == itemRegistrarUsuario)
+            {
+                AgregarUsuarios obj = new AgregarUsuarios();
+                obj.Show();
+            }
+            else
+            {
+                if (sender == itemVizualizarUsuarios)
+                {
+
                 }
             }
 
@@ -372,7 +416,7 @@ namespace Medica2
                 }
             }
 
-            //Estudios cargas
+            //Cargar estudios
             if(sender == itemCargarEstudio)
             {
                 CargarEstudios ce = new CargarEstudios();
@@ -384,6 +428,54 @@ namespace Medica2
                     EstudiosAplicados ea = new EstudiosAplicados();
                     ea.Show();
                 }
+            }
+
+            //Carga Equipo Hospital
+            if (sender == itemcargarequipoh)
+            {
+                CargarEquipoHospital obj = new CargarEquipoHospital();
+                obj.Show();
+            }
+            else
+                if (sender == itemrvizualizacargaequipoh)
+            {
+                //ConsultarEquipoHospitalCargado obj = new ConsultarEquipoHospitalCargado();
+                //obj.Show();
+            }
+            //Carga de Honorarios
+            if (sender == itemcargarHonorarios)
+            {
+                CargarHonorarioMedico obj = new CargarHonorarioMedico();
+                obj.Show();
+            }
+            else if (sender == itemvizualizarHonorarios)
+            {
+                VizualizarHonorariosCargados obj = new VizualizarHonorariosCargados();
+                obj.Show();
+            }
+
+            //Consultas
+            if (sender == itemregistrarConsultas)
+            {
+                RegistrarConsulta obj = new RegistrarConsulta();
+                obj.Show();
+            }
+            else
+                if (sender == itemvizualizarconsultas)
+            {
+                VisualizarConsultas obj = new VisualizarConsultas();
+                obj.Show();
+            }
+
+            //Cuentas
+            if (sender == itemvizualizacuentas)
+            {
+                VizualizarCuentas obj = new VizualizarCuentas();
+                obj.Show();
+            }
+            else
+            {
+
             }
 
         }

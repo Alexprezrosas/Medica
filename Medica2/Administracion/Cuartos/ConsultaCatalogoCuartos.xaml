@@ -6,10 +6,40 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Cuartos"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Cuartos.ConsultaCatalogoCuartos"
         mc:Ignorable="d"
-        Title="ConsultaCatalogoCuartos" Height="300" Width="392.927">
+        Title="ConsultaCatalogoCuartos" Height="398.963" Width="643.171">
+    <Window.Resources>
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+    </Window.Resources>
     <Grid>
+        <telerik:RadGridView x:Name="MostrarCuartos"  HorizontalAlignment="Left" Margin="10,54,-237.6,-79.6" 
+            VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
+            SelectedCellsChanged="MostrarCuartos_SelectedCellsChanged"
+                             
+            ShowSearchPanel="True"
+            IsSearchingDeferred="True"                             
+                             
+            CellEditEnded="radGridView_CellEditEnded">
 
-        <telerik:RadGridView Name="RadConsultarCatalogoCuartos" HorizontalAlignment="Left" VerticalAlignment="Top" Height="247"/>
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
 
+            <telerik:RadGridView.Columns>
+
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CUARTO}" Header="Nombre Cuarto" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripcion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" DataFormatString="{}{0:C0}" Header="Costo"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"/>
+
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
     </Grid>
 </Window>
