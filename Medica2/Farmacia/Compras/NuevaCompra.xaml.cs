@@ -30,29 +30,33 @@ namespace Medica2.Farmacia.Compras
         public NuevaCompra()
         {
             InitializeComponent();
-            autoMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            llenarAutocompletes();
+        }
+
+        void llenarAutocompletes()
+        {
+            autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                            where medi.STATUS == "Activo"
+                                            select new
+                                            {
+                                                ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                            });
             autoProveedor.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                          join e in BaseDatos.GetBaseDatos().PROVEEDORES
                                          on PERSONA.ID_PERSONA equals e.PERSONAID
+                                         where PERSONA.ESTADOPERSONA == "Activo"
                                          select new
                                          {
                                              ID_PROVEEDOR = e.ID_PROVEEDOR,
-                                             NOMBRE = PERSONA.NOMBRE + " " +PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
+                                             NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
                                          });
         }
 
         public NuevaCompra(int idc)
         {
             InitializeComponent();
-            autoMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
-            autoProveedor.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                                         join e in BaseDatos.GetBaseDatos().PROVEEDORES
-                                         on PERSONA.ID_PERSONA equals e.PERSONAID
-                                         select new
-                                         {
-                                             ID_PROVEEDOR = e.ID_PROVEEDOR,
-                                             NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
-                                         });
+            llenarAutocompletes();
             //Datos del proveedor
             idcompra = idc;
             var compraedit = BaseDatos.GetBaseDatos().COMPRAS.Find(idcompra);
@@ -108,6 +112,7 @@ namespace Medica2.Farmacia.Compras
         void LimpiarDetalle()
         {
             autoMedicamentos.SearchText = String.Empty;
+            autoMedicamentos.SelectedItem = null;
             txtDescripcion.Text = String.Empty;
             txtUMedida.Text = String.Empty;
             dpCaducidad.Text = "";
@@ -186,14 +191,6 @@ namespace Medica2.Farmacia.Compras
 
         public bool ConsultaFactura(int fac, int prov)
         {
-            //var factura = (from COMPRA in BaseDatos.GetBaseDatos().COMPRAS
-            //               where COMPRA.NUM_FACTURA == fac
-            //               select COMPRA).Count();
-            //if (factura == 0)
-            //    return false;
-            //else
-            //    return true;
-
             var factura = (from COMPRA in BaseDatos.GetBaseDatos().COMPRAS
                            where COMPRA.NUM_FACTURA == fac && COMPRA.PROVEEDORID == prov
                            select COMPRA).Count();
@@ -326,7 +323,8 @@ namespace Medica2.Farmacia.Compras
                                                             MessageBox.Show("Ingresa el porcentaje del IVA");
                                                         }else
                                                         {
-                                                            int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                                                            dynamic medica = autoMedicamentos.SelectedItem;
+                                                            int idm = medica.ID_MEDICAMENTO;
                                                             var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
                                                             DETALLE_COMPRAS dc = new DETALLE_COMPRAS()
                                                             {
@@ -396,7 +394,7 @@ namespace Medica2.Farmacia.Compras
         void Eliminar()
         {
             dynamic detalleVen = rgvDetalle.SelectedItem;
-            int iddetalle = detalleVen.ID_DETALLE_VENTA;
+            int iddetalle = detalleVen.ID_DETALLE_COMPRA;
             if (rgvDetalle.SelectedItem != null)
             {
                 var detalleCompra = BaseDatos.GetBaseDatos().DETALLE_COMPRAS.Find(iddetalle);
@@ -492,7 +490,8 @@ namespace Medica2.Farmacia.Compras
 
                                                         //Actualizamos el detalle medicamento
 
-                                                        int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                                                        dynamic medica = autoMedicamentos.SelectedItem;
+                                                        int idm = medica.ID_MEDICAMENTO;
                                                         detalleCompra.MEDICAMENTOID = idm;
                                                         detalleCompra.CANTIDAD = Int32.Parse(txtCantidad.Text);
                                                         detalleCompra.COSTO_UNITARIO = Decimal.Parse(txtCostoUnitario.Text);
@@ -530,7 +529,8 @@ namespace Medica2.Farmacia.Compras
         {
             if (autoMedicamentos.SelectedItem != null)
             {
-                int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                dynamic medica = autoMedicamentos.SelectedItem;
+                int idmedi = medica.ID_MEDICAMENTO;
                 var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                 txtUMedida.Text = Convert.ToString(busquedamed.U_MEDIDA);
                 txtDescripcion.Text = busquedamed.COMENTARIO.ToString();
@@ -681,7 +681,7 @@ namespace Medica2.Farmacia.Compras
 
                         //autoMedicamentos.TextSearchPath = detalleSuministro.MEDICAMENTOID.ToString();
                         //autoMedicamentos.DisplayMemberPath = medicamento.NOMBRE_MEDI;
-                        autoMedicamentos.SearchText = medicamento.NOMBRE_MEDI;
+                        autoMedicamentos.SearchText = medicamento.NOMBRE_MEDI + " " + medicamento.COMENTARIO + " " + medicamento.U_MEDIDA;
                         //llenar();
                     }
                 }

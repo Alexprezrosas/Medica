@@ -51,6 +51,9 @@ namespace AccessoDB
 
         public decimal? GLUCOSA { get; set; }
 
+        [StringLength(50)]
+        public string STATUS { get; set; }
+
         public virtual Medico Medico { get; set; }
 
         public virtual PACIENTE PACIENTE { get; set; }

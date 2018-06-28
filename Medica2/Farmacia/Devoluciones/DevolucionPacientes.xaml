@@ -7,7 +7,7 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Devoluciones.DevolucionPacientes"
         mc:Ignorable="d"
         WindowState="Maximized"
-        Title="DevolucionPacientes" Height="360" Width="691.2">
+        Title="DevolucionPacientes" Height="582.9" Width="876">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -19,8 +19,8 @@
     </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,-381.4,-45.6" VerticalAlignment="Top" 
-        Width="665" Height="274" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" 
+        Width="850" Height="502" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
         AutoGenerateColumns="False" 
         SelectedItem="{Binding ID_PACIENTE}"
         ShowSearchPanel="True"

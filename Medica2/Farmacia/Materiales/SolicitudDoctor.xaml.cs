@@ -105,6 +105,7 @@ namespace Medica2.Farmacia.Materiales
             autoMedico.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                       join e in BaseDatos.GetBaseDatos().MEDICOS
                                       on PERSONA.ID_PERSONA equals e.PERSONAID
+                                      where PERSONA.ESTADOPERSONA == "Activo"
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
@@ -112,11 +113,11 @@ namespace Medica2.Farmacia.Materiales
                                       }).ToList();
 
             autoMaterial.ItemsSource = (from CATALOGO_MEDICAMENTOS in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
-                                        where CATALOGO_MEDICAMENTOS.ALMACEN == "Materiales"
+                                        where CATALOGO_MEDICAMENTOS.ALMACEN == "Materiales" && CATALOGO_MEDICAMENTOS.STATUS == "Activo"
                                         select new
                                         {
                                             ID_MATERIAL = CATALOGO_MEDICAMENTOS.ID_MEDICAMENTO,
-                                            NOMBRE = CATALOGO_MEDICAMENTOS.NOMBRE_MEDI,
+                                            NOMBRE = CATALOGO_MEDICAMENTOS.NOMBRE_MEDI + " " + CATALOGO_MEDICAMENTOS.COMENTARIO + " " + CATALOGO_MEDICAMENTOS.U_MEDIDA,
                                             EXISTENCIAS = CATALOGO_MEDICAMENTOS.CADUCIDAD
                                         }).ToList();
         }

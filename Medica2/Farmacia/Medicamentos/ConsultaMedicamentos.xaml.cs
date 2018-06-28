@@ -27,9 +27,32 @@ namespace Medica2.Farmacia.Medicamentos
         {
             InitializeComponent();
 
-            rgvMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            VistaGrid();
 
             rgvMedicamentos.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        void VistaGrid()
+        {
+            rgvMedicamentos.ItemsSource = (from medic in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                           where medic.STATUS == "Activo"
+                                           select new
+                                           {
+                                               ID_MEDICAMENTO = medic.ID_MEDICAMENTO,
+                                               NOMMEDI = medic.NOMBRE_MEDI,
+                                               DESCRIPCION = medic.COMENTARIO,
+                                               UMEDIDA = medic.U_MEDIDA,
+                                               COD_BARRAS = medic.COD_BARRAS,
+                                               P_VENTA = medic.P_VENTA,
+                                               P_COMPRA = medic.P_COMPRA,
+                                               P_MEDICOS = medic.P_MEDICOS,
+                                               CANTIDAD = medic.CANTIDAD,
+                                               CADUCIDAD = medic.CADUCIDAD,
+                                               CFDI = medic.CFDI,
+                                               F_REGISTRO = medic.FECHA_CREACION,
+                                               F_MOD = medic.FECHA_MOD,
+                                               ALMACEN = medic.ALMACEN
+                                           });
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
@@ -111,7 +134,7 @@ namespace Medica2.Farmacia.Medicamentos
             {
                 RegistroMedicamento nmed = new RegistroMedicamento();
                 nmed.Show();
-                rgvMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+                VistaGrid();
 
             }
             else
@@ -122,15 +145,17 @@ namespace Medica2.Farmacia.Medicamentos
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idmed = (rgvMedicamentos.SelectedItem as CATALOGO_MEDICAMENTOS).ID_MEDICAMENTO;
+                            dynamic medi = rgvMedicamentos.SelectedItem;
+                            int idmed = medi.ID_MEDICAMENTO;
                             if (rgvMedicamentos.SelectedItem != null)
                             {
                                 var cmed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmed);
-                                BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Remove(cmed);
+                                cmed.STATUS = "Inactivo";
                                 BaseDatos.GetBaseDatos().SaveChanges();
+                                MessageBox.Show("Se eliminó el medicamento", "Farmacia Medicamentos");
+                                VistaGrid();
                             }
-                            MessageBox.Show("Se eliminó el medicamento", "Farmacia Medicamentos");
-                            rgvMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+                            
                             break;
 
                         case MessageBoxResult.No:
@@ -141,7 +166,8 @@ namespace Medica2.Farmacia.Medicamentos
                 {
                     if (sender == itemEditar)
                     {
-                        int idmed = (rgvMedicamentos.SelectedItem as CATALOGO_MEDICAMENTOS).ID_MEDICAMENTO;
+                        dynamic medic = rgvMedicamentos.SelectedItem;
+                        int idmed = medic.ID_MEDICAMENTO;
                         NuevoMedicamento nm = new NuevoMedicamento(idmed);
                         nm.Show();
                         this.Close(); 

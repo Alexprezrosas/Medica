@@ -22,17 +22,17 @@ namespace Medica2.Farmacia.Medicamentos
     public partial class RegistroMedicamento : Window
     {
         DateTime fechareg = DateTime.Now;
-        private RadAutoCompleteBox autoMedi;
+        private RadAutoCompleteBox autoMedicamentos;
 
         public RegistroMedicamento()
         {
             InitializeComponent();
         }
 
-        public RegistroMedicamento(RadAutoCompleteBox autoMedicamentos)
+        public RegistroMedicamento(RadAutoCompleteBox autoMedicamento)
         {
             InitializeComponent();
-            autoMedi = autoMedicamentos;
+            autoMedicamentos = autoMedicamento;
             btnGuardar.Visibility = Visibility.Hidden;
             btnCompras.Visibility = Visibility.Visible;
         }
@@ -100,7 +100,8 @@ namespace Medica2.Farmacia.Medicamentos
                             ALMACEN = cbbAlmacen.Text,
                             CANTIDAD = 0,
                             U_MEDIDA = txtUMedida.Text,
-                            FECHA_CREACION = fechareg
+                            FECHA_CREACION = fechareg,
+                            STATUS = "Activo"
                         };
                         BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Add(med);
                         BaseDatos.GetBaseDatos().SaveChanges();
@@ -138,12 +139,19 @@ namespace Medica2.Farmacia.Medicamentos
                             ALMACEN = cbbAlmacen.Text,
                             CANTIDAD = 0,
                             U_MEDIDA = txtUMedida.Text,
-                            FECHA_CREACION = fechareg
+                            FECHA_CREACION = fechareg,
+                            STATUS = "Activo"
                         };
                         BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Add(med);
                         BaseDatos.GetBaseDatos().SaveChanges();
                         limpiar();
-                        autoMedi.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+                        autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                                        where medi.STATUS == "Activo"
+                                                        select new
+                                                        {
+                                                            ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                            NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                                        });
                         MessageBox.Show("Registro exitoso");
                         this.Close();
                     }

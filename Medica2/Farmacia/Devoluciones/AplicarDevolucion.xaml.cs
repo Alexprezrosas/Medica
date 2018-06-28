@@ -115,12 +115,13 @@ namespace Medica2.Farmacia.Devoluciones
         void llenarAutocomplete()
         {
             autoMedicamento.ItemsSource = (from CATALOGO_MEDICAMENTOS in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
-                                        select new
-                                        {
-                                            ID_MATERIAL = CATALOGO_MEDICAMENTOS.ID_MEDICAMENTO,
-                                            NOMBRE = CATALOGO_MEDICAMENTOS.NOMBRE_MEDI,
-                                            EXISTENCIAS = CATALOGO_MEDICAMENTOS.CADUCIDAD
-                                        }).ToList();
+                                           where CATALOGO_MEDICAMENTOS.STATUS == "Activo"
+                                            select new
+                                            {
+                                                ID_MATERIAL = CATALOGO_MEDICAMENTOS.ID_MEDICAMENTO,
+                                                NOMBRE = CATALOGO_MEDICAMENTOS.NOMBRE_MEDI + " " + CATALOGO_MEDICAMENTOS.COMENTARIO + " " + CATALOGO_MEDICAMENTOS.U_MEDIDA,
+                                                EXISTENCIAS = CATALOGO_MEDICAMENTOS.CADUCIDAD
+                                            }).ToList();
         }
 
         void Guardar()

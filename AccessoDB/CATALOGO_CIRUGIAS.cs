@@ -31,6 +31,9 @@ namespace AccessoDB
 
         public DateTime? FECHA_MOD { get; set; }
 
+        [StringLength(50)]
+        public string ESTATUS { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CIRUGIA> CIRUGIAS { get; set; }
     }

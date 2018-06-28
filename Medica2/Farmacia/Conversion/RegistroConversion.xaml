@@ -17,14 +17,14 @@
 
         <telerik:RadAutoCompleteBox x:Name="autoMedicamentoOrigen" HorizontalAlignment="Left" Margin="297,60,0,0" VerticalAlignment="Top" Width="252"
                                     ItemsSource="{Binding CATALOGO_MEDICAMENTOS}"
-                                    DisplayMemberPath="NOMBRE_MEDI"
+                                    DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
                                     SelectionMode="Single"
                                     SelectionChanged="autoMedicamentoOrigen_SelectionChanged"
                                     PreviewTextInput="validarLetras"/>
         <telerik:RadAutoCompleteBox x:Name="autoMedicamentoDestino" HorizontalAlignment="Left" Margin="297,199,0,0" VerticalAlignment="Top" Width="252"
                                     ItemsSource="{Binding CATALOGO_MEDICAMENTOS}"
-                                    DisplayMemberPath="NOMBRE_MEDI"
+                                    DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
                                     SelectionMode="Single"
                                     SelectionChanged="autoMedicamentoDestino_SelectionChanged"

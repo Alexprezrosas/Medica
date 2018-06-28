@@ -92,6 +92,12 @@ namespace Medica2
 
         private void RadMenuItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
+            if (sender == itemReporte)
+            {
+                Medic m = new Medic();
+                m.Show();
+            }
+
            //Enfermeria
            if (sender == itemEnfermerasPacientes)
             {
@@ -123,8 +129,7 @@ namespace Medica2
             }
             if (sender == itemReporte)
             {
-                reporte1 rp = new reporte1();
-                rp.Show();
+                
             }
 
             //Materiales

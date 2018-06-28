@@ -34,7 +34,7 @@
 
         <telerik:RadAutoCompleteBox x:Name="autoMedicamentos" HorizontalAlignment="Left" Margin="192,105,0,0" VerticalAlignment="Top" Width="214"
                                     ItemsSource="{Binding CATALOGO_MEDICAMENTOS}"
-                                    DisplayMemberPath="NOMBRE_MEDI"
+                                    DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
                                     SelectionMode="Single"
                                     IsEnabled="False" Grid.Column="1"

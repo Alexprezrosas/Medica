@@ -27,15 +27,23 @@ namespace Medica2.Farmacia.Materiales
         void VistaGrid()
         {
             rgvMostrarMateriales.ItemsSource = (from mate in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
-                                                where mate.ALMACEN == "Materiales"
+                                                where mate.ALMACEN == "Materiales" && mate.STATUS == "Activo"
                                                 select new
                                                 {
-                                                    NOMBRE = mate.NOMBRE_MEDI,
-                                                    COD_BARRAS = mate.COD_BARRAS,
+                                                    ID_MEDICAMENTO = mate.ID_MEDICAMENTO,
+                                                    NOMMEDI = mate.NOMBRE_MEDI,
                                                     DESCRIPCION = mate.COMENTARIO,
+                                                    UMEDIDA = mate.U_MEDIDA,
+                                                    COD_BARRAS = mate.COD_BARRAS,
+                                                    P_VENTA = mate.P_VENTA,
+                                                    P_COMPRA = mate.P_COMPRA,
+                                                    P_MEDICOS = mate.P_MEDICOS,
                                                     CANTIDAD = mate.CANTIDAD,
-                                                    COSTO = mate.P_COMPRA,
-                                                    F_CREACION = mate.FECHA_CREACION
+                                                    CADUCIDAD = mate.CADUCIDAD,
+                                                    CFDI = mate.CFDI,
+                                                    F_REGISTRO = mate.FECHA_CREACION,
+                                                    F_MOD = mate.FECHA_MOD,
+                                                    ALMACEN = mate.ALMACEN
                                                 });
         }
 
@@ -117,6 +125,7 @@ namespace Medica2.Farmacia.Materiales
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
             }
             
         }
@@ -137,20 +146,32 @@ namespace Medica2.Farmacia.Materiales
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idmat = (rgvMostrarMateriales.SelectedItem as CATALOGO_MATERIALES).ID_CATALOGO_MATERIAL;
+                            dynamic mater = rgvMostrarMateriales.SelectedItem;
+                            int idmat = mater.ID_MEDICAMENTO;
                             if (rgvMostrarMateriales.SelectedItem != null)
                             {
-                                var cmatt = BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Find(idmat);
-                                BaseDatos.GetBaseDatos().CATALOGO_MATERIALES.Remove(cmatt);
+                                var cmatt = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmat);
+                                cmatt.STATUS = "Inactivo";
                                 BaseDatos.GetBaseDatos().SaveChanges();
+                                MessageBox.Show("Se eliminó el material", "Farmacia Materiales");
+                                VistaGrid();
                             }
-                            MessageBox.Show("Se eliminó el material", "Farmacia Materiales");
-                            VistaGrid();
+                            
                             break;
 
                         case MessageBoxResult.No:
 
                             break;
+                    }
+                }else
+                {
+                    if (sender == itemEditar)
+                    {
+                        dynamic mate = rgvMostrarMateriales.SelectedItem;
+                        int idmat = mate.ID_MEDICAMENTO;
+                        NuevoMedicamento nm = new NuevoMedicamento(idmat);
+                        nm.Show();
+                        this.Close();
                     }
                 }
             }

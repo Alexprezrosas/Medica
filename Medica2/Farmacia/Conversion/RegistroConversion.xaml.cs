@@ -24,8 +24,28 @@ namespace Medica2.Farmacia.Conversion
         public RegistroConversion()
         {
             InitializeComponent();
-            autoMedicamentoOrigen.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
-            autoMedicamentoDestino.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            llenarAutocompletes();
+        }
+
+        void llenarAutocompletes()
+        {
+            autoMedicamentoOrigen.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                                 where medi.STATUS == "Activo"
+                                                 select new
+                                                 {
+                                                     ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                     NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                                 });
+
+            autoMedicamentoDestino.ItemsSource = (from medic in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                                  where medic.STATUS == "Activo"
+                                                  select new
+                                                  {
+                                                      ID_MEDICAMENTO = medic.ID_MEDICAMENTO,
+                                                      NOMBRE = medic.NOMBRE_MEDI + " " + medic.COMENTARIO + " " + medic.U_MEDIDA
+                                                  });
+
+
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -62,9 +82,11 @@ namespace Medica2.Farmacia.Conversion
         void limpiar()
         {
             autoMedicamentoOrigen.SearchText = String.Empty;
+            autoMedicamentoOrigen.SelectedItem = null;
             txtUMedidaOrigen.Text = String.Empty;
             txtCantidadOrigen.Text = String.Empty;
             autoMedicamentoDestino.SearchText = String.Empty;
+            autoMedicamentoDestino.SelectedItem = null;
             txtUMedidaDestino.Text = String.Empty;
             txtCantidadDestino.Text = String.Empty;
             txtExistencias.Text = String.Empty;
@@ -93,7 +115,8 @@ namespace Medica2.Farmacia.Conversion
                             MessageBox.Show("Ingresa una cantidad de destino");
                         }else
                         {
-                            int idmor = ((CATALOGO_MEDICAMENTOS)autoMedicamentoOrigen.SelectedItem).ID_MEDICAMENTO;
+                            dynamic mediOri = autoMedicamentoOrigen.SelectedItem;
+                            int idmor = mediOri.ID_MEDICAMENTO;
                             var mori = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmor);
 
                             if (mori.CANTIDAD <= 0)
@@ -109,7 +132,8 @@ namespace Medica2.Farmacia.Conversion
                                     mori.CANTIDAD = ((mori.CANTIDAD) - (int.Parse(txtCantidadOrigen.Text)));
                                     BaseDatos.GetBaseDatos().SaveChanges();
 
-                                    int idmdes = ((CATALOGO_MEDICAMENTOS)autoMedicamentoDestino.SelectedItem).ID_MEDICAMENTO;
+                                    dynamic mediDesti = autoMedicamentoDestino.SelectedItem;
+                                    int idmdes = mediDesti.ID_MEDICAMENTO;
                                     var mdes = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmdes);
                                     mdes.CANTIDAD = mdes.CANTIDAD + Convert.ToInt32(txtCantidadDestino.Text);
                                     BaseDatos.GetBaseDatos().SaveChanges();
@@ -125,10 +149,11 @@ namespace Medica2.Farmacia.Conversion
         }
 
         private void autoMedicamentoDestino_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+       {
             if (autoMedicamentoOrigen.SelectedItem != null)
             {
-                int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentoDestino.SelectedItem).ID_MEDICAMENTO;
+                dynamic medi = autoMedicamentoDestino.SelectedItem;
+                int idmedi = medi.ID_MEDICAMENTO;
                 var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                 txtUMedidaDestino.Text = Convert.ToString(busquedamed.U_MEDIDA);
                 txtExistenciasDestino.Text = busquedamed.CANTIDAD.ToString();
@@ -140,7 +165,8 @@ namespace Medica2.Farmacia.Conversion
         {
             if (autoMedicamentoOrigen.SelectedItem != null)
             {
-                int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentoOrigen.SelectedItem).ID_MEDICAMENTO;
+                dynamic medi = autoMedicamentoOrigen.SelectedItem;
+                int idmedi = medi.ID_MEDICAMENTO;
                 var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                 txtUMedidaOrigen.Text = Convert.ToString(busquedamed.U_MEDIDA);
                 txtExistencias.Text = busquedamed.CANTIDAD.ToString();

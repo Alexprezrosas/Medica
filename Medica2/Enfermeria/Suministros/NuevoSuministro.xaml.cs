@@ -41,9 +41,20 @@ namespace Medica2.Enfermeria.Suministros
             var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idpaciente);
             txtPaciente.Text = paciente.PERSONA.NOMBRE;
             txtHabitacion.Text = cuar.ToString();
-            autoMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            llenarAutocompletes();
             Guardar();
             VistaGrid();
+        }
+
+        void llenarAutocompletes()
+        {
+            autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                            where medi.STATUS == "Activo"
+                                            select new
+                                            {
+                                                ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                            });
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -105,7 +116,8 @@ namespace Medica2.Enfermeria.Suministros
         {
             if (autoMedicamentos.SelectedItem != null)
             {
-                int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                dynamic medi = autoMedicamentos.SelectedItem;
+                int idm = medi.ID_MEDICAMENTO;
                 var medicamento = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
                 txtUMedida.Text = medicamento.U_MEDIDA;
                 txtPrecio.Text = medicamento.P_VENTA.ToString();
@@ -117,6 +129,7 @@ namespace Medica2.Enfermeria.Suministros
         void Limpiar()
         {
             autoMedicamentos.SearchText = String.Empty;
+            autoMedicamentos.SelectedItem = null;
             txtPrecio.Text = String.Empty;
             txtUMedida.Text = String.Empty;
             txtCantidad.Text = String.Empty;
@@ -149,7 +162,8 @@ namespace Medica2.Enfermeria.Suministros
                     MessageBox.Show("Ingresa la cantidad deseada");
                 }else
                 {
-                    int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic med = autoMedicamentos.SelectedItem;
+                    int idm = med.ID_MEDICAMENTO;
                     var mediexistencia = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
                     if (mediexistencia.CANTIDAD == 0)
                     {
@@ -158,11 +172,10 @@ namespace Medica2.Enfermeria.Suministros
                     {
                         if (Int32.Parse(txtCantidad.Text) <= mediexistencia.CANTIDAD)
                         {
-                            int idmedic = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
                             DETALLE_SUMINISTROS_MEDICAMENTOS sum = new DETALLE_SUMINISTROS_MEDICAMENTOS
                             {
                                 SUMINISTRO_MEDICAMENTOID = idsumi,
-                                MEDICAMENTOID = idmedic,
+                                MEDICAMENTOID = idm,
                                 PRECIO = Decimal.Parse(txtPrecio.Text),
                                 CANTIDAD = Int32.Parse(txtCantidad.Text),
                                 FECHA_CREACION = fechac
@@ -208,7 +221,8 @@ namespace Medica2.Enfermeria.Suministros
                     MessageBox.Show("Ingresa una cantidad");
                 }else
                 {
-                    int idme = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic med = autoMedicamentos.SelectedItem;
+                    int idme = med.ID_MEDICAMENTO;
                     var mediexistencia = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idme);
                     if (mediexistencia.CANTIDAD == 0)
                     {
@@ -222,7 +236,8 @@ namespace Medica2.Enfermeria.Suministros
                             var detalleSuministro = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
 
                             //Actualizamos el detalle medicamento
-                            int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                            dynamic medi = autoMedicamentos.SelectedItem;
+                            int idm = medi.ID_MEDICAMENTO;
                             detalleSuministro.MEDICAMENTOID = idm;
                             detalleSuministro.CANTIDAD = Int32.Parse(txtCantidad.Text);
                             detalleSuministro.PRECIO = Decimal.Parse(txtPrecio.Text);
@@ -305,7 +320,7 @@ namespace Medica2.Enfermeria.Suministros
             if (sender == itemEliminar)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el medicamento?", "Farmacia", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("¿Está seguro de eliminar el medicamento?", "Farmacia", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

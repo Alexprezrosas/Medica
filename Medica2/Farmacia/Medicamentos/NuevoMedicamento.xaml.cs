@@ -46,6 +46,7 @@ namespace Medica2.Farmacia.Medicamentos
             txtUMedida.Text = medicamento.U_MEDIDA;
             txtCFDI.Text = medicamento.CFDI.ToString();
             cbbAlmacen.Text = medicamento.ALMACEN;
+            cbbStatus.Text = medicamento.STATUS;
 
             btnGuardar.Visibility = Visibility.Hidden;
             btnActualizar.Visibility = Visibility.Visible;
@@ -90,12 +91,7 @@ namespace Medica2.Farmacia.Medicamentos
                                         MessageBox.Show("Ingresa el precio para médicos");
                                     }else
                                     {
-                                        if (txtDescuento.Text == "")
-                                        {
-                                            MessageBox.Show("Ingresa el descuento");
-                                        }else
-                                        {
-                                            if (txtUMedida.Text == "")
+                                        if (txtUMedida.Text == "")
                                             {
                                                 MessageBox.Show("Selecciona una unidad de medida");
                                             }else
@@ -121,7 +117,6 @@ namespace Medica2.Farmacia.Medicamentos
                                                             P_VENTA = Decimal.Parse(txtPVenta.Text),
                                                             P_COMPRA = Decimal.Parse(txtPCompra.Text),
                                                             P_MEDICOS = Decimal.Parse(txtPMedicos.Text),
-                                                            DESCUENTO = Decimal.Parse(txtDescuento.Text),
                                                             CADUCIDAD = dpCaducidad.SelectedDate,
                                                             FECHA_CREACION = fec,
                                                             COD_BARRAS = txtCodBarras.Text,
@@ -135,7 +130,7 @@ namespace Medica2.Farmacia.Medicamentos
                                                         Limpiar();
                                                     }
                                                 }
-                                            }
+                                            
                                         }
                                     }
                                 }
@@ -191,23 +186,22 @@ namespace Medica2.Farmacia.Medicamentos
                                     }
                                     else
                                     {
-                                        if (txtDescuento.Text == "")
+                                        if (txtUMedida.Text == "")
                                         {
-                                            MessageBox.Show("Ingresa el descuento");
+                                            MessageBox.Show("Selecciona una unidad de medida");
                                         }
                                         else
                                         {
-                                            if (txtUMedida.Text == "")
+                                            if (txtCFDI.Text == "" && txtCFDI.Text.Length < 8)
                                             {
-                                                MessageBox.Show("Selecciona una unidad de medida");
+                                                MessageBox.Show("Ingresa un CFDI valido");
                                             }
                                             else
                                             {
-                                                if (txtCFDI.Text == "" && txtCFDI.Text.Length < 8)
+                                                if (cbbStatus.Text == "")
                                                 {
-                                                    MessageBox.Show("Ingresa un CFDI valido");
-                                                }
-                                                else
+                                                    MessageBox.Show("Selecciona un status");
+                                                }else
                                                 {
                                                     DateTime fec = DateTime.Now;
                                                     var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedicamento);
@@ -223,13 +217,17 @@ namespace Medica2.Farmacia.Medicamentos
                                                     medic.CADUCIDAD = dpCaducidad.SelectedDate;
                                                     medic.ALMACEN = cbbAlmacen.Text;
                                                     medic.FECHA_MOD = fec;
-                                                    
+                                                    medic.STATUS = cbbStatus.Text;
+
                                                     BaseDatos.GetBaseDatos().SaveChanges();
                                                     MessageBoxResult result = MessageBox.Show("Se actualizó correctamente el medicamento", "Farmacia");
-                                                    Limpiar();
+                                                    this.Close();
+                                                    ConsultaMedicamentos cm = new ConsultaMedicamentos();
+                                                    cm.Show();
                                                 }
                                             }
                                         }
+                                        
                                     }
                                 }
                             }
@@ -257,7 +255,6 @@ namespace Medica2.Farmacia.Medicamentos
             txtPVenta.Text = String.Empty;
             txtPCompra.Text = String.Empty;
             txtPMedicos.Text = String.Empty;
-            txtDescuento.Text = String.Empty;
             txtCodBarras.Text = String.Empty;
 
         }

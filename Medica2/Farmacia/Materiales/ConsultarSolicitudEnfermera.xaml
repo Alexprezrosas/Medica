@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Farmacia.Materiales"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Materiales.ConsultarSolicitudEnfermera"
         mc:Ignorable="d"
-        Title="ConsultarSolicitudEnfermera" Height="406.763" Width="637.346">
+        Title="ConsultarSolicitudEnfermera" Height="493.163" Width="781.346">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -18,8 +18,8 @@
     </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvConsultaEnfermerasSol" HorizontalAlignment="Left" Margin="10,54,-66.4,0" 
-        VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
+        <telerik:RadGridView x:Name="rgvConsultaEnfermerasSol" HorizontalAlignment="Left" Margin="10,54,0,0" 
+        VerticalAlignment="Top" Width="755" Height="399" AutoGenerateColumns="False" 
         ShowSearchPanel="True"
         IsSearchingDeferred="True">
 

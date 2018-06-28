@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Enfermeria.Pacientes"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Enfermeria.Pacientes.MostrarPacientes"
         mc:Ignorable="d"
-        Title="MostrarPacientes" Height="354.388" Width="695.478">
+        Title="MostrarPacientes" Height="543.588" Width="852.278">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -18,8 +18,8 @@
     </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,-56.6,-17.6" VerticalAlignment="Top" 
-        Width="665" Height="274" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" 
+        Width="826" Height="462" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
         AutoGenerateColumns="False" 
         SelectedItem="{Binding ID_PACIENTE}"
         ShowSearchPanel="True"

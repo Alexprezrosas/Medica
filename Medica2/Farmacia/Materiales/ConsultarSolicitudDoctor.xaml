@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Farmacia.Materiales"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Materiales.ConsultarSolicitudDoctor"
         mc:Ignorable="d"
-        Title="ConsultarSolicitudDoctor" Height="397.2" Width="645.6">
+        Title="ConsultarSolicitudDoctor" Height="510.9" Width="788.4">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -17,11 +17,15 @@
 
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="13*"/>
+        </Grid.ColumnDefinitions>
 
-        <telerik:RadGridView x:Name="rgvConsultaDoctoresSol" HorizontalAlignment="Left" Margin="10,54,-330.4,-79.6" 
-        VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
+        <telerik:RadGridView x:Name="rgvConsultaDoctoresSol" HorizontalAlignment="Left" Margin="10,54,0,0" 
+        VerticalAlignment="Top" Width="762" Height="418" AutoGenerateColumns="False" 
         ShowSearchPanel="True"
-        IsSearchingDeferred="True">
+        IsSearchingDeferred="True" Grid.ColumnSpan="2">
 
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
@@ -39,7 +43,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_SOLICITUD}" Header="FECHA DE LA SOLICITUD"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta solicitudes de doctores" HorizontalAlignment="Left" Margin="133,10,-209,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="lblTitulo" Content="Consulta solicitudes de doctores" HorizontalAlignment="Left" Margin="133,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

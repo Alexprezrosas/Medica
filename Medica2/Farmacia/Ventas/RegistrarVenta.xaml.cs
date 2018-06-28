@@ -29,7 +29,18 @@ namespace Medica2.Farmacia.Ventas
         {
             InitializeComponent();
             VistaRad();
-            autoMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            llenarAutocompletes();
+        }
+
+        void llenarAutocompletes()
+        {
+            autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                            where medi.STATUS == "Activo"
+                                            select new
+                                            {
+                                                ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                            });
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -79,7 +90,7 @@ namespace Medica2.Farmacia.Ventas
         public RegistrarVenta(int idv)
         {
             InitializeComponent();
-            autoMedicamentos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.ToList();
+            llenarAutocompletes();
 
             venta = idv;
             VistaRad();
@@ -121,8 +132,8 @@ namespace Medica2.Farmacia.Ventas
                 }
                 else
                 {
-
-                    int idma = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic mat = autoMedicamentos.SelectedItem;
+                    int idma = mat.ID_MEDICAMENTO;
                     var mediexistencia = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idma);
                     if (mediexistencia.CANTIDAD == 0)
                     {
@@ -137,8 +148,8 @@ namespace Medica2.Farmacia.Ventas
                             var detalleVenta = BaseDatos.GetBaseDatos().DETALLE_VENTAS.Find(iddetalle);
 
                             //Actualizamos el detalle medicamento
-
-                            int idm = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                            dynamic medi = autoMedicamentos.SelectedItem;
+                            int idm = medi.ID_MEDICAMENTO;
                             detalleVenta.MEDICAMENTOID = idm;
                             detalleVenta.CANTIDAD = Int32.Parse(txtCantidad.Text);
                             detalleVenta.COSTO = Decimal.Parse(txtPVenta.Text);
@@ -180,6 +191,7 @@ namespace Medica2.Farmacia.Ventas
         void Limpiar()
         {
             autoMedicamentos.SearchText = String.Empty;
+            autoMedicamentos.SelectedItem = null;
             txtCantidad.Text = String.Empty;
             txtDescripcion.Text = String.Empty;
             txtPVenta.Text = String.Empty;
@@ -215,7 +227,8 @@ namespace Medica2.Farmacia.Ventas
                     MessageBox.Show("Ingresa la cantidad");
                 }else
                 {
-                    int idme = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic med = autoMedicamentos.SelectedItem;
+                    int idme = med.ID_MEDICAMENTO;
                     var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idme);
                     if (medic.CANTIDAD == 0)
                     {
@@ -271,7 +284,8 @@ namespace Medica2.Farmacia.Ventas
             {
                 if (chbVenta.IsChecked == true)
                 {
-                    int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic med = autoMedicamentos.SelectedItem;
+                    int idmedi = med.ID_MEDICAMENTO;
                     var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                     txtUMedida.Text = Convert.ToString(busquedamed.U_MEDIDA);
                     txtDescripcion.Text = busquedamed.COMENTARIO.ToString();
@@ -280,8 +294,8 @@ namespace Medica2.Farmacia.Ventas
                     txtExistencias.Text = busquedamed.CANTIDAD.ToString();
                 }else
                 {
-                    
-                    int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                    dynamic med = autoMedicamentos.SelectedItem;
+                    int idmedi = med.ID_MEDICAMENTO;
                     var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                     txtUMedida.Text = Convert.ToString(busquedamed.U_MEDIDA);
                     txtDescripcion.Text = busquedamed.COMENTARIO.ToString();
@@ -297,7 +311,8 @@ namespace Medica2.Farmacia.Ventas
         {
             if (autoMedicamentos.SelectedItem != null)
             {
-                int idmedi = ((CATALOGO_MEDICAMENTOS)autoMedicamentos.SelectedItem).ID_MEDICAMENTO;
+                dynamic medi = autoMedicamentos.SelectedItem;
+                int idmedi = medi.ID_MEDICAMENTO;
                 var busquedamed = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmedi);
                 txtUMedida.Text = Convert.ToString(busquedamed.U_MEDIDA);
                 txtDescripcion.Text = busquedamed.COMENTARIO.ToString();
