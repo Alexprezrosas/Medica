@@ -234,6 +234,9 @@
     <Compile Include="Administracion\Reportes\Report1.Designer.cs">
       <DependentUpon>Report1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Reportes\ReporteMedicamentos.xaml.cs">
+      <DependentUpon>ReporteMedicamentos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Usuarios\AgregarUsuarios.xaml.cs">
       <DependentUpon>AgregarUsuarios.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,18 @@
     <Compile Include="Farmacia\Compras\NuevaCompra.xaml.cs">
       <DependentUpon>NuevaCompra.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Farmacia\Compras\Reportes\RCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Compras\Reportes\RCompras.Designer.cs">
+      <DependentUpon>RCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Compras\Reportes\ReporteCompras.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Compras\Reportes\ReporteCompras.Designer.cs">
+      <DependentUpon>ReporteCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Farmacia\Conversion\RegistroConversion.xaml.cs">
       <DependentUpon>RegistroConversion.xaml</DependentUpon>
     </Compile>
@@ -267,6 +282,42 @@
     <Compile Include="Farmacia\Materiales\ConsultarSolicitudEnfermera.xaml.cs">
       <DependentUpon>ConsultarSolicitudEnfermera.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMaterDoctores.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMaterDoctores.Designer.cs">
+      <DependentUpon>ReportMaterDoctores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMaterEnfermeras.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMaterEnfermeras.Designer.cs">
+      <DependentUpon>ReportMaterEnfermeras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMateriales.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\ReportMateriales.Designer.cs">
+      <DependentUpon>ReportMateriales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RMateriales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RMateriales.Designer.cs">
+      <DependentUpon>RMateriales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RMaterMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RMaterMedicos.Designer.cs">
+      <DependentUpon>RMaterMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RSolicitudEnfermeras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Materiales\Reportes\RSolicitudEnfermeras.Designer.cs">
+      <DependentUpon>RSolicitudEnfermeras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Farmacia\Materiales\SolicitudDoctor.xaml.cs">
       <DependentUpon>SolicitudDoctor.xaml</DependentUpon>
     </Compile>
@@ -276,14 +327,50 @@
     <Compile Include="Farmacia\Medicamentos\RegistroMedicamento.xaml.cs">
       <DependentUpon>RegistroMedicamento.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Farmacia\Medicamentos\Reportes\RepMedicamentos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Medicamentos\Reportes\RepMedicamentos.Designer.cs">
+      <DependentUpon>RepMedicamentos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Medicamentos\Reportes\RporteMedicamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Medicamentos\Reportes\RporteMedicamentos.Designer.cs">
+      <DependentUpon>RporteMedicamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Farmacia\Proveedores\RegistroProveedor.xaml.cs">
       <DependentUpon>RegistroProveedor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\Reportes\ReportProveedores.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\Reportes\ReportProveedores.Designer.cs">
+      <DependentUpon>ReportProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\Reportes\RProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Proveedores\Reportes\RProveedores.Designer.cs">
+      <DependentUpon>RProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Ventas\ConsultaVentas.xaml.cs">
       <DependentUpon>ConsultaVentas.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Ventas\RegistrarVenta.xaml.cs">
       <DependentUpon>RegistrarVenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\Reportes\ReportVentas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\Reportes\ReportVentas.Designer.cs">
+      <DependentUpon>ReportVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\Reportes\RVentasGenerales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Farmacia\Ventas\Reportes\RVentasGenerales.Designer.cs">
+      <DependentUpon>RVentasGenerales.cs</DependentUpon>
     </Compile>
     <Compile Include="Validacion.cs" />
     <Page Include="Administracion\Cirugias\CargarCirugia.xaml">
@@ -427,6 +514,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administracion\Permisos\RegistroPermisosUsuarios.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Administracion\Reportes\ReporteMedicamentos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -603,6 +694,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administracion\Reportes\Report1.resx">
       <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Compras\Reportes\RCompras.resx">
+      <DependentUpon>RCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Compras\Reportes\ReporteCompras.resx">
+      <DependentUpon>ReporteCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\ReportMaterDoctores.resx">
+      <DependentUpon>ReportMaterDoctores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\ReportMaterEnfermeras.resx">
+      <DependentUpon>ReportMaterEnfermeras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\ReportMateriales.resx">
+      <DependentUpon>ReportMateriales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\RMateriales.resx">
+      <DependentUpon>RMateriales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\RMaterMedicos.resx">
+      <DependentUpon>RMaterMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Materiales\Reportes\RSolicitudEnfermeras.resx">
+      <DependentUpon>RSolicitudEnfermeras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Medicamentos\Reportes\RepMedicamentos.resx">
+      <DependentUpon>RepMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Medicamentos\Reportes\RporteMedicamentos.resx">
+      <DependentUpon>RporteMedicamentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Proveedores\Reportes\ReportProveedores.resx">
+      <DependentUpon>ReportProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Proveedores\Reportes\RProveedores.resx">
+      <DependentUpon>RProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Ventas\Reportes\ReportVentas.resx">
+      <DependentUpon>ReportVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Farmacia\Ventas\Reportes\RVentasGenerales.resx">
+      <DependentUpon>RVentasGenerales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

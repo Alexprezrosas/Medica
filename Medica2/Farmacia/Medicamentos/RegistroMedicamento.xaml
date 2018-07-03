@@ -5,28 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medica2.Farmacia.Medicamentos"
         mc:Ignorable="d"
-        Title="RegistroMedicamento" Height="266.57" Width="327.805">
+        Title="RegistroMedicamento" Height="299.37" Width="327.805">
     <Grid>
         <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblComentario" Content="Descripción" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblTitulo" Content="Registro de Medicamentos" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="193"/>
         <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
 
-        <TextBox MaxLength="200" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="133,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"
+        <TextBox MaxLength="200" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="142,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153"
                  PreviewTextInput="validarLetras"/>
-        <TextBox MaxLength="200" x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="133,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"
+        <TextBox MaxLength="200" x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="142,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153"
                  PreviewTextInput="validarNumLetras"/>
 
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="29,180,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnCancelar" Content="Salir" HorizontalAlignment="Left" Margin="202,180,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="37,229,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Salir" HorizontalAlignment="Left" Margin="210,229,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
         <Label x:Name="lblAlmacen" Content="Tipo de almacén" HorizontalAlignment="Left" Margin="20,129,0,0" VerticalAlignment="Top" Width="113"/>
-        <ComboBox x:Name="cbbAlmacen" HorizontalAlignment="Left" Margin="133,134,0,0" VerticalAlignment="Top" Width="144" IsEditable="True" Text="Almacén...">
+        <ComboBox x:Name="cbbAlmacen" HorizontalAlignment="Left" Margin="142,134,0,0" VerticalAlignment="Top" Width="153" IsEditable="True" Text="Almacén...">
             <ComboBoxItem Content="Medicamentos"/>
             <ComboBoxItem Content="Materiales"/>
         </ComboBox>
-        <TextBox MaxLength="200" x:Name="txtUMedida" HorizontalAlignment="Left" Height="23" Margin="133,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"
+        <TextBox MaxLength="200" x:Name="txtUMedida" HorizontalAlignment="Left" Height="23" Margin="142,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153"
                  PreviewTextInput="validarLetras"/>
         <Button x:Name="btnCompras" Content="Guardar" HorizontalAlignment="Left" Margin="29,180,0,0" VerticalAlignment="Top" Width="75" Click="btnCompras_Click"
+                Visibility="Hidden"/>
+        <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="20,162,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox KeyDown="validarDecimal" x:Name="txtPVenta" HorizontalAlignment="Left" Height="23" Margin="142,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Visibility="Hidden"/>
+        <Label x:Name="lblPMedicos" Content="Precio para médicos" HorizontalAlignment="Left" Margin="20,190,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <TextBox KeyDown="validarDecimal" x:Name="txtPMedicos" HorizontalAlignment="Left" Height="23" Margin="142,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153" Visibility="Hidden"/>
+        <Button x:Name="btnConversion" Content="Guardar" HorizontalAlignment="Left" Margin="37,229,0,0" VerticalAlignment="Top" Width="75" Click="btnConversion_Click"
                 Visibility="Hidden"/>
 
     </Grid>

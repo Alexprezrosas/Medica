@@ -181,7 +181,8 @@ namespace Medica2.Farmacia.Conversion
 
         private void btnNuevoMedicamento_Click(object sender, RoutedEventArgs e)
         {
-            RegistroMedicamento rm = new RegistroMedicamento(autoMedicamentoDestino);
+            int med = 1;
+            RegistroMedicamento rm = new RegistroMedicamento(autoMedicamentoDestino, med);
             rm.Show();
         }
 

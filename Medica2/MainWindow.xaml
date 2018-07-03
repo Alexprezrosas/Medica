@@ -193,10 +193,9 @@
                     <telerik:RadRibbonDropDownButton LargeImage="Farmacia/img/proveedor.png" Size="Large" Text="Proveedores">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
-                                <telerik:RadMenuItem x:Name="addProveedor" Header="Nuevo proveedor" Click="RadMenuItem_Click">
-                                </telerik:RadMenuItem>
-                                <telerik:RadMenuItem x:Name="conProveedor" Header="Consulta proveedor" Click="RadMenuItem_Click">
-                                </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="addProveedor" Header="Nuevo proveedor" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem x:Name="conProveedor" Header="Consulta proveedor" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem x:Name="itemReporteProveedor" Header="Reporte de proveedores" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -210,6 +209,7 @@
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem x:Name="itemComprasdelDia" Header="Registro de compras" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemReporteCompras" Header="Reporte de compras" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -223,6 +223,7 @@
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem x:Name="itemConsultarVentas" Header="Registro de ventas" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemReporteVentas" Header="Reporte de ventas" Click="RadMenuItem_Click"></telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -241,6 +242,11 @@
                                     <telerik:RadMenuItem x:Name="itemConsultarSolicitudMaterialEnfermera" Header="Enfermeras" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemConsultarSolicitudMaterialDoctor" Header="Doctores" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem Header="Reportes">
+                                    <telerik:RadMenuItem x:Name="itemReporteMateriales" Header="Reportes de materiales" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReportesSolicitudesEnfermeras" Header="Reportes de solicitudes de enfermeras" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReportesSolicitudesMedicos" Header="Reportes de solicitudes de médicos" Click="RadMenuItem_Click"/>
+                                </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
@@ -257,6 +263,7 @@
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem x:Name="itemConversion" Header="Conversión de medicamentos" Click="RadMenuItem_Click">
                                 </telerik:RadMenuItem>
+                                <telerik:RadMenuItem x:Name="itemReporteMedicamentos" Header="Reporte de medicamentos" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>

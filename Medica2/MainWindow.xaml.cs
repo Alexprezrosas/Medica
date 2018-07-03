@@ -17,12 +17,17 @@ using Medica2.Administracion.Usuarios;
 using Medica2.Enfermeria.Pacientes;
 using Medica2.Farmacia;
 using Medica2.Farmacia.Compras;
+using Medica2.Farmacia.Compras.Reportes;
 using Medica2.Farmacia.Conversion;
 using Medica2.Farmacia.Devoluciones;
 using Medica2.Farmacia.Materiales;
+using Medica2.Farmacia.Materiales.Reportes;
 using Medica2.Farmacia.Medicamentos;
+using Medica2.Farmacia.Medicamentos.Reportes;
 using Medica2.Farmacia.Proveedores;
+using Medica2.Farmacia.Proveedores.Reportes;
 using Medica2.Farmacia.Ventas;
+using Medica2.Farmacia.Ventas.Reportes;
 using System;
 using System.Windows;
 using Telerik.Windows.Controls;
@@ -96,6 +101,47 @@ namespace Medica2
             {
                 Medic m = new Medic();
                 m.Show();
+            }
+
+            if (sender == itemReporteMedicamentos)
+            {
+                RporteMedicamentos rm = new RporteMedicamentos();
+                rm.Show();
+            }
+
+            if (sender == itemReporteCompras)
+            {
+                RCompras rc = new RCompras();
+                rc.Show();
+            }
+
+            if(sender == itemReporteProveedor)
+            {
+                RProveedores rp = new RProveedores();
+                rp.Show();
+            }
+
+            if (sender == itemReporteMateriales)
+            {
+                RMateriales rm = new RMateriales();
+                rm.Show();
+            }
+
+            if (sender == itemReportesSolicitudesEnfermeras)
+            {
+                RSolicitudEnfermeras rpe = new RSolicitudEnfermeras();
+                rpe.Show();
+            }
+
+            if (sender == itemReportesSolicitudesMedicos)
+            {
+                RMaterMedicos rmm = new RMaterMedicos();
+                rmm.Show();
+            }
+            if (sender == itemReporteVentas)
+            {
+                RVentasGenerales rvg = new RVentasGenerales();
+                rvg.Show();
             }
 
            //Enfermeria
