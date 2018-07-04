@@ -31,7 +31,7 @@ namespace Medica2.Administracion.Estudios
             llenarAutocompletes();
         }
 
-        public CargarEstudios(int ide, int idm, int idp,int idc)
+        public CargarEstudios(int ide, int idm, int idp, int idc)
         {
             InitializeComponent();
             llenarAutocompletes();
@@ -55,7 +55,7 @@ namespace Medica2.Administracion.Estudios
             autoPaciente.SearchText = paciente.PERSONA.NOMBRE + " " + paciente.PERSONA.A_PATERNO + " " + paciente.PERSONA.A_MATERNO;
 
             var estudio = BaseDatos.GetBaseDatos().ESTUDIOS.Find(ide);
-            total = Decimal.Parse(estudio.TOTAL.ToString());
+            total = Convert.ToDecimal(estudio.TOTAL.ToString());
             txtTotal.Text = total.ToString();
 
         }
@@ -65,13 +65,13 @@ namespace Medica2.Administracion.Estudios
             autoEstudio.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.ToList();
 
             autoMedico.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                                        join e in BaseDatos.GetBaseDatos().MEDICOS
-                                        on PERSONA.ID_PERSONA equals e.PERSONAID
-                                        select new
-                                        {
-                                            ID_MEDICO = e.ID_MEDICO,
-                                            NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO+" "+PERSONA.A_MATERNO,
-                                        }).ToList();
+                                      join e in BaseDatos.GetBaseDatos().MEDICOS
+                                      on PERSONA.ID_PERSONA equals e.PERSONAID
+                                      select new
+                                      {
+                                          ID_MEDICO = e.ID_MEDICO,
+                                          NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
+                                      }).ToList();
 
             autoPaciente.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                         join e in BaseDatos.GetBaseDatos().PACIENTES
@@ -81,7 +81,7 @@ namespace Medica2.Administracion.Estudios
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO+" "+PERSONA.A_MATERNO,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
                                         }).ToList();
@@ -100,20 +100,20 @@ namespace Medica2.Administracion.Estudios
                                        on ESTUDIOS.MEDICOID equals med.ID_MEDICO
                                        join cte in BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS
                                        on destu.CATALOGO_ESTUDIOS_ID equals cte.CATALOGO_ESTUDIO_ID
-                                       where ESTUDIOS.ID_ESTUDIO==idestud
+                                       where ESTUDIOS.ID_ESTUDIO == idestud
                                        select new
                                        {
                                            ID_ESTUDIOS = ESTUDIOS.ID_ESTUDIO,
                                            ID_CATALOGO_ESTUDIOS = cte.CATALOGO_ESTUDIO_ID,
-                                           ID_USUARIO=usu.ID_USUARIO,
-                                           ID_CUENTA= cue.ID_CUENTA,
-                                           ID_MEDICO=med.ID_MEDICO,
+                                           ID_USUARIO = usu.ID_USUARIO,
+                                           ID_CUENTA = cue.ID_CUENTA,
+                                           ID_MEDICO = med.ID_MEDICO,
                                            ID_DETALLE = destu.ID_DETALLE_ESTUDIOS,
-                                           ESTUDIONOMBRE=cte.NOMBRE,
-                                           MEDICONOMBRE=med.PERSONA.NOMBRE,
-                                           USUARIOO=usu.EMPLEADO.PERSONA.NOMBRE,
-                                           DESCRIPCION=cte.DESCRIPCION,
-                                           COSTOO=cte.COSTO
+                                           ESTUDIONOMBRE = cte.NOMBRE,
+                                           MEDICONOMBRE = med.PERSONA.NOMBRE,
+                                           USUARIOO = usu.EMPLEADO.PERSONA.NOMBRE,
+                                           DESCRIPCION = cte.DESCRIPCION,
+                                           COSTOO = cte.COSTO
                                        });
         }
 
@@ -164,13 +164,14 @@ namespace Medica2.Administracion.Estudios
             if (autoEstudio.SelectedItem == null)
             {
                 MessageBox.Show("Selecciona un estudio");
-            }else
+            }
+            else
             {
                 if (cbTipoMedico.IsChecked == true)
                 {
                     if (autoMedico.SelectedItem == null)
                     {
-                        MessageBox.Show("Introce un medico");
+                        MessageBox.Show("Introce un médico");
                     }
                     else
                     {
@@ -187,7 +188,7 @@ namespace Medica2.Administracion.Estudios
 
                             if (autoMedico.SelectedItem == null)
                             {
-                                MessageBox.Show("Selecciona un medico");
+                                MessageBox.Show("Selecciona un médico");
                             }
                             else
                             {
@@ -248,11 +249,11 @@ namespace Medica2.Administracion.Estudios
                     {
                         if (txtMedico.Text == "")
                         {
-                            MessageBox.Show("Seleccionaun medico");
+                            MessageBox.Show("Seleccionaun médico");
                         }
                         else
                         {
-                            if (txtPaciente.Text=="")
+                            if (txtPaciente.Text == "")
                             {
                                 MessageBox.Show("Selecciona un paciente");
                             }
@@ -320,7 +321,7 @@ namespace Medica2.Administracion.Estudios
             if (rgvEstudios.SelectedItem != null)
             {
                 var detalleEstudi = BaseDatos.GetBaseDatos().DETALLE_ESTUDIOS.Find(iddetalle);
-                
+
                 //Actualizamos el total
                 total = total - (Decimal.Parse(detalleEstudi.COSTO.ToString()));
                 txtTotal.Text = total.ToString();
@@ -407,7 +408,7 @@ namespace Medica2.Administracion.Estudios
             if (sender == itemEliminar)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el Estudio?", "Administracion", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el Estudio?", "Administración", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -422,7 +423,7 @@ namespace Medica2.Administracion.Estudios
             {
                 if (sender == itemEditar)
                 {
-                    
+
                     if (rgvEstudios.SelectedItem != null)
                     {
                         btnFinalizar.IsEnabled = false;
@@ -446,13 +447,13 @@ namespace Medica2.Administracion.Estudios
 
                         int idpac = detalle.ID_CUENTA;
                         var pac = BaseDatos.GetBaseDatos().CUENTAS.Find(idpac);
-                        autoPaciente.SearchText=pac.PACIENTE.PERSONA.NOMBRE + " " + pac.PACIENTE.PERSONA.A_PATERNO + " " + pac.PACIENTE.PERSONA.A_MATERNO;
+                        autoPaciente.SearchText = pac.PACIENTE.PERSONA.NOMBRE + " " + pac.PACIENTE.PERSONA.A_PATERNO + " " + pac.PACIENTE.PERSONA.A_MATERNO;
                         cbTipoMedico.IsEnabled = false;
 
                         //Se actualizan los totales
                         total = total - (Decimal.Parse(detallees.COSTO.ToString()));
                         txtTotal.Text = total.ToString();
-                        
+
                     }
                 }
             }
@@ -463,7 +464,7 @@ namespace Medica2.Administracion.Estudios
             if (sender == itemEliminar2)
             {
                 //
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el Estudio?", "Administracion", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el Estudio?", "Administración", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -507,7 +508,7 @@ namespace Medica2.Administracion.Estudios
                         total = total - (Decimal.Parse(detallees.COSTO.ToString()));
                         txtTotal.Text = total.ToString();
 
-                        
+
                     }
                 }
             }
@@ -581,7 +582,7 @@ namespace Medica2.Administracion.Estudios
                                     limpiar();
                                     autoEstudio.SelectedItem = null;
                                     llenarVistaNormal();
-                                    
+
                                 }
                             }
                         }
@@ -690,7 +691,7 @@ namespace Medica2.Administracion.Estudios
                 txtMedico.IsEnabled = false;
                 txtPaciente.IsEnabled = false;
                 autoEstudio.IsEnabled = false;
-                
+
             }
         }
 

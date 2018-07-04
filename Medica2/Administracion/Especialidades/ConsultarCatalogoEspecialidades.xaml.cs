@@ -29,8 +29,19 @@ namespace Medica2.Administracion.Especialidades
             InitializeComponent();
 
             //RadEspecialidades.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
-            MostrarEspecialidad.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
-
+            LlenarVista();
+        }
+        void LlenarVista()
+        {
+            MostrarEspecialidad.ItemsSource = (from ctc in BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES
+                                               where ctc.STATUS == "Activo"
+                                               select new
+                                               {
+                                                   IDCTE = ctc.ID_CATALOGO_ESPECIALIDAD,
+                                                   NOMBRE_ESPECIALIDAD = ctc.NOMBRE_ESPECIALIDAD,
+                                                   DESCRIPCION = ctc.DESCRIPCION,
+                                                   FECHA_CREACION = ctc.FECHA_CREACION
+                                               });
         }
         void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
         {
@@ -40,34 +51,7 @@ namespace Medica2.Administracion.Especialidades
                 clearSearchValue.Execute(null, this.MostrarEspecialidad.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
             }
         }
-        private void radGridView_BeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
-        {
-            if (e.Cell.Column.UniqueName == "ID_CATALOGO_ESPECIALDIADES")
-            {
-                ToolTipService.SetToolTip(e.Cell, "La edición de la ID puede provocar una incoherencia en la base de datos");
-            }
-        }
-        private void clubsGrid_PreparingCellForEdit(object sender, GridViewPreparingCellForEditEventArgs e)
-        {
-            if ((string)e.Column.Header == "NOMBRE_ESPECIALIDAD")
-            {
-                var tb = e.EditingElement as TextBox;
-                tb.TextWrapping = TextWrapping.Wrap;
-            }
 
-        }
-        private void radGridView_CellEditEnded(object sender, Telerik.Windows.Controls.GridViewCellEditEndedEventArgs e)
-        {
-            CATALOGO_ESPECIALIDADES editedEspecialidades = e.Cell.DataContext as CATALOGO_ESPECIALIDADES;
-            string propertyName = e.Cell.Column.UniqueName;
-            //MessageBox.Show(string.Format("La propiedad: {0} está editada y el nuevo valor es:  {1}", propertyName, e.NewData));
-            BaseDatos.GetBaseDatos().SaveChanges();
-        }
-
-        private void MostrarEspecialidad_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
-        {
-            BaseDatos.GetBaseDatos().SaveChanges();
-        }
 
         private GridViewRow ClickedRow
         {
@@ -83,6 +67,7 @@ namespace Medica2.Administracion.Especialidades
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
             }
 
         }
@@ -92,31 +77,52 @@ namespace Medica2.Administracion.Especialidades
             if (sender == itemAgregar)
             {
                 this.Close();
-                CatalogoEspecialidades nespe = new CatalogoEspecialidades();
-                nespe.Show();
+                NuevaEspecialidadMedico newesp = new NuevaEspecialidadMedico();
+                newesp.Show();
+
             }
             else
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar?", "Administracion Especialidad", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar la especialidad?", "Administracion Especialidad", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idespec = (MostrarEspecialidad.SelectedItem as CATALOGO_ESPECIALIDADES).ID_CATALOGO_ESPECIALIDAD;
+                            dynamic ctaciru = MostrarEspecialidad.SelectedItem;
+                            int idcatalog = ctaciru.IDCTE;
+
+                            //int idespec = (MostrarEspecialidad.SelectedItem as CATALOGO_ESPECIALIDADES).ID_CATALOGO_ESPECIALIDAD;
                             if (MostrarEspecialidad.SelectedItem != null)
                             {
-                                var cespecialidad = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Find(idespec);
-                                BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Remove(cespecialidad);
+                                var cespecialidad = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Find(idcatalog);
+                                cespecialidad.STATUS = "Inactivo";
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado correctamente", "Administracion Especialidades");
-                            MostrarEspecialidad.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.ToList();
+                            MessageBox.Show("Se ha eliminado correctamente", "Administración Especialidades");
+                            LlenarVista();
                             break;
 
                         case MessageBoxResult.No:
 
                             break;
+                    }
+                }
+                else
+                {
+
+                    if (sender == itemEditar)
+                    {
+                        if (MostrarEspecialidad.SelectedItem != null)
+                        {
+                            dynamic objesp = MostrarEspecialidad.SelectedItem;
+                            int idesp = objesp.IDCTE;
+                            var especialidad = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Find(idesp);
+
+                            NuevaEspecialidadMedico obj = new NuevaEspecialidadMedico((CATALOGO_ESPECIALIDADES)especialidad, false);
+                            obj.Show();
+                            this.Close();
+                        }
                     }
                 }
             }

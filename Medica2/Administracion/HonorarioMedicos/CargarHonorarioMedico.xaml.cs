@@ -20,10 +20,41 @@ namespace Medica2.Administracion.HonorarioMedicos
     /// </summary>
     public partial class CargarHonorarioMedico : Window
     {
+        int idhono;
+        int idpaciente;
+        int idcue;
+        int idmed;
         public CargarHonorarioMedico()
         {
             InitializeComponent();
             CargarAutocompletes();
+        }
+
+        public CargarHonorarioMedico(HONORARIOS_MEDICOS h, int idc, bool save)
+        {
+            InitializeComponent();
+            CargarAutocompletes();
+
+            idhono = h.ID_HONORARIO_MEDICO;
+            idpaciente = h.PACIENTEID;
+            idcue = idc;
+            idmed = h.MEDICOID;
+
+
+
+            var paci = BaseDatos.GetBaseDatos().PACIENTES.Find(h.PACIENTEID);
+            var med = BaseDatos.GetBaseDatos().MEDICOS.Find(h.MEDICOID);
+
+            automedico.SearchText = med.PERSONA.NOMBRE + " " + med.PERSONA.A_PATERNO + " " + med.PERSONA.A_MATERNO;
+            autoPaciente.SearchText = paci.PERSONA.NOMBRE + " " + paci.PERSONA.A_PATERNO + " " + paci.PERSONA.A_MATERNO;
+            txtHonorario.Text = h.HONORIARIO.ToString();
+
+            btnEditar.Visibility = Visibility.Visible;
+            btnGuardar.Visibility = Visibility.Hidden;
+            autoPaciente.IsEnabled = false;
+            automedico.IsEnabled = false;
+
+
         }
         void CargarAutocompletes()
         {
@@ -34,10 +65,11 @@ namespace Medica2.Administracion.HonorarioMedicos
                                         on PERSONA.ID_PERSONA equals e.PERSONAID
                                         join cuenta in BaseDatos.GetBaseDatos().CUENTAS
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        where PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             APATERNO = PERSONA.A_PATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
@@ -46,10 +78,11 @@ namespace Medica2.Administracion.HonorarioMedicos
             automedico.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                       join e in BaseDatos.GetBaseDatos().MEDICOS
                                       on PERSONA.ID_PERSONA equals e.PERSONAID
+                                      where e.PERSONA.ESTADOPERSONA == "Activo"
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
-                                          NOMBRE = PERSONA.NOMBRE,
+                                          NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                       }).ToList();
 
 
@@ -71,7 +104,7 @@ namespace Medica2.Administracion.HonorarioMedicos
             {
                 if (automedico.SelectedItem == null)
                 {
-                    MessageBox.Show("Selecciona un Medico");
+                    MessageBox.Show("Selecciona un Médico");
 
                 }
                 else
@@ -115,6 +148,43 @@ namespace Medica2.Administracion.HonorarioMedicos
                 }
             }
         }
+        void Editar()
+        {
+
+
+
+            if (txtHonorario.Text == "")
+            {
+                MessageBox.Show("Ingresa el Honorario");
+            }
+            else
+            {
+                var h = BaseDatos.GetBaseDatos().HONORARIOS_MEDICOS.Find(idhono);
+                var cuent = BaseDatos.GetBaseDatos().CUENTAS.Find(idcue);
+                int idcu = cuent.ID_CUENTA;
+                cuent.TOTAL = cuent.TOTAL - h.HONORIARIO;
+                cuent.SALDO = cuent.SALDO - h.HONORIARIO;
+                BaseDatos.GetBaseDatos().SaveChanges();
+                //...........................................................................................    
+
+                h.PACIENTEID = idpaciente;
+                h.MEDICOID = idmed;
+                h.HONORIARIO = Convert.ToDecimal(txtHonorario.Text);
+                BaseDatos.GetBaseDatos().SaveChanges();
+
+
+                cuent.TOTAL = cuent.TOTAL + Convert.ToDecimal(txtHonorario.Text);
+                cuent.SALDO = cuent.SALDO + Convert.ToDecimal(txtHonorario.Text);
+                BaseDatos.GetBaseDatos().SaveChanges();
+                MessageBox.Show("Registro exitoso, se actualizo correctamente");
+
+                VizualizarHonorariosCargados obj = new VizualizarHonorariosCargados();
+                obj.Show();
+                this.Close();
+            }
+
+
+        }
 
         private void validarDecimal(object sender, TextCompositionEventArgs e)
         {
@@ -139,5 +209,9 @@ namespace Medica2.Administracion.HonorarioMedicos
             this.Close();
         }
 
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
+        }
     }
 }

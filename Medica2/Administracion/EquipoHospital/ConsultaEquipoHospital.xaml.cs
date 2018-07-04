@@ -27,7 +27,21 @@ namespace Medica2.Administracion.EquipoHospital
         {
             InitializeComponent();
             //RadCatalogoEquipoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
-            MostrarEquipoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
+            LlenarVista();
+        }
+
+        void LlenarVista()
+        {
+            MostrarEquipoH.ItemsSource = (from ctcehq in BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL
+                                          where ctcehq.STATUS == "Activo"
+                                          select new
+                                          {
+                                              IDEQH = ctcehq.ID_EQUIPO_HOSPITAL,
+                                              NOMBRE = ctcehq.NOM_EQUIPO_HOSPITAL,
+                                              DESCRIPCION = ctcehq.DESCRIPCION,
+                                              COSTO = ctcehq.COSTO,
+                                              FECHA_CREACION = ctcehq.FECHA_CREACION
+                                          });
         }
         void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
         {
@@ -62,7 +76,6 @@ namespace Medica2.Administracion.EquipoHospital
             }
         }
 
-
         private void MostrarEquipoH_SelectedCellsChanged(object sender, Telerik.Windows.Controls.GridView.GridViewSelectedCellsChangedEventArgs e)
         {
             BaseDatos.GetBaseDatos().SaveChanges();
@@ -83,6 +96,7 @@ namespace Medica2.Administracion.EquipoHospital
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
             }
 
         }
@@ -101,24 +115,43 @@ namespace Medica2.Administracion.EquipoHospital
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el Caurto?", "Administracion Cuartos", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el equipo de hospital", "Administracion Equipo de Hospital", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idequipohospital = (MostrarEquipoH.SelectedItem as CATALOGO_EQUIPO_HOSPITAL).ID_EQUIPO_HOSPITAL;
+
+                            dynamic ctaeqh = MostrarEquipoH.SelectedItem;
+                            int idcatalog = ctaeqh.IDEQH;
+
+                            //int idequipohospital = (MostrarEquipoH.SelectedItem as CATALOGO_EQUIPO_HOSPITAL).ID_EQUIPO_HOSPITAL;
                             if (MostrarEquipoH.SelectedItem != null)
                             {
-                                var catequihos = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idequipohospital);
-                                BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Remove(catequihos);
+                                var catequihos = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idcatalog);
+                                catequihos.STATUS = "Inactivo";
+                                //BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Remove(catequihos);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado", "Administracion EQUIPO HOSPITAL");
-                            MostrarEquipoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
+                            MessageBox.Show("Se ha eliminado", "Administración EQUIPO HOSPITAL");
+                            LlenarVista();
                             break;
 
                         case MessageBoxResult.No:
 
                             break;
+                    }
+                }
+                if (sender == itemEditar)
+                {
+                    if (MostrarEquipoH.SelectedItem != null)
+                    {
+                        dynamic ctaeqh = MostrarEquipoH.SelectedItem;
+                        int idcatalog = ctaeqh.IDEQH;
+                        //int idceh = ((CATALOGO_EQUIPO_HOSPITAL)MostrarEquipoH.SelectedItem).ID_EQUIPO_HOSPITAL;
+                        //var cuartito = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuart);
+                        CatalogoEquipoHospital obj = new CatalogoEquipoHospital(idcatalog, false);
+                        obj.Show();
+                        this.Close();
+
                     }
                 }
             }

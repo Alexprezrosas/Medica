@@ -20,7 +20,7 @@
         <Label x:Name="lblTitulo" Content="Registro de estudios" HorizontalAlignment="Left" Margin="274,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="lblEstudio" Content="Nombre del estudio" HorizontalAlignment="Left" Margin="28,48,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="28,78,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMedicoInterno" Content="Nombre del medico" HorizontalAlignment="Left" Margin="28,129,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMedicoInterno" Content="Nombre del médico" HorizontalAlignment="Left" Margin="28,129,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="28,157,0,0" VerticalAlignment="Top"/>
         <telerik:RadAutoCompleteBox IsEnabled="False" HorizontalAlignment="Left" Margin="189,50,0,0" VerticalAlignment="Top" Width="289"
                                     x:Name="autoEstudio"
@@ -48,8 +48,8 @@
                   Checked="cbTipoMedico_Checked" Unchecked="cbTipoMedico_Unchecked"/>
         <TextBox x:Name="txtMedico" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
         <TextBox x:Name="txtPaciente" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
-        
-        
+
+
         <telerik:RadGridView x:Name="rgvEstudios"  HorizontalAlignment="Left" Margin="31,224,0,0" VerticalAlignment="Top" 
             Width="665" Height="274" 
             AutoGenerateColumns="False" 
@@ -74,7 +74,7 @@
         </telerik:RadGridView>
         <Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="423,511,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="536,510,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        
+
         <Button x:Name="btnNuevo_Estudio" IsEnabled="true" Content="Nuevo Estudio" HorizontalAlignment="Left" Margin="483,50,0,0" VerticalAlignment="Top" Width="95" Click="btnNuevo_Estudio_Click"/>
         <Button x:Name="btnEditar" Visibility="Hidden" IsEnabled="False" Content="Actualizar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
         <Button x:Name="btnAgregar" IsEnabled="False" Content="Agregar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>

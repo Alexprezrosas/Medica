@@ -28,36 +28,34 @@ namespace Medica2.Administracion.Cirugias
 
         public void VistaCirugiasAplicadas()
         {
-            rgvCirugiasAplicadas.ItemsSource = (from CIRUGIA in BaseDatos.GetBaseDatos().CIRUGIAS
-                                                join cc in BaseDatos.GetBaseDatos().CATALOGO_CIRUGIAS
-                                                on CIRUGIA.CATALOGO_CIRUGIAID equals cc.ID_CATALOGO_CIRUGIA
-                                                join med in BaseDatos.GetBaseDatos().MEDICOS
-                                                on CIRUGIA.MEDICOID equals med.ID_MEDICO
-                                                join cuenta in BaseDatos.GetBaseDatos().CUENTAS
-                                                on CIRUGIA.CUENTAID equals cuenta.ID_CUENTA
+            rgvCirugiasAplicadas.ItemsSource = (from ciru in BaseDatos.GetBaseDatos().CIRUGIAS
+                                                join medi in BaseDatos.GetBaseDatos().MEDICOS
+                                                on ciru.MEDICOID equals medi.ID_MEDICO
+                                                join catciru in BaseDatos.GetBaseDatos().CATALOGO_CIRUGIAS
+                                                on ciru.CATALOGO_CIRUGIAID equals catciru.ID_CATALOGO_CIRUGIA
+                                                join cue in BaseDatos.GetBaseDatos().CUENTAS
+                                                on ciru.CUENTAID equals cue.ID_CUENTA
+                                                join usu in BaseDatos.GetBaseDatos().USUARIOS
+                                                on ciru.USUARIOID equals usu.ID_USUARIO
                                                 join paci in BaseDatos.GetBaseDatos().PACIENTES
-                                                on cuenta.PACIENTEID equals paci.ID_PACIENTE
-                                                join user in BaseDatos.GetBaseDatos().USUARIOS
-                                                on CIRUGIA.USUARIOID equals user.ID_USUARIO
+                                                on cue.PACIENTEID equals paci.ID_PACIENTE
+                                                where paci.PERSONA.ESTADOPERSONA == "Activo"
                                                 select new
                                                 {
                                                     ID_PACIENTE = paci.ID_PACIENTE,
-                                                    ID_CUENTA=cuenta.ID_CUENTA,
-                                                    ID_CIRUGIA = CIRUGIA.ID_CIRUGIA,
-                                                    ID_MEDICO = med.ID_MEDICO,
-                                                    ID_CAT_CIRUGIA = cc.ID_CATALOGO_CIRUGIA,
-                                                    MEDICOSOL = med.PERSONA.NOMBRE,
-                                                    MAPATERNO =med.PERSONA.A_PATERNO,
-                                                    MMATERNO =med.PERSONA.A_MATERNO,
-                                                    PACIENTENOM = paci.PERSONA.NOMBRE,
-                                                    PPATERNO=paci.PERSONA.A_PATERNO,
-                                                    PMATERNO=paci.PERSONA.A_MATERNO,
-                                                    CIRUGIANOM = cc.NOMBRE_CIRUGIA,
-                                                    COSTO = CIRUGIA.TOTAL,
-                                                    CUENTAA = cuenta.TOTAL,
-                                                    SALDO = cuenta.SALDO,
-                                                    FAPLICACION = CIRUGIA.FECHA_CREACION,
-                                                    USU = user.EMPLEADO.PERSONA.NOMBRE
+                                                    ID_CUENTA = cue.ID_CUENTA,
+                                                    ID_CIRUGIA = ciru.ID_CIRUGIA,
+                                                    ID_MEDICO = medi.ID_MEDICO,
+                                                    ID_CAT_CIRUGIA = catciru.ID_CATALOGO_CIRUGIA,
+
+                                                    MEDICOSOL = medi.PERSONA.NOMBRE + " " + medi.PERSONA.A_PATERNO + " " + medi.PERSONA.A_MATERNO,
+                                                    PACIENTENOM = paci.PERSONA.NOMBRE + " " + paci.PERSONA.A_PATERNO + " " + paci.PERSONA.A_MATERNO,
+                                                    CIRUGIANOM = catciru.NOMBRE_CIRUGIA,
+                                                    COSTO = ciru.TOTAL,
+                                                    CUENTAA = cue.TOTAL,
+                                                    SALDO = cue.SALDO,
+                                                    FAPLICACION = ciru.FECHA_CREACION,
+                                                    USU = usu.EMPLEADO.PERSONA.NOMBRE
                                                 }).ToList();
         }
 
@@ -88,7 +86,7 @@ namespace Medica2.Administracion.Cirugias
         {
             if (sender == itemAgregar)
             {
-               CargarCirugia cargargaciru = new CargarCirugia();
+                CargarCirugia cargargaciru = new CargarCirugia();
                 cargargaciru.Show();
                 this.Close();
 
@@ -103,7 +101,7 @@ namespace Medica2.Administracion.Cirugias
                         case MessageBoxResult.Yes:
 
                             dynamic idpaci = rgvCirugiasAplicadas.SelectedItem;
-                            int idp = idpaci.ID_PACIENTE;                            
+                            int idp = idpaci.ID_PACIENTE;
                             int idcuenta = idpaci.ID_CUENTA;
                             int idciru = idpaci.ID_CIRUGIA;
 

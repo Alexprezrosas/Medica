@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Administracion.EspecialidadesEnfermeras"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.EspecialidadesEnfermeras.ConsultarCatalogoEspecialidadesEnfermeras"
         mc:Ignorable="d"
-        Title="ConsultarCatalogoEspecialidadesEnfermeras" Height="371.159" Width="640.566">
+        Title="ConsultarCatalogoEspecialidadesEnfermeras" Height="409.423" Width="673.728">
     <Window.Resources>
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
 
@@ -16,23 +16,18 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <telerik:RadGridView x:Name="MostrarEspecialidad"  HorizontalAlignment="Left" Margin="10,31,-220.8,-56.6" 
+        <telerik:RadGridView x:Name="MostrarEspecialidad"  HorizontalAlignment="Left" Margin="10,42,0,0" 
             VerticalAlignment="Top" Width="614" 
             Height="296" AutoGenerateColumns="False"
-                             
             ShowSearchPanel="True"
-            IsSearchingDeferred="True"                             
-                             
-            SelectedCellsChanged="MostrarEspecialidad_SelectedCellsChanged"
-                             
-            BeginningEdit="radGridView_BeginningEdit"
-            CellEditEnded="radGridView_CellEditEnded">
-
+            IsSearchingDeferred="True"
+                             >
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}"  
                     Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
 

@@ -156,11 +156,35 @@
     <Compile Include="Administracion\Cirugias\ConsultarCirugiasAplicadas.xaml.cs">
       <DependentUpon>ConsultarCirugiasAplicadas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Cirugias\R_Cirugias_Aplicadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Cirugias\R_Cirugias_Aplicadas.Designer.cs">
+      <DependentUpon>R_Cirugias_Aplicadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cirugias\R_Ciru_Aplicadas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Cirugias\R_Ciru_Aplicadas.Designer.cs">
+      <DependentUpon>R_Ciru_Aplicadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Clasificacion Estudios\NuevaClasificacionEstudios.xaml.cs">
       <DependentUpon>NuevaClasificacionEstudios.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\ConsultasMedicas\RegistrarConsulta.xaml.cs">
       <DependentUpon>RegistrarConsulta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\R_Consultas_R.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\R_Consultas_R.Designer.cs">
+      <DependentUpon>R_Consultas_R.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\R_Consultas_realzadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\ConsultasMedicas\R_Consultas_realzadas.Designer.cs">
+      <DependentUpon>R_Consultas_realzadas.cs</DependentUpon>
     </Compile>
     <Compile Include="Administracion\ConsultasMedicas\VisualizarConsultas.xaml.cs">
       <DependentUpon>VisualizarConsultas.xaml</DependentUpon>
@@ -171,6 +195,18 @@
     <Compile Include="Administracion\Cuartos\NuevoCuarto.xaml.cs">
       <DependentUpon>NuevoCuarto.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Cuentas\R_Cuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Cuentas\R_Cuentas.Designer.cs">
+      <DependentUpon>R_Cuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Cuentas\R_Cuentas_Activas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Cuentas\R_Cuentas_Activas.Designer.cs">
+      <DependentUpon>R_Cuentas_Activas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Cuentas\VizualizarCuentas.xaml.cs">
       <DependentUpon>VizualizarCuentas.xaml</DependentUpon>
     </Compile>
@@ -180,6 +216,21 @@
     <Compile Include="Administracion\Depositos\RegistrarDeposito.xaml.cs">
       <DependentUpon>RegistrarDeposito.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Depositos\Re_Depositos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Depositos\Re_Depositos.Designer.cs">
+      <DependentUpon>Re_Depositos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Depositos\R_Depositos.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Depositos\R_Depositos.Designer.cs">
+      <DependentUpon>R_Depositos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Empleados\MostrarEmpleados.xaml.cs">
+      <DependentUpon>MostrarEmpleados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Empleados\RegistroEmpleados.xaml.cs">
       <DependentUpon>RegistroEmpleados.xaml</DependentUpon>
     </Compile>
@@ -188,6 +239,21 @@
     </Compile>
     <Compile Include="Administracion\EquipoHospital\ConsultaEquipoHospital.xaml.cs">
       <DependentUpon>ConsultaEquipoHospital.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\EquipoHospital\R_Equipo_Hcargado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\EquipoHospital\R_Equipo_Hcargado.Designer.cs">
+      <DependentUpon>R_Equipo_Hcargado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\EquipoHospital\R_Equipo_H_Cargado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\EquipoHospital\R_Equipo_H_Cargado.Designer.cs">
+      <DependentUpon>R_Equipo_H_Cargado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Especialidades\NuevaEspecialidadMedico.xaml.cs">
+      <DependentUpon>NuevaEspecialidadMedico.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Estudios\CargarEstudios.xaml.cs">
       <DependentUpon>CargarEstudios.xaml</DependentUpon>
@@ -201,8 +267,32 @@
     <Compile Include="Administracion\Estudios\NuevoEstudio.xaml.cs">
       <DependentUpon>NuevoEstudio.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Estudios\R_Estudios_Cargado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Estudios\R_Estudios_Cargado.Designer.cs">
+      <DependentUpon>R_Estudios_Cargado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Estudios\R_Estu_Cargado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Estudios\R_Estu_Cargado.Designer.cs">
+      <DependentUpon>R_Estu_Cargado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\HonorarioMedicos\CargarHonorarioMedico.xaml.cs">
       <DependentUpon>CargarHonorarioMedico.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\R_Honorarios_Med.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\R_Honorarios_Med.Designer.cs">
+      <DependentUpon>R_Honorarios_Med.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\R_Hono_Med.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\HonorarioMedicos\R_Hono_Med.Designer.cs">
+      <DependentUpon>R_Hono_Med.cs</DependentUpon>
     </Compile>
     <Compile Include="Administracion\HonorarioMedicos\VizualizarHonorariosCargados.xaml.cs">
       <DependentUpon>VizualizarHonorariosCargados.xaml</DependentUpon>
@@ -219,23 +309,68 @@
     <Compile Include="Administracion\Pacientes\IngresoPaciente.xaml.cs">
       <DependentUpon>IngresoPaciente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\Pacientes\R_Pacientes_H.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Pacientes\R_Pacientes_H.Designer.cs">
+      <DependentUpon>R_Pacientes_H.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Pacientes\R_Paciente_H.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Pacientes\R_Paciente_H.Designer.cs">
+      <DependentUpon>R_Paciente_H.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Permisos\RegistroPermisosUsuarios.xaml.cs">
       <DependentUpon>RegistroPermisosUsuarios.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\Reportes\Medic.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administracion\Reportes\Medic.Designer.cs">
-      <DependentUpon>Medic.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Administracion\Reportes\Report1.cs">
+    <Compile Include="Administracion\Reportes\MedicosActivos.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Administracion\Reportes\Report1.Designer.cs">
-      <DependentUpon>Report1.cs</DependentUpon>
+    <Compile Include="Administracion\Reportes\MedicosActivos.Designer.cs">
+      <DependentUpon>MedicosActivos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Administracion\Reportes\ReporteMedicamentos.xaml.cs">
-      <DependentUpon>ReporteMedicamentos.xaml</DependentUpon>
+    <Compile Include="Administracion\Reportes\M_A_R.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\M_A_R.Designer.cs">
+      <DependentUpon>M_A_R.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\Pacientes _Hospitalizados_Reporte.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\Pacientes _Hospitalizados_Reporte.Designer.cs">
+      <DependentUpon>Pacientes _Hospitalizados_Reporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\P_H_R.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\P_H_R.Designer.cs">
+      <DependentUpon>P_H_R.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\Reporte_Enfermeras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\Reporte_Enfermeras.Designer.cs">
+      <DependentUpon>Reporte_Enfermeras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Empleado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Empleado.Designer.cs">
+      <DependentUpon>R_Empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Empleados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Empleados.Designer.cs">
+      <DependentUpon>R_Empleados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Enfermeras.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Administracion\Reportes\R_Enfermeras.Designer.cs">
+      <DependentUpon>R_Enfermeras.cs</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Usuarios\AgregarUsuarios.xaml.cs">
       <DependentUpon>AgregarUsuarios.xaml</DependentUpon>
@@ -429,6 +564,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Empleados\MostrarEmpleados.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Empleados\RegistroEmpleados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -473,6 +612,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\Especialidades\NuevaEspecialidadMedico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\Estudios\CargarEstudios.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -514,10 +657,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Administracion\Permisos\RegistroPermisosUsuarios.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Administracion\Reportes\ReporteMedicamentos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -689,11 +828,74 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Administracion\Reportes\Medic.resx">
-      <DependentUpon>Medic.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\Cirugias\R_Cirugias_Aplicadas.resx">
+      <DependentUpon>R_Cirugias_Aplicadas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Administracion\Reportes\Report1.resx">
-      <DependentUpon>Report1.cs</DependentUpon>
+    <EmbeddedResource Include="Administracion\Cirugias\R_Ciru_Aplicadas.resx">
+      <DependentUpon>R_Ciru_Aplicadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\ConsultasMedicas\R_Consultas_R.resx">
+      <DependentUpon>R_Consultas_R.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\ConsultasMedicas\R_Consultas_realzadas.resx">
+      <DependentUpon>R_Consultas_realzadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Cuentas\R_Cuentas.resx">
+      <DependentUpon>R_Cuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Cuentas\R_Cuentas_Activas.resx">
+      <DependentUpon>R_Cuentas_Activas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Depositos\Re_Depositos.resx">
+      <DependentUpon>Re_Depositos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Depositos\R_Depositos.resx">
+      <DependentUpon>R_Depositos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\EquipoHospital\R_Equipo_Hcargado.resx">
+      <DependentUpon>R_Equipo_Hcargado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\EquipoHospital\R_Equipo_H_Cargado.resx">
+      <DependentUpon>R_Equipo_H_Cargado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Estudios\R_Estudios_Cargado.resx">
+      <DependentUpon>R_Estudios_Cargado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Estudios\R_Estu_Cargado.resx">
+      <DependentUpon>R_Estu_Cargado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\HonorarioMedicos\R_Honorarios_Med.resx">
+      <DependentUpon>R_Honorarios_Med.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\HonorarioMedicos\R_Hono_Med.resx">
+      <DependentUpon>R_Hono_Med.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Pacientes\R_Pacientes_H.resx">
+      <DependentUpon>R_Pacientes_H.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Pacientes\R_Paciente_H.resx">
+      <DependentUpon>R_Paciente_H.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\MedicosActivos.resx">
+      <DependentUpon>MedicosActivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\M_A_R.resx">
+      <DependentUpon>M_A_R.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\P_H_R.resx">
+      <DependentUpon>P_H_R.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\Reporte_Enfermeras.resx">
+      <DependentUpon>Reporte_Enfermeras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\R_Empleado.resx">
+      <DependentUpon>R_Empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\R_Empleados.resx">
+      <DependentUpon>R_Empleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administracion\Reportes\R_Enfermeras.resx">
+      <DependentUpon>R_Enfermeras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Farmacia\Compras\Reportes\RCompras.resx">
       <DependentUpon>RCompras.cs</DependentUpon>

@@ -31,7 +31,7 @@
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="22,221,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="468,52,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblTitulo" Content="Registro de Enfermeras" HorizontalAlignment="Left" Margin="412,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lblCProfesional" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="468,162,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="lblCProfesional" Content="Cédula Profesional" HorizontalAlignment="Left" Margin="468,162,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox x:Name="txtCProfesional" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="592,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="359,305,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="535,305,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
@@ -47,11 +47,16 @@
             x:Name="dpFecha_Nacimiento" HorizontalAlignment="Left" Margin="172,139,0,0" VerticalAlignment="Top" Height="23" Width="121"
             SelectedDateChanged="dpFecha_Nacimiento_SelectedDateChanged"
             DisplayDateEnd="{x:Static System:DateTime.Now}"/>
-        
+
         <Label x:Name="lblContrasenia" Content="Contraseña" HorizontalAlignment="Left" Margin="468,193,0,0" VerticalAlignment="Top" Width="112"/>
         <PasswordBox x:Name="psContrasena" HorizontalAlignment="Left" Margin="592,193,0,0" VerticalAlignment="Top" Width="247" Height="25"
                      Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
         <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden"  HorizontalAlignment="Left" Margin="359,305,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
+        <Label x:Name="lblActivoInactivo" Visibility="Hidden" Content="Activo/Inactivo" HorizontalAlignment="Left" Margin="468,225,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbActivoInactivo" Visibility="Hidden" HorizontalAlignment="Left" Margin="592,229,0,0" VerticalAlignment="Top" Width="107">
+            <ComboBoxItem Content="Activo"/>
+            <ComboBoxItem Content="Inactivo"/>
+        </ComboBox>
 
 
 

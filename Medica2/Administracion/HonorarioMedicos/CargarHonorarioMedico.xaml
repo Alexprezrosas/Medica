@@ -6,34 +6,35 @@
         xmlns:local="clr-namespace:Medica2.Administracion.HonorarioMedicos"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.HonorarioMedicos.CargarHonorarioMedico"
         mc:Ignorable="d"
-        Title="CargarHonorarioMedico" Height="279.512" Width="414.878">
+        Title="CargarHonorarioMedico" Height="299.683" Width="551.272">
     <Grid>
 
 
         <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="9,51,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMonto" Content="Honorario" HorizontalAlignment="Left" Margin="9,136,0,0" VerticalAlignment="Top"/>
 
-        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="156,94,-86.4,0" VerticalAlignment="Top" Width="224"
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="156,94,0,0" VerticalAlignment="Top" Width="313"
         x:Name="automedico"
         ItemsSource="{Binding PACIENTES.NOMBRE.APATERNO}"                
         DisplayMemberPath="NOMBRE"                
         AutoCompleteMode="SuggestAppend"
         SelectionMode="Single"/>
 
-        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="156,53,-86.4,0" VerticalAlignment="Top" Width="224"
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="156,53,0,0" VerticalAlignment="Top" Width="313"
         x:Name="autoPaciente"
         ItemsSource="{Binding MEDICO}"
         DisplayMemberPath="NOMBRE"
         AutoCompleteMode="Suggest"
         SelectionMode="Single"/>
 
-        <Label x:Name="lblTitulo" Content="Cargar Honorario Medico" HorizontalAlignment="Left" Margin="128,11,-12.4,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lblnombre" Content="Nombre del Medico" HorizontalAlignment="Left" Margin="9,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Cargar Honorario Médico" HorizontalAlignment="Left" Margin="209,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblnombre" Content="Nombre del Médico" HorizontalAlignment="Left" Margin="9,94,0,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="txtHonorario" HorizontalAlignment="Left" Height="23" Margin="157,136,-87.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" PreviewTextInput="validarDecimal"/>
+        <TextBox x:Name="txtHonorario" HorizontalAlignment="Left" Height="23" Margin="157,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119" PreviewTextInput="validarDecimal"/>
 
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="90,187,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="231,187,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="201,205,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="342,205,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
+        <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="201,205,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
 
 
 

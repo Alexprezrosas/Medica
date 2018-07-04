@@ -6,26 +6,46 @@
         xmlns:local="clr-namespace:Medica2.Administracion.HonorarioMedicos"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.HonorarioMedicos.VizualizarHonorariosCargados"
         mc:Ignorable="d"
-        Title="VizualizarHonorariosCargados" Height="386.707" Width="529.757">
+        Title="VizualizarHonorariosCargados" Height="484.707" Width="667.757">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+
+
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvVHonorariosc" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="311" Width="503"
+        <telerik:RadGridView x:Name="rgvVHonorariosc" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="389" Width="617"
             ShowSearchPanel="True"
             IsSearchingDeferred="True"  
             SelectedItem="{Binding HONORARIOS_MEDICOS}"
             AlternateRowBackground="BlueViolet"                                                      
             AutoGenerateColumns="False" >
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOM_EQUIPO_HOSPITAL}"
-                    Header="Equipo Hospital" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}"
-                    Header="Descripción" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}"
-                    Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"
-                    Header="FechaCreacion"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMPACI}"
+                    Header="PACIENTE" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMED}"
+                    Header="MÉDICO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding HONO}"
+                    Header="HONORARIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUSU}"
+                    Header="USUARIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA}"
+                    Header="FECHA DE CREACIÓN"/>
 
             </telerik:RadGridView.Columns>
 

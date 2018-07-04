@@ -28,10 +28,10 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CUARTO}" Header="NOMBRE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCION" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MAX_PACIENTES}" Header="PACIENTES POR HABITACION"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MAX_PACIENTES}" Header="PACIENTES POR HABITACIÓN"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTitulo" Content="Cuartos disponibles" HorizontalAlignment="Left" Margin="285,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>

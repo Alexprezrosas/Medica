@@ -7,8 +7,16 @@
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.ConsultasMedicas.VisualizarConsultas"
         mc:Ignorable="d"
         Title="VisualizarConsultas" Height="337.866" Width="759.329">
-    <Grid>
+    <Window.Resources>
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
 
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
         <telerik:RadGridView HorizontalAlignment="Left" Margin="26,36,-432.4,0" VerticalAlignment="Top" Height="234"
             x:Name="rgvVizualizaConsultas"
             ShowSearchPanel="True"
@@ -16,27 +24,27 @@
             SelectedItem="{Binding CONSULTA}"
             AlternateRowBackground="BlueViolet"                                                      
             Width="700"
-            AutoGenerateColumns="False"
-                            >
+            AutoGenerateColumns="False">
 
+            <telerik:RadContextMenu.ContextMenu >
+                <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click"/>
+                </telerik:RadContextMenu>
+            </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOID}"
-                    Header="Medico" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTEID}"
-                    Header="PacienteH" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOM_PACIENTE}"
-                    Header="PacienteA" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DIAGNOSTICO}"
-                    Header="Diagnostico"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}"
-                    Header="Descripcion"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICAMENTOS}"
-                    Header="Medicamento"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIOID}"
-                    Header="Usuario"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}"
-                    Header="Costo"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICO}"
+                    Header="Médico" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CEDU}"
+                    Header="Cédula"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIEN}"
+                    Header="Paciente Hospitalizado" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COST}"
+                    Header="Costo" />
+
+
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>

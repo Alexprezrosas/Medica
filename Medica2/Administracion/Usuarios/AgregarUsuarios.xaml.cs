@@ -29,7 +29,7 @@ namespace Medica2.Administracion.Usuarios
 
         }
 
-        public AgregarUsuarios(USUARIO idu, bool fals )
+        public AgregarUsuarios(USUARIO idu, bool fals)
         {
             InitializeComponent();
             LlenarAutocomlete();
@@ -45,13 +45,13 @@ namespace Medica2.Administracion.Usuarios
             autoempleado.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                         join e in BaseDatos.GetBaseDatos().EMPLEADOS
                                         on PERSONA.ID_PERSONA equals e.PERSONAID
-                                        where PERSONA.ESTADOPERSONA=="Activo"
+                                        where PERSONA.ESTADOPERSONA == "Activo"
 
                                         select new
                                         {
                                             ID_PERSONA = PERSONA.ID_PERSONA,
                                             ID_EMPLEADO = e.ID_EMPLEADO,
-                                            NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO+" "+PERSONA.A_PATERNO,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_PATERNO,
 
 
                                         }).ToList();

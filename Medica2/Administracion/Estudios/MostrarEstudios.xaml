@@ -21,11 +21,9 @@
 
         <telerik:RadGridView AutoGenerateColumns="False" x:Name="rdgvMostrarEstudio" HorizontalAlignment="Left" Margin="10,46,-229.4,-108.6" VerticalAlignment="Top"
             ShowSearchPanel="True"
-            IsSearchingDeferred="True"
-                             
-            AlternateRowBackground="BlueViolet"
-                                                      
-            CellEditEnded="radGridView_CellEditEnded"
+            IsSearchingDeferred="True"                             
+            AlternateRowBackground="BlueViolet"                                                      
+           
             ShowColumnFooters="True" Width="513" Height="333"
                              >
             <telerik:RadContextMenu.ContextMenu >
@@ -33,20 +31,21 @@
                     Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}"
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CATENOM}"
                     Header="Estudio" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}"
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CATEDESC}"
                     Header="Desccripción" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CLASIFICACION}"
-                    Header="Clasificacion" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}"
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CLASIESTU}"
+                    Header="Clasificación" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CATECOSTO}"
                     Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"
-                    Header="Fecha de Creacion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHAC}"
+                    Header="Fecha de Creación" />
 
             </telerik:RadGridView.Columns>
 

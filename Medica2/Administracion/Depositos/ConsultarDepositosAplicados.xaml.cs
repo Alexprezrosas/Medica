@@ -49,7 +49,7 @@ namespace Medica2.Administracion.Depositos
                                                      SALDO = cuenta.SALDO,
                                                      USUA = usuario.EMPLEADO.PERSONA.NOMBRE,
                                                      FAPLICACION = depo.FECHA_CREACION
-                                                }).ToList();
+                                                 }).ToList();
         }
 
         private GridViewRow ClickedRow
@@ -84,7 +84,7 @@ namespace Medica2.Administracion.Depositos
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar la Cirugua?", "Administracion", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el deposito?", "Administracion", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -105,7 +105,7 @@ namespace Medica2.Administracion.Depositos
 
                                 BaseDatos.GetBaseDatos().DEPOSITOS.Remove(deposito);
                                 BaseDatos.GetBaseDatos().SaveChanges();
-                                MessageBox.Show("Deposito Eliminado Corectamente");
+                                MessageBox.Show("El Deposito se ha eliminado correctamente");
                                 VistaGrid();
                             }
                             break;

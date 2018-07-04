@@ -5,22 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Medica2.Administracion.Cuartos"
         mc:Ignorable="d"
-        Title="NuevoCuarto" Height="321.22" Width="436.83">
+        Title="NuevoCuarto" Height="383.036" Width="603.511">
     <Grid>
-        <Label x:Name="lblnombre_Copy" Content="Nuevo Cuarto" HorizontalAlignment="Left" Margin="168,31,0,0" VerticalAlignment="Top" Height="24" Width="111" FontWeight="Bold" FontFamily="Global Sans Serif"/>
-        <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="27,73,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
-        <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="27,113,0,0" VerticalAlignment="Top" Height="32" Width="83"/>
-        <Label x:Name="lblcosto" Content="Maximo de personas" HorizontalAlignment="Left" Margin="27,150,0,0" VerticalAlignment="Top" Height="38" Width="123"/>
+        <Label x:Name="lblnombre_Copy" Content="Nuevo Cuarto" HorizontalAlignment="Left" Margin="249,26,0,0" VerticalAlignment="Top" Height="24" Width="111" FontWeight="Bold" FontFamily="Global Sans Serif" FontSize="14"/>
+        <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="51,84,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
+        <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="51,124,0,0" VerticalAlignment="Top" Height="32" Width="83"/>
+        <Label x:Name="lblcosto" Content="Maximo de personas" HorizontalAlignment="Left" Margin="51,206,0,0" VerticalAlignment="Top" Height="38" Width="123"/>
 
-        <TextBox x:Name="txtNombre" TextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="168,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
-        <TextBox x:Name="txtDescripcion" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="168,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
-        <TextBox x:Name="txtmaxpersonas" KeyDown="validarDecimal" HorizontalAlignment="Left" Height="23" Margin="168,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+        <TextBox x:Name="txtNombre" PreviewTextInput="validarNumLetras" HorizontalAlignment="Left" Height="23" Margin="196,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+        <TextBox x:Name="txtDescripcion" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="73" Margin="196,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237"/>
+        <TextBox x:Name="txtmaxpersonas" MaxLength="2" KeyDown="validarDecimal" HorizontalAlignment="Left" Height="23" Margin="196,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
 
 
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="107,248,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="269,248,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
-        <Label x:Name="lblcosto_Copy" Content="Costo" HorizontalAlignment="Left" Margin="27,193,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
-        <TextBox x:Name="txtCosto" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="23" Margin="168,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="77"/>
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="196,299,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="358,299,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Label x:Name="lblcosto_Copy" Content="Costo" HorizontalAlignment="Left" Margin="51,241,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
+        <TextBox x:Name="txtCosto" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="23" Margin="196,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
+        <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="196,299,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
+        <Label x:Name="lblEstatus" Visibility="Hidden" Content="Estado" HorizontalAlignment="Left" Margin="284,206,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
+        <ComboBox Visibility="Hidden" x:Name="cbbEstadocuarto" HorizontalAlignment="Left" Margin="336,206,0,0" VerticalAlignment="Top" Width="97">
+            <ComboBoxItem Content="Activo"/>
+            <ComboBoxItem Content="Inactivo"/>
+        </ComboBox>
 
     </Grid>
 </Window>

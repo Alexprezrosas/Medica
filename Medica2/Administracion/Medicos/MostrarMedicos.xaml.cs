@@ -42,10 +42,10 @@ namespace Medica2.Administracion.Medicos
                                            on PERSONA.ID_PERSONA equals emple.PERSONAID
                                            join usu in BaseDatos.GetBaseDatos().USUARIOS
                                            on emple.ID_EMPLEADO equals usu.EMPLEADOID
-                                           where PERSONA.ESTADOPERSONA=="Activo"
+                                           where PERSONA.ESTADOPERSONA == "Activo"
                                            select new
                                            {
-                                               ID_USUARIO=usu.ID_USUARIO,
+                                               ID_USUARIO = usu.ID_USUARIO,
                                                ID_MEDICO = e.ID_MEDICO,
                                                NOMBRE = PERSONA.NOMBRE,
                                                A_PATERNO = PERSONA.A_PATERNO,
@@ -55,8 +55,8 @@ namespace Medica2.Administracion.Medicos
                                                SEXO = PERSONA.SEXO.ToString(),
                                                CALLE = PERSONA.CALLE,
                                                ESTADO = PERSONA.ESTADO1.nombre,
-                                               NOMUNI=PERSONA.NOMMUNICIPIO,
-                                               NOMLOC=PERSONA.NOMLOCALIDAD,
+                                               NOMUNI = PERSONA.NOMMUNICIPIO,
+                                               NOMLOC = PERSONA.NOMLOCALIDAD,
                                                T_CELULAR = PERSONA.T_CELULAR,
                                                CURP = PERSONA.CURP,
                                                FECHA_CREACION = PERSONA.FECHA_CREACION,
@@ -64,7 +64,8 @@ namespace Medica2.Administracion.Medicos
                                                T_PARTICULAR = e.T_PARTICULAR,
                                                CORREO = e.CORREO,
                                                C_PROFESIONAL = e.C_PROFESIONAL,
-                                               CONTRA=usu.CONTRASENA
+                                               CONTRA = usu.CONTRASENA,
+                                               ESTADOP = e.PERSONA.ESTADOPERSONA
 
 
                                            });
@@ -80,6 +81,7 @@ namespace Medica2.Administracion.Medicos
                                            on PERSONA.ID_PERSONA equals emple.PERSONAID
                                            join usu in BaseDatos.GetBaseDatos().USUARIOS
                                            on emple.ID_EMPLEADO equals usu.EMPLEADOID
+
 
                                            select new
                                            {
@@ -102,7 +104,8 @@ namespace Medica2.Administracion.Medicos
                                                T_PARTICULAR = e.T_PARTICULAR,
                                                CORREO = e.CORREO,
                                                C_PROFESIONAL = e.C_PROFESIONAL,
-                                               CONTRA=usu.CONTRASENA
+                                               CONTRA = usu.CONTRASENA,
+                                               ESTADOP = e.PERSONA.ESTADOPERSONA
 
                                            });
 
@@ -177,7 +180,7 @@ namespace Medica2.Administracion.Medicos
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el medico?", "Administracion Medicos", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el médico?", "Administracion Médicos", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -191,10 +194,10 @@ namespace Medica2.Administracion.Medicos
 
                                 var cmedico = BaseDatos.GetBaseDatos().USUARIOS.Find(idmedi);
                                 cmedico.EMPLEADO.PERSONA.ESTADOPERSONA = "Inactivo";
-                               
+
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado el Medico", "Administracion Medicos");
+                            MessageBox.Show("Se ha eliminado el Médico", "Administración Médicos");
                             VistaMedicosPersona();
 
                             break;
@@ -232,7 +235,7 @@ namespace Medica2.Administracion.Medicos
 
         private void checkBoxmedicos_Checked(object sender, RoutedEventArgs e)
         {
-            if(checkBoxmedicos.IsChecked==true)
+            if (checkBoxmedicos.IsChecked == true)
             {
                 VistaMedicosTodos();
             }
@@ -240,7 +243,8 @@ namespace Medica2.Administracion.Medicos
 
         private void checkBoxmedicos_Unchecked(object sender, RoutedEventArgs e)
         {
-            if (checkBoxmedicos.IsChecked == false){
+            if (checkBoxmedicos.IsChecked == false)
+            {
                 VistaMedicosPersona();
             }
         }

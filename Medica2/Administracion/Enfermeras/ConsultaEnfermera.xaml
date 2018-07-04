@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Enfermeras"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Enfermeras.ConsultaEnfermera"
         mc:Ignorable="d"
-        Title="ConsultaEnfermera" Height="403.902" Width="651.952">
+        Title="ConsultaEnfermera" Height="430.274" Width="826.837">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -22,7 +22,7 @@
             <ColumnDefinition Width="591*"/>
         </Grid.ColumnDefinitions>
 
-        <telerik:RadGridView ShowSearchPanel="True" x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5.4,54,0,0" VerticalAlignment="Top" Width="625" Height="273" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" SelectedItem="{Binding ID_ENFERMERA}">
+        <telerik:RadGridView ShowSearchPanel="True" x:Name="MostrarEnfermera"  HorizontalAlignment="Left" Margin="5,54,0,0" VerticalAlignment="Top" Width="723" Height="283" SelectedCellsChanged="MostrarEnfermeras_SelectedCellsChanged" Grid.Column="1" AutoGenerateColumns="False" SelectedItem="{Binding ID_ENFERMERA}">
 
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
@@ -44,10 +44,11 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PUESTO}" Header="PUESTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CONTRASE}" Header="CONTRASEÑA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOP}" Header="ESTATUS"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <CheckBox x:Name="checkboxenfe" Content="Mostrar todas Enfermeras" Unchecked="checkboxenfe_Unchecked" Checked="checkboxenfe_Checked" Grid.Column="1" HorizontalAlignment="Left" Margin="10.4,34,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Consultar Enfermeras" Grid.Column="1" HorizontalAlignment="Left" Margin="207.4,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label" Content="Consultar Enfermeras" Grid.Column="1" HorizontalAlignment="Left" Margin="299,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

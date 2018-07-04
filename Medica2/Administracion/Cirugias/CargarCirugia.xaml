@@ -8,10 +8,10 @@
         mc:Ignorable="d"
         Title="CargarCirugia" Height="232.871" Width="539.941">
     <Grid>
-        <Label x:Name="lblTitulo" Content="Registro de cirugias" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Registro de cirugías" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="31,53,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMedico" Content="Nombre del medico solicitante" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblCirugia" Content="Nombre de la cirugia" HorizontalAlignment="Left" Margin="31,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMedico" Content="Nombre del médico solicitante" HorizontalAlignment="Left" Margin="31,79,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCirugia" Content="Nombre de la cirugía" HorizontalAlignment="Left" Margin="31,105,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="31,131,0,0" VerticalAlignment="Top"/>
 
         <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="231,54,0,0" VerticalAlignment="Top" Width="246"
@@ -34,9 +34,9 @@
                                     SelectionMode="Single"
                                     SelectionChanged="autoCirugia_SelectionChanged"/>
         <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="231,135,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89" IsReadOnly="True"/>
-        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="419,137,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
-        <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="325,137,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
+        <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="231,172,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="402,172,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
+        <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="231,172,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
 
     </Grid>
 </Window>

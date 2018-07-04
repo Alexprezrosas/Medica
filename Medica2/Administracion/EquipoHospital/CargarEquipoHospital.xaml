@@ -17,16 +17,16 @@
         </Style>
 
     </Window.Resources>
-    
+
     <Grid>
 
-       
-        
+
+
         <Label x:Name="labelnombrepaciente" Content="Nombre Paciente" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelnombremedico" Content="Medico Solicitante" HorizontalAlignment="Left" Margin="35,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelnombremedico" Content="Médico Solicitante" HorizontalAlignment="Left" Margin="35,54,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labeleqh" Content="Equipo Hospital" HorizontalAlignment="Left" Margin="35,118,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelcosto" Content="Costo" HorizontalAlignment="Left" Margin="35,144,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lab" Content="Equipo Hospital Carga" HorizontalAlignment="Left" Margin="222,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lab" Content="Cargar Equipo de Hospital" HorizontalAlignment="Left" Margin="222,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
         <telerik:RadAutoCompleteBox  HorizontalAlignment="Left" Height="25" IsEnabled="true" Margin="162,89,0,0" VerticalAlignment="Top" Width="256"
                                     x:Name="autopaceinte" 

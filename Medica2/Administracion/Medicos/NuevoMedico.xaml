@@ -36,7 +36,7 @@
         <Label x:Name="label_Copy" Content="Teléfono Consultorio" HorizontalAlignment="Left" Margin="444,110,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy13" Content="Teléfono Particular" HorizontalAlignment="Left" Margin="442,136,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy14" Content="Correo" HorizontalAlignment="Left" Margin="444,200,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy15" Content="Cedula Profesional" HorizontalAlignment="Left" Margin="442,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy15" Content="Cédula Profesional" HorizontalAlignment="Left" Margin="442,167,0,0" VerticalAlignment="Top"/>
 
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" 
@@ -70,6 +70,11 @@
         <Label x:Name="lblContrasena" Content="Contraseña" HorizontalAlignment="Left" Margin="444,232,0,0" VerticalAlignment="Top"/>
         <PasswordBox x:Name="psContrasena" MaxLength="10" HorizontalAlignment="Left" Margin="611,233,0,0" VerticalAlignment="Top" Width="220" Height="26"
                      Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <Label x:Name="lblactivoinactivo" Visibility="Hidden" Content="Activo/Inactivo" HorizontalAlignment="Left" Margin="444,267,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbActivoInactivo" Visibility="Hidden" HorizontalAlignment="Left" Margin="612,271,0,0" VerticalAlignment="Top" Width="120">
+            <ComboBoxItem Content="Activo"/>
+            <ComboBoxItem Content="Inactivo"/>
+        </ComboBox>
 
     </Grid>
 </Window>

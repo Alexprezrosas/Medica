@@ -28,16 +28,16 @@ namespace Medica2.Administracion.Cuartos
         void vistaRadGrid()
         {
             rgvCuartosDisponibles.ItemsSource = (from CATALOGO_CUARTOS in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
-                                        where CATALOGO_CUARTOS.ESTADO == "Libre"
-                                        select new
-                                        {
-                                            ID_CUARTO = CATALOGO_CUARTOS.ID_CATALOGO_CUARTO,
-                                            NOMBRE_CUARTO = CATALOGO_CUARTOS.NOMBRE_CUARTO,
-                                            DESCRIPCION = CATALOGO_CUARTOS.DESCRIPCION,
-                                            COSTO = CATALOGO_CUARTOS.COSTO,
-                                            ESTADO = CATALOGO_CUARTOS.ESTADO,
-                                            MAX_PACIENTES = CATALOGO_CUARTOS.MAX_PACIENTES
-                                        }).ToList();
+                                                 where CATALOGO_CUARTOS.ESTADO == "Libre"
+                                                 select new
+                                                 {
+                                                     ID_CUARTO = CATALOGO_CUARTOS.ID_CATALOGO_CUARTO,
+                                                     NOMBRE_CUARTO = CATALOGO_CUARTOS.NOMBRE_CUARTO,
+                                                     DESCRIPCION = CATALOGO_CUARTOS.DESCRIPCION,
+                                                     COSTO = CATALOGO_CUARTOS.COSTO,
+                                                     ESTADO = CATALOGO_CUARTOS.ESTADO,
+                                                     MAX_PACIENTES = CATALOGO_CUARTOS.MAX_PACIENTES
+                                                 }).ToList();
         }
 
     }

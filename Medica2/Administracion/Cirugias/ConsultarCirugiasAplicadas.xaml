@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Cirugias"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Cirugias.ConsultarCirugiasAplicadas"
         mc:Ignorable="d"
-        Title="ConsultarCirugiasAplicadas" Height="401.593" Width="797.039">
+        Title="ConsultarCirugiasAplicadas" Height="465.075" Width="904.682">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -16,32 +16,28 @@
         </Style>
 
     </Window.Resources>
-    
-    <Grid>
-        <Label x:Name="lblTitulo" Content="Consulta de cirugias aplicadas" HorizontalAlignment="Left" Margin="259,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
-        <telerik:RadGridView x:Name="rgvCirugiasAplicadas"  HorizontalAlignment="Left" Margin="31,66,-30.6,0" VerticalAlignment="Top" 
-            Width="726" Height="274" 
+    <Grid>
+        <Label x:Name="lblTitulo" Content="Consulta de cirugías aplicadas" HorizontalAlignment="Left" Margin="349,22,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+
+        <telerik:RadGridView x:Name="rgvCirugiasAplicadas"  HorizontalAlignment="Left" Margin="31,66,0,0" VerticalAlignment="Top" 
+            Width="828" Height="342" 
             AutoGenerateColumns="False" 
-            SelectedItem="{Binding ID_PACIENTE}"
+            
             ShowSearchPanel="True"
-            IsSearchingDeferred="True">            
+            IsSearchingDeferred="True">
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                     <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                 </telerik:RadContextMenu>
-            </telerik:RadContextMenu.ContextMenu>            
+            </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MEDICO SOLICITANTE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MAPATERNO}" Header="MPATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MMATERNO}" Header="MMATENRO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTENOM}" Header="PACIENTE" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PPATERNO}" Header="PPATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PMATERNO}" Header="PMATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CIRUGIANOM}" Header="CIRUGIA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CIRUGIANOM}" Header="CIRUGÍA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>

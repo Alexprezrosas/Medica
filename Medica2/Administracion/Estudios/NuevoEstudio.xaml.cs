@@ -21,11 +21,32 @@ namespace Medica2.Administracion.Estudios
     /// </summary>
     public partial class NuevoEstudio : Window
     {
+        int idestudi;
+        int idclasi;
         public NuevoEstudio()
         {
+
             InitializeComponent();
             AutoClasifica.ItemsSource = BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS.ToList();
 
+        }
+
+        public NuevoEstudio(CATALOGO_ESTUDIOS ces, CLASIFICACION_ESTUDIOS claes, bool save)
+        {
+
+            InitializeComponent();
+            AutoClasifica.ItemsSource = BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS.ToList();
+
+            idestudi = ces.CATALOGO_ESTUDIO_ID;
+            idclasi = claes.CLASIFICACIONID;
+
+            txtNombre.Text = ces.NOMBRE;
+            txtDescripcion.Text = ces.DESCRIPCION;
+            txtCosto.Text = ces.COSTO.ToString();
+            AutoClasifica.SearchText = claes.NOMBRE;
+
+            btnEditar.Visibility = Visibility.Visible;
+            btnGuardar.Visibility = Visibility.Hidden;
 
         }
         public void Guardar()
@@ -49,41 +70,100 @@ namespace Medica2.Administracion.Estudios
                     }
                     else
                     {
-                        DateTime fec = DateTime.Now;
-
-                        int idClasifica = ((CLASIFICACION_ESTUDIOS)AutoClasifica.SelectedItem).CLASIFICACIONID;
-                        CATALOGO_ESTUDIOS cestudio = new CATALOGO_ESTUDIOS
+                        if (AutoClasifica.SelectedItem == null)
                         {
+                            MessageBox.Show("Selecciona una Clasificacion");
+                        }
+                        else
+                        {
+                            DateTime fec = DateTime.Now;
 
-                            NOMBRE = txtNombre.Text,
-                            DESCRIPCION = txtDescripcion.Text,
-                            COSTO = Decimal.Parse(txtCosto.Text),
-                            FECHA_CREACION = fec,
-                            CLASIFICACIONID = idClasifica
+                            int idClasifica = ((CLASIFICACION_ESTUDIOS)AutoClasifica.SelectedItem).CLASIFICACIONID;
+                            CATALOGO_ESTUDIOS cestudio = new CATALOGO_ESTUDIOS
+                            {
 
-                        };
-                        BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Add(cestudio);
-                        BaseDatos.GetBaseDatos().SaveChanges();
-                        //Mensaje
-                        MessageBoxResult result = MessageBox.Show("Registro exitoso");
+                                NOMBRE = txtNombre.Text,
+                                DESCRIPCION = txtDescripcion.Text,
+                                COSTO = Decimal.Parse(txtCosto.Text),
+                                FECHA_CREACION = fec,
+                                CLASIFICACIONID = idClasifica,
+                                STATUS = "Activo"
 
-                        //Limpiar los textBox
-
-                        txtNombre.Text = String.Empty;
-                        txtDescripcion.Text = String.Empty;
-                        txtCosto.Text = String.Empty;
-                        AutoClasifica.SearchText = string.Empty;//Limpiar autocomplete
-
-
-
-
-                        this.Close();
+                            };
+                            BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Add(cestudio);
+                            BaseDatos.GetBaseDatos().SaveChanges();
+                            //Mensaje
+                            MessageBoxResult result = MessageBox.Show("Registro exitoso");
+                            Limpiar();
+                            this.Close();
+                        }
 
                     }
                 }
             }
         }
+        public void Editar()
+        {
+            //AutoClasifica.ItemsSource = BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS.ToList();
+            if (txtNombre.Text == "")
+            {
+                System.Windows.MessageBox.Show("Ingrese un nombre");
+            }
+            else
+            {
+                if (txtDescripcion.Text == "")
+                {
+                    System.Windows.MessageBox.Show("Ingrese una Descripción");
+                }
+                else
+                {
+                    if (txtCosto.Text == "")
+                    {
+                        System.Windows.MessageBox.Show("Ingrese el costo");
+                    }
+                    else
+                    {
+                        if (AutoClasifica.SelectedItem == null)
+                        {
+                            MessageBox.Show("Selecciona una Clasificación");
+                        }
+                        else
+                        {
+                            DateTime fec = DateTime.Now;
+                            dynamic autoc = AutoClasifica.SelectedItem;
+                            idclasi = autoc.CLASIFICACIONID;
+                            //var clasi = BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS.Find(idclas);
 
+
+                            var cestudioe = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Find(idestudi);
+
+                            cestudioe.NOMBRE = txtNombre.Text;
+                            cestudioe.DESCRIPCION = txtDescripcion.Text;
+                            cestudioe.COSTO = Decimal.Parse(txtCosto.Text);
+                            cestudioe.CLASIFICACIONID = idclasi;
+
+                            BaseDatos.GetBaseDatos().SaveChanges();
+
+                            //Mensaje
+                            MessageBoxResult result = MessageBox.Show("Registro exitoso, se actualizo correctamente ");
+                            Limpiar();
+                            this.Close();
+                        }
+
+                    }
+                }
+            }
+        }
+        void Limpiar()
+        {
+            //Limpiar los textBox
+            txtNombre.Text = String.Empty;
+            txtDescripcion.Text = String.Empty;
+            txtCosto.Text = String.Empty;
+            AutoClasifica.SearchText = string.Empty;
+            //Limpiar autocomplete
+
+        }
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             Guardar();
@@ -131,6 +211,11 @@ namespace Medica2.Administracion.Estudios
             obj.Show();
 
 
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
         }
     }
 

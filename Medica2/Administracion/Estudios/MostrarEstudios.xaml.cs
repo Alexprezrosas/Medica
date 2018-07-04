@@ -27,33 +27,28 @@ namespace Medica2.Administracion.Estudios
         public MostrarEstudios()
         {
             InitializeComponent();
+            LlenarGrid();
 
+        }
 
-            AverageFunction a = new AverageFunction();
-            ((GridViewDataColumn)this.rdgvMostrarEstudio.Columns["COSTO"]).AggregateFunctions.Add(a);
+        void LlenarGrid()
+        {
+            rdgvMostrarEstudio.ItemsSource = (from cates in BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS
+                                              join newcla in BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS
+                                              on cates.CLASIFICACIONID equals newcla.CLASIFICACIONID
+                                              where cates.STATUS == "Activo"
+                                              select new
+                                              {
+                                                  ID_CESTU = cates.CATALOGO_ESTUDIO_ID,
+                                                  ID_CLASI = newcla.CLASIFICACIONID,
 
+                                                  CATENOM = cates.NOMBRE,
+                                                  CATEDESC = cates.DESCRIPCION,
+                                                  CATECOSTO = cates.COSTO,
+                                                  CLASIESTU = newcla.NOMBRE,
+                                                  FECHAC = cates.FECHA_CREACION
 
-
-            //Nuevo CAmpo en GRid
-            //LocalizationManager.Manager = new CustomLocalizationManager();
-            //----
-
-            rdgvMostrarEstudio.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.ToList();
-
-            //para editar
-
-            this.rdgvMostrarEstudio.CellEditEnded += radGridView_CellEditEnded;
-
-            //---
-            //para Validar
-            this.rdgvMostrarEstudio.CellValidating += radGridView_CellValidatingCosto;
-            this.rdgvMostrarEstudio.RowValidating += radGridView_RowValidating;
-            //
-            //Panel de busqueda
-            this.rdgvMostrarEstudio.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
-            //
-
-
+                                              });
         }
         void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
         {
@@ -63,18 +58,7 @@ namespace Medica2.Administracion.Estudios
                 clearSearchValue.Execute(null, this.rdgvMostrarEstudio.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
             }
         }
-        private void radGridView_CellValidating(object sender, GridViewCellValidatingEventArgs e)
-        {
-            if (e.Cell.Column.UniqueName == "COSTO")
-            {
-                int newValue = Int32.Parse(e.NewValue.ToString());
-                if (newValue < 0)
-                {
-                    e.IsValid = false;
-                    e.ErrorMessage = "El valor ingresado debe ser mayor que 0";
-                }
-            }
-        }
+
         private void radGridView_CellValidatingCosto(object sender, Telerik.Windows.Controls.GridViewCellValidatingEventArgs e)
         {
             if (e.Cell.Column.UniqueName == "COSTO")
@@ -82,33 +66,12 @@ namespace Medica2.Administracion.Estudios
                 if (e.NewValue.ToString().Length < 3)
                 {
                     e.IsValid = false;
-                    e.ErrorMessage = "debe ser mayor de 100 pesos";
+                    e.ErrorMessage = "Debe ser mayor de 100 pesos";
                 }
             }
         }
 
-        private void radGridView_RowValidating(object sender, Telerik.Windows.Controls.GridViewRowValidatingEventArgs e)
-        {
 
-            CATALOGO_ESTUDIOS order = e.Row.DataContext as CATALOGO_ESTUDIOS;
-            if (String.IsNullOrEmpty(order.NOMBRE) || order.COSTO.Value < 3)
-            {
-                GridViewCellValidationResult validationResult = new GridViewCellValidationResult();
-                validationResult.PropertyName = "NOMBRE";
-                validationResult.ErrorMessage = "COSTO Rquiere ser mayor a 100 pesos";
-                e.ValidationResults.Add(validationResult);
-                e.IsValid = false;
-            }
-
-            if (order.COSTO < 0)
-            {
-                GridViewCellValidationResult validationResult = new GridViewCellValidationResult();
-                validationResult.PropertyName = "COSTO";
-                validationResult.ErrorMessage = "COSTO must be positive";
-                e.ValidationResults.Add(validationResult);
-                e.IsValid = false;
-            }
-        }
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {
             int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
@@ -122,26 +85,6 @@ namespace Medica2.Administracion.Estudios
 
         }
 
-        private void radGridView_CancelBeginningEdit(object sender, Telerik.Windows.Controls.GridViewBeginningEditRoutedEventArgs e)
-        {
-            e.Cancel = true;
-        }
-
-        private void clubsGrid_PreparingCellForEdit(object sender, GridViewPreparingCellForEditEventArgs e)
-        {
-            if ((string)e.Column.Header == "NOMBRE")
-            {
-                var tb = e.EditingElement as TextBox;
-                tb.TextWrapping = TextWrapping.Wrap;
-            }
-        }
-        private void radGridView_CellEditEnded(object sender, Telerik.Windows.Controls.GridViewCellEditEndedEventArgs e)
-        {
-            CATALOGO_ESTUDIOS editedestudio = e.Cell.DataContext as CATALOGO_ESTUDIOS;
-            string propertyName = e.Cell.Column.UniqueName;
-            //MessageBox.Show(string.Format("La propiedad: {0} está editada y el nuevo valor es:  {1}", propertyName, e.NewData));
-            BaseDatos.GetBaseDatos().SaveChanges();
-        }
 
         private void validarNumeros(object sender, TextCompositionEventArgs e)
         {
@@ -176,6 +119,7 @@ namespace Medica2.Administracion.Estudios
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
             }
         }
         private void itemAgregar_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
@@ -192,24 +136,48 @@ namespace Medica2.Administracion.Estudios
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar?", "Administración Cirugías", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar?", "Administración Estudios", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idestudioo = (rdgvMostrarEstudio.SelectedItem as CATALOGO_ESTUDIOS).CATALOGO_ESTUDIO_ID;
+
+                            dynamic ctaestu = rdgvMostrarEstudio.SelectedItem;
+                            int idcatalog = ctaestu.ID_CESTU;
+
+                            //int idestudioo = (rdgvMostrarEstudio.SelectedItem as CATALOGO_ESTUDIOS).CATALOGO_ESTUDIO_ID;
                             if (rdgvMostrarEstudio.SelectedItem != null)
                             {
-                                var cestu = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Find(idestudioo);
-                                BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Remove(cestu);
+                                var cestu = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Find(idcatalog);
+                                cestu.STATUS = "Inactivo";
+                                //BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Remove(cestu);
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
-                            MessageBox.Show("Se ha eliminado", "Administración Estudios");
-                            rdgvMostrarEstudio.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.ToList();
+                            MessageBox.Show("Se ha eliminado el Estudio", "Administración Estudios");
+                            LlenarGrid();
                             break;
 
                         case MessageBoxResult.No:
 
                             break;
+                    }
+                }
+                else
+                {
+                    if (sender == itemEditar)
+                    {
+                        if (rdgvMostrarEstudio.SelectedItem != null)
+                        {
+                            dynamic objce = rdgvMostrarEstudio.SelectedItem;
+                            int idce = objce.ID_CESTU;
+                            int idclasifi = objce.ID_CLASI;
+
+                            var idcestu = BaseDatos.GetBaseDatos().CATALOGO_ESTUDIOS.Find(idce);
+                            var idclasifica = BaseDatos.GetBaseDatos().CLASIFICACION_ESTUDIOS.Find(idclasifi);
+
+                            NuevoEstudio nempl = new NuevoEstudio((CATALOGO_ESTUDIOS)idcestu, (CLASIFICACION_ESTUDIOS)idclasifica, false);
+                            nempl.Show();
+                            this.Close();
+                        }
                     }
                 }
             }

@@ -20,26 +20,22 @@
         <telerik:RadGridView x:Name="MostrarEquipoH"  HorizontalAlignment="Left" Margin="10,54,-330.4,-79.6" 
             VerticalAlignment="Top" Width="614" Height="296" 
             AutoGenerateColumns="False" 
-            SelectedCellsChanged="MostrarEquipoH_SelectedCellsChanged" 
             ShowSearchPanel="True"
-            IsSearchingDeferred="True"
-                             
-            BeginningEdit="radGridView_BeginningEdit"
-            CellEditEnded="radGridView_CellEditEnded"
-                                                         
+            IsSearchingDeferred="True"                   
                              >
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
                     <telerik:RadMenuItem x:Name="itemAgregar" Header="Agregar" IsEnabled="False" Click="itemAgregar_Click"/>
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemEditar" Header="Actualizar" IsEnabled="False" Click="itemAgregar_Click"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
             <telerik:RadGridView.Columns>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOM_EQUIPO_HOSPITAL}" Header="Equipo Hospital" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripcion" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Equipo Hospital" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripción" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creación"/>
 
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>

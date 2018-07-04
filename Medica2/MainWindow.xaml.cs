@@ -4,6 +4,7 @@ using Medica2.Administracion.ConsultasMedicas;
 using Medica2.Administracion.Cuartos;
 using Medica2.Administracion.Cuentas;
 using Medica2.Administracion.Depositos;
+using Medica2.Administracion.Empleados;
 using Medica2.Administracion.Enfermeras;
 using Medica2.Administracion.EquipoHospital;
 using Medica2.Administracion.Especialidades;
@@ -97,12 +98,7 @@ namespace Medica2
 
         private void RadMenuItem_Click(object sender, Telerik.Windows.RadRoutedEventArgs e)
         {
-            if (sender == itemReporte)
-            {
-                Medic m = new Medic();
-                m.Show();
-            }
-
+       
             if (sender == itemReporteMedicamentos)
             {
                 RporteMedicamentos rm = new RporteMedicamentos();
@@ -173,10 +169,7 @@ namespace Medica2
                 
                 
             }
-            if (sender == itemReporte)
-            {
-                
-            }
+           
 
             //Materiales
             //if (sender == itemNuevoMaterial)
@@ -295,9 +288,9 @@ namespace Medica2
                 ConsultaCatalogCirugias cccr = new ConsultaCatalogCirugias();
                 cccr.Show();
             }
-            else if(sender== itemcregistrarcirugia)  
+            else if (sender == itemcregistrarcirugia)
             {
-                 CatalogoCirugias rcccm = new CatalogoCirugias();
+                CatalogoCirugias rcccm = new CatalogoCirugias();
                 rcccm.Show();
             }
 
@@ -305,7 +298,8 @@ namespace Medica2
             {
                 CargarCirugia cc = new CargarCirugia();
                 cc.Show();
-            }else
+            }
+            else
             {
                 if (sender == itemMostrarCirugiasCargadas)
                 {
@@ -313,18 +307,24 @@ namespace Medica2
                     cca.Show();
                 }
             }
+            if (sender == itemReporteciruCargadas)
+            {
+                R_Cirugias_Aplicadas rgc = new R_Cirugias_Aplicadas();
+                rgc.Show();
+            }
 
             //Cuartos
-            if(sender == itemregistrarcuarto)
+            if (sender == itemregistrarcuarto)
             {
                 NuevoCuarto catcuartor = new NuevoCuarto();
                 catcuartor.Show();
             }
-            else if(sender == itemconsultarcuarto)
+            else if (sender == itemconsultarcuarto)
             {
                 ConsultaCatalogoCuartos concatcuarm = new ConsultaCatalogoCuartos();
                 concatcuarm.Show();
-            }else
+            }
+            else
             {
                 if (sender == itemCuartosDisponibles)
                 {
@@ -341,21 +341,28 @@ namespace Medica2
             }
             else if (sender == itemconsultaequipoh)
             {
-                ConsultaCatalogoEquipoHospital ccehm = new ConsultaCatalogoEquipoHospital();
+                //Para catalogo equipo Hospital
+                ConsultaEquipoHospital ccehm = new ConsultaEquipoHospital();
                 ccehm.Show();
             }
-            if(sender== itemcargarequipoh)
+            //CargarEquipoHospital
+            if (sender == itemcargarequipoh)
             {
                 CargarEquipoHospital obj = new CargarEquipoHospital();
                 obj.Show();
             }
-            else
+            if (sender == itemvizualizacargaequipoh)
             {
-                if(sender== itemrvizualizacargaequipoh)
-                {
-                    ConsultaCatalogoEquipoHospital obj = new ConsultaCatalogoEquipoHospital();
-                    obj.Show();
-                }
+                //para vizualizar equipo h aplicados
+                ConsultaCatalogoEquipoHospital eh = new ConsultaCatalogoEquipoHospital();
+                eh.Show();
+            }
+
+
+            if (sender == itemReportecargaequipoh)
+            {
+                R_Equipo_Hcargado obj = new R_Equipo_Hcargado();
+                obj.Show();
             }
             //Medicos
 
@@ -369,12 +376,17 @@ namespace Medica2
                 MostrarMedicos mmed = new MostrarMedicos();
                 mmed.Show();
             }
+            if (sender == itemitemReporteMedicos)
+            {
+                M_A_R o = new M_A_R();
+                o.Show();
+            }
 
             //Especialidades Medicos
 
             if (sender == itemregistrarespecialidad)
             {
-                CatalogoEspecialidades espr = new CatalogoEspecialidades();
+                NuevaEspecialidadMedico espr = new NuevaEspecialidadMedico();
                 espr.Show();
             }
             else if (sender == itemconsultarespecialidad)
@@ -385,8 +397,8 @@ namespace Medica2
 
             //Especialidades Enfermeras
 
-            
-                if (sender == itemregistrarespecialidadesenf)
+
+            if (sender == itemregistrarespecialidadesenf)
             {
                 CatalogoEspecialidadesEnfermeras esper = new CatalogoEspecialidadesEnfermeras();
                 esper.Show();
@@ -396,8 +408,8 @@ namespace Medica2
                 ConsultarCatalogoEspecialidadesEnfermeras espec = new ConsultarCatalogoEspecialidadesEnfermeras();
                 espec.Show();
             }
-            
-             //Enfermeras
+
+            //Enfermeras
             if (sender == itemNuevaEnfermera)
             {
                 NuevaEnfermera enfe = new NuevaEnfermera();
@@ -410,6 +422,11 @@ namespace Medica2
                     ConsultaEnfermera conenfe = new ConsultaEnfermera();
                     conenfe.Show();
                 }
+            }
+            if (sender == itemRéporteEnfermera)
+            {
+                Reporte_Enfermeras o = new Reporte_Enfermeras();
+                o.Show();
             }
 
             //Estudios
@@ -424,13 +441,19 @@ namespace Medica2
                 MostrarEstudios mestu = new MostrarEstudios();
                 mestu.Show();
             }
+            if (sender == itemReporteEstudiosAplicados)
+            {
+                R_Estu_Cargado o = new R_Estu_Cargado();
+                o.Show();
+            }
 
             // Registro Pacientes
             if (sender == itemRegistrarPaciente)
             {
                 IngresoPaciente ip = new IngresoPaciente();
                 ip.Show();
-            }else
+            }
+            else
             {
                 if (sender == itemVisualizarPacientes)
                 {
@@ -438,19 +461,30 @@ namespace Medica2
                     cp.Show();
                 }
             }
+            if (sender == itemReporte)
+            {
+                R_Pacientes_H obj = new R_Pacientes_H();
+                obj.Show();
+            }
 
-            //-----REgistro de ususarios
+            //-----REgistro de Empleados(Usuarios)
             if (sender == itemRegistrarUsuario)
             {
-                AgregarUsuarios obj = new AgregarUsuarios();
+                RegistroEmpleados obj = new RegistroEmpleados();
                 obj.Show();
             }
             else
             {
                 if (sender == itemVizualizarUsuarios)
                 {
-
+                    MostrarEmpleados obj = new MostrarEmpleados();
+                    obj.Show();
                 }
+            }
+            if (sender == itemReporteUsuarios)
+            {
+                R_Empleados o = new R_Empleados();
+                o.Show();
             }
 
             //Depositos
@@ -458,21 +492,28 @@ namespace Medica2
             {
                 RegistrarDeposito rd = new RegistrarDeposito();
                 rd.Show();
-            }else
+            }
+            else
             {
-               if (sender == itemConsultarDepositosAplicados)
+                if (sender == itemConsultarDepositosAplicados)
                 {
                     ConsultarDepositosAplicados cda = new ConsultarDepositosAplicados();
                     cda.Show();
                 }
             }
+            if (sender == itemreporteDeposito)
+            {
+                Re_Depositos o = new Re_Depositos();
+                o.Show();
+            }
 
             //Cargar estudios
-            if(sender == itemCargarEstudio)
+            if (sender == itemCargarEstudio)
             {
                 CargarEstudios ce = new CargarEstudios();
                 ce.Show();
-            }else
+            }
+            else
             {
                 if (sender == itemVisualizarEstudiosAplicados)
                 {
@@ -481,18 +522,20 @@ namespace Medica2
                 }
             }
 
-            //Carga Equipo Hospital
-            if (sender == itemcargarequipoh)
-            {
-                CargarEquipoHospital obj = new CargarEquipoHospital();
-                obj.Show();
-            }
-            else
-                if (sender == itemrvizualizacargaequipoh)
-            {
-                //ConsultarEquipoHospitalCargado obj = new ConsultarEquipoHospitalCargado();
-                //obj.Show();
-            }
+            ////Carga Equipo Hospital
+            //if (sender == itemcargarequipoh)
+            //{
+            //    CargarEquipoHospital obj = new CargarEquipoHospital();
+            //    obj.Show();
+            //}
+            //else
+            //    if (sender == itemrvizualizacargaequipoh)
+            //{
+            //    //ConsultarEquipoHospitalCargado obj = new ConsultarEquipoHospitalCargado();
+            //    //obj.Show();
+            //}
+
+
             //Carga de Honorarios
             if (sender == itemcargarHonorarios)
             {
@@ -503,6 +546,11 @@ namespace Medica2
             {
                 VizualizarHonorariosCargados obj = new VizualizarHonorariosCargados();
                 obj.Show();
+            }
+            if (sender == itemReporteHonorarios)
+            {
+                R_Honorarios_Med hon = new R_Honorarios_Med();
+                hon.Show();
             }
 
             //Consultas
@@ -517,6 +565,11 @@ namespace Medica2
                 VisualizarConsultas obj = new VisualizarConsultas();
                 obj.Show();
             }
+            if (sender == itemReporteconsultas)
+            {
+                R_Consultas_realzadas obj = new R_Consultas_realzadas();
+                obj.Show();
+            }
 
             //Cuentas
             if (sender == itemvizualizacuentas)
@@ -526,7 +579,12 @@ namespace Medica2
             }
             else
             {
+                if (sender == itemREPORTEcuentas)
+                {
+                    R_Cuentas obj = new R_Cuentas();
+                    obj.Show();
 
+                }
             }
 
         }

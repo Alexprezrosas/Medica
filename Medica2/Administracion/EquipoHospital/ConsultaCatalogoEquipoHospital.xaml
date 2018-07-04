@@ -30,8 +30,8 @@
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDICO}" Header="MÉDICO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIEN}" Header="PACIENTE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDICO}" Header="MEDICO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTA}" Header="TOTAL"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTALCUENTA}" Header="TOTAL DE LA CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALD}" Header="SALDO DE LA CUENTA"/>

@@ -22,12 +22,47 @@ namespace Medica2.Administracion.Empleados
     public partial class RegistroEmpleados : Window
     {
         private RadAutoCompleteBox autoempleado;
+        DateTime FechaRegistro = DateTime.Now;
+        int idemple;
+        int idusu;
 
         public RegistroEmpleados()
         {
             InitializeComponent();
 
             FillEstados();
+        }
+        public RegistroEmpleados(EMPLEADO empl, USUARIO usu, bool save)
+        {
+
+            idemple = empl.ID_EMPLEADO;
+            idusu = usu.ID_USUARIO;
+
+            InitializeComponent();
+            FillEstados();
+            txtNombre.Text = empl.PERSONA.NOMBRE;
+            txtPaterno.Text = empl.PERSONA.A_PATERNO;
+            txtMaterno.Text = empl.PERSONA.A_MATERNO;
+            dpFecha_Nacimiento.SelectedDate = empl.PERSONA.F_NACIMIENTO;
+            cbbSexo.Text = empl.PERSONA.SEXO;
+            txtCalle.Text = empl.PERSONA.CALLE;
+            int idestado = comboBoxEstado.Items.IndexOf(empl.PERSONA.ESTADO1);
+            txtMunicipio.Text = empl.PERSONA.NOMMUNICIPIO;
+            txtLocalidad.Text = empl.PERSONA.NOMLOCALIDAD;
+            comboBoxEstado.SelectedIndex = idestado;
+            txtCelular.Text = empl.PERSONA.T_CELULAR;
+            txtCurp.Text = empl.PERSONA.CURP;
+            cbbpuestos.Text = usu.EMPLEADO.PUESTO;
+            psContrasena.Password = usu.CONTRASENA;
+            cbbActivoInactivo.Text = empl.PERSONA.ESTADOPERSONA;
+
+            lblActivo.Visibility = Visibility.Visible;
+            cbbActivoInactivo.Visibility = Visibility.Visible;
+            btnEditar.Visibility = Visibility.Visible;
+            btnGuardar.Visibility = Visibility.Hidden;
+            btnGuardar.IsEnabled = false;
+            btnEditar.IsEnabled = true;
+
         }
 
         public RegistroEmpleados(RadAutoCompleteBox autoempleado)
@@ -99,6 +134,7 @@ namespace Medica2.Administracion.Empleados
             comboBoxEstado.ItemsSource = lst;
         }
 
+
         void Limpiar()
         {
             txtNombre.Text = String.Empty;
@@ -106,12 +142,18 @@ namespace Medica2.Administracion.Empleados
             txtMaterno.Text = String.Empty;
             txtCalle.Text = String.Empty;
             txtCurp.Text = String.Empty;
-            cbbSexo.SelectedIndex = -1;
-            comboBoxEstado.SelectedIndex = -1;
+            cbbSexo.Text = "";
+            comboBoxEstado.Text = "";
+            txtMunicipio.Text = String.Empty;
+            txtLocalidad.Text = String.Empty;
             txtCelular.Text = String.Empty;
-            txtpuesto.Text = String.Empty;
+            cbbpuestos.Text = String.Empty;
             dpFecha_Nacimiento.Text = String.Empty;
+            cbbpuestos.Text = String.Empty;
+            psContrasena.Password = String.Empty;
+            cbbActivoInactivo.Text = "";
         }
+
         void Guradar()
         {
             if (txtNombre.Text == String.Empty)
@@ -150,13 +192,13 @@ namespace Medica2.Administracion.Empleados
                                 }
                                 else
                                 {
-                                    if (txtMaterno.Text == "")
+                                    if (txtMunicipio.Text == "")
                                     {
                                         MessageBox.Show("Selecciona un municipio");
                                     }
                                     else
                                     {
-                                        if (txtNombre.Text == "")
+                                        if (txtLocalidad.Text == "")
                                         {
                                             MessageBox.Show("Selecciona una localidad");
                                         }
@@ -174,53 +216,200 @@ namespace Medica2.Administracion.Empleados
                                                 }
                                                 else
                                                 {
-                                                    if (txtpuesto.Text == "")
+                                                    if (cbbpuestos.Text == "")
                                                     {
-                                                        MessageBox.Show("ingresa ell puesto");
+                                                        MessageBox.Show("ingresa un puesto");
                                                     }
                                                     else
                                                     {
-                                                        DateTime fregistro = DateTime.Now;
-
-                                                        PERSONA person = new PERSONA
+                                                        if (psContrasena.Password == "")
                                                         {
-                                                            NOMBRE = txtNombre.Text,
-                                                            A_PATERNO = txtPaterno.Text,
-                                                            A_MATERNO = txtMaterno.Text,
-                                                            F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
-                                                            SEXO = cbbSexo.Text,
-                                                            CALLE = txtCalle.Text,
-                                                            ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
-                                                            CURP = txtCurp.Text,
-
-                                                            T_CELULAR = txtCelular.Text,
-
-                                                            FECHA_CREACION = fregistro
-                                                        };
-
-                                                        BaseDatos.GetBaseDatos().PERSONAS.Add(person);
-                                                        BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                        EMPLEADO emple = new EMPLEADO
+                                                            MessageBox.Show("Ingresa una Contraseña");
+                                                        }
+                                                        else
                                                         {
-                                                            PERSONAID = person.ID_PERSONA,
-                                                            PUESTO = txtpuesto.Text,
-                                                            FECHA_CREACION = fregistro
-                                                        };
-                                                        BaseDatos.GetBaseDatos().EMPLEADOS.Add(emple);
-                                                        BaseDatos.GetBaseDatos().SaveChanges();
+                                                            PERSONA person = new PERSONA
+                                                            {
+                                                                NOMBRE = txtNombre.Text,
+                                                                A_PATERNO = txtPaterno.Text,
+                                                                A_MATERNO = txtMaterno.Text,
+                                                                F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
+                                                                SEXO = cbbSexo.Text,
+                                                                CALLE = txtCalle.Text,
+                                                                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
+                                                                NOMMUNICIPIO = txtMunicipio.Text,
+                                                                NOMLOCALIDAD = txtLocalidad.Text,
+                                                                CURP = txtCurp.Text,
+                                                                T_CELULAR = txtCelular.Text,
+                                                                ESTADOPERSONA = "Activo",
+                                                                FECHA_CREACION = FechaRegistro
+                                                            };
+                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(person);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                        autoempleado.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                                                                                    join e in BaseDatos.GetBaseDatos().EMPLEADOS
-                                                                                    on PERSONA.ID_PERSONA equals e.PERSONAID
-                                                                                    select new
-                                                                                    {
-                                                                                        ID_PERSONA = PERSONA.ID_PERSONA,
-                                                                                        NOMBRE = PERSONA.NOMBRE,
-                                                                                    }).ToList();
+                                                            EMPLEADO em = new EMPLEADO
+                                                            {
+                                                                PERSONAID = person.ID_PERSONA,
+                                                                PUESTO = cbbpuestos.Text,
+                                                                FECHA_CREACION = FechaRegistro
+                                                            };
 
-                                                        Limpiar();
-                                                        this.Close();
+                                                            BaseDatos.GetBaseDatos().EMPLEADOS.Add(em);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                            USUARIO us = new USUARIO
+                                                            {
+                                                                EMPLEADOID = em.ID_EMPLEADO,
+                                                                CONTRASENA = psContrasena.Password,
+                                                                FECHA_CREACION = FechaRegistro,
+                                                                PERMISOSID = 1
+                                                            };
+
+                                                            BaseDatos.GetBaseDatos().USUARIOS.Add(us);
+                                                            BaseDatos.GetBaseDatos().SaveChanges();
+                                                            //Mensaje
+                                                            MessageBoxResult result = MessageBox.Show("Registro exitoso");
+
+                                                            //autoempleado.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
+                                                            //                            join e in BaseDatos.GetBaseDatos().EMPLEADOS
+                                                            //                            on PERSONA.ID_PERSONA equals e.PERSONAID
+                                                            //                            select new
+                                                            //                            {
+                                                            //                                ID_PERSONA = PERSONA.ID_PERSONA,
+                                                            //                                NOMBRE = PERSONA.NOMBRE,
+                                                            //                            }).ToList();
+
+                                                            Limpiar();
+                                                            this.Close();
+                                                        }
+
+
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        void Editar()
+        {
+            if (txtNombre.Text == String.Empty)
+            {
+                MessageBox.Show("Ingresa el nombre del Empleado");
+            }
+            else
+            {
+                if (txtPaterno.Text == String.Empty && txtMaterno.Text == String.Empty)
+                {
+                    MessageBox.Show("Ingresa los apellidos del Empleado");
+                }
+                else
+                {
+                    if (dpFecha_Nacimiento.SelectedDate == null)
+                    {
+                        MessageBox.Show("Selecciona la fecha de nacimiento del Empleado");
+                    }
+                    else
+                    {
+                        if (cbbSexo.Text == "")
+                        {
+                            MessageBox.Show("Selecciona el sexo");
+                        }
+                        else
+                        {
+                            if (txtCalle.Text == "")
+                            {
+                                MessageBox.Show("Ingresa la calle");
+                            }
+                            else
+                            {
+                                if (comboBoxEstado.Text == "")
+                                {
+                                    MessageBox.Show("Selecciona un estado");
+                                }
+                                else
+                                {
+                                    if (txtMunicipio.Text == "")
+                                    {
+                                        MessageBox.Show("Selecciona un municipio");
+                                    }
+                                    else
+                                    {
+                                        if (txtLocalidad.Text == "")
+                                        {
+                                            MessageBox.Show("Selecciona una localidad");
+                                        }
+                                        else
+                                        {
+                                            if (txtCurp.Text == "" && txtCurp.Text.Length < 19)
+                                            {
+                                                MessageBox.Show("Ingresa una CURP valida");
+                                            }
+                                            else
+                                            {
+                                                if (txtCelular.Text == "")
+                                                {
+                                                    MessageBox.Show("Ingresa el numero Celular");
+                                                }
+                                                else
+                                                {
+                                                    if (cbbpuestos.Text == "")
+                                                    {
+                                                        MessageBox.Show("ingresa un puesto");
+                                                    }
+                                                    else
+                                                    {
+                                                        if (psContrasena.Password == "")
+                                                        {
+                                                            MessageBox.Show("Ingresa una Contraseña");
+                                                        }
+                                                        else
+                                                        {
+                                                            if (cbbActivoInactivo.Text == "")
+                                                            {
+                                                                MessageBox.Show("Selecciona el estatus de la persona \n Activo o Inactivo");
+                                                            }
+                                                            else
+                                                            {
+                                                                DateTime FechaModificacion = DateTime.Now;
+                                                                var emplea = BaseDatos.GetBaseDatos().EMPLEADOS.Find(idemple);
+
+                                                                emplea.PERSONA.NOMBRE = txtNombre.Text;
+                                                                emplea.PERSONA.A_PATERNO = txtPaterno.Text;
+                                                                emplea.PERSONA.A_MATERNO = txtMaterno.Text;
+                                                                emplea.PERSONA.F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate;
+                                                                emplea.PERSONA.SEXO = cbbSexo.Text;
+                                                                emplea.PERSONA.CALLE = txtCalle.Text;
+                                                                emplea.PERSONA.ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue);
+                                                                emplea.PERSONA.NOMMUNICIPIO = txtMunicipio.Text;
+                                                                emplea.PERSONA.NOMLOCALIDAD = txtLocalidad.Text;
+                                                                emplea.PERSONA.T_CELULAR = txtCelular.Text;
+                                                                emplea.PERSONA.CURP = txtCurp.Text;
+                                                                emplea.PERSONA.FECHA_CREACION = FechaModificacion;
+                                                                emplea.PERSONA.ESTADOPERSONA = cbbActivoInactivo.Text;
+
+                                                                emplea.PUESTO = cbbpuestos.Text;
+                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                var usu = BaseDatos.GetBaseDatos().USUARIOS.Find(idusu);
+                                                                usu.CONTRASENA = psContrasena.Password;
+
+                                                                BaseDatos.GetBaseDatos().SaveChanges();
+                                                                MessageBox.Show("Se Edito Correctamente el Empleado");
+
+                                                                Limpiar();
+                                                                this.Close();
+                                                            }
+
+                                                        }
+
+
                                                     }
                                                 }
                                             }
@@ -242,6 +431,11 @@ namespace Medica2.Administracion.Empleados
         private void btn_Cancelar_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
         }
     }
 }

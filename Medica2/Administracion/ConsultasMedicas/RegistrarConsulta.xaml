@@ -6,25 +6,26 @@
         xmlns:local="clr-namespace:Medica2.Administracion.ConsultasMedicas"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.ConsultasMedicas.RegistrarConsulta"
         mc:Ignorable="d"
-        Title="RegistrarConsulta" Height="535.427" Width="716.524">
+        Title="RegistrarConsulta" Height="623.927" Width="715.024">
     <Grid>
 
-        <Label x:Name="labelNombrePaciente" Content="Paceinte" HorizontalAlignment="Left" Margin="61,145,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreMedico" Content="Medico" HorizontalAlignment="Left" Margin="61,117,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreDiagnostico" Content="Diagnostico" HorizontalAlignment="Left" Margin="59,173,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreDiagnostico_Copy" Content="Descripción" HorizontalAlignment="Left" Margin="61,204,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreDiagnostico_Copy1" Content="Medicamento" HorizontalAlignment="Left" Margin="63,269,0,-24.2" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreMedico_Copy" Content="Consultas Médicas" HorizontalAlignment="Left" Margin="261,22,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="31" Width="135" FontSize="14"/>
-        <Label x:Name="labelcostoconsulta" Content="Costo Consulta" HorizontalAlignment="Left" Margin="369,381,-165,-136.2" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombrePaciente" Content="Paciente" HorizontalAlignment="Left" Margin="24,147,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreMedico" Content="Médico" HorizontalAlignment="Left" Margin="24,82,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreDiagnostico" Content="Diagnóstico" HorizontalAlignment="Left" Margin="24,216,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="labelNombreDiagnostico_Copy" Content="Descripción" HorizontalAlignment="Left" Margin="24,247,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreDiagnostico_Copy1" Content="Medicamento" HorizontalAlignment="Left" Margin="27,344,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelNombreMedico_Copy" Content="Consultas Médicas" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="136" FontSize="14"/>
+        <Label x:Name="labelcostoconsulta" Content="Costo Consulta" HorizontalAlignment="Left" Margin="425,469,0,0" VerticalAlignment="Top"/>
 
 
-        <telerik:RadAutoCompleteBox x:Name="autoMedico" HorizontalAlignment="Left" Height="28" Margin="197,117,-199.4,0" VerticalAlignment="Top" Width="296" IsHitTestVisible="True"
+        <telerik:RadAutoCompleteBox x:Name="autoMedico" HorizontalAlignment="Left" Height="28" Margin="112,84,0,0" VerticalAlignment="Top" Width="325" IsHitTestVisible="True"
         ItemsSource="{Binding MEDICOS}"
         DisplayMemberPath="NOMBRE"
         AutoCompleteMode="Suggest"
-        SelectionMode="Single"/>
+        SelectionMode="Single"
+        SelectionChanged="autoMedico_SelectionChanged"/>
 
-        <telerik:RadAutoCompleteBox x:Name="autoPacienteC" Visibility="Hidden" HorizontalAlignment="Left" Height="28" Margin="197,145,0,0" VerticalAlignment="Top" Width="296" IsHitTestVisible="True"
+        <telerik:RadAutoCompleteBox x:Name="autoPacienteC" Visibility="Visible" HorizontalAlignment="Left" Height="27" Margin="112,148,0,0" VerticalAlignment="Top" Width="325" IsHitTestVisible="True"
                                     ItemsSource="{Binding PACIENTES}"
                                     DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
@@ -32,18 +33,33 @@
 
 
 
-        <CheckBox x:Name="checkBoxConsulta" IsChecked="False" Content="Consulta General" HorizontalAlignment="Left"  Margin="274,97,-92.4,0" VerticalAlignment="Top"
+        <CheckBox x:Name="checkBoxConsulta" IsChecked="False" Content="Consulta General" HorizontalAlignment="Left"  Margin="112,52,0,0" VerticalAlignment="Top"
         Checked="checkBoxConsulta_Checked" Unchecked="checkBoxConsulta_Unchecked"/>
 
-        <Button x:Name="button_Copy" Content="Guardar" HorizontalAlignment="Left" Margin="197,460,0,-221.6" VerticalAlignment="Top" Width="89" Click="button_Copy_Click" Height="32"/>
-        <Button x:Name="cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="406,460,-199.4,-221.6" VerticalAlignment="Top" Width="87" Click="cancelar_Click" Height="32"/>
-        <Button x:Name="buttonRegistrarPaciente" Content="Registrar Paciente" HorizontalAlignment="Left" Margin="526,153,-351.4,0" VerticalAlignment="Top" Width="119" Click="buttonRegistrarPaciente_Click"/>
+        <Button x:Name="btnnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="256,528,0,0" VerticalAlignment="Top" Width="90" Click="button_Copy_Click" Height="32"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="466,528,0,0" VerticalAlignment="Top" Width="86" Click="cancelar_Click" Height="32"/>
+        <Button x:Name="btnRegistrarPaciente" Content="Registrar Paciente" HorizontalAlignment="Left" Margin="317,117,0,0" VerticalAlignment="Top" Width="120" Click="buttonRegistrarPaciente_Click" Height="26"/>
 
-        <TextBox x:Name="txtPaciente" Visibility="Visible" HorizontalAlignment="Left" Height="28" Margin="197,145,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
-        <TextBox x:Name="txtdiagnostico" HorizontalAlignment="Left" Height="28" Margin="197,173,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
-        <TextBox x:Name="txtdescripcion" HorizontalAlignment="Left" Height="69" Margin="197,201,-199.4,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
-        <TextBox x:Name="txtmedicamento" HorizontalAlignment="Left" Height="75" Margin="197,269,-199.4,-73.6" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="296"/>
-        <TextBox x:Name="txtcostoconsulta" HorizontalAlignment="Left" Height="26" Margin="499,381,-351.4,-136.6" TextWrapping="Wrap" VerticalAlignment="Top" Width="146"/>
+        <TextBox x:Name="txtPacienteAmbu" Visibility="Hidden" HorizontalAlignment="Left" Height="28" Margin="112,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="325"/>
+        <TextBox x:Name="txtdiagnostico" HorizontalAlignment="Left" Height="28" Margin="112,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="522"/>
+        <TextBox x:Name="txtdescripcion" HorizontalAlignment="Left" Height="90" Margin="112,249,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="520"/>
+        <TextBox x:Name="txtmedicamento" HorizontalAlignment="Left" Height="94" Margin="112,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="520"/>
+        <TextBox x:Name="txtcostoconsulta" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="26" Margin="539,469,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93"/>
+        <DatePicker x:Name="fechaconsulta" HorizontalAlignment="Left" Margin="292,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblfecha" Content="Facha" HorizontalAlignment="Left" Margin="248,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblfecha_Copy" Content="Peso" HorizontalAlignment="Left" Margin="466,46,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPeso" HorizontalAlignment="Left" Height="24" Margin="560,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lbltalla" Content="Temperatura" HorizontalAlignment="Left" Margin="466,117,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTemperatura" HorizontalAlignment="Left" Height="24" Margin="560,116,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lblpresion" Content="Presión Arterial " HorizontalAlignment="Left" Margin="466,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPresion" HorizontalAlignment="Left" Height="24" Margin="560,147,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lblglucosa" Content="Glucosa" HorizontalAlignment="Left" Margin="466,82,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtglucosa" HorizontalAlignment="Left" Height="24" Margin="560,82,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72"/>
+        <Label x:Name="lblalergias" Content="Alergias" HorizontalAlignment="Left" Margin="24,181,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAlergias" HorizontalAlignment="Left" Height="28" Margin="112,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="520"/>
+        <Label x:Name="lblcedula" Content="Cédula" HorizontalAlignment="Left" Margin="24,117,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCedula" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="112,117,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="btnEditar" Content="Actualizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="256,528,0,0" VerticalAlignment="Top" Width="90" Click="btnEditar_Click" Height="32"/>
 
     </Grid>
 </Window>

@@ -20,11 +20,24 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
     /// </summary>
     public partial class CatalogoEspecialidadesEnfermeras : Window
     {
+        int idespci;
         public CatalogoEspecialidadesEnfermeras()
         {
             InitializeComponent();
 
         }
+        public CatalogoEspecialidadesEnfermeras(CATALOGO_ESPECIALIDADES especialidad, bool save)
+        {
+            InitializeComponent();
+            idespci = especialidad.ID_CATALOGO_ESPECIALIDAD;
+            txtNombre.Text = especialidad.NOMBRE_ESPECIALIDAD;
+            txtDescripcion.Text = especialidad.DESCRIPCION;
+
+            btnGuardar.Visibility = Visibility.Hidden;
+            btnEditar.Visibility = Visibility.Visible;
+
+        }
+        //MEtodo Guardar un nuevo Cuarto
         public void Guardar()
         {
             if (txtNombre.Text == "")
@@ -35,7 +48,7 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
             {
                 if (txtDescripcion.Text == "")
                 {
-                    System.Windows.MessageBox.Show("Inserta la Descripcion");
+                    System.Windows.MessageBox.Show("Inserta la Descripción");
                 }
                 else
                 {
@@ -46,12 +59,13 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
                     {
                         NOMBRE_ESPECIALIDAD = txtNombre.Text,
                         DESCRIPCION = txtDescripcion.Text,
-                        FECHA_CREACION = fec
+                        FECHA_CREACION = fec,
+                        STATUS = "Activo"
 
                     };
                     BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Add(cespe);
                     BaseDatos.GetBaseDatos().SaveChanges();
-                    System.Windows.MessageBox.Show("Registro exitoso. Se ha guardado CORRECTAMENTE");
+                    System.Windows.MessageBox.Show("Registro exitoso se ha guardado correctamente");
 
                     txtNombre.Text = String.Empty;
                     txtDescripcion.Text = String.Empty;
@@ -59,20 +73,53 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
                 }
             }
         }
+
+        public void Editar()
+        {
+            if (txtNombre.Text == "")
+            {
+                System.Windows.MessageBox.Show("Inserta el nombre de la especialidad");
+            }
+            else
+            {
+                if (txtDescripcion.Text == "")
+                {
+                    System.Windows.MessageBox.Show("Inserta la Descripción");
+                }
+                else
+                {
+                    DateTime fec = DateTime.Now;
+
+                    var newesp = BaseDatos.GetBaseDatos().CATALOGO_ESPECIALIDADES.Find(idespci);
+
+                    newesp.NOMBRE_ESPECIALIDAD = txtNombre.Text;
+                    newesp.DESCRIPCION = txtDescripcion.Text;
+
+                    BaseDatos.GetBaseDatos().SaveChanges();
+                    MessageBox.Show("Registro exitos, actualización correcta");
+                    Limpiar();
+                }
+            }
+        }
+
+        void Limpiar()
+        {
+            txtDescripcion.Text = "";
+            txtNombre.Text = "";
+        }
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
 
             Guardar();
             Close();
 
-
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            ConsultarCatalogoEspecialidadesEnfermeras cespecialidades = new ConsultarCatalogoEspecialidadesEnfermeras();
-            cespecialidades.Show();
+            //ConsultarCatalogoEspecialidades cespecialidades = new ConsultarCatalogoEspecialidades();
+            //cespecialidades.Show();
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -94,6 +141,12 @@ namespace Medica2.Administracion.EspecialidadesEnfermeras
 
             else e.Handled = true;
 
+        }
+
+        private void btnEditar_Click_1(object sender, RoutedEventArgs e)
+        {
+            Editar();
+            Close();
         }
     }
 

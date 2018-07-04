@@ -34,8 +34,6 @@ namespace Medica2.Administracion.Cuentas
                                       on e.ID_PACIENTE equals f.PACIENTEID
                                       join cuenta in BaseDatos.GetBaseDatos().CUENTAS
                                       on e.ID_PACIENTE equals cuenta.PACIENTEID
-                                      join estado in BaseDatos.GetBaseDatos().ESTADOS
-                                      on PERSONA.ESTADO equals estado.id
                                       select new
                                       {
                                           ID_PACIENTE = e.ID_PACIENTE,
@@ -45,7 +43,6 @@ namespace Medica2.Administracion.Cuentas
                                           AMATERNO = PERSONA.A_MATERNO,
                                           F_NACIMIENTO = PERSONA.F_NACIMIENTO,
                                           CALLE = PERSONA.CALLE,
-                                          ESTADO = estado.nombre,
                                           CURP = PERSONA.CURP,
                                           TIPOPACIENTE = e.TIPO_PACIENTE,
                                           RESPONSABLE = f.PERSONA.NOMBRE,
@@ -53,8 +50,8 @@ namespace Medica2.Administracion.Cuentas
                                           PARENTESCO = f.PARENTESCO,
                                           CUENTAA = cuenta.TOTAL,
                                           SALDO = cuenta.SALDO,
-                                          ESTADOO = cuenta.ESTADO,
-                                          FECHA_CREACIONN = cuenta.FECHA_CREACION,
+                                          ESTADOO = cuenta.PACIENTE.PERSONA.ESTADOPERSONA,
+                                          FECHA_CREACIONN = PERSONA.FECHA_CREACION,
                                       }).ToList();
         }
 

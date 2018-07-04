@@ -18,7 +18,7 @@
     </Window.Resources>
     <Grid>
 
-        <Label x:Name="lblTitulo" Content="Consulta de cirugias aplicadas" HorizontalAlignment="Left" Margin="259,10,-181.4,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Depósitos Aplicados" HorizontalAlignment="Left" Margin="310,34,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
         <telerik:RadGridView x:Name="rgvDepositosAplicados"  HorizontalAlignment="Left" Margin="31,66,-463.4,-69.6" VerticalAlignment="Top" 
         Width="726" Height="274" 

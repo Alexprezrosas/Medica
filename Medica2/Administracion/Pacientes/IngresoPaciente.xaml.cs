@@ -56,13 +56,13 @@ namespace Medica2.Administracion.Pacientes
                                       });
         }
 
-        public IngresoPaciente(PACIENTE idpaciente, FAM_RESPONSABLES idfamiliar , bool save, int id_cuarto)
+        public IngresoPaciente(PACIENTE idpaciente, FAM_RESPONSABLES idfamiliar, bool save, int id_cuarto)
         {
             InitializeComponent();
             FillEstados();
-            
+
             idccp = id_cuarto;
-            
+
             var cc = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(id_cuarto);
             autoCuarto.SearchText = cc.NOMBRE_CUARTO;
             cc.PAC_ACTUALES = cc.PAC_ACTUALES - 1;
@@ -81,7 +81,7 @@ namespace Medica2.Administracion.Pacientes
                 idp = idpaciente.ID_PACIENTE;
                 idf = idfamiliar.ID_FAM_RESPOSABLE;
 
-                
+
 
                 txtNombre.Text = idpaciente.PERSONA.NOMBRE;
                 txtPaterno.Text = idpaciente.PERSONA.A_PATERNO;
@@ -90,21 +90,22 @@ namespace Medica2.Administracion.Pacientes
                 txtCalle.Text = idpaciente.PERSONA.CALLE;
                 int idestado = comboBoxEstado.Items.IndexOf(idpaciente.PERSONA.ESTADO1);
                 comboBoxEstado.SelectedIndex = idestado;
-                
+
                 txtMunicipio.Text = idpaciente.PERSONA.NOMMUNICIPIO;
                 txtLocalidad.Text = idpaciente.PERSONA.NOMLOCALIDAD;
                 txtCurp.Text = idpaciente.PERSONA.CURP;
                 dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();
                 txtNombreFam.Text = idfamiliar.PERSONA.NOMBRE;
                 txtPaternoRes.Text = idfamiliar.PERSONA.A_PATERNO;
-                txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;                
+                txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;
                 cbbSexoFR.Text = idfamiliar.PERSONA.SEXO;
                 txtCelularRes.Text = idfamiliar.PERSONA.T_CELULAR;
                 txtParentezco.Text = idfamiliar.PARENTESCO;
                 cbTipoPaciente.IsChecked = true;
 
-                
-            }else
+
+            }
+            else
             {
                 idp = idpaciente.ID_PACIENTE;
                 idf = idfamiliar.ID_FAM_RESPOSABLE;
@@ -119,14 +120,14 @@ namespace Medica2.Administracion.Pacientes
                 txtMunicipio.Text = idpaciente.PERSONA.NOMMUNICIPIO;
                 txtLocalidad.Text = idpaciente.PERSONA.NOMLOCALIDAD;
                 txtCurp.Text = idpaciente.PERSONA.CURP;
-                dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();                
+                dpFecha_Nacimiento.Text = idpaciente.PERSONA.F_NACIMIENTO.ToString();
                 txtNombreFam.Text = idfamiliar.PERSONA.NOMBRE;
                 txtPaternoRes.Text = idfamiliar.PERSONA.A_PATERNO;
                 txtMaternoRes.Text = idfamiliar.PERSONA.A_MATERNO;
                 cbbSexoFR.Text = idfamiliar.PERSONA.SEXO;
                 txtCelularRes.Text = idfamiliar.PERSONA.T_CELULAR;
                 txtParentezco.Text = idfamiliar.PARENTESCO;
-                
+
 
             }
 
@@ -227,82 +228,98 @@ namespace Medica2.Administracion.Pacientes
             if (txtNombre.Text == "")
             {
                 MessageBox.Show("Ingresa el nombre del paciente");
-            } else
+            }
+            else
             {
                 if (txtPaterno.Text == "" && txtMaterno.Text == "")
                 {
                     MessageBox.Show("Ingresa los apellidos del paciente");
-                }else
+                }
+                else
                 {
                     if (dpFecha_Nacimiento.SelectedDate == null)
                     {
                         MessageBox.Show("Selecciona la fecha de nacimiento del paciente");
-                    }else
+                    }
+                    else
                     {
                         if (cbbSexo.Text == "")
                         {
                             MessageBox.Show("Selecciona el sexo del paciente");
-                        }else
+                        }
+                        else
                         {
                             if (txtCalle.Text == "")
                             {
                                 MessageBox.Show("Ingresa la calle");
-                            }else
+                            }
+                            else
                             {
                                 if (comboBoxEstado.Text == "")
                                 {
                                     MessageBox.Show("Selecciona un estado");
-                                }else
+                                }
+                                else
                                 {
                                     if (txtMunicipio.Text == "")
                                     {
                                         MessageBox.Show("Ingresa un municipio");
-                                    }else
+                                    }
+                                    else
                                     {
                                         if (txtLocalidad.Text == "")
                                         {
                                             MessageBox.Show("Ingresa una localidad");
-                                        }else
+                                        }
+                                        else
                                         {
                                             if (txtCurp.Text == "" && txtCurp.Text.Length < 19)
                                             {
                                                 MessageBox.Show("Ingresa una CURP valida");
-                                            }else
+                                            }
+                                            else
                                             {
                                                 if (txtNombreFam.Text == "")
                                                 {
                                                     MessageBox.Show("Ingresa el nombre del familiar responsable");
-                                                }else
+                                                }
+                                                else
                                                 {
                                                     if (txtPaternoRes.Text == "")
                                                     {
                                                         MessageBox.Show("Ingresa el apellido paterno del familiar");
-                                                    }else
+                                                    }
+                                                    else
                                                     {
                                                         if (txtMaternoRes.Text == "")
                                                         {
                                                             MessageBox.Show("Ingresa el apellido materno del familiar");
-                                                        }else
+                                                        }
+                                                        else
                                                         {
                                                             if (cbbSexoFR.Text == "")
                                                             {
                                                                 MessageBox.Show("Selecciona el sexo del familiar");
-                                                            }else
+                                                            }
+                                                            else
                                                             {
                                                                 if (txtCelularRes.Text == "")
                                                                 {
                                                                     MessageBox.Show("Ingresa el numero de telefono del paciente");
-                                                                }else
+                                                                }
+                                                                else
                                                                 {
                                                                     if (txtParentezco.Text == "")
                                                                     {
                                                                         MessageBox.Show("Ingresa el parentezco");
-                                                                    }else
+                                                                    }
+                                                                    else
                                                                     {
                                                                         if (autoCuarto.SelectedItem == null)
                                                                         {
                                                                             MessageBox.Show("Selecciona un cuarto");
-                                                                        }else
+                                                                        }
+                                                                        else
                                                                         {
                                                                             if (cbTipoPaciente.IsChecked == true)
                                                                             {
@@ -364,22 +381,13 @@ namespace Medica2.Administracion.Pacientes
                                                                                 BaseDatos.GetBaseDatos().FAM_RESPONSABLES.Add(famres);
                                                                                 BaseDatos.GetBaseDatos().SaveChanges();
 
-                                                                                CUENTA cupac = new CUENTA
-                                                                                {
-                                                                                    PACIENTEID = paciente.ID_PACIENTE,
-                                                                                    TOTAL = 0,
-                                                                                    SALDO = -500
-                                                                                };
-
-                                                                                BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
-                                                                                BaseDatos.GetBaseDatos().SaveChanges();
-
                                                                                 var cuarto = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcua);
                                                                                 if (cuarto.MAX_PACIENTES == cuarto.PAC_ACTUALES)
                                                                                 {
                                                                                     cuarto.ESTADO = "Ocupado";
                                                                                     BaseDatos.GetBaseDatos().SaveChanges();
-                                                                                }else
+                                                                                }
+                                                                                else
                                                                                 {
                                                                                     cuarto.PAC_ACTUALES = cuarto.PAC_ACTUALES + 1;
                                                                                     BaseDatos.GetBaseDatos().SaveChanges();
@@ -389,6 +397,18 @@ namespace Medica2.Administracion.Pacientes
                                                                                         BaseDatos.GetBaseDatos().SaveChanges();
                                                                                     }
                                                                                 }
+
+                                                                                CUENTA cupac = new CUENTA
+                                                                                {
+                                                                                    PACIENTEID = paciente.ID_PACIENTE,
+                                                                                    TOTAL = cuarto.COSTO,
+                                                                                    SALDO = cuarto.COSTO - 500
+                                                                                };
+
+                                                                                BaseDatos.GetBaseDatos().CUENTAS.Add(cupac);
+                                                                                BaseDatos.GetBaseDatos().SaveChanges();
+
+
 
                                                                                 MessageBox.Show("Registro exitoso");
                                                                                 llenarAutocmpletes();
@@ -600,7 +620,8 @@ namespace Medica2.Administracion.Pacientes
                                                                         if (autoCuarto.SelectedItem == null)
                                                                         {
                                                                             MessageBox.Show("Selecciona un cuarto");
-                                                                        }else
+                                                                        }
+                                                                        else
                                                                         {
                                                                             if (cbTipoPaciente.IsChecked == true)
                                                                             {

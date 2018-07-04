@@ -20,7 +20,7 @@ namespace Medica2.Administracion.Cirugias
     /// </summary>
     public partial class CargarCirugia : Window
     {
-        int idper, idmedi, idcirug;
+        int idper, idmedi, idcirug, idcuenta;
 
         DateTime fr = DateTime.Now;
 
@@ -38,6 +38,7 @@ namespace Medica2.Administracion.Cirugias
             idper = idp;
             idmedi = idmed;
             idcirug = idciru;
+            idcuenta = idcuent;
 
             var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idper);
             var medico = BaseDatos.GetBaseDatos().MEDICOS.Find(idmedi);
@@ -48,13 +49,16 @@ namespace Medica2.Administracion.Cirugias
             cuenta.SALDO = cuenta.SALDO - cirugia.TOTAL;
             BaseDatos.GetBaseDatos().SaveChanges();
 
-            autoPaciente.SearchText = paciente.PERSONA.NOMBRE +" "+paciente.PERSONA.A_PATERNO+" "+paciente.PERSONA.A_MATERNO;
-            autoMedico.SearchText = medico.PERSONA.NOMBRE+" "+medico.PERSONA.A_PATERNO+" "+medico.PERSONA.A_MATERNO;
+            autoPaciente.SearchText = paciente.PERSONA.NOMBRE + " " + paciente.PERSONA.A_PATERNO + " " + paciente.PERSONA.A_MATERNO;
+            autoMedico.SearchText = medico.PERSONA.NOMBRE + " " + medico.PERSONA.A_PATERNO + " " + medico.PERSONA.A_MATERNO;
             autoCirugia.SearchText = cirugia.CATALOGO_CIRUGIAS.NOMBRE_CIRUGIA;
             txtCosto.Text = cirugia.TOTAL.ToString();
             llenarAutocompletes();
             btnFinalizar.Visibility = Visibility.Hidden;
             btnEditar.Visibility = Visibility.Visible;
+
+            autoPaciente.IsEnabled = false;
+            autoMedico.IsEnabled = false;
 
         }
 
@@ -65,10 +69,11 @@ namespace Medica2.Administracion.Cirugias
             autoMedico.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                       join e in BaseDatos.GetBaseDatos().MEDICOS
                                       on PERSONA.ID_PERSONA equals e.PERSONAID
+                                      where e.PERSONA.ESTADOPERSONA == "Activo"
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
-                                          NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO +" "+PERSONA.A_MATERNO,
+                                          NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                       }).ToList();
 
             autoPaciente.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
@@ -76,10 +81,11 @@ namespace Medica2.Administracion.Cirugias
                                         on PERSONA.ID_PERSONA equals e.PERSONAID
                                         join cuenta in BaseDatos.GetBaseDatos().CUENTAS
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        where PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE +" "+ PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
                                         }).ToList();
@@ -87,51 +93,42 @@ namespace Medica2.Administracion.Cirugias
 
         void Editar()
         {
-            if (autoPaciente.SelectedItem == null)
+
+
+            autoPaciente.IsEnabled = false;
+            autoMedico.IsEnabled = false;
+
+            if (autoCirugia.SelectedItem == null)
             {
-                MessageBox.Show("Selecciona un paciente");
+                MessageBox.Show("Selecciona una cirugía");
             }
             else
             {
-                if (autoMedico.SelectedItem == null)
-                {
-                    MessageBox.Show("Selecciona al medico solicitante");
-                }
-                else
-                {
-                    if (autoCirugia.SelectedItem == null)
-                    {
-                        MessageBox.Show("Selecciona una cirugia");
-                    }
-                    else
-                    {
-                        dynamic medico = autoMedico.SelectedItem;
-                        dynamic paciente = autoPaciente.SelectedItem;
-                        int  cirugia = ((CATALOGO_CIRUGIAS)autoCirugia.SelectedItem).ID_CATALOGO_CIRUGIA;
-                        int idmed = medico.ID_MEDICO;
-                        int idpaciente = paciente.ID_PACIENTE;
-                        int idcuenta = paciente.ID_CUENTA;
 
-                        
-                        var cgia = BaseDatos.GetBaseDatos().CIRUGIAS.Find(idcirug);
-                        cgia.CATALOGO_CIRUGIAID = cirugia;
-                        cgia.TOTAL = Decimal.Parse(txtCosto.Text);
-                        cgia.MEDICOID = idmed;
-                        //cgia.CUENTAID = idcuenta;
-                        BaseDatos.GetBaseDatos().SaveChanges();                        
+                int cirugia = ((CATALOGO_CIRUGIAS)autoCirugia.SelectedItem).ID_CATALOGO_CIRUGIA;
 
-                        var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
-                        cuenta.TOTAL = ((cuenta.TOTAL) + (Decimal.Parse(txtCosto.Text)));
-                        cuenta.SALDO = ((cuenta.SALDO) + (Decimal.Parse(txtCosto.Text)));
-                        BaseDatos.GetBaseDatos().SaveChanges();
-                        MessageBox.Show("Actualización exitosa");
-                        
-                        ConsultarCirugiasAplicadas obj=new ConsultarCirugiasAplicadas();
-                        obj.Show();
-                        Close();
-                    }
-                }
+
+
+                var cgia = BaseDatos.GetBaseDatos().CIRUGIAS.Find(idcirug);
+                cgia.CATALOGO_CIRUGIAID = cirugia;
+                cgia.TOTAL = Decimal.Parse(txtCosto.Text);
+                cgia.MEDICOID = idmedi;
+                cgia.USUARIOID = 2;
+                //cgia.CUENTAID = idcuenta;
+                BaseDatos.GetBaseDatos().SaveChanges();
+
+                var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
+                cuenta.TOTAL = ((cuenta.TOTAL) + (Decimal.Parse(txtCosto.Text)));
+                cuenta.SALDO = ((cuenta.SALDO) + (Decimal.Parse(txtCosto.Text)));
+                BaseDatos.GetBaseDatos().SaveChanges();
+                MessageBox.Show("Actualización exitosa");
+
+                ConsultarCirugiasAplicadas obj = new ConsultarCirugiasAplicadas();
+                obj.Show();
+                Close();
             }
+
+
         }
 
 
@@ -159,17 +156,20 @@ namespace Medica2.Administracion.Cirugias
             if (autoPaciente.SelectedItem == null)
             {
                 MessageBox.Show("Selecciona un paciente");
-            }else
+            }
+            else
             {
                 if (autoMedico.SelectedItem == null)
                 {
-                    MessageBox.Show("Selecciona al medico solicitante");
-                }else
+                    MessageBox.Show("Selecciona al médico solicitante");
+                }
+                else
                 {
                     if (autoCirugia.SelectedItem == null)
                     {
-                        MessageBox.Show("Selecciona una cirugia");
-                    }else
+                        MessageBox.Show("Selecciona una cirugía");
+                    }
+                    else
                     {
                         dynamic medico = autoMedico.SelectedItem;
                         dynamic paciente = autoPaciente.SelectedItem;
@@ -182,6 +182,7 @@ namespace Medica2.Administracion.Cirugias
                             CATALOGO_CIRUGIAID = cirugia.ID_CATALOGO_CIRUGIA,
                             CUENTAID = paciente.ID_CUENTA,
                             TOTAL = cirugia.COSTO,
+                            USUARIOID = 2,
                             FECHA_CREACION = fr
                         };
                         BaseDatos.GetBaseDatos().CIRUGIAS.Add(c);

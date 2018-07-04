@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="NuevaClasificacionEstudios" Height="226.829" Width="300">
     <Grid>
-        <TextBox x:Name="txtNombre" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="136,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtNombre" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="93,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="163"/>
         <Label x:Name="nombre" Content="Nombre" HorizontalAlignment="Left" Margin="20,59,0,0" VerticalAlignment="Top"/>
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" 
-            Margin="6,146,0,0" VerticalAlignment="Top" Width="68" Click="btnGuardar_Click" Height="23"/>
+            Margin="20,146,0,0" VerticalAlignment="Top" Width="68" Click="btnGuardar_Click" Height="23"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" 
-            Margin="216,146,0,0" VerticalAlignment="Top" Width="68" Click="btnCancelar_Click" Height="23"/>
-        <Label x:Name="lblTitulo" Content="Registro de clasificaciones" HorizontalAlignment="Left" Margin="46,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+            Margin="188,146,0,0" VerticalAlignment="Top" Width="68" Click="btnCancelar_Click" Height="23"/>
+        <Label x:Name="lblTitulo" Content="Registro de clasificaciones" HorizontalAlignment="Left" Margin="53,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

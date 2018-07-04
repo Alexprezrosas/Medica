@@ -22,15 +22,15 @@ namespace Medica2.Administracion.Enfermeras
     {
         int idenf;
         int idusu;
-        
+
         public NuevaEnfermera()
         {
             InitializeComponent();
-            
+
             FillEstados();
-           
+
         }
-        public NuevaEnfermera(ENFERMERA enfe,USUARIO usu, bool save)
+        public NuevaEnfermera(ENFERMERA enfe, USUARIO usu, bool save)
         {
             InitializeComponent();
 
@@ -53,13 +53,16 @@ namespace Medica2.Administracion.Enfermeras
             txtCurp.Text = enfe.PERSONA.CURP;
             txtCProfesional.Text = enfe.C_PROFESIONAL;
             psContrasena.Password = usu.CONTRASENA;
+            cbbActivoInactivo.Text = enfe.PERSONA.ESTADOPERSONA;
 
+            lblActivoInactivo.Visibility = Visibility.Visible;
+            cbbActivoInactivo.Visibility = Visibility.Visible;
             btnEditar.Visibility = Visibility.Visible;
             btnGuardar.Visibility = Visibility.Hidden;
             btnGuardar.IsEnabled = false;
             btnEditar.IsEnabled = true;
         }
-        
+
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
@@ -80,6 +83,7 @@ namespace Medica2.Administracion.Enfermeras
             txtCelular.Text = "";
             txtCurp.Text = "";
             txtCProfesional.Text = "";
+            cbbActivoInactivo.Text = "";
             psContrasena.Password = String.Empty;
         }
 
@@ -99,22 +103,26 @@ namespace Medica2.Administracion.Enfermeras
             if (txtNombre.Text == "")
             {
                 MessageBox.Show("Insertar un nombre");
-            }else
+            }
+            else
             {
                 if (txtPaterno.Text == "")
                 {
                     MessageBox.Show("Insertar un apellido paterno");
-                }else
+                }
+                else
                 {
                     if (txtMaterno.Text == "")
                     {
                         MessageBox.Show("Insertar un apellido materno");
-                    }else
+                    }
+                    else
                     {
                         if (dpFecha_Nacimiento.Text == "")
                         {
                             MessageBox.Show("Insertar una fecha de nacimiento");
-                        }else
+                        }
+                        else
                         {
                             if (cbbSexo.Text == "")
                             {
@@ -125,50 +133,57 @@ namespace Medica2.Administracion.Enfermeras
                                 if (txtCalle.Text == "")
                                 {
                                     MessageBox.Show("Insertar una calle");
-                                }else
+                                }
+                                else
                                 {
                                     if (comboBoxEstado.Text == "")
                                     {
                                         MessageBox.Show("Seleccionar un mstado");
-                                    }else
+                                    }
+                                    else
                                     {
                                         if (txtMunicipio.Text == "")
                                         {
                                             MessageBox.Show("Seleccionar un municipio");
-                                        }else
+                                        }
+                                        else
                                         {
                                             if (txtLocalidad.Text == "")
                                             {
                                                 MessageBox.Show("Seleccionar una localidad");
-                                            }else
+                                            }
+                                            else
                                             {
                                                 if (txtCelular.Text == "")
                                                 {
                                                     MessageBox.Show("Insertar un celular");
-                                                }else
+                                                }
+                                                else
                                                 {
                                                     if (txtCurp.Text == "")
                                                     {
                                                         MessageBox.Show("Insertar una curp");
-                                                    }else
+                                                    }
+                                                    else
                                                     {
                                                         if (txtCProfesional.Text == "")
                                                         {
                                                             MessageBox.Show("Insertar una cedula profesional");
-                                                        }else
+                                                        }
+                                                        else
                                                         {
-                                                            if (psContrasena.Password=="")
+                                                            if (psContrasena.Password == "")
                                                             {
-                                                                MessageBox.Show("Ingresa una Contrase");
+                                                                MessageBox.Show("Ingresa una contrase");
                                                             }
                                                             else
                                                             {
                                                                 if (!ConsultaCedulaE(txtCProfesional.Text))
                                                                 {
-                                                                    
+
                                                                     //Obtener los valores de los TextBox
                                                                     DateTime Fecharegistro = DateTime.Now;
-                                                                   
+
                                                                     PERSONA cc = new PERSONA
                                                                     {
                                                                         NOMBRE = txtNombre.Text,
@@ -221,7 +236,7 @@ namespace Medica2.Administracion.Enfermeras
                                                                     BaseDatos.GetBaseDatos().USUARIOS.Add(us);
                                                                     BaseDatos.GetBaseDatos().SaveChanges();
                                                                     //Mensaje
-                                                                    MessageBoxResult result = MessageBox.Show("Registro exitoso");                                                                    
+                                                                    MessageBoxResult result = MessageBox.Show("Registro exitoso");
                                                                     limpiarEnfermera();
                                                                 }
                                                                 else
@@ -260,7 +275,7 @@ namespace Medica2.Administracion.Enfermeras
 
         }
 
-        public void EditarMedico()
+        public void Editar()
         {
             //Es para comprobar que no esten vacias las cajas de texto
             if (txtNombre.Text == "")
@@ -330,11 +345,16 @@ namespace Medica2.Administracion.Enfermeras
 
                                                     if (txtCProfesional.Text == "")
                                                     {
-                                                        MessageBox.Show("Inserta la cedula profesional");
+                                                        MessageBox.Show("Inserta la cédula profesional");
                                                     }
                                                     else
                                                     {
-                                                        
+                                                        if (cbbActivoInactivo.Text == "")
+                                                        {
+                                                            MessageBox.Show("Ingresa el estatus de la enfermera\n Activo o Inactivo");
+                                                        }
+                                                        else
+                                                        {
                                                             DateTime FechaModificacion = DateTime.Now;
                                                             var enfe = BaseDatos.GetBaseDatos().ENFERMERAS.Find(idenf);
 
@@ -350,6 +370,7 @@ namespace Medica2.Administracion.Enfermeras
                                                             enfe.PERSONA.T_CELULAR = txtCelular.Text;
                                                             enfe.PERSONA.CURP = txtCurp.Text;
                                                             enfe.C_PROFESIONAL = txtCProfesional.Text;
+                                                            enfe.PERSONA.ESTADOPERSONA = cbbActivoInactivo.Text;
 
                                                             var usu = BaseDatos.GetBaseDatos().USUARIOS.Find(idenf);
                                                             usu.CONTRASENA = psContrasena.Password;
@@ -362,8 +383,7 @@ namespace Medica2.Administracion.Enfermeras
                                                             this.Close();
                                                             ConsultaEnfermera obj = new ConsultaEnfermera();
                                                             obj.Show();
-                                                        
-                                                       
+                                                        }
                                                     }
                                                 }
                                             }
@@ -385,7 +405,7 @@ namespace Medica2.Administracion.Enfermeras
         }
         public void FillEstados()
         {
-            
+
             List<ESTADO> lst = BaseDatos.GetBaseDatos().ESTADOS.ToList();
             comboBoxEstado.ItemsSource = lst;
         }
@@ -403,7 +423,6 @@ namespace Medica2.Administracion.Enfermeras
 
         }
 
-        
 
         private void validarNumeros(object sender, TextCompositionEventArgs e)
         {
@@ -415,7 +434,7 @@ namespace Medica2.Administracion.Enfermeras
 
         }
 
-        private void validarNumLetras( object sender, TextCompositionEventArgs e)
+        private void validarNumLetras(object sender, TextCompositionEventArgs e)
         {
             int ascci = Convert.ToInt32(Convert.ToChar(e.Text));
 
@@ -425,12 +444,12 @@ namespace Medica2.Administracion.Enfermeras
 
             else e.Handled = true;
             ///
-            
+
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            EditarMedico();
+            Editar();
         }
         ///////
 

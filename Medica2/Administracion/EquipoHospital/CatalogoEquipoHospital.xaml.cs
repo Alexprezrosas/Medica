@@ -20,6 +20,7 @@ namespace Medica2.Administracion.EquipoHospital
     /// </summary>
     public partial class CatalogoEquipoHospital : Window
     {
+        int ideh;
         public CatalogoEquipoHospital()
         {
             InitializeComponent();
@@ -27,18 +28,32 @@ namespace Medica2.Administracion.EquipoHospital
             //FormCatalogoEqiopoH.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.ToList();
 
         }
+        public CatalogoEquipoHospital(int idceh, bool save)
+        {
+            InitializeComponent();
+            ideh = idceh;
+            var caeqho = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(ideh);
+
+            txtNombre.Text = caeqho.NOM_EQUIPO_HOSPITAL;
+            txtDescripcion.Text = caeqho.DESCRIPCION;
+            txtCosto.Text = caeqho.COSTO.ToString();
+
+            btnGuardar.Visibility = Visibility.Hidden;
+            btnEditar.Visibility = Visibility.Visible;
+
+        }
         //MEtodo Guardar Equipo hospital
         public void Guardar()
         {
             if (txtNombre.Text == "")
             {
-                System.Windows.MessageBox.Show("Inserta el nombre del Cuarto");
+                System.Windows.MessageBox.Show("Inserta el nombre del equipo de hospital");
             }
             else
             {
                 if (txtDescripcion.Text == "")
                 {
-                    System.Windows.MessageBox.Show("Inserta la Descripcion");
+                    System.Windows.MessageBox.Show("Inserta la Descripción");
                 }
                 else
                 {
@@ -57,15 +72,14 @@ namespace Medica2.Administracion.EquipoHospital
                             DESCRIPCION = txtDescripcion.Text,
                             COSTO = Decimal.Parse(txtCosto.Text),
                             FECHA_CREACION = fec,
+                            STATUS = "Activo"
 
                         };
                         BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Add(c_e_h);
                         BaseDatos.GetBaseDatos().SaveChanges();
-                        System.Windows.MessageBox.Show("Se ha guardado CORRECTAMENTE");
+                        System.Windows.MessageBox.Show("Registro exitoso, se ha guardado CORRECTAMENTE");
 
-                        txtNombre.Text = String.Empty;
-                        txtDescripcion.Text = String.Empty;
-                        txtCosto.Text = String.Empty;
+                        Limpiar();
 
                         this.Close();
 
@@ -74,6 +88,51 @@ namespace Medica2.Administracion.EquipoHospital
             }
         }
 
+        public void Editar()
+        {
+            if (txtNombre.Text == "")
+            {
+                System.Windows.MessageBox.Show("Inserta el nombre del equipo de hospital");
+            }
+            else
+            {
+                if (txtDescripcion.Text == "")
+                {
+                    System.Windows.MessageBox.Show("Inserta la Descripción");
+                }
+                else
+                {
+                    if (txtCosto.Text == "")
+                    {
+                        System.Windows.MessageBox.Show("Inserta el Costo");
+                    }
+                    else
+                    {
+
+                        DateTime fec = DateTime.Now;
+                        var equipoh = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(ideh);
+
+                        equipoh.NOM_EQUIPO_HOSPITAL = txtNombre.Text;
+                        equipoh.DESCRIPCION = txtDescripcion.Text;
+                        equipoh.COSTO = Decimal.Parse(txtCosto.Text);
+                        equipoh.FECHA_MOD = fec;
+
+                        BaseDatos.GetBaseDatos().SaveChanges();
+                        MessageBoxResult result = MessageBox.Show("Registro exitoso se Actualizo correctamente ");
+                        Limpiar();
+                        this.Close();
+
+                    }
+                }
+            }
+        }
+
+        void Limpiar()
+        {
+            txtNombre.Text = String.Empty;
+            txtDescripcion.Text = String.Empty;
+            txtCosto.Text = String.Empty;
+        }
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -83,9 +142,10 @@ namespace Medica2.Administracion.EquipoHospital
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+
+            //ConsultaCatalogoEquipoHospital cequipoh = new ConsultaCatalogoEquipoHospital();
+            //cequipoh.Show();
             this.Close();
-            ConsultaCatalogoEquipoHospital cequipoh = new ConsultaCatalogoEquipoHospital();
-            cequipoh.Show();
         }
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
@@ -107,6 +167,11 @@ namespace Medica2.Administracion.EquipoHospital
 
             else e.Handled = true;
 
+        }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
         }
     }
 }

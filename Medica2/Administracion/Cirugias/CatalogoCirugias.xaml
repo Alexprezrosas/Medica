@@ -6,10 +6,23 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Cirugias"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Cirugias.CatalogoCirugias"
         mc:Ignorable="d"
-        Title="CatalogoCirugias" Height="300" Width="300">
+        Title="CatalogoCirugias" Height="323.711" Width="593.814">
     <Grid>
 
-            <telerik:RadDataForm  HorizontalAlignment="Left" VerticalAlignment="Top" Name="formcatalogocirugia" Height="270" Width="294" Margin="0,0,-0.4,0"/>
+        <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="72,75,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="lblCosto" Content="Costo" HorizontalAlignment="Left" Margin="72,148,0,0" VerticalAlignment="Top" Width="128"/>
+        <Label x:Name="lblComentario" Content="Descripción" HorizontalAlignment="Left" Margin="72,101,0,0" VerticalAlignment="Top" Width="128"/>
+
+        <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="168,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="286" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" />
+        <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="45" Margin="168,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="286" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
+        <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="168,149,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="116" Foreground="#FF6F2828" BorderBrush="#FF089CF6" KeyDown="validarDecimal" />
+
+        <Label x:Name="lblTitulo" Content="Registro Cirugías" HorizontalAlignment="Left" Margin="234,23,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+
+        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="168,215,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="379,215,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Button x:Name="btnEditar" Visibility="Hidden" Content="Actualizar" HorizontalAlignment="Left" Margin="168,215,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
+
 
     </Grid>
 </Window>

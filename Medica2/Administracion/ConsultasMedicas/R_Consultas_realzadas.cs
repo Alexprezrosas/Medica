@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Medica2.Administracion.Reportes
+namespace Medica2.Administracion.ConsultasMedicas
 {
-    public partial class Medic : Form
+    public partial class R_Consultas_realzadas : Form
     {
-        public Medic()
+        public R_Consultas_realzadas()
         {
             InitializeComponent();
         }
 
         private void reportViewer1_Load(object sender, EventArgs e)
         {
-            this.reportViewer1.RefreshReport();
+            reportViewer1.RefreshReport();
         }
     }
 }

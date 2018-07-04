@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Medica2.Administracion.Medicos"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Administracion.Medicos.MostrarMedicos"
         mc:Ignorable="d"
-        Title="MostrarMedicos" Height="568.466" Width="1085.548">
+        Title="MostrarMedicos" Height="563.257" Width="1232.153">
     <Window.Resources>
 
         <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
@@ -17,13 +17,17 @@
 
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="33*"/>
+        </Grid.ColumnDefinitions>
 
         <telerik:RadGridView ShowSearchPanel="True" x:Name="rgMostrarMedico"  HorizontalAlignment="Left" Margin="30,90,0,0" 
-            VerticalAlignment="Top" Width="1019" Height="424" AutoGenerateColumns="False"
+            VerticalAlignment="Top" Width="910" Height="320" AutoGenerateColumns="False"
                              
             BeginningEdit="radGridView_BeginningEdit"
             SelectedCellsChanged="MostrarCirugias_SelectedCellsChanged"
-            CellEditEnded="radGridView_CellEditEnded">
+            CellEditEnded="radGridView_CellEditEnded" Grid.ColumnSpan="2">
 
             <telerik:RadContextMenu.ContextMenu>
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" 
@@ -54,11 +58,12 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CORREO}" Header="Correo"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding C_PROFESIONAL}" Header="Cedula"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CONTRA}" Header="Contraseña"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOP}" Header="Estatus"/>
 
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
-        <Label x:Name="label" Content="Consultar Medicos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="480,29,0,0" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label" Content="Vizualizar Médicos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="450,39,0,0" FontWeight="Bold" FontSize="14"/>
         <CheckBox x:Name="checkBoxmedicos" Checked="checkBoxmedicos_Checked" Unchecked="checkBoxmedicos_Unchecked" Content="Todos los Medicos" HorizontalAlignment="Left" Margin="30,59,0,0" VerticalAlignment="Top"/>
 
     </Grid>

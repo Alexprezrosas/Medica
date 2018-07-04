@@ -29,15 +29,15 @@
         ShowSearchPanel="True"
         IsSearchingDeferred="True">
 
-            
+
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
-                    
+
                     <telerik:RadMenuItem x:Name="itemEliminar" Header="Eliminar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                     <telerik:RadMenuItem x:Name="itemEditar" Header="Editar" IsEnabled="False" Click="itemAgregar_Click" DisplayMemberPath="SelectedItem"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
-            
+
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MEDICO SOLICITANTE"/>

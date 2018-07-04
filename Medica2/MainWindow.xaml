@@ -45,13 +45,13 @@
             </telerik:RadRichTextBoxRibbonUI.ContextualGroups>
 
             <!-- ADMINISTRACION -->
-            
-            <telerik:RadRibbonTab Header="Administración" x:Name="MenuAdministracion" >
+
+            <telerik:RadRibbonTab Header="Administracion" x:Name="MenuAdministracion" >
                 <telerik:RadRibbonGroup Header="" x:Name="SubAdministracion">
 
                     <!-- PACIENTES -->
 
-                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/paciente.png" Size="Large" Text="Pacientes">
+                    <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/paciente.png" Size="Large" Text="Pacientes" Height="69" Margin="0,0,0,-0.2" VerticalAlignment="Top">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
                                 <telerik:RadMenuItem x:Name="itemRegistrarPaciente" Header="Registrar paciente" Click="RadMenuItem_Click"/>
@@ -69,14 +69,17 @@
                                 <telerik:RadMenuItem Header="Medicos" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemNuevoMedico" Header="Registrar"  Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemitemConsultaMedicos" Header="Visualizar"  Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemitemReporteMedicos" Header="Reporte"  Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Enfermeras" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemNuevaEnfermera" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemConsultaEnfermera" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemRéporteEnfermera" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Usuarios" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemRegistrarUsuario" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemVizualizarUsuarios" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReporteUsuarios" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
@@ -124,22 +127,27 @@
                                 <telerik:RadMenuItem Header="Estudios" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemCargarEstudio" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemVisualizarEstudiosAplicados" Header="Visualizar estudios realizados" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReporteEstudiosAplicados" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Cirugias" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemCargarCirugia" Header="CargarCirugia" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemMostrarCirugiasCargadas" Header="Visualizar cirugias realizadas" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReporteciruCargadas" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem  Header="Equipo de Hospital" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemcargarequipoh" Header="Cargar Equipo Hospital" Click="RadMenuItem_Click"/>
-                                    <telerik:RadMenuItem x:Name="itemrvizualizacargaequipoh" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemvizualizacargaequipoh" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReportecargaequipoh" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Honorario Medico" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemcargarHonorarios" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemvizualizarHonorarios" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReporteHonorarios" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem Header="Consulta" Click="RadMenuItem_Click">
                                     <telerik:RadMenuItem x:Name="itemregistrarConsultas" Header="Registrar" Click="RadMenuItem_Click"/>
                                     <telerik:RadMenuItem x:Name="itemvizualizarconsultas" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemReporteconsultas" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
@@ -152,38 +160,40 @@
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
                                 <telerik:RadMenuItem Header="Cuentas" Click="RadMenuItem_Click">
-                                    
+
                                     <telerik:RadMenuItem x:Name="itemvizualizacuentas" Header="Visualizar" Click="RadMenuItem_Click"/>
+                                    <telerik:RadMenuItem x:Name="itemREPORTEcuentas" Header="Reporte" Click="RadMenuItem_Click"/>
                                 </telerik:RadMenuItem>
                                 <telerik:RadMenuItem x:Name="itemNuevoDeposito" Header="Registrar deposito" Click="RadMenuItem_Click"/>
                                 <telerik:RadMenuItem x:Name="itemConsultarDepositosAplicados" Header="Consultar depositos" Click="RadMenuItem_Click"/>
+                                <telerik:RadMenuItem x:Name="itemreporteDeposito" Header="Reporte depositos" Click="RadMenuItem_Click"/>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
 
-                    
+
 
                     <!-- Salir -->
 
                     <telerik:RadRibbonDropDownButton LargeImage="Administracion/img/sesiones.png" Size="Large" Text="Salir">
                         <telerik:RadRibbonDropDownButton.DropDownContent>
                             <telerik:RadContextMenu  BorderThickness="0">
-                                <telerik:RadMenuItem Header="Cerrar Sesión" Click="RadMenuItem_Click_1">
+                                <telerik:RadMenuItem Header="Cerrar Sesion" Click="RadMenuItem_Click_1">
                                 </telerik:RadMenuItem>
                             </telerik:RadContextMenu>
                         </telerik:RadRibbonDropDownButton.DropDownContent>
                     </telerik:RadRibbonDropDownButton>
 
-                    
+
 
                     <StackPanel/>
                 </telerik:RadRibbonGroup>
             </telerik:RadRibbonTab>
 
-            
-            
-            
-        <!-- FARMACIA -->
+
+
+
+            <!-- FARMACIA -->
 
             <telerik:RadRibbonTab Header="Farmacia" x:Name="MenuFarmacia">
                 <telerik:RadRibbonGroup Header="" x:Name="SubFarmacia">

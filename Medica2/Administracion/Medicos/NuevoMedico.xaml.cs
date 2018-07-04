@@ -46,7 +46,7 @@ namespace Medica2.Administracion.Medicos
             cbbSexo.Text = m.PERSONA.SEXO;
             txtCalle.Text = m.PERSONA.CALLE;
             int idestado = comboBoxEstado.Items.IndexOf(m.PERSONA.ESTADO1);
-            txtmunicipio.Text=m.PERSONA.NOMMUNICIPIO;
+            txtmunicipio.Text = m.PERSONA.NOMMUNICIPIO;
             txtlocalidad.Text = m.PERSONA.NOMLOCALIDAD;
             comboBoxEstado.SelectedIndex = idestado;
             txtCelular.Text = m.PERSONA.T_CELULAR;
@@ -56,14 +56,16 @@ namespace Medica2.Administracion.Medicos
             txtTparticular.Text = m.T_PARTICULAR;
             txtCorreo.Text = m.CORREO;
             txtCedulap.Text = m.C_PROFESIONAL;
+            cbbActivoInactivo.Text = m.PERSONA.ESTADOPERSONA;
             psContrasena.Password = usua.CONTRASENA;
 
-
+            lblactivoinactivo.Visibility = Visibility.Visible;
+            cbbActivoInactivo.Visibility = Visibility.Visible;
             btnEditar.Visibility = Visibility.Visible;
             btnGuardar.Visibility = Visibility.Hidden;
             btnGuardar.IsEnabled = false;
             btnEditar.IsEnabled = true;
-           
+
         }
 
         public void GuardarMedico()
@@ -159,85 +161,86 @@ namespace Medica2.Administracion.Medicos
                                                             else
                                                             {
                                                                 if (psContrasena.Password == "")
+                                                                {
+                                                                    MessageBox.Show("Ingresa una contraseña");
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (!ConsultaCedula(txtCedulap.Text))
                                                                     {
-                                                                        MessageBox.Show("Ingresa una contraseña");
-                                                                    }else
+
+
+                                                                        //Obtener los valores de los TextBox
+
+
+                                                                        DateTime FechaRegistro = DateTime.Now;
+
+
+                                                                        PERSONA cmed = new PERSONA
+                                                                        {
+                                                                            NOMBRE = txtNombre.Text,
+                                                                            A_PATERNO = txtPaterno.Text,
+                                                                            A_MATERNO = txtMaterno.Text,
+                                                                            F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
+                                                                            SEXO = cbbSexo.Text,
+                                                                            CALLE = txtCalle.Text,
+                                                                            ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
+                                                                            NOMMUNICIPIO = txtmunicipio.Text,
+                                                                            NOMLOCALIDAD = txtlocalidad.Text,
+                                                                            T_CELULAR = txtCelular.Text,
+                                                                            CURP = txtCurp.Text,
+                                                                            FECHA_CREACION = FechaRegistro,
+                                                                            ESTADOPERSONA = "Activo"
+                                                                        };
+                                                                        BaseDatos.GetBaseDatos().PERSONAS.Add(cmed);
+                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                        Medico med = new Medico
+                                                                        {
+                                                                            PERSONAID = cmed.ID_PERSONA,
+                                                                            T_CONSULTORIO = txtTconsultorio.Text,
+                                                                            T_PARTICULAR = txtTparticular.Text,
+                                                                            CORREO = txtCorreo.Text,
+                                                                            C_PROFESIONAL = txtCedulap.Text,
+                                                                            FECHA_CREACION = FechaRegistro
+                                                                        };
+                                                                        med.PERSONA = cmed;
+                                                                        BaseDatos.GetBaseDatos().MEDICOS.Add(med);
+                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                        EMPLEADO em = new EMPLEADO
+                                                                        {
+                                                                            PERSONAID = cmed.ID_PERSONA,
+                                                                            PUESTO = "Medico",
+                                                                            FECHA_CREACION = FechaRegistro
+                                                                        };
+
+                                                                        BaseDatos.GetBaseDatos().EMPLEADOS.Add(em);
+                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+
+                                                                        USUARIO us = new USUARIO
+                                                                        {
+                                                                            EMPLEADOID = em.ID_EMPLEADO,
+                                                                            CONTRASENA = psContrasena.Password,
+                                                                            FECHA_CREACION = FechaRegistro,
+                                                                            PERMISOSID = 1
+                                                                        };
+
+                                                                        BaseDatos.GetBaseDatos().USUARIOS.Add(us);
+                                                                        BaseDatos.GetBaseDatos().SaveChanges();
+                                                                        //Mensaje
+                                                                        MessageBoxResult result = MessageBox.Show("Registro exitoso");
+
+                                                                        //Limpiar los textBox
+                                                                        LimpiarMedicos();
+                                                                    }
+                                                                    else
                                                                     {
-                                                                        if (!ConsultaCedula(txtCedulap.Text))
-                                                                        {
-                                                                            
-
-                                                                            //Obtener los valores de los TextBox
-
-
-                                                                            DateTime FechaRegistro = DateTime.Now;
-
-
-                                                                            PERSONA cmed = new PERSONA
-                                                                            {
-                                                                                NOMBRE = txtNombre.Text,
-                                                                                A_PATERNO = txtPaterno.Text,
-                                                                                A_MATERNO = txtMaterno.Text,
-                                                                                F_NACIMIENTO = dpFecha_Nacimiento.SelectedDate,
-                                                                                SEXO = cbbSexo.Text,
-                                                                                CALLE = txtCalle.Text,
-                                                                                ESTADO = Convert.ToInt32(comboBoxEstado.SelectedValue),
-                                                                                NOMMUNICIPIO = txtmunicipio.Text,
-                                                                                NOMLOCALIDAD = txtlocalidad.Text,
-                                                                                T_CELULAR = txtCelular.Text,
-                                                                                CURP = txtCurp.Text,
-                                                                                FECHA_CREACION = FechaRegistro,
-                                                                                ESTADOPERSONA = "Activo"
-                                                                            };
-                                                                            BaseDatos.GetBaseDatos().PERSONAS.Add(cmed);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            Medico med = new Medico
-                                                                            {
-                                                                                PERSONAID = cmed.ID_PERSONA,
-                                                                                T_CONSULTORIO = txtTconsultorio.Text,
-                                                                                T_PARTICULAR = txtTparticular.Text,
-                                                                                CORREO = txtCorreo.Text,
-                                                                                C_PROFESIONAL = txtCedulap.Text,
-                                                                                FECHA_CREACION = FechaRegistro
-                                                                            };
-                                                                            med.PERSONA = cmed;
-                                                                            BaseDatos.GetBaseDatos().MEDICOS.Add(med);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            EMPLEADO em = new EMPLEADO
-                                                                            {
-                                                                                PERSONAID = cmed.ID_PERSONA,
-                                                                                PUESTO = "Medico",
-                                                                                FECHA_CREACION = FechaRegistro
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().EMPLEADOS.Add(em);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-
-                                                                            USUARIO us = new USUARIO
-                                                                            {
-                                                                                EMPLEADOID = em.ID_EMPLEADO,
-                                                                                CONTRASENA = psContrasena.Password,
-                                                                                FECHA_CREACION = FechaRegistro,
-                                                                                PERMISOSID = 1
-                                                                            };
-
-                                                                            BaseDatos.GetBaseDatos().USUARIOS.Add(us);
-                                                                            BaseDatos.GetBaseDatos().SaveChanges();
-                                                                            //Mensaje
-                                                                            MessageBoxResult result = MessageBox.Show("Registro exitoso");
-
-                                                                            //Limpiar los textBox
-                                                                            LimpiarMedicos();
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            MessageBox.Show("EL registro del medico ya Existe");
-                                                                        }
+                                                                        MessageBox.Show("EL registro del medico ya Existe");
                                                                     }
                                                                 }
                                                             }
+                                                        }
                                                     }
                                                 }
 
@@ -345,7 +348,8 @@ namespace Medica2.Administracion.Medicos
                                                             {
                                                                 MessageBox.Show("Inserta la Cedula Profesional");
 
-                                                            }else
+                                                            }
+                                                            else
                                                             {
                                                                 if (psContrasena.Password == "")
                                                                 {
@@ -353,7 +357,12 @@ namespace Medica2.Administracion.Medicos
                                                                 }
                                                                 else
                                                                 {
-                                                                    
+                                                                    if (cbbActivoInactivo.Text == "")
+                                                                    {
+                                                                        MessageBox.Show("Ingresa un estatus para el medico\n Activo o Inactivo");
+                                                                    }
+                                                                    else
+                                                                    {
                                                                         DateTime FechaModificacion = DateTime.Now;
                                                                         var emedico = BaseDatos.GetBaseDatos().MEDICOS.Find(idmed);
 
@@ -369,6 +378,7 @@ namespace Medica2.Administracion.Medicos
                                                                         emedico.PERSONA.T_CELULAR = txtCelular.Text;
                                                                         emedico.PERSONA.CURP = txtCurp.Text;
                                                                         emedico.PERSONA.FECHA_CREACION = FechaModificacion;
+                                                                        emedico.PERSONA.ESTADOPERSONA = cbbActivoInactivo.Text;
 
 
                                                                         emedico.T_CONSULTORIO = txtTconsultorio.Text;
@@ -389,11 +399,13 @@ namespace Medica2.Administracion.Medicos
                                                                         obj.Show();
 
                                                                         //Limpiar los textBox
+                                                                    }
+
                                                                 }
                                                             }
-                                                            
-                                                        
-                                                           
+
+
+
                                                         }
 
 
@@ -427,6 +439,7 @@ namespace Medica2.Administracion.Medicos
             txtlocalidad.Text = "";
             txtCelular.Text = "";
             txtCurp.Text = "";
+            cbbActivoInactivo.Text = "";
 
 
             txtTconsultorio.Text = "";
@@ -482,9 +495,9 @@ namespace Medica2.Administracion.Medicos
 
         public bool ConsultaCedula(String cedulita)
         {
-           var cedumd = (from Medicocp in BaseDatos.GetBaseDatos().MEDICOS
-                         where Medicocp.C_PROFESIONAL == cedulita
-                         select Medicocp).Count();
+            var cedumd = (from Medicocp in BaseDatos.GetBaseDatos().MEDICOS
+                          where Medicocp.C_PROFESIONAL == cedulita
+                          select Medicocp).Count();
             if (cedumd == 0)
                 return false;
             else
@@ -497,7 +510,7 @@ namespace Medica2.Administracion.Medicos
 
             List<ESTADO> lst = BaseDatos.GetBaseDatos().ESTADOS.ToList();
             comboBoxEstado.ItemsSource = lst;
-        }       
+        }
         //activa el evento de Guardar Manda atraer el metodo y realiza las acciones progradas 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {

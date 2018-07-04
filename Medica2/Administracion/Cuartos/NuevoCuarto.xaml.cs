@@ -20,11 +20,29 @@ namespace Medica2.Administracion.Cuartos
     /// </summary>
     public partial class NuevoCuarto : Window
     {
+        int idcuar;
         public NuevoCuarto()
         {
             InitializeComponent();
         }
+        public NuevoCuarto(int idcua, bool save)
+        {
+            InitializeComponent();
+            idcuar = idcua;
+            var cuartito = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuar);
 
+            txtNombre.Text = cuartito.NOMBRE_CUARTO;
+            txtDescripcion.Text = cuartito.DESCRIPCION;
+            txtmaxpersonas.Text = cuartito.MAX_PACIENTES.ToString();
+            txtCosto.Text = cuartito.COSTO.ToString();
+            cbbEstadocuarto.Text = cuartito.ESTADO;
+
+            btnGuardar.Visibility = Visibility.Hidden;
+            btnEditar.Visibility = Visibility.Visible;
+            lblEstatus.Visibility = Visibility.Visible;
+            cbbEstadocuarto.Visibility = Visibility.Visible;
+
+        }
         //MEtodo Guardar un nuevo Cuarto
         public void Guardar()
         {
@@ -62,16 +80,15 @@ namespace Medica2.Administracion.Cuartos
                                 COSTO = Decimal.Parse(txtCosto.Text),
                                 MAX_PACIENTES = int.Parse(txtmaxpersonas.Text),
                                 FECHA_CREACION = fec,
-                                ESTADO="Libre",
+                                ESTADO = "Libre",
+                                STATUS = "Activo"
 
                             };
                             BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Add(ccuartos);
                             BaseDatos.GetBaseDatos().SaveChanges();
                             System.Windows.MessageBox.Show("Registro Exitoso, se guardo CORRECTAMENTE");
 
-                            txtNombre.Text = String.Empty;
-                            txtDescripcion.Text = String.Empty;
-                            txtCosto.Text = String.Empty;
+                            Limpiar();
 
                             this.Close();
                         }
@@ -80,7 +97,61 @@ namespace Medica2.Administracion.Cuartos
                 }
             }
         }
+        public void Editar()
+        {
+            if (txtNombre.Text == "")
+            {
+                System.Windows.MessageBox.Show("Inserta el nombre del Cuarto");
+            }
+            else
+            {
+                if (txtDescripcion.Text == "")
+                {
+                    System.Windows.MessageBox.Show("Inserta la Descripción");
+                }
+                else
+                {
+                    if (txtCosto.Text == "")
+                    {
+                        System.Windows.MessageBox.Show("Inserta el Costo");
+                    }
+                    else
+                    {
+                        if (txtmaxpersonas.Text == "")
+                        {
+                            MessageBox.Show("Inserta el numero de personas");
+                        }
+                        else
+                        {
 
+                            DateTime fec = DateTime.Now;
+
+                            var cuart = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuar);
+
+                            cuart.NOMBRE_CUARTO = txtNombre.Text;
+                            cuart.DESCRIPCION = txtDescripcion.Text;
+                            cuart.MAX_PACIENTES = Convert.ToInt32(txtmaxpersonas.Text);
+                            cuart.COSTO = Decimal.Parse(txtCosto.Text);
+                            cuart.ESTADO = cbbEstadocuarto.Text;
+
+                            BaseDatos.GetBaseDatos().SaveChanges();
+                            MessageBoxResult result = MessageBox.Show("Registro exitoso Actualización exitosa");
+                            Limpiar();
+                            this.Close();
+                        }
+
+                    }
+                }
+            }
+        }
+
+        void Limpiar()
+        {
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            txtmaxpersonas.Text = "";
+            txtCosto.Text = "";
+        }
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
 
@@ -139,5 +210,9 @@ namespace Medica2.Administracion.Cuartos
                 e.Handled = true;
         }
 
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            Editar();
+        }
     }
 }

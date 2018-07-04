@@ -23,7 +23,7 @@ namespace Medica2.Administracion.Pacientes
     /// </summary>
     public partial class ConsultaPacientes : Window
     {
-        
+
         public ConsultaPacientes()
         {
             InitializeComponent();
@@ -45,38 +45,39 @@ namespace Medica2.Administracion.Pacientes
         public void VistaPacientesPersonas()
         {
             rgvPacientes.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                                            join e in BaseDatos.GetBaseDatos().PACIENTES
-                                            on PERSONA.ID_PERSONA equals e.PERSONAID
-                                            join f in BaseDatos.GetBaseDatos().FAM_RESPONSABLES
-                                            on e.ID_PACIENTE equals f.PACIENTEID
-                                            join cuenta in BaseDatos.GetBaseDatos().CUENTAS
-                                            on e.ID_PACIENTE equals cuenta.PACIENTEID
-                                            join estado in BaseDatos.GetBaseDatos().ESTADOS
-                                            on PERSONA.ESTADO equals estado.id
-                                            join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
-                                            on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO                                                                                 
-                                            select new
-                                            {
-                                                ID_PACIENTE = e.ID_PACIENTE,
-                                                ID_FAMILIAR = f.ID_FAM_RESPOSABLE,
-                                                ID_CUENTA = cuenta.ID_CUENTA,
-                                                ID_CAT_CUARTO=cuarto.ID_CATALOGO_CUARTO,
-                                                NOMBRE = PERSONA.NOMBRE,
-                                                APATERNO = PERSONA.A_PATERNO,
-                                                AMATERNO = PERSONA.A_MATERNO,
-                                                F_NACIMIENTO = PERSONA.F_NACIMIENTO,
-                                                CALLE = PERSONA.CALLE,
-                                                ESTADO = estado.nombre,
-                                                MUNICIPIO=PERSONA.NOMMUNICIPIO,
-                                                CURP = PERSONA.CURP,
-                                                TIPOPACIENTE = e.TIPO_PACIENTE,
-                                                RESPONSABLE = f.PERSONA.NOMBRE,
-                                                TELEFONO = f.PERSONA.T_CELULAR,
-                                                PARENTESCO = f.PARENTESCO,
-                                                CUENTAA = cuenta.TOTAL,
-                                                SALDO = cuenta.SALDO,
-                                                CUARTOO = cuarto.NOMBRE_CUARTO
-                                            }).ToList();
+                                        join e in BaseDatos.GetBaseDatos().PACIENTES
+                                        on PERSONA.ID_PERSONA equals e.PERSONAID
+                                        join f in BaseDatos.GetBaseDatos().FAM_RESPONSABLES
+                                        on e.ID_PACIENTE equals f.PACIENTEID
+                                        join cuenta in BaseDatos.GetBaseDatos().CUENTAS
+                                        on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        join estado in BaseDatos.GetBaseDatos().ESTADOS
+                                        on PERSONA.ESTADO equals estado.id
+                                        join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
+                                        on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO
+
+                                        select new
+                                        {
+                                            ID_PACIENTE = e.ID_PACIENTE,
+                                            ID_FAMILIAR = f.ID_FAM_RESPOSABLE,
+                                            ID_CUENTA = cuenta.ID_CUENTA,
+                                            ID_CAT_CUARTO = cuarto.ID_CATALOGO_CUARTO,
+                                            NOMBRE = PERSONA.NOMBRE,
+                                            APATERNO = PERSONA.A_PATERNO,
+                                            AMATERNO = PERSONA.A_MATERNO,
+                                            F_NACIMIENTO = PERSONA.F_NACIMIENTO,
+                                            CALLE = PERSONA.CALLE,
+                                            ESTADO = estado.nombre,
+                                            MUNICIPIO = PERSONA.NOMMUNICIPIO,
+                                            CURP = PERSONA.CURP,
+                                            TIPOPACIENTE = e.TIPO_PACIENTE,
+                                            RESPONSABLE = f.PERSONA.NOMBRE,
+                                            TELEFONO = f.PERSONA.T_CELULAR,
+                                            PARENTESCO = f.PARENTESCO,
+                                            CUENTAA = cuenta.TOTAL,
+                                            SALDO = cuenta.SALDO,
+                                            CUARTOO = cuarto.NOMBRE_CUARTO
+                                        }).ToList();
         }
         public void VistaPacientesPersonasActivos()
         {
@@ -159,7 +160,7 @@ namespace Medica2.Administracion.Pacientes
             {
                 if (sender == itemEliminar)
                 {
-                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el paciente?", "Administracion", MessageBoxButton.YesNo);
+                    MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el paciente?", "Administración", MessageBoxButton.YesNo);
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
@@ -178,16 +179,17 @@ namespace Medica2.Administracion.Pacientes
                                     //BaseDatos.GetBaseDatos().PACIENTES.Remove(paciente);
                                     paciente.PERSONA.ESTADOPERSONA = "Inactivo";
                                     BaseDatos.GetBaseDatos().SaveChanges();
-                                    MessageBox.Show("Se ha eliminado el paciente", "Administracion");
+                                    MessageBox.Show("Se ha eliminado el paciente", "Administración");
                                     VistaPacientesPersonasActivos();
                                 }
-                                else {
-                                    MessageBox.Show("No se puede ELIMINAR \n Por que la cuenta no ha sido saldada");
+                                else
+                                {
+                                    MessageBox.Show("No se puede ELIMINAR \n La cuenta no ha sido saldada");
                                 }
-                               
-                                
+
+
                             }
-                           
+
 
                             ////
 
@@ -226,11 +228,11 @@ namespace Medica2.Administracion.Pacientes
         private void checkBoxtodosP_Checked(object sender, RoutedEventArgs e)
         {
 
-            if(checkBoxtodosP.IsChecked==true)
+            if (checkBoxtodosP.IsChecked == true)
             {
                 VistaPacientesPersonas();
             }
-            
+
         }
 
         private void checkBoxtodosP_Unchecked(object sender, RoutedEventArgs e)

@@ -50,6 +50,8 @@ namespace Medica2.Administracion.Depositos
             txtSaldo.Text = cuenta.SALDO.ToString();
             BaseDatos.GetBaseDatos().SaveChanges();
 
+
+
             btnEditar.Visibility = Visibility.Visible;
             btnGuardar.Visibility = Visibility.Hidden;
 
@@ -62,10 +64,11 @@ namespace Medica2.Administracion.Depositos
                                         on PERSONA.ID_PERSONA equals e.PERSONAID
                                         join cuenta in BaseDatos.GetBaseDatos().CUENTAS
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        where PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
                                         }).ToList();
@@ -76,6 +79,7 @@ namespace Medica2.Administracion.Depositos
             autoPaciente.SearchText = String.Empty;
             txtMonto.Text = String.Empty;
             txtConcepto.Text = String.Empty;
+            txtSaldo.Text = String.Empty;
         }
 
         void Guardar()
@@ -83,17 +87,20 @@ namespace Medica2.Administracion.Depositos
             if (autoPaciente.SelectedItem == null)
             {
                 MessageBox.Show("Selecciona a un paciente");
-            }else
+            }
+            else
             {
                 if (txtMonto.Text == "")
                 {
                     MessageBox.Show("Ingresa el monto");
-                }else
+                }
+                else
                 {
                     if (txtConcepto.Text == "")
                     {
                         MessageBox.Show("Ingresa el concepto");
-                    }else
+                    }
+                    else
                     {
                         dynamic paciente = autoPaciente.SelectedItem;
                         int idc = paciente.ID_CUENTA;
@@ -115,12 +122,17 @@ namespace Medica2.Administracion.Depositos
 
 
                             cue.SALDO = ((cue.SALDO) - (Decimal.Parse(txtMonto.Text)));
+                            if (cue.SALDO == 0)
+                            {
+                                cue.PACIENTE.PERSONA.ESTADOPERSONA = "Inactivo";
+                            }
                             BaseDatos.GetBaseDatos().SaveChanges();
                             MessageBox.Show("Registro exitoso");
                             Limpiar();
-                        }else
+                        }
+                        else
                         {
-                            MessageBox.Show("El monto no pede ser mayor al saldo, Saldo: "+ cue.SALDO);
+                            MessageBox.Show("El monto no pede ser mayor al saldo, Saldo: " + cue.SALDO);
                         }
                     }
                 }
@@ -137,20 +149,20 @@ namespace Medica2.Administracion.Depositos
             {
                 if (txtConcepto.Text == "")
                 {
-                   MessageBox.Show("Ingresa el concepto");
+                    MessageBox.Show("Ingresa el concepto");
                 }
                 else
                 {
-                        
+
                     var cue = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuen);
 
                     if (Decimal.Parse(txtMonto.Text) <= cue.SALDO)
                     {
-                        
+
                         cue.SALDO = ((cue.SALDO) - (Decimal.Parse(txtMonto.Text)));
                         cue.FECHA_MOD = fr;
                         BaseDatos.GetBaseDatos().SaveChanges();
-                        MessageBox.Show("Actualizacion exitosa");
+                        MessageBox.Show("Actualización exitosa");
                         Limpiar();
                         ConsultarDepositosAplicados cda = new ConsultarDepositosAplicados();
                         cda.Show();
@@ -158,12 +170,12 @@ namespace Medica2.Administracion.Depositos
                     }
                     else
                     {
-                        MessageBox.Show("El monto no pede ser mayor al saldo, Saldo: " + cue.SALDO);
+                        MessageBox.Show("El monto no puede ser mayor al saldo, Saldo: " + cue.SALDO);
                     }
                 }
             }
         }
-        
+
 
         private void validarLetras(object sender, TextCompositionEventArgs e)
         {

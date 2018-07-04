@@ -23,13 +23,13 @@ namespace Medica2.Administracion.EquipoHospital
     /// </summary>
     public partial class ConsultaCatalogoEquipoHospital : Window
     {
-        
+
         public ConsultaCatalogoEquipoHospital()
         {
             InitializeComponent();
 
             VistaGrid();
-            rgvConsultaEquipoHospital.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
@@ -56,13 +56,14 @@ namespace Medica2.Administracion.EquipoHospital
                                                          ID_MEDICO = med.ID_MEDICO,
                                                          IDCEUNTA = cuent.ID_CUENTA,
                                                          ID_PACIENTE = cuent.PACIENTE.ID_PACIENTE,
+
                                                          NOMMEDICO = med.PERSONA.NOMBRE + " " + med.PERSONA.A_PATERNO + " " + med.PERSONA.A_MATERNO,
-                                                         NOMUSU = usu.EMPLEADO.PERSONA.NOMBRE,
                                                          FECHA = EQUIPOH.FECHA_CREACION,
                                                          TOTA = EQUIPOH.TOTAL,
                                                          TOTALCUENTA = cuent.TOTAL,
                                                          SALD = cuent.SALDO,
-                                                         PACIEN = cuent.PACIENTE.PERSONA.NOMBRE + " " + cuent.PACIENTE.PERSONA.A_PATERNO + " " + cuent.PACIENTE.PERSONA.A_MATERNO
+                                                         PACIEN = cuent.PACIENTE.PERSONA.NOMBRE + " " + cuent.PACIENTE.PERSONA.A_PATERNO + " " + cuent.PACIENTE.PERSONA.A_MATERNO,
+                                                         NOMUSU = usu.EMPLEADO.PERSONA.NOMBRE + ' ' + usu.EMPLEADO.PERSONA.A_PATERNO + ' ' + usu.EMPLEADO.PERSONA.A_MATERNO
 
                                                      });
         }
@@ -94,7 +95,7 @@ namespace Medica2.Administracion.EquipoHospital
 
             if (sender == itemEliminar)
             {
-                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el equipo hospital?", "Administracion", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Esta seguro de eliminar el equipo hospital?", "Administración", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
@@ -115,7 +116,7 @@ namespace Medica2.Administracion.EquipoHospital
                             BaseDatos.GetBaseDatos().EQUIPO_HOSPITAL.Remove(equip);
                             BaseDatos.GetBaseDatos().SaveChanges();
                         }
-                        MessageBox.Show("Se ha eliminado el Equipo Hospital", "Administracion");
+                        MessageBox.Show("Se ha eliminado el Equipo Hospital", "Administración");
                         VistaGrid();
                         break;
 

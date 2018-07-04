@@ -1,6 +1,6 @@
 ﻿namespace Medica2.Administracion.Reportes
 {
-    partial class Medic
+    partial class P_H_R
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.Reporting.TypeReportSource typeReportSource1 = new Telerik.Reporting.TypeReportSource();
             this.reportViewer1 = new Telerik.ReportViewer.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
@@ -38,23 +37,18 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ReportEngineConnection = "engine=Embedded";
-            typeReportSource1.Parameters.Add(new Telerik.Reporting.Parameter("Nombre", null));
-            typeReportSource1.TypeName = "Medica2.Administracion.Reportes.Report1, Medica2, Version=1.0.0.0, Culture=neutra" +
-    "l, PublicKeyToken=null";
-            this.reportViewer1.ReportSource = typeReportSource1;
-            this.reportViewer1.Size = new System.Drawing.Size(948, 489);
+            this.reportViewer1.Size = new System.Drawing.Size(910, 515);
             this.reportViewer1.TabIndex = 0;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
-            // Medic
+            // P_H_R
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 489);
+            this.ClientSize = new System.Drawing.Size(910, 515);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "Medic";
-            this.Text = "Medic";
+            this.Name = "P_H_R";
+            this.Text = "P_H_R";
             this.ResumeLayout(false);
 
         }

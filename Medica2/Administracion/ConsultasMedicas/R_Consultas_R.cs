@@ -1,4 +1,4 @@
-namespace Medica2.Administracion.Reportes
+namespace Medica2.Administracion.ConsultasMedicas
 {
     using System;
     using System.ComponentModel;
@@ -8,11 +8,11 @@ namespace Medica2.Administracion.Reportes
     using Telerik.Reporting.Drawing;
 
     /// <summary>
-    /// Summary description for Report1.
+    /// Summary description for R_Consultas_R.
     /// </summary>
-    public partial class Report1 : Telerik.Reporting.Report
+    public partial class R_Consultas_R : Telerik.Reporting.Report
     {
-        public Report1()
+        public R_Consultas_R()
         {
             //
             // Required for telerik Reporting designer support

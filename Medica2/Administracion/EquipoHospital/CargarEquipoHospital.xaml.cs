@@ -19,7 +19,7 @@ namespace Medica2.Administracion.EquipoHospital
     /// <summary>
     /// Lógica de interacción para CargarEquipoHospital.xaml
     /// </summary>
-   
+
     public partial class CargarEquipoHospital : Window
     {
         Decimal total;
@@ -33,7 +33,7 @@ namespace Medica2.Administracion.EquipoHospital
             llenarAutocompletes();
         }
 
-        public CargarEquipoHospital(int ids,int idme, int pac, int idc)
+        public CargarEquipoHospital(int ids, int idme, int pac, int idc)
         {
             InitializeComponent();
             llenarAutocompletes();
@@ -42,13 +42,13 @@ namespace Medica2.Administracion.EquipoHospital
             idcue = idc;
 
             llenarVista();
-            var equipoh = BaseDatos.GetBaseDatos().EQUIPO_HOSPITAL.Find(ideh1);           
-            
+            var equipoh = BaseDatos.GetBaseDatos().EQUIPO_HOSPITAL.Find(ideh1);
+
             var medico = BaseDatos.GetBaseDatos().MEDICOS.Find(idme);
-            automedico.SearchText = medico.PERSONA.NOMBRE + " " + medico.PERSONA.A_PATERNO+ " " + medico.PERSONA.A_MATERNO;
+            automedico.SearchText = medico.PERSONA.NOMBRE + " " + medico.PERSONA.A_PATERNO + " " + medico.PERSONA.A_MATERNO;
 
             var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(pac);
-            autopaceinte.SearchText = paciente.PERSONA.NOMBRE+" "+ paciente.PERSONA.A_PATERNO + " "+ paciente.PERSONA.A_MATERNO;
+            autopaceinte.SearchText = paciente.PERSONA.NOMBRE + " " + paciente.PERSONA.A_PATERNO + " " + paciente.PERSONA.A_MATERNO;
             autopaceinte.IsEnabled = false;
 
             autoequipoh.IsEnabled = true;
@@ -69,6 +69,7 @@ namespace Medica2.Administracion.EquipoHospital
             automedico.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
                                       join e in BaseDatos.GetBaseDatos().MEDICOS
                                       on PERSONA.ID_PERSONA equals e.PERSONAID
+                                      where PERSONA.ESTADOPERSONA == "Activo"
                                       select new
                                       {
                                           ID_MEDICO = e.ID_MEDICO,
@@ -80,10 +81,11 @@ namespace Medica2.Administracion.EquipoHospital
                                         on PERSONA.ID_PERSONA equals e.PERSONAID
                                         join cuenta in BaseDatos.GetBaseDatos().CUENTAS
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
+                                        where PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
-                                            NOMBRE = PERSONA.NOMBRE+" "+PERSONA.A_PATERNO+" "+PERSONA.A_MATERNO,
+                                            NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_CUENTA = cuenta.ID_CUENTA
                                         }).ToList();
@@ -113,7 +115,7 @@ namespace Medica2.Administracion.EquipoHospital
                                                  ID_DETALLE = deqh.ID_DETALLE_EQUIPO_HOSPITAL
 
                                              });
-          
+
         }
 
         void limpiar()
@@ -142,14 +144,15 @@ namespace Medica2.Administracion.EquipoHospital
         {
             if (automedico.SelectedItem == null)
             {
-                MessageBox.Show("Selecciona un Medico");
+                MessageBox.Show("Selecciona un Médico");
             }
             else
             {
                 if (autopaceinte.SelectedItem == null)
                 {
                     MessageBox.Show("Selecciona un Paciente");
-                }else
+                }
+                else
                 {
                     dynamic medico = automedico.SelectedItem;
                     int idmed = medico.ID_MEDICO;
@@ -177,7 +180,7 @@ namespace Medica2.Administracion.EquipoHospital
                     btnNuevoeqh.IsEnabled = false;
                 }
             }
-           
+
         }
 
         void Agregar()
@@ -188,14 +191,14 @@ namespace Medica2.Administracion.EquipoHospital
             }
             else
             {
-                if(txtcosto.Text=="")
+                if (txtcosto.Text == "")
                 {
                     MessageBox.Show("Ingresa el costo del Equipo Hospital");
                 }
                 else
                 {
                     int idequipoh = ((CATALOGO_EQUIPO_HOSPITAL)autoequipoh.SelectedItem).ID_EQUIPO_HOSPITAL;
-                    var equipohospital=BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idequipoh);
+                    var equipohospital = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idequipoh);
 
                     DETALLE_EQUIPO_HOSPITAL deh = new DETALLE_EQUIPO_HOSPITAL
                     {
@@ -228,14 +231,14 @@ namespace Medica2.Administracion.EquipoHospital
             }
             else
             {
-                if(txtcosto.Text=="")
+                if (txtcosto.Text == "")
                 {
                     MessageBox.Show("Ingresa el costo del Equipo Hospital");
                 }
                 else
                 {
                     int idequipoh = ((CATALOGO_EQUIPO_HOSPITAL)autoequipoh.SelectedItem).ID_EQUIPO_HOSPITAL;
-                    var equipohospital=BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idequipoh);
+                    var equipohospital = BaseDatos.GetBaseDatos().CATALOGO_EQUIPO_HOSPITAL.Find(idequipoh);
 
                     dynamic detalle = rgvEquipoHospital.SelectedItem;
                     int iddetalle = detalle.ID_DETALLE;
@@ -270,14 +273,14 @@ namespace Medica2.Administracion.EquipoHospital
 
             }
         }
-       
+
         void Finalizar()
         {
             var cuentita = BaseDatos.GetBaseDatos().CUENTAS.Find(idcue);
             cuentita.TOTAL = cuentita.TOTAL + total;
             cuentita.SALDO = cuentita.SALDO + total;
             BaseDatos.GetBaseDatos().SaveChanges();
-            MessageBox.Show("Se finalizo el proceso");
+            MessageBox.Show("Se ha finalizado el proceso");
 
             var equipo = BaseDatos.GetBaseDatos().EQUIPO_HOSPITAL.Find(ideh1);
             equipo.TOTAL = total;
@@ -285,14 +288,14 @@ namespace Medica2.Administracion.EquipoHospital
 
             limpiartodo();
 
-           automedico.IsEnabled = true;
-           autopaceinte.IsEnabled = true;
-           autoequipoh.IsEnabled = false;
-           btnAgregar.IsEnabled = false;
+            automedico.IsEnabled = true;
+            autopaceinte.IsEnabled = true;
+            autoequipoh.IsEnabled = false;
+            btnAgregar.IsEnabled = false;
             btnFinalizar.IsEnabled = false;
             btnNuevoeqh.IsEnabled = true;
-        
-            
+
+
         }
 
         void Eliminar()
@@ -305,7 +308,7 @@ namespace Medica2.Administracion.EquipoHospital
 
                 //Actualizamos el total
                 total = total - (Decimal.Parse(detalleEH.COSTO.ToString()));
-                txtTotal.Text = total.ToString();                
+                txtTotal.Text = total.ToString();
 
                 //Eliminar el detalle equipo hospital
                 BaseDatos.GetBaseDatos().DETALLE_EQUIPO_HOSPITAL.Remove(detalleEH);
@@ -328,6 +331,7 @@ namespace Medica2.Administracion.EquipoHospital
             {
                 itemEditar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
             }
         }
 
@@ -378,8 +382,8 @@ namespace Medica2.Administracion.EquipoHospital
                         int idpac = detalle.IDCEUNTA;
                         var pac = BaseDatos.GetBaseDatos().CUENTAS.Find(idpac);
                         autopaceinte.SearchText = pac.PACIENTE.PERSONA.NOMBRE + " " + pac.PACIENTE.PERSONA.A_PATERNO + " " + pac.PACIENTE.PERSONA.A_MATERNO;
-                        
-                        
+
+
 
                         //Se actualizan los totales
                         total = total - (Decimal.Parse(detallees.COSTO.ToString()));
@@ -405,8 +409,8 @@ namespace Medica2.Administracion.EquipoHospital
         {
             NuevoEquipoHospital();
         }
-        
-       
+
+
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             Agregar();

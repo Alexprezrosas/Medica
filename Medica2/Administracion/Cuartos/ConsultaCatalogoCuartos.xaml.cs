@@ -23,14 +23,27 @@ namespace Medica2.Administracion.Cuartos
     /// </summary>
     public partial class ConsultaCatalogoCuartos : Window
     {
-        
+
         public ConsultaCatalogoCuartos()
         {
             InitializeComponent();
 
             //RadConsultarCatalogoCuartos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
-            MostrarCuartos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
+            llenar_vistaCuartos();
+        }
 
+        void llenar_vistaCuartos()
+        {
+            MostrarCuartos.ItemsSource = (from ctcua in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
+                                          where ctcua.STATUS == "Activo"
+                                          select new
+                                          {
+                                              IDCTCUA = ctcua.ID_CATALOGO_CUARTO,
+                                              NOMBRE_CUARTO = ctcua.NOMBRE_CUARTO,
+                                              DESCRIPCION = ctcua.DESCRIPCION,
+                                              COSTO = ctcua.COSTO,
+                                              FECHA_CREACION = ctcua.FECHA_CREACION
+                                          });
         }
         void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
         {
@@ -79,6 +92,8 @@ namespace Medica2.Administracion.Cuartos
             {
                 itemAgregar.IsEnabled = true;
                 itemEliminar.IsEnabled = true;
+                itemEditar.IsEnabled = true;
+
             }
 
         }
@@ -101,20 +116,41 @@ namespace Medica2.Administracion.Cuartos
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
-                            int idcuarto = (MostrarCuartos.SelectedItem as CATALOGO_CUARTOS).ID_CATALOGO_CUARTO;
-                            if (MostrarCuartos.SelectedItem != null)
+
+                            dynamic ctacuar = MostrarCuartos.SelectedItem;
+                            int idcatalog = ctacuar.IDCTCUA;
+
                             {
-                                var ccuarto = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuarto);
-                                BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Remove(ccuarto);
+                                var ccuarto = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcatalog);
+                                ccuarto.STATUS = "Inactivo";
                                 BaseDatos.GetBaseDatos().SaveChanges();
                             }
                             MessageBox.Show("Se ha eliminado el Cuarto", "Administracion Cuartos");
-                            MostrarCuartos.ItemsSource = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.ToList();
+                            llenar_vistaCuartos();
                             break;
 
                         case MessageBoxResult.No:
 
                             break;
+                    }
+                }
+                else
+                {
+                    if (sender == itemEditar)
+                    {
+                        if (MostrarCuartos.SelectedItem != null)
+                        {
+                            dynamic ctacuar = MostrarCuartos.SelectedItem;
+                            int idcatalog = ctacuar.IDCTCUA;
+                            //int idcuart = ((CATALOGO_CUARTOS)MostrarCuartos.SelectedItem).ID_CATALOGO_CUARTO;
+                            //var cuartito = BaseDatos.GetBaseDatos().CATALOGO_CUARTOS.Find(idcuart);
+
+
+                            NuevoCuarto obj = new NuevoCuarto(idcatalog, false);
+                            obj.Show();
+                            this.Close();
+                        }
+
                     }
                 }
             }
