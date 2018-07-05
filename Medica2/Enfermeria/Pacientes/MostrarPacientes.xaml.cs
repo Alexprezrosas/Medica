@@ -23,9 +23,19 @@ namespace Medica2.Enfermeria.Pacientes
     /// </summary>
     public partial class MostrarPacientes : Window
     {
+        int idUsuario;
         public MostrarPacientes()
         {
             InitializeComponent();
+            VistaPacientesPersonas();
+
+            rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public MostrarPacientes(int idu)
+        {
+            InitializeComponent();
+            idUsuario = idu;
             VistaPacientesPersonas();
 
             rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
@@ -51,6 +61,7 @@ namespace Medica2.Enfermeria.Pacientes
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
                                         join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
                                         on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO
+                                        where e.PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,
@@ -108,7 +119,7 @@ namespace Medica2.Enfermeria.Pacientes
                     int idpac = pac.ID_PACIENTE;
                     String idcur = pac.CUARTO;
                     int idcuen = pac.ID_CUENTA;
-                    NuevoSuministro ns = new NuevoSuministro(idpac, idcur, idcuen);
+                    NuevoSuministro ns = new NuevoSuministro(idpac, idcur, idcuen, idUsuario);
                     ns.Show();
                     this.Close();
                 }

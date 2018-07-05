@@ -36,8 +36,8 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTENOM}" Header="PACIENTE" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PPATERNO}" Header="PPATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PMATERNO}" Header="PMATENRO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PPATERNO}" Header="PATENRO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PMATERNO}" Header="MATENRO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MONTO}" Header="MONTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CONCEPTO}" Header="CONCEPTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE CUENTA"/>

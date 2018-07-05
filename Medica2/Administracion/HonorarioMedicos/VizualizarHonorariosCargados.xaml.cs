@@ -27,6 +27,25 @@ namespace Medica2.Administracion.HonorarioMedicos
             InitializeComponent();
             VistaHonorarios();
         }
+
+        public VizualizarHonorariosCargados(int idu)
+        {
+            InitializeComponent();
+            VistaHonorarios();
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         public void VistaHonorarios()
         {
             rgvVHonorariosc.ItemsSource = (from hono in BaseDatos.GetBaseDatos().HONORARIOS_MEDICOS

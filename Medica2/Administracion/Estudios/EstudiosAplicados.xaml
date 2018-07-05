@@ -20,7 +20,7 @@
 
     <Grid>
 
-        <Label x:Name="lblTitulo" Content="Consulta de cirugias aplicadas" HorizontalAlignment="Left" Margin="259,10,-181.4,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Consulta Estudios Aplicados" HorizontalAlignment="Left" Margin="290,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
         <telerik:RadGridView x:Name="rgvEstudiosAplicados"  HorizontalAlignment="Left" Margin="31,66,-463.4,-69.6" VerticalAlignment="Top" 
         Width="726" Height="274" 
@@ -40,14 +40,13 @@
 
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MEDICO SOLICITANTE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ID_PACIEN}" Header="PACIENTE" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MÉDICO SOLICITANTE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACI}" Header="PACIENTE" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTA}" Header="TOTAL DE ESTUDIOS" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE LA CUENTA"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO de LA CUENTA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO DE LA CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIO}" Header="USUARIO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REALIZACION"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REALIZACIÓN"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 

@@ -25,10 +25,18 @@ namespace Medica2.Administracion.Estudios
         Decimal total;
         int idcue;
         DateTime fr = DateTime.Now;
+        int idUsuario;
         public CargarEstudios()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public CargarEstudios(int idu)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public CargarEstudios(int ide, int idm, int idp, int idc)
@@ -727,7 +735,7 @@ namespace Medica2.Administracion.Estudios
 
             ESTUDIO obj = new ESTUDIO
             {
-                USUARIOID = 2,
+                USUARIOID = idUsuario,
                 FECHA_CREACION = fr
             };
             BaseDatos.GetBaseDatos().ESTUDIOS.Add(obj);

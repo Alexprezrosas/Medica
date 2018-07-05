@@ -23,11 +23,31 @@ namespace Medica2.Farmacia.Compras
     /// </summary>
     public partial class ConsultaCompras : Window
     {
+        int idUsuario;
         public ConsultaCompras()
         {
             InitializeComponent();
             VistaVentas();
             rgvCompras.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public ConsultaCompras(int idu)
+        {
+            InitializeComponent();
+            VistaVentas();
+            rgvCompras.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Farmaceutico")
+                {
+                    GridContextMenu2.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)

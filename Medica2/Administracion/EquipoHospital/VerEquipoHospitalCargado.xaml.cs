@@ -1,5 +1,4 @@
-﻿using AccessoDB;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,19 +18,44 @@ using Telerik.Windows.Controls.GridView.SearchPanel;
 namespace Medica2.Administracion.EquipoHospital
 {
     /// <summary>
-    /// Lógica de interacción para ConsultaCatalogoEquipoHospital.xaml
+    /// Lógica de interacción para VerEquipoHospitalCargado.xaml
     /// </summary>
-    public partial class ConsultaCatalogoEquipoHospital : Window
+    public partial class VerEquipoHospitalCargado : Window
     {
-
-        public ConsultaCatalogoEquipoHospital()
+        public VerEquipoHospitalCargado()
         {
             InitializeComponent();
-            //VistaGrid();
+            VistaGrid();
 
         }
 
-   
+        public VerEquipoHospitalCargado(int idu)
+        {
+            InitializeComponent();
+            VistaGrid();
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
+        private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
+        {
+            if (e.NewVisibility == Visibility.Collapsed)
+            {
+                var clearSearchValue = GridViewSearchPanelCommands.ClearSearchValue as RoutedUICommand;
+                clearSearchValue.Execute(null, rgvConsultaEquipoHospital.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
+            }
+        }
+
         void VistaGrid()
         {
             rgvConsultaEquipoHospital.ItemsSource = (from EQUIPOH in BaseDatos.GetBaseDatos().EQUIPO_HOSPITAL
@@ -41,6 +65,10 @@ namespace Medica2.Administracion.EquipoHospital
                                                      on EQUIPOH.CUENTAID equals cuent.ID_CUENTA
                                                      join usu in BaseDatos.GetBaseDatos().USUARIOS
                                                      on EQUIPOH.USUARIOID equals usu.ID_USUARIO
+                                                     join em in BaseDatos.GetBaseDatos().EMPLEADOS
+                                                     on usu.EMPLEADOID equals em.ID_EMPLEADO
+                                                     join per in BaseDatos.GetBaseDatos().PERSONAS
+                                                     on em.PERSONAID equals per.ID_PERSONA
                                                      select new
                                                      {
                                                          ID_EQUIPO_H = EQUIPOH.ID_EQUIPO_HOSPITAL,
@@ -54,20 +82,10 @@ namespace Medica2.Administracion.EquipoHospital
                                                          TOTALCUENTA = cuent.TOTAL,
                                                          SALD = cuent.SALDO,
                                                          PACIEN = cuent.PACIENTE.PERSONA.NOMBRE + " " + cuent.PACIENTE.PERSONA.A_PATERNO + " " + cuent.PACIENTE.PERSONA.A_MATERNO,
-                                                         NOMUSU = usu.EMPLEADO.PERSONA.NOMBRE + ' ' + usu.EMPLEADO.PERSONA.A_PATERNO + ' ' + usu.EMPLEADO.PERSONA.A_MATERNO
+                                                         NOMUSU = per.NOMBRE + " " + per.A_PATERNO + " " + per.A_MATERNO
 
                                                      });
         }
-
-        private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
-        {
-            if (e.NewVisibility == Visibility.Collapsed)
-            {
-                var clearSearchValue = GridViewSearchPanelCommands.ClearSearchValue as RoutedUICommand;
-                clearSearchValue.Execute(null, rgvConsultaEquipoHospital.ChildrenOfType<GridViewSearchPanel>().FirstOrDefault());
-            }
-        }
-
 
         private GridViewRow ClickedRow
         {
@@ -150,3 +168,4 @@ namespace Medica2.Administracion.EquipoHospital
 
     }
 }
+

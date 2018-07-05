@@ -73,7 +73,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SUBTOTAL}" Header="SUBTOTAL"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Button x:Name="btnEditar" Content="Actualizar" HorizontalAlignment="Left" Margin="645,193,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnEditar_Click" Visibility="Hidden"/>
+        <Button x:Name="btnEditar" Content="Actualizar" HorizontalAlignment="Left" Margin="645,205,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="btnEditar_Click" Visibility="Hidden"/>
         <Label x:Name="lblExistencias" Content="Existencias" HorizontalAlignment="Left" Margin="476,101,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox x:Name="txtExistencias" HorizontalAlignment="Left" Height="23" Margin="645,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214" IsReadOnly="True" Grid.Column="1"
             KeyDown="validarDecimal"/>

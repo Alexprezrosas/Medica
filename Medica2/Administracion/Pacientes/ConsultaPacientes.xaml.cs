@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,7 +24,7 @@ namespace Medica2.Administracion.Pacientes
     /// </summary>
     public partial class ConsultaPacientes : Window
     {
-
+        int idUsuario;
         public ConsultaPacientes()
         {
             InitializeComponent();
@@ -31,6 +32,34 @@ namespace Medica2.Administracion.Pacientes
             VistaPacientesPersonasActivos();
 
             rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public ConsultaPacientes(int idu)
+        {
+            InitializeComponent();
+            VistaPacientesPersonasActivos();
+            rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+            //// Creamos el timer y le seteamos el intervalo
+            //System.Timers.Timer oTimer = new System.Timers.Timer();
+            //oTimer.Interval = 5000;
+
+            //oTimer.Elapsed += EventoIntervalo;
+
+            //oTimer.Enabled = true;
+
+            //Console.ReadLine();
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)
@@ -115,6 +144,11 @@ namespace Medica2.Administracion.Pacientes
                                             CUARTOO = cuarto.NOMBRE_CUARTO
                                         }).ToList();
         }
+
+        //private static void EventoIntervalo(Object source, System.Timers.ElapsedEventArgs e)
+        //{
+        //    MessageBox.Show("Webitos");
+        //}
 
         /////////////////////
 

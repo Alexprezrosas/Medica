@@ -23,11 +23,32 @@ namespace Medica2.Farmacia.Ventas
     /// </summary>
     public partial class ConsultaVentas : Window
     {
+        int idUsuario;
         public ConsultaVentas()
         {
             InitializeComponent();
             VistaVentas();
             rgvVentas.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public ConsultaVentas(int idu)
+        {
+            InitializeComponent();
+            VistaVentas();
+            rgvVentas.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Farmaceutico")
+                {
+                    GridContextMenu2.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)

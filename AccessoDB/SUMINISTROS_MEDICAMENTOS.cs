@@ -19,19 +19,19 @@ namespace AccessoDB
 
         public int CUENTAID { get; set; }
 
-        public int ENFERMERAID { get; set; }
-
         public DateTime? FECHA_CREACION { get; set; }
 
         public DateTime? FECHA_MOD { get; set; }
 
         public decimal? TOTAL { get; set; }
 
+        public int? USUARIOID { get; set; }
+
         public virtual CUENTA CUENTA { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLE_SUMINISTROS_MEDICAMENTOS> DETALLE_SUMINISTROS_MEDICAMENTOS { get; set; }
 
-        public virtual ENFERMERA ENFERMERA { get; set; }
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

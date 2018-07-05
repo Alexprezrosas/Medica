@@ -25,12 +25,19 @@ namespace Medica2.Administracion.EquipoHospital
         Decimal total;
         int ideh1;
         int idcue;
-
+        int idUsuario;
         DateTime fr = DateTime.Now;
         public CargarEquipoHospital()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public CargarEquipoHospital(int idu)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public CargarEquipoHospital(int ids, int idme, int pac, int idc)
@@ -164,7 +171,7 @@ namespace Medica2.Administracion.EquipoHospital
                     {
                         MEDICOID = idmed,
                         CUENTAID = idcuent,
-                        USUARIOID = 2,
+                        USUARIOID = idUsuario,
                         FECHA_CREACION = fr
 
                     };

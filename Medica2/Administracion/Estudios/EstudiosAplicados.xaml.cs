@@ -22,11 +22,32 @@ namespace Medica2.Administracion.Estudios
     /// </summary>
     public partial class EstudiosAplicados : Window
     {
+
         public EstudiosAplicados()
         {
             InitializeComponent();
             VistaGrid();
             rgvEstudiosAplicados.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public EstudiosAplicados(int idu)
+        {
+            InitializeComponent();
+            VistaGrid();
+            rgvEstudiosAplicados.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEditar.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)

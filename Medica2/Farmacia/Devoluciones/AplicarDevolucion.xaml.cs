@@ -32,12 +32,14 @@ namespace Medica2.Farmacia.Devoluciones
         DateTime fechareg = DateTime.Now;
         int iddetalle;
         int nexi;
+        int idUsuario;
 
-        public AplicarDevolucion(int idpac, String cuarto, int idcuen)
+        public AplicarDevolucion(int idpac, String cuarto, int idcuen, int idu)
         {
             InitializeComponent();
             idpaciente = idpac;
             idcuenta = idcuen;
+            idUsuario = idu;
 
             //Asignacion de cuarto y paciente
             txtCuarto.Text = cuarto;
@@ -90,6 +92,8 @@ namespace Medica2.Farmacia.Devoluciones
                                         on cuenta.PACIENTEID equals paciente.ID_PACIENTE
                                         join medicamento in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
                                         on detalle.MEDICAMENTOID equals medicamento.ID_MEDICAMENTO
+                                        join us in BaseDatos.GetBaseDatos().USUARIOS
+                                        on SUMINISTROS_MEDICAMENTOS.USUARIOID equals us.ID_USUARIO
                                         where SUMINISTROS_MEDICAMENTOS.CUENTAID == idcuenta
                                         select new
                                         {
@@ -101,13 +105,12 @@ namespace Medica2.Farmacia.Devoluciones
                                             TIPOPACIENTE = paciente.TIPO_PACIENTE,
                                             CUENTAA = cuenta.TOTAL,
                                             ID_MEDICAMENTO = medicamento.ID_MEDICAMENTO,
-                                            NOMMEDICAMENTO = medicamento.NOMBRE_MEDI,
-                                            UMEDIDA = medicamento.U_MEDIDA,
+                                            NOMMEDICAMENTO = medicamento.NOMBRE_MEDI + " " + medicamento.COMENTARIO + " " + medicamento.U_MEDIDA,
                                             EXISTENCIA = medicamento.CANTIDAD,
                                             CANTIDAD = detalle.CANTIDAD,
                                             COSTO = detalle.PRECIO,
                                             FECHA = detalle.FECHA_CREACION,
-                                            ENFERMERA = SUMINISTROS_MEDICAMENTOS.ENFERMERA.PERSONA.NOMBRE,
+                                            USUARIO = us.EMPLEADO.PERSONA.NOMBRE + " " + us.EMPLEADO.PERSONA.A_PATERNO + " " + us.EMPLEADO.PERSONA.A_MATERNO,
                                             PRECIO = detalle.PRECIO
                                         }).ToList();
         }
@@ -126,12 +129,7 @@ namespace Medica2.Farmacia.Devoluciones
 
         void Guardar()
         {
-            if (autoMedicamento.SelectedItem == null)
-            {
-                MessageBox.Show("Selecciona un medicamento");
-            }else
-            {
-                if (txtCantidad.Text == "")
+            if (txtCantidad.Text == "")
                 {
                     MessageBox.Show("Ingresa la cantidad a devolver");
                 }else
@@ -149,16 +147,22 @@ namespace Medica2.Farmacia.Devoluciones
                             if (Convert.ToInt32(txtCantidad.Text) == cantidad)
                             {
                                 nexi = cantidad;
+
+                                DEVOLUCIONE dv = new DEVOLUCIONE
+                                {
+                                    MEDICMANETOID = idmed,
+                                    CANTIDAD = Int32.Parse(txtCantidad.Text),
+                                    USUARIOID = idUsuario,
+                                    FECHA_CREACION = fechareg,
+                                    CUENTAID = idcuenta
+                                };
+                                BaseDatos.GetBaseDatos().DEVOLUCIONES.Add(dv);
+                                BaseDatos.GetBaseDatos().SaveChanges();
+
                                 //Actualizamos existencias
                                 var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmed);
                                 medic.CANTIDAD = medic.CANTIDAD + cantidad;
-
-                                //Actualizamos el detalle suministro
-                                //var dtalle = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
-                                //dtalle.CANTIDAD = dtalle.CANTIDAD - nexi;
-                                //dtalle.FECHA_MOD = fechareg;
-                                //BaseDatos.GetBaseDatos().SaveChanges();
-
+                                
                                 //Actualizamos la cuenta
                                 var detsumi = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
                                 var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
@@ -185,54 +189,54 @@ namespace Medica2.Farmacia.Devoluciones
                             else
                             {
                                 if (Convert.ToInt32(txtCantidad.Text) == 0)
+                            {
+                                MessageBox.Show("La cantidad mínima a devolver es 1");
+                            }else
+                            {
+                                nexi = cantidad - Int32.Parse(txtCantidad.Text);
+
+                                DEVOLUCIONE dv = new DEVOLUCIONE
                                 {
-                                    MessageBox.Show("La cantidad mínima a devolver es 1");
-                                }else
-                                {
-                                    nexi = cantidad - Int32.Parse(txtCantidad.Text);
+                                    MEDICMANETOID = idmed,
+                                    CANTIDAD = Int32.Parse(txtCantidad.Text),
+                                    USUARIOID = idUsuario,
+                                    FECHA_CREACION = fechareg,
+                                    CUENTAID = idcuenta
+                                };
+                                BaseDatos.GetBaseDatos().DEVOLUCIONES.Add(dv);
+                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                    DEVOLUCIONE dv = new DEVOLUCIONE
-                                    {
-                                        MEDICMANETOID = idmed,
-                                        CANTIDAD = Int32.Parse(txtCantidad.Text),
-                                        USUARIOID = 2,
-                                        FECHA_CREACION = fechareg,
-                                        CUENTAID = idcuenta
-                                    };
-                                    BaseDatos.GetBaseDatos().DEVOLUCIONES.Add(dv);
-                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                //Actualizamos existencias
+                                var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmed);
+                                medic.CANTIDAD = medic.CANTIDAD + (cantidad - Int32.Parse(txtCantidad.Text));
 
-                                    //Actualizamos existencias
-                                    var medic = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idmed);
-                                    medic.CANTIDAD = medic.CANTIDAD + (cantidad - Int32.Parse(txtCantidad.Text));
+                                //Actualizamos el detalle suministro
+                                var dtalle = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
+                                dtalle.CANTIDAD = dtalle.CANTIDAD - nexi;
+                                dtalle.FECHA_MOD = fechareg;
+                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                    //Actualizamos el detalle suministro
-                                    var dtalle = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
-                                    dtalle.CANTIDAD = dtalle.CANTIDAD - nexi;
-                                    dtalle.FECHA_MOD = fechareg;
-                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                //Actualizamos la cuenta
+                                var detsumi = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
+                                var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
+                                cuenta.TOTAL = cuenta.TOTAL - (nexi * detsumi.PRECIO);
+                                cuenta.SALDO = cuenta.SALDO - (nexi * detsumi.PRECIO);
+                                cuenta.FECHA_MOD = fechareg;
+                                BaseDatos.GetBaseDatos().SaveChanges();
 
-                                    //Actualizamos la cuenta
-                                    var detsumi = BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Find(iddetalle);
-                                    var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
-                                    cuenta.TOTAL = cuenta.TOTAL - (nexi * detsumi.PRECIO);
-                                    cuenta.SALDO = cuenta.SALDO - (nexi * detsumi.PRECIO);
-                                    cuenta.FECHA_MOD = fechareg;
-                                    BaseDatos.GetBaseDatos().SaveChanges();
+                                //Llamamos la vista
+                                MessageBox.Show("Devolución correcta");
+                                VistaSuministros();
 
-                                    //Llamamos la vista
-                                    MessageBox.Show("Devolución correcta");
-                                    VistaSuministros();
-
-                                    //Deshabilitamos los controles
-                                    autoMedicamento.SearchText = String.Empty;
-                                    txtCantidad.Text = String.Empty;
-                                    autoMedicamento.IsEnabled = false;
-                                    txtCantidad.IsEnabled = false;
-                                    btnGuardar.IsEnabled = false;
-                                }
-                            }
+                                //Deshabilitamos los controles
+                                autoMedicamento.SearchText = String.Empty;
+                                txtCantidad.Text = String.Empty;
+                                autoMedicamento.IsEnabled = false;
+                                txtCantidad.IsEnabled = false;
+                                btnGuardar.IsEnabled = false;
+                           }
                         }
+                        
                     }
                 }
             }
@@ -272,7 +276,6 @@ namespace Medica2.Farmacia.Devoluciones
                 if (rgvPacientes.SelectedItem != null)
                 {
                     //Habilitamos los componentes
-                    autoMedicamento.IsEnabled = true;
                     txtCantidad.IsEnabled = true;
                     btnGuardar.IsEnabled = true;
 

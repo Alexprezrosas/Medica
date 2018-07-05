@@ -26,6 +26,25 @@ namespace Medica2.Administracion.Cirugias
             VistaCirugiasAplicadas();
         }
 
+        public ConsultarCirugiasAplicadas(int idu)
+        {
+            InitializeComponent();
+            VistaCirugiasAplicadas();
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         public void VistaCirugiasAplicadas()
         {
             rgvCirugiasAplicadas.ItemsSource = (from ciru in BaseDatos.GetBaseDatos().CIRUGIAS

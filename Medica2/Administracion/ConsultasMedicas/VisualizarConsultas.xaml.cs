@@ -27,6 +27,24 @@ namespace Medica2.Administracion.ConsultasMedicas
             Vistaconsultas();
         }
 
+        public VisualizarConsultas(int idu)
+        {
+            InitializeComponent();
+            Vistaconsultas();
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if(usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Medico")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         public void Vistaconsultas()
         {
             rgvVizualizaConsultas.ItemsSource = (from cue in BaseDatos.GetBaseDatos().CUENTAS

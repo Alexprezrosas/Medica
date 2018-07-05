@@ -56,11 +56,10 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDICAMENTO}" Header="MEDICAMENTO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding UMEDIDA}" Header="UMEDIDA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="CANTIDAD ADQUIRIDA" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PRECIO}" Header="PRECIO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA}" Header="FECHA DE APLICACIÓN" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ENFERMERA}" Header="ENFERMERA" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIO}" Header="USUARIO" />
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="373,83,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnGuardar_Click"/>

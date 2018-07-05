@@ -22,6 +22,7 @@ namespace Medica2.Administracion.Medicos
     /// </summary>
     public partial class MostrarMedicos : Window
     {
+        int idUsuario;
         public MostrarMedicos()
         {
             InitializeComponent();
@@ -32,6 +33,32 @@ namespace Medica2.Administracion.Medicos
             this.rgMostrarMedico.CellEditEnded += radGridView_CellEditEnded;
 
             //Editar
+        }
+
+        public MostrarMedicos(int idu)
+        {
+            InitializeComponent();
+            VistaMedicosPersona();
+
+            //Editar
+            this.rgMostrarMedico.BeginningEdit += radGridView_BeginningEdit;
+            this.rgMostrarMedico.CellEditEnded += radGridView_CellEditEnded;
+
+            //Editar
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+
         }
         public void VistaMedicosPersona()
         {

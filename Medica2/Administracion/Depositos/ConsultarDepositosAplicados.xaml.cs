@@ -26,6 +26,24 @@ namespace Medica2.Administracion.Depositos
             VistaGrid();
         }
 
+        public ConsultarDepositosAplicados(int idu)
+        {
+            InitializeComponent();
+            VistaGrid();
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         public void VistaGrid()
         {
             rgvDepositosAplicados.ItemsSource = (from depo in BaseDatos.GetBaseDatos().DEPOSITOS

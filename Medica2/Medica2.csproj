@@ -15,7 +15,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\ALEJANDRO\Desktop\</PublishUrl>
+    <PublishUrl>C:\Users\ALEJANDRO\Desktop\MedicaSiloeSistema\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -252,6 +252,9 @@
     <Compile Include="Administracion\EquipoHospital\R_Equipo_H_Cargado.Designer.cs">
       <DependentUpon>R_Equipo_H_Cargado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Administracion\EquipoHospital\VerEquipoHospitalCargado.xaml.cs">
+      <DependentUpon>VerEquipoHospitalCargado.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Administracion\Especialidades\NuevaEspecialidadMedico.xaml.cs">
       <DependentUpon>NuevaEspecialidadMedico.xaml</DependentUpon>
     </Compile>
@@ -384,6 +387,9 @@
     <Compile Include="Enfermeria\Suministros\NuevoSuministro.xaml.cs">
       <DependentUpon>NuevoSuministro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enfermeria\Suministros\VisualizarSuministros.xaml.cs">
+      <DependentUpon>VisualizarSuministros.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Farmacia\Compras\ConsultaCompras.xaml.cs">
       <DependentUpon>ConsultaCompras.xaml</DependentUpon>
     </Compile>
@@ -407,6 +413,9 @@
     </Compile>
     <Compile Include="Farmacia\Devoluciones\AplicarDevolucion.xaml.cs">
       <DependentUpon>AplicarDevolucion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Farmacia\Devoluciones\ConsultarDevoluciones.xaml.cs">
+      <DependentUpon>ConsultarDevoluciones.xaml</DependentUpon>
     </Compile>
     <Compile Include="Farmacia\Devoluciones\DevolucionPacientes.xaml.cs">
       <DependentUpon>DevolucionPacientes.xaml</DependentUpon>
@@ -596,6 +605,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Administracion\EquipoHospital\VerEquipoHospitalCargado.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Administracion\EspecialidadesEnfermeras\CatalogoEspecialidadesEnfermeras.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -676,6 +689,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Enfermeria\Suministros\VisualizarSuministros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Farmacia\Compras\ConsultaCompras.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -689,6 +706,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Farmacia\Devoluciones\AplicarDevolucion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Farmacia\Devoluciones\ConsultarDevoluciones.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -994,9 +1015,6 @@
     <Resource Include="Administracion\img\usuarios.png" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -1020,7 +1038,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Administracion\img\boton_iniciar_sesion.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

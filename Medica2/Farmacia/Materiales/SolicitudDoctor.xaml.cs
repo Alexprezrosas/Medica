@@ -24,10 +24,18 @@ namespace Medica2.Farmacia.Materiales
         DateTime fechareg = DateTime.Now;
         int idsol;
         Decimal total;
+        int idUsuario;
         public SolicitudDoctor()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public SolicitudDoctor(int idu)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public SolicitudDoctor(int ids, int idmedic)
@@ -172,7 +180,7 @@ namespace Medica2.Farmacia.Materiales
                 int idmedico = medico.ID_MEDICO;
                 MATERIALES_DOCTORES md = new MATERIALES_DOCTORES
                 {
-                    USUARIOID = 2,
+                    USUARIOID = idUsuario,
                     DOCTORID = idmedico,
                     FECHA_CREACION = fechareg
                 };

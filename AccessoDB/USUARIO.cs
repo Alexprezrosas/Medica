@@ -22,6 +22,7 @@ namespace AccessoDB
             HONORARIOS_MEDICOS = new HashSet<HONORARIOS_MEDICOS>();
             MATERIALES_DOCTORES = new HashSet<MATERIALES_DOCTORES>();
             MATERIALES_ENFERMERAS = new HashSet<MATERIALES_ENFERMERAS>();
+            SUMINISTROS_MEDICAMENTOS = new HashSet<SUMINISTROS_MEDICAMENTOS>();
             VENTAS_GENERALES = new HashSet<VENTAS_GENERALES>();
         }
 
@@ -73,6 +74,9 @@ namespace AccessoDB
         public virtual ICollection<MATERIALES_ENFERMERAS> MATERIALES_ENFERMERAS { get; set; }
 
         public virtual PERMISO PERMISO { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SUMINISTROS_MEDICAMENTOS> SUMINISTROS_MEDICAMENTOS { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VENTAS_GENERALES> VENTAS_GENERALES { get; set; }

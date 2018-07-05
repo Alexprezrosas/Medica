@@ -22,11 +22,20 @@ namespace Medica2.Farmacia.Devoluciones
     /// </summary>
     public partial class DevolucionPacientes : Window
     {
+        int idUsuario;
         public DevolucionPacientes()
         {
             InitializeComponent();
             VistaPacientesPersonas();
 
+            rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public DevolucionPacientes(int idu)
+        {
+            InitializeComponent();
+            VistaPacientesPersonas();
+            idUsuario = idu;
             rgvPacientes.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
         }
 
@@ -107,7 +116,7 @@ namespace Medica2.Farmacia.Devoluciones
                     int idpac = pac.ID_PACIENTE;
                     String idcur = pac.CUARTO;
                     int idcuen = pac.ID_CUENTA;
-                    AplicarDevolucion ns = new AplicarDevolucion(idpac, idcur, idcuen);
+                    AplicarDevolucion ns = new AplicarDevolucion(idpac, idcur, idcuen, idUsuario);
                     ns.Show();
                     this.Close();
                 }

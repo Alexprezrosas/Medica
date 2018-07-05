@@ -517,12 +517,6 @@ namespace AccessoDB
                 .WithRequired(e => e.ENFERMERA)
                 .HasForeignKey(e => e.ENFERMERAID);
 
-            modelBuilder.Entity<ENFERMERA>()
-                .HasMany(e => e.SUMINISTROS_MEDICAMENTOS)
-                .WithRequired(e => e.ENFERMERA)
-                .HasForeignKey(e => e.ENFERMERAID)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<EQUIPO_HOSPITAL>()
                 .Property(e => e.TOTAL)
                 .HasPrecision(10, 3);
@@ -921,6 +915,11 @@ namespace AccessoDB
             modelBuilder.Entity<USUARIO>()
                 .HasMany(e => e.MATERIALES_ENFERMERAS)
                 .WithRequired(e => e.USUARIO)
+                .HasForeignKey(e => e.USUARIOID);
+
+            modelBuilder.Entity<USUARIO>()
+                .HasMany(e => e.SUMINISTROS_MEDICAMENTOS)
+                .WithOptional(e => e.USUARIO)
                 .HasForeignKey(e => e.USUARIOID);
 
             modelBuilder.Entity<USUARIO>()

@@ -6,16 +6,17 @@
         xmlns:local="clr-namespace:Medica2"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Login"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300">
+        Title="Login" Height="300" Width="417.073">
     <Grid>
         <Label x:Name="lblUsuario" Content="Usuario" HorizontalAlignment="Left" Margin="27,83,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblPassword" Content="Password" HorizontalAlignment="Left" Margin="27,126,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="pssPassword" HorizontalAlignment="Left" Margin="132,126,0,0" VerticalAlignment="Top" Width="120" Height="23" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
-        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="49,193,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="177,193,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
-        <Label x:Name="lblTitulo" Content="Medica de Especialidades Siloe" HorizontalAlignment="Left" Margin="27,23,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Demi" FontWeight="Bold" FontSize="16"/>
+        <PasswordBox x:Name="pssPassword" HorizontalAlignment="Left" Margin="132,126,0,0" VerticalAlignment="Top" Width="248" Height="23" Foreground="#FF6F2828" BorderBrush="#FF089CF6"/>
+        <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="109,194,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click"
+                />
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="237,194,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
+        <Label x:Name="lblTitulo" Content="Medica de Especialidades Siloe" HorizontalAlignment="Left" Margin="80,21,0,0" VerticalAlignment="Top" FontFamily="Franklin Gothic Demi" FontWeight="Bold" FontSize="16"/>
 
-        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="132,83,0,0" VerticalAlignment="Top" Width="120"
+        <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="132,83,0,0" VerticalAlignment="Top" Width="248"
                                     x:Name="autoUsuario"
                                     DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"

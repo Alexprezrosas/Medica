@@ -1,0 +1,40 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Medica2.Farmacia.Devoluciones"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Medica2.Farmacia.Devoluciones.ConsultarDevoluciones"
+        mc:Ignorable="d"
+        Title="ConsultarDevoluciones" Height="704.8" Width="962.4">
+    <Window.Resources>
+
+        <Style x:Key="MenuItemContainerStyle" TargetType="{x:Type telerik:RadMenuItem}">
+            <Setter Property="Header" Value="{Binding Text}"/>
+            <Setter Property="ItemsSource" Value="{Binding SubItems}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled}"/>
+        </Style>
+
+    </Window.Resources>
+    <Grid>
+
+        <telerik:RadGridView x:Name="rgvDevoluciones"  HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" 
+        Width="936" Height="625" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+        AutoGenerateColumns="False" 
+        SelectedItem="{Binding ID_PACIENTE}"
+        ShowSearchPanel="True"
+        IsSearchingDeferred="True">
+
+            <telerik:RadGridView.Columns>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICAMENTO}" Header="MEDICAMENTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="CANTIDAD"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUARTO}" Header="CUARTO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTE}" Header="PACIENTE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding USUARIO}" Header="USUARIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA}" Header="FECHA"/>
+            </telerik:RadGridView.Columns>
+        </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Consulta devoluciones" HorizontalAlignment="Left" Margin="373,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+
+    </Grid>
+</Window>

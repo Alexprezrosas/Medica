@@ -24,12 +24,19 @@ namespace Medica2.Administracion.ConsultasMedicas
         int idconsul;
         int idcuen;
         int idmed, idpacie;
-
+        int idUsuario;
         DateTime fr = DateTime.Now;
         public RegistrarConsulta()
         {
             InitializeComponent();
             LlenarAucompletes();
+        }
+
+        public RegistrarConsulta(int idu)
+        {
+            InitializeComponent();
+            LlenarAucompletes();
+            idUsuario = idu;
         }
 
         public RegistrarConsulta(CONSULTA consul, int idcu, bool save)
@@ -162,7 +169,7 @@ namespace Medica2.Administracion.ConsultasMedicas
                                             TEMPERATURA = Convert.ToDecimal(txtTemperatura.Text),
                                             P_ARTERIAL = Convert.ToDecimal(txtPresion.Text),
                                             COSTO = Decimal.Parse(txtcostoconsulta.Text),
-                                            USUARIOID = 2,
+                                            USUARIOID = idUsuario,
                                             FECHA_CREACION = fr,
 
                                         };

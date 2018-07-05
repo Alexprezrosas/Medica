@@ -27,22 +27,42 @@ namespace Medica2.Enfermeria.Suministros
         int idcuenta;
         DateTime fechac = DateTime.Now;
         Decimal total = 0;
+        Decimal totalEditar = 0;
+        int idUsuario;
         public NuevoSuministro()
         {
             InitializeComponent();
             
         }
 
-        public NuevoSuministro(int idpac, String cuar, int idcuen)
+        public NuevoSuministro(int idpac, String cuar, int idcuen, int idu)
         {
             InitializeComponent();
             idpaciente = idpac;
             idcuenta = idcuen;
+            idUsuario = idu;
             var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idpaciente);
             txtPaciente.Text = paciente.PERSONA.NOMBRE;
             txtHabitacion.Text = cuar.ToString();
             llenarAutocompletes();
             Guardar();
+            VistaGrid();
+        }
+
+        //constructor para editar
+        public NuevoSuministro(int s, int p, String c, Decimal t, int idc, int idu)
+        {
+            InitializeComponent();
+            idpaciente = p;
+            idcuenta = idc;
+            idUsuario = idu;
+            idsumi = s;
+            total = t;
+            totalEditar = t;
+            var paciente = BaseDatos.GetBaseDatos().PACIENTES.Find(idpaciente);
+            txtPaciente.Text = paciente.PERSONA.NOMBRE;
+            txtHabitacion.Text = c.ToString();
+            llenarAutocompletes();
             VistaGrid();
         }
 
@@ -141,8 +161,9 @@ namespace Medica2.Enfermeria.Suministros
             SUMINISTROS_MEDICAMENTOS sm = new SUMINISTROS_MEDICAMENTOS
             {
                 CUENTAID = idcuenta,
-                ENFERMERAID = 6,
-                FECHA_CREACION = fechac
+                USUARIOID = idUsuario,
+                FECHA_CREACION = fechac,
+                TOTAL = 0
             };
             BaseDatos.GetBaseDatos().SUMINISTROS_MEDICAMENTOS.Add(sm);
             BaseDatos.GetBaseDatos().SaveChanges();
@@ -199,10 +220,13 @@ namespace Medica2.Enfermeria.Suministros
         void Finalizar()
         {
             var suministro = BaseDatos.GetBaseDatos().SUMINISTROS_MEDICAMENTOS.Find(idsumi);
-            suministro.TOTAL = suministro.TOTAL + total;
+            //suministro.TOTAL = suministro.TOTAL - totalEditar;
+            suministro.TOTAL = total;
             BaseDatos.GetBaseDatos().SaveChanges();
 
             var cuenta = BaseDatos.GetBaseDatos().CUENTAS.Find(idcuenta);
+            cuenta.TOTAL = cuenta.TOTAL - totalEditar;
+            cuenta.SALDO = cuenta.SALDO - totalEditar;
             cuenta.TOTAL = cuenta.TOTAL + total;
             cuenta.SALDO = cuenta.SALDO + total;
             BaseDatos.GetBaseDatos().SaveChanges();
@@ -285,9 +309,10 @@ namespace Medica2.Enfermeria.Suministros
                 BaseDatos.GetBaseDatos().SaveChanges();
 
                 //Actualizamos la cuenta
-                cuenta.TOTAL = cuenta.TOTAL - (detalleMedicamento.PRECIO * detalleMedicamento.CANTIDAD);
-                cuenta.SALDO = cuenta.SALDO - (detalleMedicamento.PRECIO * detalleMedicamento.CANTIDAD);
-                BaseDatos.GetBaseDatos().SaveChanges();
+                //cuenta.TOTAL = cuenta.TOTAL - (detalleMedicamento.PRECIO * detalleMedicamento.CANTIDAD);
+                //cuenta.SALDO = cuenta.SALDO - (detalleMedicamento.PRECIO * detalleMedicamento.CANTIDAD);
+                //BaseDatos.GetBaseDatos().SaveChanges();
+                total = total - Decimal.Parse(detalleMedicamento.PRECIO.ToString()) * detalleMedicamento.CANTIDAD;
 
                 //Eliminaar el suministro
                 BaseDatos.GetBaseDatos().DETALLE_SUMINISTROS_MEDICAMENTOS.Remove(detalleMedicamento);
@@ -338,6 +363,7 @@ namespace Medica2.Enfermeria.Suministros
                     if (rgvDetalle.SelectedItem != null)
                     {
                         btnFinalizar.IsEnabled = false;
+                        btnAgregar.Visibility = Visibility.Hidden;
                         btnEditar.Visibility = Visibility.Visible;
 
                         //Se busca el detalle suministro

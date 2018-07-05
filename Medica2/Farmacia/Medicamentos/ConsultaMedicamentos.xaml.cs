@@ -23,6 +23,7 @@ namespace Medica2.Farmacia.Medicamentos
     /// </summary>
     public partial class ConsultaMedicamentos : Window
     {
+        int idUsuario;
         public ConsultaMedicamentos()
         {
             InitializeComponent();
@@ -30,6 +31,25 @@ namespace Medica2.Farmacia.Medicamentos
             VistaGrid();
 
             rgvMedicamentos.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public ConsultaMedicamentos(int idu)
+        {
+            InitializeComponent();
+            VistaGrid();
+            rgvMedicamentos.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                itemEliminar.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Farmaceutico")
+                {
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         void VistaGrid()

@@ -19,7 +19,7 @@
     <Grid>
 
         <telerik:RadGridView ShowSearchPanel="True" x:Name="rgMostrarEmpleados"  HorizontalAlignment="Left" Margin="30,90,0,0" 
-        VerticalAlignment="Top" Width="809" Height="426" AutoGenerateColumns="False"
+        VerticalAlignment="Top" Width="1143" Height="457" AutoGenerateColumns="False"
                              
         BeginningEdit="radGridView_BeginningEdit"
         SelectedCellsChanged="MostrarCirugias_SelectedCellsChanged"

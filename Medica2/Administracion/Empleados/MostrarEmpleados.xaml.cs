@@ -22,11 +22,32 @@ namespace Medica2.Administracion.Empleados
     /// </summary>
     public partial class MostrarEmpleados : Window
     {
+        int idUsuario;
         public MostrarEmpleados()
         {
             InitializeComponent();
             VistaEmpleadoPersonaActivo();
         }
+
+        public MostrarEmpleados(int idu)
+        {
+            InitializeComponent();
+            VistaEmpleadoPersonaActivo();
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
+        }
+
         public void VistaEmpleadoPersonaActivo()
         {
             rgMostrarEmpleados.ItemsSource = (from Usuario in BaseDatos.GetBaseDatos().USUARIOS

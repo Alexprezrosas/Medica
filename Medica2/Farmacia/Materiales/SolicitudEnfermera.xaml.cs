@@ -21,14 +21,21 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class SolicitudEnfermera : Window
     {
+        int idUsuario;
         DateTime fechareg = DateTime.Now;
         int idsol;
         Decimal total;
-
         public SolicitudEnfermera()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public SolicitudEnfermera(int idu)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public SolicitudEnfermera(int idso, int ide)
@@ -178,7 +185,7 @@ namespace Medica2.Farmacia.Materiales
                 int idenfermera = enfermera.ID_ENFERMERA;
                 MATERIALES_ENFERMERAS md = new MATERIALES_ENFERMERAS
                 {
-                    USUARIOID = 2,
+                    USUARIOID = idUsuario,
                     ENFERMERAID = idenfermera,
                     FECHA_CREACION = fechareg
                 };

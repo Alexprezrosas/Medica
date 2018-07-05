@@ -23,13 +23,34 @@ namespace Medica2.Administracion.Enfermeras
     /// </summary>
     public partial class ConsultaEnfermera : Window
     {
-
+        int idUsuario;
         public ConsultaEnfermera()
         {
             InitializeComponent();
 
             VistaEnfermerasPersonas();
 
+        }
+
+        public ConsultaEnfermera(int idu)
+        {
+            InitializeComponent();
+
+            VistaEnfermerasPersonas();
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+
+            }else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Recepcionista")
+                {
+                    itemEditar.Visibility = Visibility.Hidden;
+                    itemEliminar.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         public void VistaEnfermerasPersonas()

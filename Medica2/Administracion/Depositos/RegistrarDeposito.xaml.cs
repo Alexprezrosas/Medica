@@ -23,10 +23,18 @@ namespace Medica2.Administracion.Depositos
         int idpa;
         int idcuen;
         DateTime fr = DateTime.Now;
+        int idUsuario;
         public RegistrarDeposito()
         {
             InitializeComponent();
             vistaPaciente();
+        }
+
+        public RegistrarDeposito(int idu)
+        {
+            InitializeComponent();
+            vistaPaciente();
+            idUsuario = idu;
         }
 
         public RegistrarDeposito(int idp, int iddepo, int idc)
@@ -112,7 +120,7 @@ namespace Medica2.Administracion.Depositos
                             {
                                 MONTO = Decimal.Parse(txtMonto.Text),
                                 CONCEPTO = txtConcepto.Text,
-                                USUARIOID = 2,
+                                USUARIOID = idUsuario,
                                 CUENTAID = idc,
                                 FECHA_CREACION = fr
                             };

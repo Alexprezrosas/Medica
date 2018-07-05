@@ -61,7 +61,7 @@
 
         <Label x:Name="lblPaciente" Content="Paciente" HorizontalAlignment="Left" Margin="500,47,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtPaciente" HorizontalAlignment="Left" Height="23" Margin="590,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="324,134,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="btnEditar_Click" />
+        <Button x:Name="btnEditar" Content="Actualizar" HorizontalAlignment="Left" Margin="324,134,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden" Click="btnEditar_Click" />
         <Label x:Name="lblExistencias" Content="Existencias" HorizontalAlignment="Left" Margin="32,102,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtExistencias" HorizontalAlignment="Left" Height="23" Margin="219,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="90" IsReadOnly="True"/>
     </Grid>

@@ -22,11 +22,32 @@ namespace Medica2.Farmacia.Materiales
     /// </summary>
     public partial class ConsultarSolicitudDoctor : Window
     {
+        int idUsuario;
         public ConsultarSolicitudDoctor()
         {
             InitializeComponent();
             VistaGrid();
             rgvConsultaDoctoresSol.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+        }
+
+        public ConsultarSolicitudDoctor(int idu)
+        {
+            InitializeComponent();
+            VistaGrid();
+            rgvConsultaDoctoresSol.SearchPanelVisibilityChanged += RadGridView_SearchPanelVisibilityChanged;
+            idUsuario = idu;
+            var usuario = BaseDatos.GetBaseDatos().USUARIOS.Find(idu);
+            if (usuario.EMPLEADO.PUESTO == "Administrador")
+            {
+                GridContextMenu2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                if (usuario.EMPLEADO.PUESTO == "Farmaceutico")
+                {
+                    GridContextMenu2.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         private void RadGridView_SearchPanelVisibilityChanged(object sender, VisibilityChangedEventArgs e)

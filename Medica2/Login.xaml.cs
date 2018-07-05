@@ -53,6 +53,7 @@ namespace Medica2
                     {
                         MainWindow mw = new MainWindow(idusuario);
                         mw.Show();
+                        this.Close();
                     }else
                     {
                         MessageBox.Show("Datos incorrectos");

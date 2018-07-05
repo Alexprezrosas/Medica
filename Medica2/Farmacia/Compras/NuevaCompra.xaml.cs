@@ -25,32 +25,19 @@ namespace Medica2.Farmacia.Compras
     {
         int idcompra;
         Decimal total;
-        
-
+        int idUsuario;
+        int idEdiMed;
         public NuevaCompra()
         {
             InitializeComponent();
             llenarAutocompletes();
         }
 
-        void llenarAutocompletes()
+        public NuevaCompra(int idu, int iduu)
         {
-            autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
-                                            where medi.STATUS == "Activo"
-                                            select new
-                                            {
-                                                ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
-                                                NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
-                                            });
-            autoProveedor.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
-                                         join e in BaseDatos.GetBaseDatos().PROVEEDORES
-                                         on PERSONA.ID_PERSONA equals e.PERSONAID
-                                         where PERSONA.ESTADOPERSONA == "Activo"
-                                         select new
-                                         {
-                                             ID_PROVEEDOR = e.ID_PROVEEDOR,
-                                             NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
-                                         });
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public NuevaCompra(int idc)
@@ -75,7 +62,26 @@ namespace Medica2.Farmacia.Compras
             total = Decimal.Parse(compraedit.TOTAL.ToString());
             txtTotal.Text = compraedit.TOTAL.ToString();
         }
-        
+
+        void llenarAutocompletes()
+        {
+            autoMedicamentos.ItemsSource = (from medi in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                            where medi.STATUS == "Activo"
+                                            select new
+                                            {
+                                                ID_MEDICAMENTO = medi.ID_MEDICAMENTO,
+                                                NOMBRE = medi.NOMBRE_MEDI + " " + medi.COMENTARIO + " " + medi.U_MEDIDA
+                                            });
+            autoProveedor.ItemsSource = (from PERSONA in BaseDatos.GetBaseDatos().PERSONAS
+                                         join e in BaseDatos.GetBaseDatos().PROVEEDORES
+                                         on PERSONA.ID_PERSONA equals e.PERSONAID
+                                         where PERSONA.ESTADOPERSONA == "Activo"
+                                         select new
+                                         {
+                                             ID_PROVEEDOR = e.ID_PROVEEDOR,
+                                             NOMBRE = PERSONA.NOMBRE + " " + PERSONA.A_PATERNO + " " + PERSONA.A_MATERNO
+                                         });
+        }
 
         void VistaGrid()
         {
@@ -234,7 +240,7 @@ namespace Medica2.Farmacia.Compras
                                     FECHA_COMPRA = dpFCompra.SelectedDate,
                                     FECHA_VENCIMIENTO = dpFVencimiento.SelectedDate,
                                     PROVEEDORID = prove,
-                                    USUARIOID = 2
+                                    USUARIOID = idUsuario
                                 };
                                 BaseDatos.GetBaseDatos().COMPRAS.Add(c);
                                 BaseDatos.GetBaseDatos().SaveChanges();
@@ -418,13 +424,7 @@ namespace Medica2.Farmacia.Compras
 
         void EditarDetalleCompra()
         {
-            if (autoMedicamentos.SelectedItem == null)
-            {
-                MessageBox.Show("Selecciona un medicamento");
-            }
-            else
-            {
-                if (txtDescripcion.Text == "")
+            if (txtDescripcion.Text == "")
                 {
                     MessageBox.Show("Ingresa una descripción");
                 }
@@ -489,17 +489,14 @@ namespace Medica2.Farmacia.Compras
                                                         var detalleCompra = BaseDatos.GetBaseDatos().DETALLE_COMPRAS.Find(iddetalle);
 
                                                         //Actualizamos el detalle medicamento
-
-                                                        dynamic medica = autoMedicamentos.SelectedItem;
-                                                        int idm = medica.ID_MEDICAMENTO;
-                                                        detalleCompra.MEDICAMENTOID = idm;
+                                                        detalleCompra.MEDICAMENTOID = idEdiMed;
                                                         detalleCompra.CANTIDAD = Int32.Parse(txtCantidad.Text);
                                                         detalleCompra.COSTO_UNITARIO = Decimal.Parse(txtCostoUnitario.Text);
                                                         detalleCompra.SUBTOTAL = Int32.Parse(txtCantidad.Text) * Decimal.Parse(txtCostoUnitario.Text);
                                                         BaseDatos.GetBaseDatos().SaveChanges();
 
                                                         //Actualizamos las existencias
-                                                        var me = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
+                                                        var me = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idEdiMed);
                                                         me.CANTIDAD = me.CANTIDAD + (Int32.Parse(txtCantidad.Text));
 
                                                         //Actualizamos el total
@@ -512,6 +509,7 @@ namespace Medica2.Farmacia.Compras
                                                         btnFinalizar.IsEnabled = true;
                                                         VistaGrid();
                                                         LimpiarDetalle();
+                                                    autoMedicamentos.IsEnabled = true;
                                                     }
                                                 }
                                             }
@@ -519,7 +517,7 @@ namespace Medica2.Farmacia.Compras
                                     }
                                 }
                             }
-                        }
+                        
                     }
                 }
             }
@@ -655,14 +653,14 @@ namespace Medica2.Farmacia.Compras
                         dynamic detalle = rgvDetalle.SelectedItem;
                         int iddetalle = detalle.ID_DETALLE_COMPRA;
                         var detalleCompra = BaseDatos.GetBaseDatos().DETALLE_COMPRAS.Find(iddetalle);
-                        int idm = detalleCompra.MEDICAMENTOID;
+                        idEdiMed = detalleCompra.MEDICAMENTOID;
 
                         //Se actualizan las existencias
-                        var exi = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
+                        var exi = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idEdiMed);
                         exi.CANTIDAD = exi.CANTIDAD - detalleCompra.CANTIDAD;
 
                         //Asigna los valores a los txt
-                        var medicamento = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idm);
+                        var medicamento = BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS.Find(idEdiMed);
                         txtCantidad.Text = detalleCompra.CANTIDAD.ToString();
                         txtUMedida.Text = Convert.ToString(medicamento.U_MEDIDA);
                         txtDescripcion.Text = medicamento.COMENTARIO.ToString();
@@ -674,6 +672,7 @@ namespace Medica2.Farmacia.Compras
                         txtPVenta.Text = medicamento.P_VENTA.ToString();
                         txtPMedicos.Text = medicamento.P_MEDICOS.ToString();
                         cbbAlmacen.Text = medicamento.ALMACEN;
+                        txtIVA.Text = medicamento.IVA.ToString();
 
                         //Se actualizan los totales
                         total = total - (Decimal.Parse(detalleCompra.SUBTOTAL.ToString()));
@@ -682,6 +681,7 @@ namespace Medica2.Farmacia.Compras
                         //autoMedicamentos.TextSearchPath = detalleSuministro.MEDICAMENTOID.ToString();
                         //autoMedicamentos.DisplayMemberPath = medicamento.NOMBRE_MEDI;
                         autoMedicamentos.SearchText = medicamento.NOMBRE_MEDI + " " + medicamento.COMENTARIO + " " + medicamento.U_MEDIDA;
+                        autoMedicamentos.IsEnabled = false;
                         //llenar();
                     }
                 }

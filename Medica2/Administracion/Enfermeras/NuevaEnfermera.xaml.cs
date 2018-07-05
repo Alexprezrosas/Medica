@@ -218,7 +218,7 @@ namespace Medica2.Administracion.Enfermeras
                                                                     EMPLEADO em = new EMPLEADO
                                                                     {
                                                                         PERSONAID = cc.ID_PERSONA,
-                                                                        PUESTO = "Enfermera",
+                                                                        PUESTO = "Enfermeria",
                                                                         FECHA_CREACION = Fecharegistro
                                                                     };
 

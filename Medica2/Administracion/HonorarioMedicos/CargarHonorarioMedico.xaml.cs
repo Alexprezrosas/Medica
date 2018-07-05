@@ -24,10 +24,18 @@ namespace Medica2.Administracion.HonorarioMedicos
         int idpaciente;
         int idcue;
         int idmed;
+        int idUsuario;
         public CargarHonorarioMedico()
         {
             InitializeComponent();
             CargarAutocompletes();
+        }
+
+        public CargarHonorarioMedico(int idu)
+        {
+            InitializeComponent();
+            CargarAutocompletes();
+            idUsuario = idu;
         }
 
         public CargarHonorarioMedico(HONORARIOS_MEDICOS h, int idc, bool save)
@@ -129,7 +137,7 @@ namespace Medica2.Administracion.HonorarioMedicos
                             PACIENTEID = idpaciente,
                             MEDICOID = idmedico,
                             HONORIARIO = Decimal.Parse(txtHonorario.Text),
-                            USUARIOID = 2,
+                            USUARIOID = idUsuario,
                             FECHA_CREACION = fech,
 
                         };

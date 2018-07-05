@@ -21,13 +21,20 @@ namespace Medica2.Administracion.Cirugias
     public partial class CargarCirugia : Window
     {
         int idper, idmedi, idcirug, idcuenta;
-
+        int idUsuario;
         DateTime fr = DateTime.Now;
 
         public CargarCirugia()
         {
             InitializeComponent();
             llenarAutocompletes();
+        }
+
+        public CargarCirugia(int idu)
+        {
+            InitializeComponent();
+            llenarAutocompletes();
+            idUsuario = idu;
         }
 
         public CargarCirugia(int idp, int idmed, int idciru, int idcuent)
@@ -182,7 +189,7 @@ namespace Medica2.Administracion.Cirugias
                             CATALOGO_CIRUGIAID = cirugia.ID_CATALOGO_CIRUGIA,
                             CUENTAID = paciente.ID_CUENTA,
                             TOTAL = cirugia.COSTO,
-                            USUARIOID = 2,
+                            USUARIOID = idUsuario,
                             FECHA_CREACION = fr
                         };
                         BaseDatos.GetBaseDatos().CIRUGIAS.Add(c);
