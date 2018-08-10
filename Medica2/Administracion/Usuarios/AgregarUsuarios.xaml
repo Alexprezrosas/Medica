@@ -9,7 +9,7 @@
         Title="AgregarUsuarios" Height="279.512" Width="471.951">
     <Grid>
 
-        <Label x:Name="lblacceso" Content="Registrar Usuario" HorizontalAlignment="Left" Margin="170,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lblacceso" Content="Registrar Usuario" HorizontalAlignment="Left" Margin="165,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Global Sans Serif" FontSize="14"/>
         <Label x:Name="label" Content="Empleado" HorizontalAlignment="Left" Margin="14,53,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblpuesto_Copy" Content="Contraseña" HorizontalAlignment="Left" Margin="14,99,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblpermiso" Content="Permiso" HorizontalAlignment="Left" Margin="14,140,0,0" VerticalAlignment="Top"/>

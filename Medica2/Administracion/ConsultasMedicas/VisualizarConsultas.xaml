@@ -36,18 +36,19 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICO}"
-                    Header="Médico" />
+                    Header="MÉDICO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CEDU}"
-                    Header="Cédula"/>
+                    Header="CÉDULA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIEN}"
-                    Header="Paciente Hospitalizado" />
+                    Header="PACIENTE HOSPITALIZADO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COST}"
-                    Header="Costo" />
+                    Header="COSTO" />
 
 
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Visualizar consultas" HorizontalAlignment="Left" Margin="270,4,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

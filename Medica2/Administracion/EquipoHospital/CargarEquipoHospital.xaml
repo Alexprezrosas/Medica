@@ -22,11 +22,11 @@
 
 
 
-        <Label x:Name="labelnombrepaciente" Content="Nombre Paciente" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelnombremedico" Content="Médico Solicitante" HorizontalAlignment="Left" Margin="35,54,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labeleqh" Content="Equipo Hospital" HorizontalAlignment="Left" Margin="35,118,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelnombrepaciente" Content="Nombre paciente" HorizontalAlignment="Left" Margin="35,89,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labelnombremedico" Content="Médico solicitante" HorizontalAlignment="Left" Margin="35,54,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="labeleqh" Content="Equipo hospital" HorizontalAlignment="Left" Margin="35,118,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelcosto" Content="Costo" HorizontalAlignment="Left" Margin="35,144,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lab" Content="Cargar Equipo de Hospital" HorizontalAlignment="Left" Margin="222,24,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="lab" Content="Cargar equipo de hospital" HorizontalAlignment="Left" Margin="222,24,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Global Sans Serif"/>
 
         <telerik:RadAutoCompleteBox  HorizontalAlignment="Left" Height="25" IsEnabled="true" Margin="162,89,0,0" VerticalAlignment="Top" Width="256"
                                     x:Name="autopaceinte" 
@@ -64,9 +64,9 @@
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="Nombre"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripción" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"/>
+                <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 
@@ -75,7 +75,7 @@
 
         <Button x:Name="btnFinalizar" IsEnabled="False" Content="Finalizar" HorizontalAlignment="Left" Margin="465,190,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>
         <Button x:Name="btnAgregar" IsEnabled="False" Content="Agregar" HorizontalAlignment="Left" Margin="365,190,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
-        <Button x:Name="btnNuevoeqh" Content="Cargar Equipo Hospital" HorizontalAlignment="Left" Margin="448,57,0,0" VerticalAlignment="Top" Width="132" Click="btnNuevoeqh_Click"/>
+        <Button x:Name="btnNuevoeqh" Content="Cargar equipo hospital" HorizontalAlignment="Left" Margin="448,57,0,0" VerticalAlignment="Top" Width="132" Click="btnNuevoeqh_Click"/>
         <Button x:Name="btnEditar" IsEnabled="False" Visibility="Hidden" Content="Agregar" HorizontalAlignment="Left" Margin="365,190,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
 
 

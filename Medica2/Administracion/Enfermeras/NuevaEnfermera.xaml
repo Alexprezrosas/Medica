@@ -30,7 +30,7 @@
         <Label x:Name="lblCelular" Content="Celular" HorizontalAlignment="Left" Margin="468,108,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="22,221,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="468,52,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitulo" Content="Registro de Enfermeras" HorizontalAlignment="Left" Margin="412,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Registro de enfermeras" HorizontalAlignment="Left" Margin="412,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="lblCProfesional" Content="Cédula Profesional" HorizontalAlignment="Left" Margin="468,162,0,0" VerticalAlignment="Top" Width="112"/>
         <TextBox x:Name="txtCProfesional" MaxLength="9" HorizontalAlignment="Left" Height="23" Margin="592,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="247" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="359,305,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>

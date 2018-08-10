@@ -17,9 +17,8 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             Telerik.Reporting.Drawing.StyleRule styleRule3 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule4 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule5 = new Telerik.Reporting.Drawing.StyleRule();
-            this.sqlDataSource1 = new Telerik.Reporting.SqlDataSource();
-            this.labelsGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.labelsGroupFooterSection = new Telerik.Reporting.GroupFooterSection();
+            this.labelsGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.nOMBRECaptionTextBox = new Telerik.Reporting.TextBox();
             this.a_PATERNOCaptionTextBox = new Telerik.Reporting.TextBox();
             this.a_MATERNOCaptionTextBox = new Telerik.Reporting.TextBox();
@@ -27,9 +26,16 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.t_CELULARCaptionTextBox = new Telerik.Reporting.TextBox();
             this.expr1CaptionTextBox = new Telerik.Reporting.TextBox();
             this.nOMMUNICIPIOCaptionTextBox = new Telerik.Reporting.TextBox();
-            this.nOMBREGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.nOMBREGroupFooterSection = new Telerik.Reporting.GroupFooterSection();
+            this.nOMBREGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.textBox1 = new Telerik.Reporting.TextBox();
+            this.a_PATERNODataTextBox = new Telerik.Reporting.TextBox();
+            this.a_MATERNODataTextBox = new Telerik.Reporting.TextBox();
+            this.rFCDataTextBox = new Telerik.Reporting.TextBox();
+            this.t_CELULARDataTextBox = new Telerik.Reporting.TextBox();
+            this.expr1DataTextBox = new Telerik.Reporting.TextBox();
+            this.nOMMUNICIPIODataTextBox = new Telerik.Reporting.TextBox();
+            this.sqlDataSource1 = new Telerik.Reporting.SqlDataSource();
             this.reportNameTextBox = new Telerik.Reporting.TextBox();
             this.pageFooter = new Telerik.Reporting.PageFooterSection();
             this.currentTimeTextBox = new Telerik.Reporting.TextBox();
@@ -38,19 +44,13 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.titleTextBox = new Telerik.Reporting.TextBox();
             this.reportFooter = new Telerik.Reporting.ReportFooterSection();
             this.detail = new Telerik.Reporting.DetailSection();
-            this.a_PATERNODataTextBox = new Telerik.Reporting.TextBox();
-            this.a_MATERNODataTextBox = new Telerik.Reporting.TextBox();
-            this.rFCDataTextBox = new Telerik.Reporting.TextBox();
-            this.t_CELULARDataTextBox = new Telerik.Reporting.TextBox();
-            this.expr1DataTextBox = new Telerik.Reporting.TextBox();
-            this.nOMMUNICIPIODataTextBox = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
-            // sqlDataSource1
+            // labelsGroupFooterSection
             // 
-            this.sqlDataSource1.ConnectionString = "BaseDatos";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            this.sqlDataSource1.SelectCommand = resources.GetString("sqlDataSource1.SelectCommand");
+            this.labelsGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
+            this.labelsGroupFooterSection.Name = "labelsGroupFooterSection";
+            this.labelsGroupFooterSection.Style.Visible = false;
             // 
             // labelsGroupHeaderSection
             // 
@@ -65,12 +65,6 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.nOMMUNICIPIOCaptionTextBox});
             this.labelsGroupHeaderSection.Name = "labelsGroupHeaderSection";
             this.labelsGroupHeaderSection.PrintOnEveryPage = true;
-            // 
-            // labelsGroupFooterSection
-            // 
-            this.labelsGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
-            this.labelsGroupFooterSection.Name = "labelsGroupFooterSection";
-            this.labelsGroupFooterSection.Style.Visible = false;
             // 
             // nOMBRECaptionTextBox
             // 
@@ -135,6 +129,11 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.nOMMUNICIPIOCaptionTextBox.StyleName = "Caption";
             this.nOMMUNICIPIOCaptionTextBox.Value = "Municipio";
             // 
+            // nOMBREGroupFooterSection
+            // 
+            this.nOMBREGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.0959317535161972D);
+            this.nOMBREGroupFooterSection.Name = "nOMBREGroupFooterSection";
+            // 
             // nOMBREGroupHeaderSection
             // 
             this.nOMBREGroupHeaderSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.23333333432674408D);
@@ -148,11 +147,6 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.nOMMUNICIPIODataTextBox});
             this.nOMBREGroupHeaderSection.Name = "nOMBREGroupHeaderSection";
             // 
-            // nOMBREGroupFooterSection
-            // 
-            this.nOMBREGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.0959317535161972D);
-            this.nOMBREGroupFooterSection.Name = "nOMBREGroupFooterSection";
-            // 
             // textBox1
             // 
             this.textBox1.CanGrow = true;
@@ -161,6 +155,66 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             this.textBox1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.98333334922790527D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.textBox1.StyleName = "Data";
             this.textBox1.Value = "= Fields.NOMBRE";
+            // 
+            // a_PATERNODataTextBox
+            // 
+            this.a_PATERNODataTextBox.CanGrow = true;
+            this.a_PATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.0000787973403931D), Telerik.Reporting.Drawing.Unit.Inch(0.01666666753590107D));
+            this.a_PATERNODataTextBox.Name = "a_PATERNODataTextBox";
+            this.a_PATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.88950449228286743D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.a_PATERNODataTextBox.StyleName = "Data";
+            this.a_PATERNODataTextBox.Value = "= Fields.A_PATERNO";
+            // 
+            // a_MATERNODataTextBox
+            // 
+            this.a_MATERNODataTextBox.CanGrow = true;
+            this.a_MATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.889741063117981D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
+            this.a_MATERNODataTextBox.Name = "a_MATERNODataTextBox";
+            this.a_MATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.0061711072921753D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.a_MATERNODataTextBox.StyleName = "Data";
+            this.a_MATERNODataTextBox.Value = "= Fields.A_MATERNO";
+            // 
+            // rFCDataTextBox
+            // 
+            this.rFCDataTextBox.CanGrow = true;
+            this.rFCDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8959910869598389D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
+            this.rFCDataTextBox.Name = "rFCDataTextBox";
+            this.rFCDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90617114305496216D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.rFCDataTextBox.StyleName = "Data";
+            this.rFCDataTextBox.Value = "= Fields.RFC";
+            // 
+            // t_CELULARDataTextBox
+            // 
+            this.t_CELULARDataTextBox.CanGrow = true;
+            this.t_CELULARDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.818828821182251D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
+            this.t_CELULARDataTextBox.Name = "t_CELULARDataTextBox";
+            this.t_CELULARDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.78958332538604736D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.t_CELULARDataTextBox.StyleName = "Data";
+            this.t_CELULARDataTextBox.Value = "= Fields.T_CELULAR";
+            // 
+            // expr1DataTextBox
+            // 
+            this.expr1DataTextBox.CanGrow = true;
+            this.expr1DataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.6250786781311035D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
+            this.expr1DataTextBox.Name = "expr1DataTextBox";
+            this.expr1DataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.78958332538604736D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.expr1DataTextBox.StyleName = "Data";
+            this.expr1DataTextBox.Value = "= Fields.Expr1";
+            // 
+            // nOMMUNICIPIODataTextBox
+            // 
+            this.nOMMUNICIPIODataTextBox.CanGrow = true;
+            this.nOMMUNICIPIODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.4313287734985352D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
+            this.nOMMUNICIPIODataTextBox.Name = "nOMMUNICIPIODataTextBox";
+            this.nOMMUNICIPIODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.83634895086288452D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.nOMMUNICIPIODataTextBox.StyleName = "Data";
+            this.nOMMUNICIPIODataTextBox.Value = "= Fields.NOMMUNICIPIO";
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionString = "BaseDatos";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            this.sqlDataSource1.SelectCommand = resources.GetString("sqlDataSource1.SelectCommand");
             // 
             // reportNameTextBox
             // 
@@ -223,60 +277,6 @@ namespace Medica2.Farmacia.Proveedores.Reportes
             // 
             this.detail.Height = Telerik.Reporting.Drawing.Unit.Inch(0.12926508486270905D);
             this.detail.Name = "detail";
-            // 
-            // a_PATERNODataTextBox
-            // 
-            this.a_PATERNODataTextBox.CanGrow = true;
-            this.a_PATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.0000787973403931D), Telerik.Reporting.Drawing.Unit.Inch(0.01666666753590107D));
-            this.a_PATERNODataTextBox.Name = "a_PATERNODataTextBox";
-            this.a_PATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.88950449228286743D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.a_PATERNODataTextBox.StyleName = "Data";
-            this.a_PATERNODataTextBox.Value = "= Fields.A_PATERNO";
-            // 
-            // a_MATERNODataTextBox
-            // 
-            this.a_MATERNODataTextBox.CanGrow = true;
-            this.a_MATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.889741063117981D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
-            this.a_MATERNODataTextBox.Name = "a_MATERNODataTextBox";
-            this.a_MATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.0061711072921753D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.a_MATERNODataTextBox.StyleName = "Data";
-            this.a_MATERNODataTextBox.Value = "= Fields.A_MATERNO";
-            // 
-            // rFCDataTextBox
-            // 
-            this.rFCDataTextBox.CanGrow = true;
-            this.rFCDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.8959910869598389D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
-            this.rFCDataTextBox.Name = "rFCDataTextBox";
-            this.rFCDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.90617114305496216D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.rFCDataTextBox.StyleName = "Data";
-            this.rFCDataTextBox.Value = "= Fields.RFC";
-            // 
-            // t_CELULARDataTextBox
-            // 
-            this.t_CELULARDataTextBox.CanGrow = true;
-            this.t_CELULARDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.818828821182251D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
-            this.t_CELULARDataTextBox.Name = "t_CELULARDataTextBox";
-            this.t_CELULARDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.78958332538604736D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.t_CELULARDataTextBox.StyleName = "Data";
-            this.t_CELULARDataTextBox.Value = "= Fields.T_CELULAR";
-            // 
-            // expr1DataTextBox
-            // 
-            this.expr1DataTextBox.CanGrow = true;
-            this.expr1DataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(4.6250786781311035D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
-            this.expr1DataTextBox.Name = "expr1DataTextBox";
-            this.expr1DataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.78958332538604736D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.expr1DataTextBox.StyleName = "Data";
-            this.expr1DataTextBox.Value = "= Fields.Expr1";
-            // 
-            // nOMMUNICIPIODataTextBox
-            // 
-            this.nOMMUNICIPIODataTextBox.CanGrow = true;
-            this.nOMMUNICIPIODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(5.4313287734985352D), Telerik.Reporting.Drawing.Unit.Inch(0.016627248376607895D));
-            this.nOMMUNICIPIODataTextBox.Name = "nOMMUNICIPIODataTextBox";
-            this.nOMMUNICIPIODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.83634895086288452D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.nOMMUNICIPIODataTextBox.StyleName = "Data";
-            this.nOMMUNICIPIODataTextBox.Value = "= Fields.NOMMUNICIPIO";
             // 
             // ReportProveedores
             // 

@@ -32,13 +32,14 @@
             </telerik:RadContextMenu.ContextMenu>
             <telerik:RadGridView.Columns>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Equipo Hospital" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripción" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creación"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="EQUIPO HOSPITAL" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="FECHA DE CREACIÓN"/>
 
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Catalogo equipo hospital" HorizontalAlignment="Left" Margin="206,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
 
     </Grid>
 </Window>

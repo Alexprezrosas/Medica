@@ -14,7 +14,7 @@
         <Label x:Name="lblCurp" Content="CURP" HorizontalAlignment="Left" Margin="392,192,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCelular" Content="Celular" HorizontalAlignment="Left" Margin="392,164,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="63,273,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="392,108,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMunicipio" Content="Municipio" HorizontalAlignment="Left" Margin="392,108,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblLocalidad" Content="Localidad" HorizontalAlignment="Left" Margin="392,134,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCalle" Content="Calle" HorizontalAlignment="Left" Margin="63,248,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblSexo" Content="Sexo" HorizontalAlignment="Left" Margin="63,220,0,0" VerticalAlignment="Top"/>
@@ -27,7 +27,7 @@
             <ComboBoxItem Content="Masculino"/>
             <ComboBoxItem Content="Femenino"/>
         </ComboBox>
-        <Label x:Name="lblTitulo" Content="Registro de Proveedores" HorizontalAlignment="Left" Margin="256,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Registro de proveedores" HorizontalAlignment="Left" Margin="258,24,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <ComboBox x:Name="comboBoxEstado" HorizontalAlignment="Left" 
                   Margin="213,273,0,0" VerticalAlignment="Top" Width="143"
                   DisplayMemberPath="nombre" 
@@ -39,7 +39,7 @@
                     SelectedDateChanged="dpFecha_Nacimiento_SelectedDateChanged" 
                     DisplayDateEnd="{x:Static System:DateTime.Now}"/>
 
-        <CheckBox x:Name="checMoral" Content="Persona Moral" HorizontalAlignment="Left" Margin="63,88,0,0" VerticalAlignment="Top" 
+        <CheckBox x:Name="checMoral" Content="Persona moral" HorizontalAlignment="Left" Margin="63,88,0,0" VerticalAlignment="Top" 
             Checked="checMoral_Checked" Unchecked="checMoral_Unchecked"/>
         <TextBox x:Name="txtPaterno" HorizontalAlignment="Left" Height="23" Margin="214,138,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="143" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" MaxLength="30"/>
         <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="214,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="143" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" MaxLength="30"/>

@@ -34,7 +34,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA}" Header="FECHA"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta devoluciones" HorizontalAlignment="Left" Margin="373,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Consulta de devoluciones" HorizontalAlignment="Left" Margin="373,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

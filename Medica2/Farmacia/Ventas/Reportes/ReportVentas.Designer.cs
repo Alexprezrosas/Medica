@@ -17,13 +17,14 @@ namespace Medica2.Farmacia.Ventas.Reportes
             Telerik.Reporting.Drawing.StyleRule styleRule3 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule4 = new Telerik.Reporting.Drawing.StyleRule();
             Telerik.Reporting.Drawing.StyleRule styleRule5 = new Telerik.Reporting.Drawing.StyleRule();
-            this.sqlDataSource1 = new Telerik.Reporting.SqlDataSource();
-            this.nOMBREGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.nOMBREGroupFooterSection = new Telerik.Reporting.GroupFooterSection();
+            this.nOMBREGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.textBox1 = new Telerik.Reporting.TextBox();
             this.textBox2 = new Telerik.Reporting.TextBox();
-            this.labelsGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
+            this.a_PATERNODataTextBox = new Telerik.Reporting.TextBox();
+            this.a_MATERNODataTextBox = new Telerik.Reporting.TextBox();
             this.labelsGroupFooterSection = new Telerik.Reporting.GroupFooterSection();
+            this.labelsGroupHeaderSection = new Telerik.Reporting.GroupHeaderSection();
             this.nOMBRE_MEDICaptionTextBox = new Telerik.Reporting.TextBox();
             this.cOMENTARIOCaptionTextBox = new Telerik.Reporting.TextBox();
             this.cANTIDADCaptionTextBox = new Telerik.Reporting.TextBox();
@@ -31,6 +32,7 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.sUBTOTALCaptionTextBox = new Telerik.Reporting.TextBox();
             this.cLIENTECaptionTextBox = new Telerik.Reporting.TextBox();
             this.fECHA_CREACIONCaptionTextBox = new Telerik.Reporting.TextBox();
+            this.sqlDataSource1 = new Telerik.Reporting.SqlDataSource();
             this.pageHeader = new Telerik.Reporting.PageHeaderSection();
             this.reportNameTextBox = new Telerik.Reporting.TextBox();
             this.pageFooter = new Telerik.Reporting.PageFooterSection();
@@ -40,22 +42,19 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.titleTextBox = new Telerik.Reporting.TextBox();
             this.reportFooter = new Telerik.Reporting.ReportFooterSection();
             this.detail = new Telerik.Reporting.DetailSection();
-            this.a_PATERNODataTextBox = new Telerik.Reporting.TextBox();
-            this.a_MATERNODataTextBox = new Telerik.Reporting.TextBox();
             this.nOMBRE_MEDIDataTextBox = new Telerik.Reporting.TextBox();
             this.cOMENTARIODataTextBox = new Telerik.Reporting.TextBox();
             this.cANTIDADDataTextBox = new Telerik.Reporting.TextBox();
             this.cOSTODataTextBox = new Telerik.Reporting.TextBox();
             this.sUBTOTALDataTextBox = new Telerik.Reporting.TextBox();
-            this.cLIENTEDataTextBox = new Telerik.Reporting.TextBox();
             this.fECHA_CREACIONDataTextBox = new Telerik.Reporting.TextBox();
+            this.cLIENTEDataTextBox = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
-            // sqlDataSource1
+            // nOMBREGroupFooterSection
             // 
-            this.sqlDataSource1.ConnectionString = "BaseDatos";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            this.sqlDataSource1.SelectCommand = resources.GetString("sqlDataSource1.SelectCommand");
+            this.nOMBREGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
+            this.nOMBREGroupFooterSection.Name = "nOMBREGroupFooterSection";
             // 
             // nOMBREGroupHeaderSection
             // 
@@ -66,11 +65,6 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.a_PATERNODataTextBox,
             this.a_MATERNODataTextBox});
             this.nOMBREGroupHeaderSection.Name = "nOMBREGroupHeaderSection";
-            // 
-            // nOMBREGroupFooterSection
-            // 
-            this.nOMBREGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
-            this.nOMBREGroupFooterSection.Name = "nOMBREGroupFooterSection";
             // 
             // textBox1
             // 
@@ -91,6 +85,30 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.textBox2.StyleName = "Data";
             this.textBox2.Value = "= Fields.NOMBRE";
             // 
+            // a_PATERNODataTextBox
+            // 
+            this.a_PATERNODataTextBox.CanGrow = true;
+            this.a_PATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.8000787496566773D), Telerik.Reporting.Drawing.Unit.Inch(0.01666666753590107D));
+            this.a_PATERNODataTextBox.Name = "a_PATERNODataTextBox";
+            this.a_PATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.92322826385498047D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.a_PATERNODataTextBox.StyleName = "Data";
+            this.a_PATERNODataTextBox.Value = "= Fields.A_PATERNO";
+            // 
+            // a_MATERNODataTextBox
+            // 
+            this.a_MATERNODataTextBox.CanGrow = true;
+            this.a_MATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.7233858108520508D), Telerik.Reporting.Drawing.Unit.Inch(0.02019704133272171D));
+            this.a_MATERNODataTextBox.Name = "a_MATERNODataTextBox";
+            this.a_MATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.97661417722702026D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.a_MATERNODataTextBox.StyleName = "Data";
+            this.a_MATERNODataTextBox.Value = "= Fields.A_MATERNO";
+            // 
+            // labelsGroupFooterSection
+            // 
+            this.labelsGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
+            this.labelsGroupFooterSection.Name = "labelsGroupFooterSection";
+            this.labelsGroupFooterSection.Style.Visible = false;
+            // 
             // labelsGroupHeaderSection
             // 
             this.labelsGroupHeaderSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.24992115795612335D);
@@ -104,12 +122,6 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.fECHA_CREACIONCaptionTextBox});
             this.labelsGroupHeaderSection.Name = "labelsGroupHeaderSection";
             this.labelsGroupHeaderSection.PrintOnEveryPage = true;
-            // 
-            // labelsGroupFooterSection
-            // 
-            this.labelsGroupFooterSection.Height = Telerik.Reporting.Drawing.Unit.Inch(0.22499999403953552D);
-            this.labelsGroupFooterSection.Name = "labelsGroupFooterSection";
-            this.labelsGroupFooterSection.Style.Visible = false;
             // 
             // nOMBRE_MEDICaptionTextBox
             // 
@@ -172,7 +184,13 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.fECHA_CREACIONCaptionTextBox.Name = "fECHA_CREACIONCaptionTextBox";
             this.fECHA_CREACIONCaptionTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.3184137344360352D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.fECHA_CREACIONCaptionTextBox.StyleName = "Caption";
-            this.fECHA_CREACIONCaptionTextBox.Value = "FECHA_CREACION";
+            this.fECHA_CREACIONCaptionTextBox.Value = "Fecha de registro";
+            // 
+            // sqlDataSource1
+            // 
+            this.sqlDataSource1.ConnectionString = "BaseDatos";
+            this.sqlDataSource1.Name = "sqlDataSource1";
+            this.sqlDataSource1.SelectCommand = resources.GetString("sqlDataSource1.SelectCommand");
             // 
             // pageHeader
             // 
@@ -249,24 +267,6 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.cLIENTEDataTextBox});
             this.detail.Name = "detail";
             // 
-            // a_PATERNODataTextBox
-            // 
-            this.a_PATERNODataTextBox.CanGrow = true;
-            this.a_PATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(1.8000787496566773D), Telerik.Reporting.Drawing.Unit.Inch(0.01666666753590107D));
-            this.a_PATERNODataTextBox.Name = "a_PATERNODataTextBox";
-            this.a_PATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.92322826385498047D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.a_PATERNODataTextBox.StyleName = "Data";
-            this.a_PATERNODataTextBox.Value = "= Fields.A_PATERNO";
-            // 
-            // a_MATERNODataTextBox
-            // 
-            this.a_MATERNODataTextBox.CanGrow = true;
-            this.a_MATERNODataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(2.7233858108520508D), Telerik.Reporting.Drawing.Unit.Inch(0.02019704133272171D));
-            this.a_MATERNODataTextBox.Name = "a_MATERNODataTextBox";
-            this.a_MATERNODataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.97661417722702026D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.a_MATERNODataTextBox.StyleName = "Data";
-            this.a_MATERNODataTextBox.Value = "= Fields.A_MATERNO";
-            // 
             // nOMBRE_MEDIDataTextBox
             // 
             this.nOMBRE_MEDIDataTextBox.CanGrow = true;
@@ -312,15 +312,6 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.sUBTOTALDataTextBox.StyleName = "Data";
             this.sUBTOTALDataTextBox.Value = "= Fields.SUBTOTAL";
             // 
-            // cLIENTEDataTextBox
-            // 
-            this.cLIENTEDataTextBox.CanGrow = true;
-            this.cLIENTEDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.9164224290288985E-05D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
-            this.cLIENTEDataTextBox.Name = "cLIENTEDataTextBox";
-            this.cLIENTEDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999609112739563D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
-            this.cLIENTEDataTextBox.StyleName = "Data";
-            this.cLIENTEDataTextBox.Value = "= Fields.CLIENTE";
-            // 
             // fECHA_CREACIONDataTextBox
             // 
             this.fECHA_CREACIONDataTextBox.CanGrow = true;
@@ -329,6 +320,15 @@ namespace Medica2.Farmacia.Ventas.Reportes
             this.fECHA_CREACIONDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(1.3183746337890625D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
             this.fECHA_CREACIONDataTextBox.StyleName = "Data";
             this.fECHA_CREACIONDataTextBox.Value = "= Fields.FECHA_CREACION";
+            // 
+            // cLIENTEDataTextBox
+            // 
+            this.cLIENTEDataTextBox.CanGrow = true;
+            this.cLIENTEDataTextBox.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Inch(3.9164224290288985E-05D), Telerik.Reporting.Drawing.Unit.Inch(3.9418537198798731E-05D));
+            this.cLIENTEDataTextBox.Name = "cLIENTEDataTextBox";
+            this.cLIENTEDataTextBox.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Inch(0.7999609112739563D), Telerik.Reporting.Drawing.Unit.Inch(0.20000000298023224D));
+            this.cLIENTEDataTextBox.StyleName = "Data";
+            this.cLIENTEDataTextBox.Value = "= Fields.CLIENTE";
             // 
             // ReportVentas
             // 

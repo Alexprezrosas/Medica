@@ -36,7 +36,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CPROFESIONAL}" Header="CPROFESIONAL"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CPROFESIONAL}" Header="CÉDULA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUNI}" Header="MUNICIPIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMLOC}" Header="LOCALIDAD"/>
@@ -47,8 +47,8 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOP}" Header="ESTATUS"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <CheckBox x:Name="checkboxenfe" Content="Mostrar todas Enfermeras" Unchecked="checkboxenfe_Unchecked" Checked="checkboxenfe_Checked" Grid.Column="1" HorizontalAlignment="Left" Margin="10.4,34,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label" Content="Consultar Enfermeras" Grid.Column="1" HorizontalAlignment="Left" Margin="299,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <CheckBox x:Name="checkboxenfe" Content="Mostrar todas las enfermeras" Unchecked="checkboxenfe_Unchecked" Checked="checkboxenfe_Checked" Grid.Column="1" HorizontalAlignment="Left" Margin="10.4,34,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Consultar enfermeras" Grid.Column="1" HorizontalAlignment="Left" Margin="299,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
 
     </Grid>
 </Window>

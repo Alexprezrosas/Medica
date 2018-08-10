@@ -10,7 +10,7 @@
     <Grid>
 
         <TextBox MaxLength="30" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="163,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
-        <Label x:Name="lblNombre" Content="Nombre del Empleado" HorizontalAlignment="Left" Margin="11,74,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNombre" Content="Nombre del empleado" HorizontalAlignment="Left" Margin="11,74,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCurp" Content="CURP" HorizontalAlignment="Left" Margin="486,128,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblEstado" Content="Estado" HorizontalAlignment="Left" Margin="11,239,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblMunicipio" Content="Minicipio" HorizontalAlignment="Left" Margin="486,73,0,0" VerticalAlignment="Top"/>
@@ -38,7 +38,7 @@
         <TextBox x:Name="txtMaterno" HorizontalAlignment="Left" Height="23" Margin="163,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras" MaxLength="30"/>
         <TextBox x:Name="txtCalle" HorizontalAlignment="Left" Height="23" Margin="163,213,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="213" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras" MaxLength="150"/>
         <TextBox x:Name="txtCurp" HorizontalAlignment="Left" Height="23" Margin="594,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="212" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumLetras" MaxLength="18"/>
-        <Label x:Name="lblNombre_Copy" Content="Registrar Empleado" HorizontalAlignment="Left" Margin="359,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblNombre_Copy" Content="Registrar empleado" HorizontalAlignment="Left" Margin="359,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="288,330,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btn_Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="486,330,0,0" VerticalAlignment="Top" Width="75" Click="btn_Cancelar_Click"/>
         <Label x:Name="lblCelular" Content="Celular" HorizontalAlignment="Left" Margin="486,159,0,0" VerticalAlignment="Top"/>

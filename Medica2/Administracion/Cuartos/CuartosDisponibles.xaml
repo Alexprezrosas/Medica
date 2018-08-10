@@ -30,7 +30,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CUARTO}" Header="NOMBRE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTASTUS"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding MAX_PACIENTES}" Header="PACIENTES POR HABITACIÓN"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>

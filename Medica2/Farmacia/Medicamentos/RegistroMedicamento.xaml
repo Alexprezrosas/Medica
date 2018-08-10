@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="lblNombre" Content="Nombre" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblComentario" Content="Descripción" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblTitulo" Content="Registro de Medicamentos" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="193"/>
+        <Label x:Name="lblTitulo" Content="Registro de medicamentos" HorizontalAlignment="Left" Margin="60,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="193"/>
         <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
 
         <TextBox MaxLength="200" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="142,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153"

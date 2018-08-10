@@ -545,10 +545,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Administracion\Cuartos\CatalogoCuartos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Administracion\Cuartos\ConsultaCatalogoCuartos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -778,9 +774,6 @@
     </Compile>
     <Compile Include="Administracion\Cirugias\ConsultaCatalogCirugias.xaml.cs">
       <DependentUpon>ConsultaCatalogCirugias.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Administracion\Cuartos\CatalogoCuartos.xaml.cs">
-      <DependentUpon>CatalogoCuartos.xaml</DependentUpon>
     </Compile>
     <Compile Include="Administracion\Cuartos\ConsultaCatalogoCuartos.xaml.cs">
       <DependentUpon>ConsultaCatalogoCuartos.xaml</DependentUpon>

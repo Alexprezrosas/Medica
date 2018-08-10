@@ -29,7 +29,7 @@
         <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="477,127,0,0" VerticalAlignment="Top" Width="73" Grid.Column="1"/>
         <Label x:Name="lblDescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <Label x:Name="lblPVenta" Content="Precio de venta" HorizontalAlignment="Left" Margin="476,158,0,0" VerticalAlignment="Top" Grid.Column="1"/>
-        <Label x:Name="lblTitulo" Content="Registro de ventas" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Grid.Column="1"/>
+        <Label x:Name="lblTitulo" Content="Registro de ventas" HorizontalAlignment="Left" Margin="476,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Grid.Column="1" FontFamily="Global Sans Serif"/>
 
 
         <telerik:RadAutoCompleteBox x:Name="autoMedicamentos" HorizontalAlignment="Left" Margin="192,105,0,0" VerticalAlignment="Top" Width="214"
@@ -77,7 +77,7 @@
         <Label x:Name="lblExistencias" Content="Existencias" HorizontalAlignment="Left" Margin="476,101,0,0" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBox x:Name="txtExistencias" HorizontalAlignment="Left" Height="23" Margin="645,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214" IsReadOnly="True" Grid.Column="1"
             KeyDown="validarDecimal"/>
-        <CheckBox x:Name="chbVenta" Content="Venta doctor" Grid.Column="1" HorizontalAlignment="Left" Margin="30,57,0,0" VerticalAlignment="Top" 
+        <CheckBox x:Name="chbVenta" Content="Venta para médicos" Grid.Column="1" HorizontalAlignment="Left" Margin="30,57,0,0" VerticalAlignment="Top" 
                   Checked="chbVenta_Checked" Unchecked="chbVenta_Unchecked" IsEnabled="False"/>
 
 

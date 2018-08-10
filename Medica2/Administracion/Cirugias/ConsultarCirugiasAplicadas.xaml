@@ -35,14 +35,14 @@
             </telerik:RadContextMenu.ContextMenu>
 
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MEDICO SOLICITANTE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MEDICOSOL}" Header="MÉDICO SOLICITANTE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTENOM}" Header="PACIENTE" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CIRUGIANOM}" Header="CIRUGÍA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding USU}" Header="USUARIO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REALIZACION"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REALIZACIÓN"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 

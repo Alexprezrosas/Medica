@@ -15,19 +15,19 @@
         <Label x:Name="lblCodBarras" Content="Código de barras" HorizontalAlignment="Left" Margin="20,128,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblCantidad" Content="Cantidad" HorizontalAlignment="Left" Margin="20,102,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblComentario" Content="Descripción" HorizontalAlignment="Left" Margin="20,76,0,0" VerticalAlignment="Top" Width="113"/>
-        <Label x:Name="lblTitulo" Content="Registro de Medicamentos" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="252"/>
+        <Label x:Name="lblTitulo" Content="Registro de medicamentos" HorizontalAlignment="Left" Margin="189,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Width="252"/>
         <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="298,80,0,0" VerticalAlignment="Top" Width="113"/>
         <Label x:Name="lblCFDI" Content="CFDI" HorizontalAlignment="Left" Margin="298,111,0,0" VerticalAlignment="Top" Width="113"/>
 
         <DatePicker Name="dpCaducidad" HorizontalAlignment="Left" Margin="438,57,0,0" VerticalAlignment="Top" Width="141"/>
 
-        <TextBox MaxLength="200" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="133,53,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarLetras"/>
-        <TextBox MaxLength="200" x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="133,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarLetras"/>
-        <TextBox MaxLength="7" x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="133,105,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarNumeros"/>
-        <TextBox MaxLength="13" x:Name="txtCodBarras" HorizontalAlignment="Left" Height="23" Margin="133,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarNumeros"/>
-        <TextBox MaxLength="11" x:Name="txtPCompra" HorizontalAlignment="Left" Height="23" Margin="133,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
-        <TextBox MaxLength="11" x:Name="txtPVenta" HorizontalAlignment="Left" Height="23" Margin="133,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
-        <TextBox MaxLength="11" x:Name="txtPMedicos" HorizontalAlignment="Left" Height="23" Margin="133,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
+        <TextBox MaxLength="200" x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="139,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarLetras"/>
+        <TextBox MaxLength="200" x:Name="txtComentario" HorizontalAlignment="Left" Height="23" Margin="139,79,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarLetras"/>
+        <TextBox MaxLength="7" x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="139,104,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarNumeros"/>
+        <TextBox MaxLength="13" x:Name="txtCodBarras" HorizontalAlignment="Left" Height="23" Margin="139,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" PreviewTextInput="validarNumeros"/>
+        <TextBox MaxLength="11" x:Name="txtPCompra" HorizontalAlignment="Left" Height="23" Margin="139,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
+        <TextBox MaxLength="11" x:Name="txtPVenta" HorizontalAlignment="Left" Height="23" Margin="139,187,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
+        <TextBox MaxLength="11" x:Name="txtPMedicos" HorizontalAlignment="Left" Height="23" Margin="139,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" KeyDown="validarDecimal"/>
         <TextBox MaxLength="8" x:Name="txtCFDI" HorizontalAlignment="Left" Height="23" Margin="438,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141" PreviewTextInput="validarNumeros"/>
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="147,277,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>

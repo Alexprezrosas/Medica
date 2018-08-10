@@ -23,7 +23,7 @@
         </Grid.ColumnDefinitions>
 
         <telerik:RadGridView ShowSearchPanel="True" x:Name="rgMostrarMedico"  HorizontalAlignment="Left" Margin="30,90,0,0" 
-            VerticalAlignment="Top" Width="910" Height="320" AutoGenerateColumns="False"
+            VerticalAlignment="Top" Width="1168" Height="434" AutoGenerateColumns="False"
                              
             BeginningEdit="radGridView_BeginningEdit"
             SelectedCellsChanged="MostrarCirugias_SelectedCellsChanged"
@@ -42,29 +42,29 @@
 
 
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="Nombre"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding A_PATERNO}" Header="Paterno"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding A_MATERNO}" Header="Materno"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FNACIMIENTO}" Header="Fecha Nacimiento"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding SEXO}" Header="Sexo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CALLE}" Header="Calle"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="Estado"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUNI}" Header="Municipio"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMLOC}" Header="Localidad"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_CELULAR}" Header="Celular"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="Curp"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_CONSULTORIO}" Header="T Consultorio"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_PARTICULAR}" Header="T Particular"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CORREO}" Header="Correo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding C_PROFESIONAL}" Header="Cedula"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CONTRA}" Header="Contraseña"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOP}" Header="Estatus"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}" Header="NOMBRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding A_PATERNO}" Header="APATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding A_MATERNO}" Header="AMATERNO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FNACIMIENTO}" Header="FECHA NACIMIENTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding SEXO}" Header="SEXO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CALLE}" Header="CALLE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADO}" Header="ESTADO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUNI}" Header="MUNICIPIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMLOC}" Header="LOCALIDAD"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_CELULAR}" Header="CELULAR"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CURP}" Header="CURP"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_CONSULTORIO}" Header="T CONSULTORIO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding T_PARTICULAR}" Header="T PARTICULAR"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CORREO}" Header="CORRE"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding C_PROFESIONAL}" Header="CÉDULA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CONTRA}" Header="CONTRASEÑA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOP}" Header="ESTATUS"/>
 
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
-        <Label x:Name="label" Content="Vizualizar Médicos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="450,39,0,0" FontWeight="Bold" FontSize="14"/>
-        <CheckBox x:Name="checkBoxmedicos" Checked="checkBoxmedicos_Checked" Unchecked="checkBoxmedicos_Unchecked" Content="Todos los Medicos" HorizontalAlignment="Left" Margin="30,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label" Content="Visualizar médicos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="540,10,0,0" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
+        <CheckBox x:Name="checkBoxmedicos" Checked="checkBoxmedicos_Checked" Unchecked="checkBoxmedicos_Unchecked" Content="Todos los médicos" HorizontalAlignment="Left" Margin="30,59,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

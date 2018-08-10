@@ -61,7 +61,7 @@
 
 
         <Button x:Name="buttoneditar" Content="Editar" Click="buttoneditar_Click" HorizontalAlignment="Left" Margin="154,246,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label x:Name="lblTitulo" Content="Consulta de proveedores" HorizontalAlignment="Left" Margin="419,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
+        <Label x:Name="lblTitulo" Content="Consulta de proveedores" HorizontalAlignment="Left" Margin="382,26,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
         <CheckBox x:Name="cbTProveedores" Content="Todos los proveedores" Grid.Column="1" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"
                   Checked="cbTProveedores_Checked" Unchecked="cbTProveedores_Unchecked"/>
 

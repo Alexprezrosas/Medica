@@ -9,7 +9,7 @@
         Title="RegistrarDeposito" Height="274.805" Width="459.776">
     <Grid>
         <Label x:Name="lblPaciente" Content="Nombre del paciente" HorizontalAlignment="Left" Margin="35,50,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblMonto" Content="Monto" HorizontalAlignment="Left" Margin="35,107,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblMonto" Content="Montó" HorizontalAlignment="Left" Margin="35,107,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblConcepto" Content="Concepto" HorizontalAlignment="Left" Margin="35,133,0,0" VerticalAlignment="Top"/>
 
         <telerik:RadAutoCompleteBox HorizontalAlignment="Left" Margin="182,52,0,0" VerticalAlignment="Top" Width="224"
@@ -23,7 +23,7 @@
         <TextBox x:Name="txtConcepto" HorizontalAlignment="Left" Height="23" Margin="182,137,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="224" PreviewTextInput="validarLetras"/>
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="110,189,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="291,189,0,0" VerticalAlignment="Top" Width="75" Click="btnSalir_Click"/>
-        <Label x:Name="lblTitulo" Content="Registro de depositos" HorizontalAlignment="Left" Margin="154,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Registro de depósitos" HorizontalAlignment="Left" Margin="154,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Button x:Name="btnEditar" Content="Actualizar" HorizontalAlignment="Left" Margin="110,189,0,0" VerticalAlignment="Top" Width="75" 
                 Click="btnEditar_Click"
                 Visibility="Hidden"/>

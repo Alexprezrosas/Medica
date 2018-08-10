@@ -114,7 +114,7 @@ namespace Medica2.Administracion.Reportes
             this.textBox4.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox4.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox4.Style.VerticalAlign = Telerik.Reporting.Drawing.VerticalAlign.Middle;
-            this.textBox4.Value = "CEDULA";
+            this.textBox4.Value = "CÉDULA";
             // 
             // detail
             // 

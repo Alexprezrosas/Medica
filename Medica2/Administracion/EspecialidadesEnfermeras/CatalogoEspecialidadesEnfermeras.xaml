@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="CatalogoEspecialidadesEnfermeras" Height="335.052" Width="510.309">
     <Grid>
-        <Label x:Name="lblTitulo" Content="Especialidades Enfermeras" HorizontalAlignment="Left" Margin="156,41,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Especialidades enfermeras" HorizontalAlignment="Left" Margin="156,41,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
         <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="53,85,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="53,125,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <TextBox x:Name="txtNombre" PreviewTextInput="validarLetras" HorizontalAlignment="Left" Height="23" Margin="142,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="NuevaEspecialidadMedico" Height="322.68" Width="464.948">
     <Grid>
-        <Label x:Name="lblTitulo" Content="Especialidades Médicos" HorizontalAlignment="Left" Margin="167,36,0,0" VerticalAlignment="Top" Height="37" Width="180" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Especialidades médicos" HorizontalAlignment="Left" Margin="138,19,0,0" VerticalAlignment="Top" Height="37" Width="180" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
         <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="53,85,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="53,125,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
 

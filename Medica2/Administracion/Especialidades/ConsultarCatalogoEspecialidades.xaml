@@ -33,11 +33,12 @@
 
             <telerik:RadGridView.Columns>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_ESPECIALIDAD}" Header="Especialidad" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripción" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creación"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_ESPECIALIDAD}" Header="ESPECIALIDAD" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="FECHA DE CREACIÓN"/>
 
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Catalogo especialidades" HorizontalAlignment="Left" Margin="217,6,0,0" VerticalAlignment="Top" Height="36" Width="176" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
     </Grid>
 </Window>

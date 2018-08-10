@@ -14,7 +14,7 @@
         <Label x:Name="labelNombreDiagnostico" Content="Diagnóstico" HorizontalAlignment="Left" Margin="24,216,0,0" VerticalAlignment="Top" Width="73"/>
         <Label x:Name="labelNombreDiagnostico_Copy" Content="Descripción" HorizontalAlignment="Left" Margin="24,247,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelNombreDiagnostico_Copy1" Content="Medicamento" HorizontalAlignment="Left" Margin="27,344,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="labelNombreMedico_Copy" Content="Consultas Médicas" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="136" FontSize="14"/>
+        <Label x:Name="labelNombreMedico_Copy" Content="Consultas Médicas" HorizontalAlignment="Left" Margin="270,10,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="30" Width="136" FontSize="14" FontFamily="Global Sans Serif"/>
         <Label x:Name="labelcostoconsulta" Content="Costo Consulta" HorizontalAlignment="Left" Margin="425,469,0,0" VerticalAlignment="Top"/>
 
 
@@ -46,7 +46,7 @@
         <TextBox x:Name="txtmedicamento" HorizontalAlignment="Left" Height="94" Margin="112,348,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="520"/>
         <TextBox x:Name="txtcostoconsulta" PreviewTextInput="validarNumeros" HorizontalAlignment="Left" Height="26" Margin="539,469,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93"/>
         <DatePicker x:Name="fechaconsulta" HorizontalAlignment="Left" Margin="292,46,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblfecha" Content="Facha" HorizontalAlignment="Left" Margin="248,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblfecha" Content="Fecha" HorizontalAlignment="Left" Margin="248,46,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblfecha_Copy" Content="Peso" HorizontalAlignment="Left" Margin="466,46,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtPeso" HorizontalAlignment="Left" Height="24" Margin="560,46,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="72"/>
         <Label x:Name="lbltalla" Content="Temperatura" HorizontalAlignment="Left" Margin="466,117,0,0" VerticalAlignment="Top"/>

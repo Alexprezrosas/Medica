@@ -37,6 +37,6 @@
         </telerik:RadGridView>
         <CheckBox x:Name="cbUsuarios" Content="Mostrar todos los usuarios" Unchecked="checkboxenfe_Unchecked" Checked="checkboxenfe_Checked"
                   HorizontalAlignment="Left" Margin="16,34,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitulo" Content="Consultar de Usuarios" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Consultar de usuarios" HorizontalAlignment="Left" Margin="296,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
     </Grid>
 </Window>

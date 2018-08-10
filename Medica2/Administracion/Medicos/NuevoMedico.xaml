@@ -29,14 +29,14 @@
         <Label x:Name="label_Copy7" Content="Localidad" HorizontalAlignment="Left" Margin="22,285,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy8" Content="Calle" HorizontalAlignment="Left" Margin="22,197,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy9" Content="Sexo" HorizontalAlignment="Left" Margin="22,167,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy10" Content="Fecha Nacimiento" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy10" Content="Fecha nacimiento" HorizontalAlignment="Left" Margin="22,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy11" Content="Apellido materno" HorizontalAlignment="Left" Margin="22,111,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy12" Content="Apellido paterno" HorizontalAlignment="Left" Margin="22,83,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="lblTitulo" Content="Registro de Médicos" HorizontalAlignment="Left" Margin="353,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Height="30" Width="150"/>
-        <Label x:Name="label_Copy" Content="Teléfono Consultorio" HorizontalAlignment="Left" Margin="444,110,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy13" Content="Teléfono Particular" HorizontalAlignment="Left" Margin="442,136,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Registro de médicos" HorizontalAlignment="Left" Margin="353,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Height="30" Width="150"/>
+        <Label x:Name="label_Copy" Content="Teléfono consultorio" HorizontalAlignment="Left" Margin="444,110,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy13" Content="Teléfono particular" HorizontalAlignment="Left" Margin="442,136,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label_Copy14" Content="Correo" HorizontalAlignment="Left" Margin="444,200,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy15" Content="Cédula Profesional" HorizontalAlignment="Left" Margin="442,167,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy15" Content="Cédula profesional" HorizontalAlignment="Left" Margin="442,167,0,0" VerticalAlignment="Top"/>
 
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" 

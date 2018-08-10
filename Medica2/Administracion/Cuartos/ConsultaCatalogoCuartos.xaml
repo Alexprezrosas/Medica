@@ -34,12 +34,13 @@
 
             <telerik:RadGridView.Columns>
 
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CUARTO}" Header="Nombre Cuarto" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="Descripcion" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="Costo"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="Fecha de Creacion"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CUARTO}" Header="CUARTO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" Header="COSTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   Header="FECHA DE CREACIÓN"/>
 
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Vizualizar catalogo cuartos" HorizontalAlignment="Left" Margin="201,22,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
     </Grid>
 </Window>

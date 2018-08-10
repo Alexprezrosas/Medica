@@ -37,19 +37,20 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CATENOM}"
-                    Header="Estudio" />
+                    Header="ESTUDIO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CATEDESC}"
-                    Header="Desccripción" />
+                    Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CLASIESTU}"
-                    Header="Clasificación" />
+                    Header="CLASIFICACIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CATECOSTO}"
-                    Header="Costo"/>
+                    Header="COSTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHAC}"
-                    Header="Fecha de Creación" />
+                    Header="FECHA DE CREACIÓN" />
 
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Catalogo de estudios" HorizontalAlignment="Left" Margin="190,19,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

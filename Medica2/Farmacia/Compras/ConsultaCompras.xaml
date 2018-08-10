@@ -39,7 +39,7 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUSUARIO}" Header="USUARIO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta de compras" HorizontalAlignment="Left" Margin="303,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="lblTitulo" Content="Consulta de compras" HorizontalAlignment="Left" Margin="328,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

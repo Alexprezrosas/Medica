@@ -19,8 +19,8 @@
     </Window.Resources>
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="53,124,0,0" VerticalAlignment="Top" 
-            Width="1263" Height="541" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
+        <telerik:RadGridView x:Name="rgvPacientes"  HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" 
+            Width="1422" Height="704" SelectedCellsChanged="MostrarPacientes_SelectedCellsChanged" 
             AutoGenerateColumns="False" 
             SelectedItem="{Binding ID_PACIENTE}"
             ShowSearchPanel="True"
@@ -52,8 +52,8 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="594,65,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
-        <CheckBox Checked="checkBoxtodosP_Checked" Unchecked="checkBoxtodosP_Unchecked" x:Name="checkBoxtodosP" Content="Todos los Pacientes" HorizontalAlignment="Left" Margin="53,104,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="637,33,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <CheckBox Checked="checkBoxtodosP_Checked" Unchecked="checkBoxtodosP_Unchecked" x:Name="checkBoxtodosP" Content="Todos los pacientes" HorizontalAlignment="Left" Margin="53,104,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

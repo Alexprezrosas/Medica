@@ -46,14 +46,30 @@ namespace Medica2.Farmacia.Ventas
         {
             InitializeComponent();
             llenarAutocompletes();
+            var vent = BaseDatos.GetBaseDatos().VENTAS_GENERALES.Find(idv);
+            if (vent.CLIENTE == "Medico")
+            {
+                chbVenta.IsChecked = true;
+            }else
+            {
+                chbVenta.IsChecked = false;
+            }
 
             venta = idv;
-            VistaRad();
+            if (chbVenta.IsChecked == true)
+            {
+                VistaRadMed();
+            }
+            else
+            {
+                VistaRad();
+            }
             HabilitarDetalle();
             btnNuevaVenta.IsEnabled = false;
             var ven = BaseDatos.GetBaseDatos().VENTAS_GENERALES.Find(venta);
             total = Convert.ToDecimal(ven.TOTAL.ToString());
             txtTotal.Text = total.ToString();
+            chbVenta.IsEnabled = false;
         }
 
         void llenarAutocompletes()
@@ -127,6 +143,27 @@ namespace Medica2.Farmacia.Ventas
                                           UMEDIDA = medicamento.U_MEDIDA,
                                           CANTIDAD = detalle.CANTIDAD,
                                           COSTO = medicamento.P_VENTA,
+                                          SUBTOTAL = detalle.SUBTOTAL
+                                      }).ToList();
+        }
+
+        void VistaRadMed()
+        {
+            rgvDetalle.ItemsSource = (from VENTAS_GENERALES in BaseDatos.GetBaseDatos().VENTAS_GENERALES
+                                      join detalle in BaseDatos.GetBaseDatos().DETALLE_VENTAS
+                                      on VENTAS_GENERALES.ID_VENTA_GENERAL equals detalle.VENTAID
+                                      join medicamento in BaseDatos.GetBaseDatos().CATALOGO_MEDICAMENTOS
+                                      on detalle.MEDICAMENTOID equals medicamento.ID_MEDICAMENTO
+                                      where VENTAS_GENERALES.ID_VENTA_GENERAL == venta
+                                      select new
+                                      {
+                                          ID_VENTA = VENTAS_GENERALES.ID_VENTA_GENERAL,
+                                          ID_DETALLE_VENTA = detalle.ID_DETALLE_VENTA,
+                                          ID_MEDICAMENTO = medicamento.ID_MEDICAMENTO,
+                                          NOMMEDI = medicamento.NOMBRE_MEDI,
+                                          UMEDIDA = medicamento.U_MEDIDA,
+                                          CANTIDAD = detalle.CANTIDAD,
+                                          COSTO = medicamento.P_MEDICOS,
                                           SUBTOTAL = detalle.SUBTOTAL
                                       }).ToList();
         }
@@ -264,7 +301,14 @@ namespace Medica2.Farmacia.Ventas
                             txtTotal.Text = total.ToString();
 
                             //Llenamos la DataGrid
-                            VistaRad();
+                            if (chbVenta.IsChecked == true)
+                            {
+                                VistaRadMed();
+                            }else
+                            {
+                                VistaRad();
+                            }
+                            
 
                             //Actualizamos exixtencias
                             medic.CANTIDAD = medic.CANTIDAD - Convert.ToInt32(txtCantidad.Text);
@@ -376,7 +420,14 @@ namespace Medica2.Farmacia.Ventas
                 //Eliminar el suministro
                 BaseDatos.GetBaseDatos().DETALLE_VENTAS.Remove(detalleVenta);
                 BaseDatos.GetBaseDatos().SaveChanges();
-                VistaRad();
+                if (chbVenta.IsChecked == true)
+                {
+                    VistaRadMed();
+                }
+                else
+                {
+                    VistaRad();
+                }
             }
         }
 
@@ -483,11 +534,13 @@ namespace Medica2.Farmacia.Ventas
         private void chbVenta_Checked(object sender, RoutedEventArgs e)
         {
             txtCliente.Text = "Medico";
+            VistaRadMed();
         }
 
         private void chbVenta_Unchecked(object sender, RoutedEventArgs e)
         {
             txtCliente.Text = "Mostrador";
+            VistaRad();
         }
     }
 }

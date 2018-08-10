@@ -44,7 +44,7 @@
                                     DisplayMemberPath="NOMBRE"
                                     AutoCompleteMode="Suggest"
                                     SelectionMode="Single"/>
-        <CheckBox x:Name="cbTipoMedico" IsEnabled="False" Content="Medico Interno" HorizontalAlignment="Left" Margin="31,109,0,0" VerticalAlignment="Top"
+        <CheckBox x:Name="cbTipoMedico" IsEnabled="False" Content="Médico Interno" HorizontalAlignment="Left" Margin="31,109,0,0" VerticalAlignment="Top"
                   Checked="cbTipoMedico_Checked" Unchecked="cbTipoMedico_Unchecked"/>
         <TextBox x:Name="txtMedico" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
         <TextBox x:Name="txtPaciente" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="189,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="289"/>
@@ -68,14 +68,14 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn x:Name="itnombre" DataMemberBinding="{Binding ESTUDIONOMBRE}" Header="ESTUDIO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCION" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTOO}" Header="COSTO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTotal" Content="Total" HorizontalAlignment="Left" Margin="423,511,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="536,510,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
 
-        <Button x:Name="btnNuevo_Estudio" IsEnabled="true" Content="Nuevo Estudio" HorizontalAlignment="Left" Margin="483,50,0,0" VerticalAlignment="Top" Width="95" Click="btnNuevo_Estudio_Click"/>
+        <Button x:Name="btnNuevo_Estudio" IsEnabled="true" Content="Nuevo estudio" HorizontalAlignment="Left" Margin="483,50,0,0" VerticalAlignment="Top" Width="95" Click="btnNuevo_Estudio_Click" Height="23"/>
         <Button x:Name="btnEditar" Visibility="Hidden" IsEnabled="False" Content="Actualizar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
         <Button x:Name="btnAgregar" IsEnabled="False" Content="Agregar" HorizontalAlignment="Left" Margin="403,188,0,0" VerticalAlignment="Top" Width="75" Click="btnAgregar_Click"/>
         <Button x:Name="btnFinalizar" IsEnabled="False" Content="Finalizar" HorizontalAlignment="Left" Margin="503,188,0,0" VerticalAlignment="Top" Width="75" Click="btnFinalizar_Click"/>

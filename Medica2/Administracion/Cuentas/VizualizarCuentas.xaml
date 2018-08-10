@@ -9,7 +9,7 @@
         Title="VizualizarCuentas" Height="621.585" Width="832.5">
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvcuentas" HorizontalAlignment="Left" Margin="24,26,-513.4,-293.6" VerticalAlignment="Top" Height="538" Width="783"
+        <telerik:RadGridView x:Name="rgvcuentas" HorizontalAlignment="Left" Margin="24,44,0,0" VerticalAlignment="Top" Height="538" Width="783"
             ShowSearchPanel="True"
             IsSearchingDeferred="True"
             SelectedItem="{Binding CUENTAS}"
@@ -20,22 +20,23 @@
 
 
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE}"
-                    Header="Paciente" />
+                    Header="PACIENTE" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}"
-                    Header="Apellido Paterno" />
+                    Header="APATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}"
-                    Header="Apellido Materno" />
+                    Header="AMATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}"
-                    Header="Total" />
+                    Header="TOTAL" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding ESTADOO}"
-                    Header="Estado"/>
+                    Header="ESTATUS"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}"
-                    Header="Saldo"/>
+                    Header="SALDO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACIONN}"
-                    Header="Fecha creacion"/>
+                    Header="FECHA DE CREACIÓN"/>
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
+        <Label x:Name="lblnombre_Copy" Content="Visualizar cuentas" HorizontalAlignment="Left" Margin="315,15,0,0" VerticalAlignment="Top" Height="24" Width="167" FontWeight="Bold" FontFamily="Global Sans Serif" FontSize="14"/>
 
     </Grid>
 </Window>

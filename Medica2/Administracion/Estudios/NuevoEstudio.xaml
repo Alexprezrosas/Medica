@@ -17,7 +17,7 @@
         <TextBox x:Name="txtDescripcion" HorizontalAlignment="Left" Height="23" Margin="169,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="252" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarLetras"/>
         <TextBox x:Name="txtCosto" HorizontalAlignment="Left" Height="23" Margin="169,157,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="252" Foreground="#FF6F2828" BorderBrush="#FF089CF6" PreviewTextInput="validarNumeros" />
 
-        <Label x:Name="lblTitulo" Content="Nuevo Estudio" HorizontalAlignment="Left" Margin="237,19,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Nuevo estudio" HorizontalAlignment="Left" Margin="237,19,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="191,238,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="331,238,0,0" VerticalAlignment="Top" Width="75" Click="btnCancelar_Click"/>
@@ -30,7 +30,7 @@
         AutoCompleteMode="Suggest" 
         SelectionMode="Single"/>
 
-        <Button x:Name="btnnuevaclasificacion" Content="Nueva Clasificación" HorizontalAlignment="Left" Margin="449,126,0,0" VerticalAlignment="Top" Width="116" Click="btnnuevaclasificacion_Click"/>
+        <Button x:Name="btnnuevaclasificacion" Content="Nueva clasificación" HorizontalAlignment="Left" Margin="449,126,0,0" VerticalAlignment="Top" Width="116" Click="btnnuevaclasificacion_Click"/>
         <Button x:Name="btnEditar" Content="Actuaizar" Visibility="Hidden" HorizontalAlignment="Left" Margin="191,238,0,0" VerticalAlignment="Top" Width="75" Click="btnEditar_Click"/>
 
     </Grid>

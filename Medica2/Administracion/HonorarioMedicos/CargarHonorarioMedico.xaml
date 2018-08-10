@@ -27,8 +27,8 @@
         AutoCompleteMode="Suggest"
         SelectionMode="Single"/>
 
-        <Label x:Name="lblTitulo" Content="Cargar Honorario Médico" HorizontalAlignment="Left" Margin="209,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="lblnombre" Content="Nombre del Médico" HorizontalAlignment="Left" Margin="9,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblTitulo" Content="Cargar honorario médico" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblnombre" Content="Nombre del médico" HorizontalAlignment="Left" Margin="9,94,0,0" VerticalAlignment="Top"/>
 
         <TextBox x:Name="txtHonorario" HorizontalAlignment="Left" Height="23" Margin="157,136,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="119" PreviewTextInput="validarDecimal"/>
 

@@ -28,7 +28,7 @@
 
             <telerik:RadContextMenu.ContextMenu >
                 <telerik:RadContextMenu x:Name="GridContextMenu2" ItemContainerStyle="{StaticResource ResourceKey=MenuItemContainerStyle}" Opened="GridContextMenu_Opened" >
-                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Devolucion" IsEnabled="False" Click="itemAgregar_Click"/>
+                    <telerik:RadMenuItem x:Name="itemAgregar" Header="Devolución" IsEnabled="False" Click="itemAgregar_Click"/>
                 </telerik:RadContextMenu>
             </telerik:RadContextMenu.ContextMenu>
 
@@ -41,10 +41,10 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TIPOPACIENTE}" Header="TIPO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding RESPONSABLE}" Header="RESPONSABLE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TELÉFONO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL CUENTA"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE CUENTA"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="285,10,-149.8,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="349,15,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

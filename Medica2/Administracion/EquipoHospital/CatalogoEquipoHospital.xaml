@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="CatalogoEquipoHospital" Height="329.897" Width="512.371">
     <Grid>
-        <Label x:Name="lblnombre_Copy" Content="Nuevo Equipo Hospital" HorizontalAlignment="Left" Margin="170,22,0,0" VerticalAlignment="Top" Height="27" Width="184" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblnombre_Copy" Content="Nuevo equipo hospital" HorizontalAlignment="Left" Margin="170,22,0,0" VerticalAlignment="Top" Height="27" Width="184" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
         <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="69,66,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="69,106,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <Label x:Name="lblcosto" Content="Costo" HorizontalAlignment="Left" Margin="69,159,0,0" VerticalAlignment="Top" Height="24" Width="83"/>

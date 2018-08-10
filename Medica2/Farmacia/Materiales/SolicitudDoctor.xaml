@@ -67,7 +67,7 @@
                  PreviewTextInput="validarNumeros"
                  MaxLength="8"/>
 
-        <Button x:Name="btnNuevaSolicitud" Content="Nueva Solicitud" HorizontalAlignment="Left" Margin="450,59,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevaSolicitud_Click"/>
+        <Button x:Name="btnNuevaSolicitud" Content="Nueva solicitud" HorizontalAlignment="Left" Margin="450,59,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevaSolicitud_Click"/>
         <Button x:Name="btnAgregar" Content="Agregar" HorizontalAlignment="Left" Margin="305,186,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnAgregar_Click"/>
         <Button x:Name="btnFinalizar" Content="Finalizar" HorizontalAlignment="Left" Margin="410,186,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Click="btnFinalizar_Click"/>
         <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="303,163,0,0" VerticalAlignment="Top" Width="75"

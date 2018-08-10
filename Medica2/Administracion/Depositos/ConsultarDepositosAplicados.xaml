@@ -18,7 +18,7 @@
     </Window.Resources>
     <Grid>
 
-        <Label x:Name="lblTitulo" Content="Depósitos Aplicados" HorizontalAlignment="Left" Margin="310,34,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="lblTitulo" Content="Depósitos aplicados" HorizontalAlignment="Left" Margin="310,34,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
         <telerik:RadGridView x:Name="rgvDepositosAplicados"  HorizontalAlignment="Left" Margin="31,66,-463.4,-69.6" VerticalAlignment="Top" 
         Width="726" Height="274" 
@@ -36,14 +36,14 @@
 
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIENTENOM}" Header="PACIENTE" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PPATERNO}" Header="PATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding PMATERNO}" Header="MATENRO" />
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding MONTO}" Header="MONTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PPATERNO}" Header="APATENRO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding PMATERNO}" Header="AMATENRO" />
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding MONTO}" Header="MONTÓ"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CONCEPTO}" Header="CONCEPTO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL DE CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALDO}" Header="SALDO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding USUA}" Header="USUARIO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REGISTRO DEL MONTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding FAPLICACION}" Header="FECHA DE REGISTRO"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
 

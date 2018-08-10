@@ -20,7 +20,7 @@
 
     <Grid>
 
-        <telerik:RadGridView x:Name="rgvVHonorariosc" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="389" Width="617"
+        <telerik:RadGridView x:Name="rgvVHonorariosc" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="379" Width="642"
             ShowSearchPanel="True"
             IsSearchingDeferred="True"  
             SelectedItem="{Binding HONORARIOS_MEDICOS}"
@@ -50,6 +50,7 @@
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Visualizar honorarios médicos" HorizontalAlignment="Left" Margin="219,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>

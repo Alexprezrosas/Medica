@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="CatalogoEspecialidades" Height="300" Width="300">
     <Grid>
-        <Label x:Name="lblTitulo" Content="Especialidades Medicos" HorizontalAlignment="Left" Margin="82,29,0,0" VerticalAlignment="Top" Height="24" Width="140"/>
+        <Label x:Name="lblTitulo" Content="Especialidades médicos" HorizontalAlignment="Left" Margin="66,10,0,0" VerticalAlignment="Top" Height="36" Width="176" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
         <Label x:Name="lblnombre" Content="Nombre" HorizontalAlignment="Left" Margin="4,70,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
         <Label x:Name="lbldescripcion" Content="Descripción" HorizontalAlignment="Left" Margin="4,110,0,0" VerticalAlignment="Top" Height="24" Width="83"/>
 

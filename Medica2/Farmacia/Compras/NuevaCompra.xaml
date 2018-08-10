@@ -27,7 +27,7 @@
         <Label x:Name="lblFVencimiento" Content="Fecha de vencimiento" HorizontalAlignment="Left" Margin="744,64,0,0" VerticalAlignment="Top" Width="134"/>
         <Label x:Name="lblRFC" Content="RFC" HorizontalAlignment="Left" Margin="410,93,0,0" VerticalAlignment="Top" Width="109"/>
         <Label x:Name="lblTelefono" Content="Teléfono" HorizontalAlignment="Left" Margin="744,93,0,0" VerticalAlignment="Top" Width="109"/>
-        <Label x:Name="lblTitulo" Content="Registro de compras" HorizontalAlignment="Left" Margin="542,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="lblTitulo" Content="Registro de compras" HorizontalAlignment="Left" Margin="542,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
         <TextBox x:Name="txtFactura" HorizontalAlignment="Left" Height="23" Margin="159,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" 
         Width="144" Foreground="#FF6F2828" BorderBrush="#FF089CF6" MaxLength="7" PreviewTextInput="validarNumeros"/>
@@ -55,7 +55,7 @@
 
         <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="876,126,0,0" VerticalAlignment="Top" Width="75" Click="btnGuardar_Click"/>
 
-        <Button x:Name="btnNuevoProveedor" Content="Nuevo Proveedor" HorizontalAlignment="Left" Margin="308,98,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevoProveedor_Click"/>
+        <Button x:Name="btnNuevoProveedor" Content="Nuevo proveedor" HorizontalAlignment="Left" Margin="308,98,0,0" VerticalAlignment="Top" Width="97" Click="btnNuevoProveedor_Click"/>
         <Label x:Name="lblIDMEdicamento" Content="Nombre del medicamento" HorizontalAlignment="Left" Margin="32,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblUMedida" Content="Unidad de medida" HorizontalAlignment="Left" Margin="962,189,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblCFDI" Content="CFDI" HorizontalAlignment="Left" Margin="962,227,0,0" VerticalAlignment="Top"/>

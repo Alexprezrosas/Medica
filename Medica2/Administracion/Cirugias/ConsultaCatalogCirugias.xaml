@@ -22,8 +22,8 @@
     <Grid>
 
         <telerik:RadGridView x:Name="MostraCirugias"  HorizontalAlignment="Left" 
-                             Margin="10,54,0,0" VerticalAlignment="Top" Width="614" 
-                             Height="296" AutoGenerateColumns="False" 
+                             Margin="10,54,0,0" VerticalAlignment="Top" Width="670" 
+                             Height="345" AutoGenerateColumns="False" 
                              ShowSearchPanel="True"
                              IsSearchingDeferred="True"
                              AlternateRowBackground="BlueViolet" 
@@ -43,20 +43,21 @@
             <telerik:RadGridView.Columns>
 
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMBRE_CIRUGIA}" 
-                                            Header="Cirugía" />
+                                            Header="CIRUGÍA" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" 
-                                            Header="Desccripción" />
+                                            Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COSTO}" 
-                                            Header="Costo">
+                                            Header="COSTO">
 
                 </telerik:GridViewDataColumn>
 
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA_CREACION}"   
-                                            Header="Fecha de Creación" />
+                                            Header="FECHA DE CREACIÓN" />
 
             </telerik:RadGridView.Columns>
 
         </telerik:RadGridView>
+        <Label x:Name="lblTitulo" Content="Catalogo de cirugías" HorizontalAlignment="Left" Margin="248,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>
 
 
     </Grid>

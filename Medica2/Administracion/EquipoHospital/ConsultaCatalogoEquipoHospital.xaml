@@ -17,8 +17,8 @@
 
     </Window.Resources>
     <Grid>
-        <telerik:RadGridView x:Name="rgvConsultaEquipoHospital" HorizontalAlignment="Left" Margin="10,54,0,-11.6" 
-            VerticalAlignment="Top" Width="614" Height="296" AutoGenerateColumns="False" 
+        <telerik:RadGridView x:Name="rgvConsultaEquipoHospital" HorizontalAlignment="Left" Margin="10,54,0,0" 
+            VerticalAlignment="Top" Width="750" Height="296" AutoGenerateColumns="False" 
             ShowSearchPanel="True"
             IsSearchingDeferred="True">
 
@@ -32,13 +32,13 @@
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMMEDICO}" Header="MÉDICO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding PACIEN}" Header="PACIENTE"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTA}" Header="TOTAL"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTA}" Header="TOTAL EQUIPO HOSPITAL"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TOTALCUENTA}" Header="TOTAL DE LA CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding SALD}" Header="SALDO DE LA CUENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding NOMUSU}" Header="USUARIO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding FECHA}" Header="FECHA ASIGNACION"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
-        <Label x:Name="lblTitulo" Content="Consulta Equipo Hospital" HorizontalAlignment="Left" Margin="206,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22"/>
+        <Label x:Name="lblTitulo" Content="Consulta equipo hospital" HorizontalAlignment="Left" Margin="272,14,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" FontFamily="Global Sans Serif"/>
     </Grid>
 </Window>

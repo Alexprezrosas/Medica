@@ -48,15 +48,15 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding DESCRIPCION}" Header="DESCRIPCIÓN" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding P_VENTA}" Header="PRECIO DE VENTA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding P_MEDICOS}" Header="PRECIO MÉDICOS"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding P_COMPRA}" Header="COSTO"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding P_COMPRA}" Header="PRECIO DE COMPRA"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CANTIDAD}" Header="EXISTENCIAS" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding UMEDIDA}" Header="UNIDAD DE MEDIDA"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding ALMACEN}" Header="ALMACEN"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding ALMACEN}" Header="ALMACÉN"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding COD_BARRAS}" Header="CÓDIGO DE BARRAS" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CFDI}" Header="CFDI"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding CADUCIDAD}" Header="CADUCIDAD"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_REGISTRO}"   Header="FECHA DE REGISTRO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_MOD}"   Header="FECHA DE MODIFICACION"/>
+                <telerik:GridViewDataColumn DataMemberBinding="{Binding F_MOD}"   Header="FECHA DE MODIFICACIÓN"/>
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTitulo" Content="Consulta de medicamentos" HorizontalAlignment="Left" Margin="333.6,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14" Grid.Column="1"/>
