@@ -302,14 +302,6 @@ namespace Medica2
                 Login l = new Login();
                 l.Show();
                 this.Close();
-            } else
-            {
-                if (sender == itemSalirEnfermeria)
-                {
-                    this.Close();
-                    Login l = new Login();
-                    l.Show();
-                }
             }
 
             //---------------------------------Modulo de administracion

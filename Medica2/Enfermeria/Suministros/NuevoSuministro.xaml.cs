@@ -231,7 +231,7 @@ namespace Medica2.Enfermeria.Suministros
             cuenta.SALDO = cuenta.SALDO + total;
             BaseDatos.GetBaseDatos().SaveChanges();
             MessageBox.Show("Suministro exitoso");
-            MostrarPacientes mp = new MostrarPacientes();
+            MostrarPacientes mp = new MostrarPacientes(idUsuario);
             mp.Show();
             this.Close();
         }

@@ -59,6 +59,7 @@ namespace Medica2.Farmacia.Devoluciones
                                         on e.ID_PACIENTE equals cuenta.PACIENTEID
                                         join cuarto in BaseDatos.GetBaseDatos().CATALOGO_CUARTOS
                                         on e.CUARTOID equals cuarto.ID_CATALOGO_CUARTO
+                                        where PERSONA.ESTADOPERSONA == "Activo"
                                         select new
                                         {
                                             ID_PACIENTE = e.ID_PACIENTE,

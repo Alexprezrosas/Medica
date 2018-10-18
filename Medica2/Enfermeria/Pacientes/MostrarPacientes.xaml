@@ -37,10 +37,9 @@
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding APATERNO}" Header="APATERNO" />
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding AMATERNO}" Header="AMATERNO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding F_NACIMIENTO}" Header="FECHA DE NACIMIENTO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding TIPOPACIENTE}" Header="TIPO"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding RESPONSABLE}" Header="RESPONSABLE"/>
                 <telerik:GridViewDataColumn DataMemberBinding="{Binding TELEFONO}" Header="TÉLEFONO"/>
-                <telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL CUENTA"/>
+                <!--<telerik:GridViewDataColumn DataMemberBinding="{Binding CUENTAA}" Header="TOTAL CUENTA"/>-->
             </telerik:RadGridView.Columns>
         </telerik:RadGridView>
         <Label x:Name="lblTitulo" Content="Consulta de pacientes" HorizontalAlignment="Left" Margin="355,10,0,0" VerticalAlignment="Top" FontFamily="Global Sans Serif" FontWeight="Bold" FontSize="14"/>

@@ -26,6 +26,7 @@ namespace Medica2
         {
             InitializeComponent();
             autoUsuario.ItemsSource = (from us in BaseDatos.GetBaseDatos().USUARIOS
+                                       where us.EMPLEADO.PERSONA.ESTADOPERSONA == "Activo"
                                          select new
                                          {
                                              ID_USUARIO = us.ID_USUARIO,
